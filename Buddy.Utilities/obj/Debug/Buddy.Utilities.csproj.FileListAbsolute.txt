@@ -1,0 +1,9 @@
+D:\Training\Buddy\Buddy.Utilities\bin\Debug\Buddy.Utilities.dll
+D:\Training\Buddy\Buddy.Utilities\bin\Debug\Buddy.Utilities.pdb
+D:\Training\Buddy\Buddy.Utilities\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Training\Buddy\Buddy.Utilities\bin\Debug\Microsoft.Web.Administration.dll
+D:\Training\Buddy\Buddy.Utilities\bin\Debug\Newtonsoft.Json.dll
+D:\Training\Buddy\Buddy.Utilities\bin\Debug\Newtonsoft.Json.xml
+D:\Training\Buddy\Buddy.Utilities\obj\Debug\Buddy.Utilities.csproj.CoreCompileInputs.cache
+D:\Training\Buddy\Buddy.Utilities\obj\Debug\Buddy.Utilities.dll
+D:\Training\Buddy\Buddy.Utilities\obj\Debug\Buddy.Utilities.pdb

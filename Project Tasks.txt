@@ -1,0 +1,38 @@
+- Upload on GitHub
+- .Net Core Web API Toturials
+- AutoMapper
+- ModelBase
+- BusinessBase
+- ServiceBase
+- AppBase
+- Code Refactoring
+- EF Repository
+- Base Model
+- Apply OOP
+- Apply Design Patterns
+- Apply Threading and Asyncronous
+- Caching server side
+- Security authintication and authorization
+- Logs
+- Audits
+- Error Handling server side
+- Serialize\Deserialize request\response
+- Encrypt\Decrypt request\response
+- Add all important data to context including appSettings
+
+
+- FE Framework
+- Caching client side
+- Error Handling client side
+- Serialize\Deserialize request\response
+- Encrypt\Decrypt request\response
+- Admin Template Design
+- Admin Page Template Design
+- Controls Templates design (reusable)
+- Try implement GraphQL
+- Build React components for admin and app
+- Add all important data to context
+- Post login ? redirect url
+- Redux
+- Styled components
+- Jest unit testing

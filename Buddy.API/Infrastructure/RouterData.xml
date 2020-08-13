@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+Caching: No Cache (1), Server Cache (2) and Client Cache (3)
+Access: Anonymous (1), Admin (2) and Normal User (3)
+-->
+<Buddy>
+  <Services>
+    <Service Code="GETUSERS" Method="GetUsers" AssemblyClass="App.Business,AppUserBL" ModelClass="App.Data,Model.AppUserModel" CashingType="1" AccessType="1"></Service>
+  </Services>
+</Buddy>

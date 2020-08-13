@@ -1,0 +1,17 @@
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\App.Business.deps.json
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\App.Business.dll
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\App.Business.pdb
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\App.Data.dll
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\App.Data.pdb
+D:\Training\Buddy\App.Business\obj\Debug\netstandard2.0\App.Business.csprojResolveAssemblyReference.cache
+D:\Training\Buddy\App.Business\obj\Debug\netstandard2.0\App.Business.csproj.CoreCompileInputs.cache
+D:\Training\Buddy\App.Business\obj\Debug\netstandard2.0\App.Business.AssemblyInfoInputs.cache
+D:\Training\Buddy\App.Business\obj\Debug\netstandard2.0\App.Business.AssemblyInfo.cs
+D:\Training\Buddy\App.Business\obj\Debug\netstandard2.0\App.Business.dll
+D:\Training\Buddy\App.Business\obj\Debug\netstandard2.0\App.Business.pdb
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\Buddy.Utilities.dll
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\DocumentFormat.OpenXml.dll
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\Microsoft.Web.Administration.dll
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\Buddy.Utilities.pdb
+D:\Training\Buddy\App.Business\bin\Debug\netstandard2.0\Newtonsoft.Json.xml
