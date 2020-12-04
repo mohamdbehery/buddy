@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -37,7 +38,6 @@ namespace Buddy.Utilities
         private SqlDataAdapter SQLDataAd;
 
         private string[] CustomParams = { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
-        private static System.Configuration.Configuration webConfigApp = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
 
         public string GetConfigKey(string Key)
         {
@@ -896,7 +896,7 @@ namespace Buddy.Utilities
                     Params.Add("@Exception", string.IsNullOrEmpty(Exception) ? "No Exception" : Exception);
 
                     int outAffectedRows = 0;
-                    //ExecuteSQLDB_SP(GetLookupValue_eCM("AppLogsOperationalStateDBConStr"), "spAppLogsMailLog", Params, out outAffectedRows);
+                    ExecuteSQLDB_SP("dr", "spAppLogsMailLog", Params, out outAffectedRows);
                 }
             }
             catch (Exception ex)
@@ -1141,10 +1141,18 @@ namespace Buddy.Utilities
 
         public void Log(string LogText)
         {
-            string LogFilePrefix = "AppLog";
+            string LogsBaseDirectory = @"C:\Inetpub";
+            string LogsDirectory = Path.Combine(LogsBaseDirectory, "BuddyLogger");
+            string LogFileNamePrefix = "Log";
+            StackTrace stackTrace = new StackTrace();
+            string projectName = "UnknownSource";
+            try
+            {
+                string assemblyName = Assembly.GetEntryAssembly().ManifestModule.Name;
+                projectName = assemblyName.Remove(assemblyName.IndexOf('.'));
+            } catch { }
+            string methodName = stackTrace.GetFrame(1).GetMethod().Name;
 
-            string AppPathDirectory = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
-            string LogsDirectory = Path.Combine(AppPathDirectory, "Logs");
             if (!Directory.Exists(LogsDirectory))
                 Directory.CreateDirectory(LogsDirectory);
 
@@ -1153,11 +1161,35 @@ namespace Buddy.Utilities
             if (!Directory.Exists(DayLogsDirectory))
                 Directory.CreateDirectory(DayLogsDirectory);
 
-            string crHour = DateTime.Now.Hour.ToString();
-            string HourLogsFilePath = Path.Combine(DayLogsDirectory, LogFilePrefix + "-" + crDate + "-" + crHour + ".txt");
+            string ProjectDirectory = Path.Combine(DayLogsDirectory, projectName);
+            if (!Directory.Exists(ProjectDirectory))
+                Directory.CreateDirectory(ProjectDirectory);
 
-            LogText = DateTime.Now.ToString("hh.mm.ss.ffffff") + "(" + GetCurrentIP() + ") >> " + LogText;
+            string crHour = DateTime.Now.Hour.ToString();
+            string HourLogsFilePath = Path.Combine(ProjectDirectory, LogFileNamePrefix + "-" + crDate + "-" + crHour + ".txt");
+
+            LogText = $"{DateTime.Now.ToString("hh.mm.ss.ffffff")} : {methodName} >> {LogText}";
             AppendTextToFile(HourLogsFilePath, LogText);
+        }
+    }
+
+    public class VirtualXML
+    {
+        string _rootNode;
+        StringBuilder VDocument;
+        public VirtualXML(string rootNode)
+        {
+            _rootNode = rootNode;
+            VDocument = new StringBuilder($"<{rootNode}>");
+        }
+        public void AddNode(string nodeName, Dictionary<string, string> nodeAttributes){
+            string nodeAttr = nodeAttributes.Select(pair => $"{pair.Key}='{pair.Value}' ").ToString();
+            VDocument.Append($"<{nodeName} {nodeAttr}/>");
+        }
+        public string Get()
+        {
+            VDocument.Append($"<{_rootNode} />");
+            return VDocument.ToString();
         }
     }
 
