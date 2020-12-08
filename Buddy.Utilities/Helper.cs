@@ -1183,12 +1183,12 @@ namespace Buddy.Utilities
             VDocument = new StringBuilder($"<{rootNode}>");
         }
         public void AddNode(string nodeName, Dictionary<string, string> nodeAttributes){
-            string nodeAttr = nodeAttributes.Select(pair => $"{pair.Key}='{pair.Value}' ").ToString();
+            string nodeAttr = string.Join(" ", nodeAttributes.Select(pair => $"{pair.Key}='{pair.Value}' ").ToArray());
             VDocument.Append($"<{nodeName} {nodeAttr}/>");
         }
         public string Get()
         {
-            VDocument.Append($"<{_rootNode} />");
+            VDocument.Append($"</{_rootNode}>");
             return VDocument.ToString();
         }
     }

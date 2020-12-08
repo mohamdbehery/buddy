@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buddy.API", "Buddy.API\Buddy.API.csproj", "{64A945C9-1EF1-40F9-9D1F-6C2963D097FD}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Data", "App.Data\App.Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Business", "App.Business\App.Business.csproj", "{4A0F6A45-B54E-4581-9007-F1758A53F4CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buddy.Program", "Buddy.Program\Buddy.Program.csproj", "{3F952758-E0CA-40D0-A7B1-76A3EC1E2F19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buddy.Program", "Buddy.Program\Buddy.Program.csproj", "{3F952758-E0CA-40D0-A7B1-76A3EC1E2F19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotDocs", "HotDocs\HotDocs.csproj", "{DCEBBD3B-31CB-41C4-BB55-36DFD3A0E589}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{3F952758-E0CA-40D0-A7B1-76A3EC1E2F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F952758-E0CA-40D0-A7B1-76A3EC1E2F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F952758-E0CA-40D0-A7B1-76A3EC1E2F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCEBBD3B-31CB-41C4-BB55-36DFD3A0E589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCEBBD3B-31CB-41C4-BB55-36DFD3A0E589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCEBBD3B-31CB-41C4-BB55-36DFD3A0E589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCEBBD3B-31CB-41C4-BB55-36DFD3A0E589}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

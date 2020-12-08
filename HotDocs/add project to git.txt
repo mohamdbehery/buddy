@@ -1,0 +1,7 @@
+1. Download and install GIT > https://git-scm.com/downloads
+2. git init
+3. git add .
+4. git remote add origin https://gitlab.com/mohamdbehery/evolvice-daily-tasks.git
+5. git pull origin master --allow-unrelated-histories
+6. git commit -m "first commit"
+7. git push -u origin master

@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Training\\Buddy\\App.Data\\App.Data.csproj": {}
+    "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data.csproj": {}
   },
   "projects": {
-    "D:\\Training\\Buddy\\App.Data\\App.Data.csproj": {
+    "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Training\\Buddy\\App.Data\\App.Data.csproj",
+        "projectUniqueName": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data.csproj",
         "projectName": "App.Data",
-        "projectPath": "D:\\Training\\Buddy\\App.Data\\App.Data.csproj",
-        "packagesPath": "C:\\Users\\mohamed.behery\\.nuget\\packages\\",
-        "outputPath": "D:\\Training\\Buddy\\App.Data\\obj\\",
+        "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data.csproj",
+        "packagesPath": "C:\\Users\\mohamed_behery\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mohamed.behery\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mohamed_behery\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -74,7 +71,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200-preview-014977\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
