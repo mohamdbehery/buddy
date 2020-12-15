@@ -36,6 +36,70 @@ namespace Buddy.Utilities
         private SqlConnection SQLCon;
         private SqlCommand SQLCMD;
         private SqlDataAdapter SQLDataAd;
+        readonly FileStream logsFileStream;
+        readonly StreamWriter logsStreamWriter;
+
+        public Helper(bool withLogs)
+        {
+            logsFileStream = new FileStream(LogFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+            logsStreamWriter = new StreamWriter(logsFileStream, Encoding.UTF8, 4096, true);
+        }
+
+        public Helper()
+        {
+
+        }
+
+        public string LogFilePath {
+            get{
+                int fileMaxSizeInBytes = 2000000;
+                string logFileExtension = ".txt";
+                string LogsBaseDirectory = @"C:\Inetpub";
+                string LogFileNamePrefix = "Log";
+                string LogsDirectory = Path.Combine(LogsBaseDirectory, "BuddyLogger");
+                StackTrace stackTrace = new StackTrace();
+                string projectName = "UnknownSource";
+                try
+                {
+                    string assemblyName = Assembly.GetEntryAssembly().ManifestModule.Name;
+                    projectName = assemblyName.Remove(assemblyName.IndexOf('.'));
+                }
+                catch { }
+
+                if (!Directory.Exists(LogsDirectory))
+                    Directory.CreateDirectory(LogsDirectory);
+
+                string crDate = DateTime.Now.ToString("MM-dd-yyyy");
+                string DayLogsDirectory = Path.Combine(LogsDirectory, crDate);
+                if (!Directory.Exists(DayLogsDirectory))
+                    Directory.CreateDirectory(DayLogsDirectory);
+
+                string ProjectDirectory = Path.Combine(DayLogsDirectory, projectName);
+                if (!Directory.Exists(ProjectDirectory))
+                    Directory.CreateDirectory(ProjectDirectory);
+
+                string crHour = DateTime.Now.Hour.ToString();
+                string hourLogsFilePath = Path.Combine(ProjectDirectory, $"{LogFileNamePrefix}-{crDate}-{crHour}-1{logFileExtension}");
+
+                if (File.Exists(hourLogsFilePath))
+                {
+                    FileInfo logFileInfo = new FileInfo(hourLogsFilePath);
+                    if (logFileInfo.Length > fileMaxSizeInBytes)
+                    {
+                        string logFileName = Path.GetFileNameWithoutExtension(hourLogsFilePath);
+                        string[] logFileNameParts = logFileName.Split('-');
+                        int fileVersion = 0;
+                        if (int.TryParse(logFileNameParts[logFileNameParts.Length - 1], out fileVersion))
+                        {
+                            fileVersion++;
+                            logFileNameParts[logFileNameParts.Length - 1] = fileVersion.ToString();
+                            hourLogsFilePath = Path.Combine(ProjectDirectory, $"{string.Join("-", logFileNameParts)}{logFileExtension}");
+                        }
+                    }
+                }
+                return hourLogsFilePath;
+            }
+        }
 
         private string[] CustomParams = { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
 
@@ -1000,14 +1064,12 @@ namespace Buddy.Utilities
             }
         }
 
-        public void AppendTextToFile(string FileAbsolutePath, string Text)
+        public void AppendTextToFile(string text)
         {
-            FileStream fs = new FileStream(FileAbsolutePath, FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.BaseStream.Seek(0, SeekOrigin.End);
-            sw.WriteLine(Text);
-            sw.Flush();
-            sw.Close();
+            logsStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
+            logsStreamWriter.WriteLineAsync(text);
+            logsStreamWriter.Flush();
+            logsStreamWriter.Close();
         }
 
         public Dictionary<string, string> ConvertToDictionary(DataTable DT)
@@ -1139,37 +1201,12 @@ namespace Buddy.Utilities
             return System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
         }
 
-        public void Log(string LogText)
+        public void Log(string logMessage)
         {
-            string LogsBaseDirectory = @"C:\Inetpub";
-            string LogsDirectory = Path.Combine(LogsBaseDirectory, "BuddyLogger");
-            string LogFileNamePrefix = "Log";
             StackTrace stackTrace = new StackTrace();
-            string projectName = "UnknownSource";
-            try
-            {
-                string assemblyName = Assembly.GetEntryAssembly().ManifestModule.Name;
-                projectName = assemblyName.Remove(assemblyName.IndexOf('.'));
-            } catch { }
             string methodName = stackTrace.GetFrame(1).GetMethod().Name;
-
-            if (!Directory.Exists(LogsDirectory))
-                Directory.CreateDirectory(LogsDirectory);
-
-            string crDate = DateTime.Now.ToString("MM-dd-yyyy");
-            string DayLogsDirectory = Path.Combine(LogsDirectory, crDate);
-            if (!Directory.Exists(DayLogsDirectory))
-                Directory.CreateDirectory(DayLogsDirectory);
-
-            string ProjectDirectory = Path.Combine(DayLogsDirectory, projectName);
-            if (!Directory.Exists(ProjectDirectory))
-                Directory.CreateDirectory(ProjectDirectory);
-
-            string crHour = DateTime.Now.Hour.ToString();
-            string HourLogsFilePath = Path.Combine(ProjectDirectory, LogFileNamePrefix + "-" + crDate + "-" + crHour + ".txt");
-
-            LogText = $"{DateTime.Now.ToString("hh.mm.ss.ffffff")} : {methodName} >> {LogText}";
-            AppendTextToFile(HourLogsFilePath, LogText);
+            logMessage = $"{DateTime.Now.ToString("hh.mm.ss.ffffff")} : {methodName} >> {logMessage}";
+            AppendTextToFile(logMessage);
         }
     }
 
@@ -1182,7 +1219,8 @@ namespace Buddy.Utilities
             _rootNode = rootNode;
             VDocument = new StringBuilder($"<{rootNode}>");
         }
-        public void AddNode(string nodeName, Dictionary<string, string> nodeAttributes){
+        public void AddNode(string nodeName, Dictionary<string, string> nodeAttributes)
+        {
             string nodeAttr = string.Join(" ", nodeAttributes.Select(pair => $"{pair.Key}='{pair.Value}' ").ToArray());
             VDocument.Append($"<{nodeName} {nodeAttr}/>");
         }
