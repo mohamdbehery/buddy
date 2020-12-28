@@ -15,3 +15,4 @@ C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.csproj.CoreCompileInputs.cache
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.dll
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.csprojAssemblyReference.cache

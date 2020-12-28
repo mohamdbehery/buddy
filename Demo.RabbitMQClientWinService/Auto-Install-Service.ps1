@@ -1,6 +1,6 @@
 
 $RabbitMQServiceName = "RabbitMQClientService"
-$RabbitMQPath = 'C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\RabbitMQClientWinService\bin\Release\RabbitMQClientWinService.exe'
+$RabbitMQPath = 'C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Demo.RabbitMQClientWinService\bin\Release\RabbitMQClientWinService.exe'
 $RabbitMQProperities = @{
     Name = $RabbitMQServiceName
     BinaryPathName = $RabbitMQPath

@@ -34,10 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Buddy.Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Buddy\Buddy.Utilities\bin\Debug\Buddy.Utilities.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\MLITestCodeCases\bin\EntityFramework.dll</HintPath>
     </Reference>
@@ -61,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XMLDBOperations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -71,6 +68,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="XMLFile2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Buddy.Utilities\Buddy.Utilities.csproj">
+      <Project>{0cb86c0c-e2eb-4819-89f2-980672a6ce0c}</Project>
+      <Name>Buddy.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
