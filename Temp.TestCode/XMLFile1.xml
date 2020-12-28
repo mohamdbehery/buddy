@@ -1,0 +1,776 @@
+﻿<?xml version="1.0"?>
+<configuration>
+	<configSections>
+		<sectionGroup name="adv" type="System.Configuration.ConfigurationSectionGroup, System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+			<section name="FileMonitorCollection" type="FileWatcherService.FileMonitorConfigHandler, FileWatcherService" />
+		</sectionGroup>
+		<section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,Log4net"/>
+	</configSections>
+	<connectionStrings>
+		<add name="qbo.Data.Connection.Default" connectionString="Data Source=ADVUC1GELISAP11;Initial Catalog=Faslo;Connect Timeout=120;UID=QuandisPROD;PWD=QuandisPROD123" providerName="System.Data.SqlClient"/>
+	</connectionStrings>
+	<system.net>
+		<mailSettings>
+			<smtp from="advisorysupport@corelogic.com">
+				<network host="smtp.corelogic.com"/>
+			</smtp>
+		</mailSettings>
+	</system.net>
+	<appSettings>
+		<add key="qbo.Authorization" value="Windows" />
+		<add key="qbo.Authentication" value="Windows" />
+		<add key="ADV.ETLMaximumRetryPeriod" value="120" />
+		<add key="ADV.ETLRetryPeriod" value="2" />
+		<add key="ADV.EnableEvents" value="true" />
+		<add key="qbo.Attachment.BasePath" value="\\reg_file_pams.solutions.corelogic.com\filer\Advisory\upload\" />
+		<add key="qbo.BasePath" value="C:\Inetpub\wwwroot\"/>
+		<add key="qbo.Data.UserID" value="1726" />
+		<add key="ClientSettingsProvider.ServiceUri" value="" />
+		<add key="qbo.BaseUrl" value="https://advisoryhome.com" />
+		<add key="qbo.ErrorFolder" value="c:\inetpub\wwwroot\logs\" />
+		<add key="Xceed.LicenseKey" value="ZIN42-N7K6U-K7B75-Z8JA" />
+		<add key="qbo.PGPPublicKeys" value="C:\inetpub\wwwroot\Security\PKI\Quandis.Public.pkr" />
+		<add key="qbo.PGPPrivateKeys" value="C:\inetpub\wwwroot\Security\PKI\Quandis.Private.pkr" />
+		<add key="qbo.PGPLicenseKey" value="023EB84EF887CA252E813FFA64E8C0A1D36798752E6CCCDD1C0F0DD0FFF1B55A61F2E3B1F02792DC3415E64BFA75051834BE96E40B6279EE5FC22239991AFF57FB51C53F2C9CE4FCCD16D49392FBA40359A8F06976A2CDB4F60204F6D37E725743A66201AE10F0789326972FA764624846BE2B032433E9D8729ADFAED1DF32E1A76D95F8F525BAB2908310DC19BB74FFE91ECB507F05B2F78F9EECDF2C2E3CAB1CDB23D4957DED9F56E16BAC8007E4187E91BA0FAF13D93C8BE9563DE5B0A9555402127473F6CC2A1E0D1900D82D43F896FB0594533CB9959EA7189DDCCCB634C3E8EA9ECB0CC8BB80C12730F9F02BBDD55F007BBBEB997BC3DF0C980F67CFBE" />
+		<add key ="qbo.PGPDefaultUser" value="maganesh@corelogic.com"/>
+		<add key="qbo.PGPDefaultPassphrase" value="1234+Slo" />
+		<add key="DefaultProductCode" value="FTPFile" />
+		<add key="qbo.Application.OrganizationID" value="35" />
+		<add key="qbo.SmtpServer" value="smtp.corelogic.com" />
+		<add key="qbo.SmtpPort" value="25" />
+		<add key="ADV.FTP.FileToProcessLocation" value="\\reg_file_pams.solutions.corelogic.com\filer\Advisory\"/>
+		<add key="GenericFilePrefix" value="PADV.ZYINT.V01"></add>
+		<add key="GenericNewFilePath" value="\\reg_file_pams.solutions.corelogic.com\filer\Advisory\EDE_FTP\CLEAR_Inbound"></add>
+		<add key="GenericFilePrefixOutput" value="PADV.ZYONT.V01"></add>
+		<add key="GenericNewFilePathOutput" value="\\reg_file_pams.solutions.corelogic.com\filer\Advisory\EDE_FTP\OutputProcessing"></add>
+
+	</appSettings>
+	<adv>
+		<FileMonitorCollection type="FileWatcherService.FileMonitorCollection, FileWatcherService">
+			<FileMonitorConfig>
+				<MonitoringPath>
+					<FileMonitorItem>
+						<Name>LienWatch</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\ADV_LienWatch\FTP\LWSPO\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<AttachmentType>4</AttachmentType>
+						<Attachment>LienWatch Zip</Attachment>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.zip</NotifyFilters>
+						<ProcessedFolder>LienWatch\In</ProcessedFolder>
+						<!--ArchiveFolder>\\REISXRU99VFIL01\FASLO_Attachments\upload\LienWatch\FTP\LWSPO\In\Archive</ArchiveFolder-->
+						<DateFormat>yyyyMMdd</DateFormat>
+						<NotifyEvents>Import Lienwatch new feed data</NotifyEvents>
+						<IsFileMove>true</IsFileMove>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>True</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>ClientFTPFile</Name>
+						<Folder>\\reg_edgfile_pams.solutions.corelogic.com\edgfl\FASLO_Attachments\Upload\FTP\users</Folder>
+						<Object>Organization</Object>
+						<Attachment>Client FTP File</Attachment>
+						<AttachmentType>1</AttachmentType>
+						<IncludeSubdirectories>true</IncludeSubdirectories>
+						<NotifyFilters>*.*</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<!--<BasePath>\\10.208.77.200\Group\ADV\FTP\Advisory FTP\</BasePath>-->
+						<ProcessedFolder>Inbound</ProcessedFolder>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<IsFileMove>true</IsFileMove>
+						<ExcludeFolders>Out,TEST,Archive,Special,FromCorelogic,ToCorelogic</ExcludeFolders>
+						<!--give multiple folders separated by , for excluding multiple folders -->
+						<NotifyEvents>Product and Organization Validator</NotifyEvents>
+						<IsFileMove>true</IsFileMove>
+						<Move>true</Move>
+						<Attach>False</Attach>
+						<Process>False</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<Name>BANARequestfile</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\EquityAnalysis\1293755\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1293755</ObjectID>
+						<Attachment>BAC EA SLA Request</Attachment>
+						<AttachmentType>8</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.*</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<!--give multiple folders separated by , for excluding multiple folders -->
+						<!--ArchiveFolder>C:\Inetpub\wwwroot\Upload\FTP\Out\Archive</ArchiveFolder-->
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<NotifyEvents>Import BAC EA SLA Requests</NotifyEvents>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>MLSMonitoring-CITI</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\MLSMonitoring\1402920\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1402920</ObjectID>
+						<AttachmentType>10</AttachmentType>
+						<Attachment>CITI MLS Monitoring Input</Attachment>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.txt</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>BoA MLS data monitoring - Request</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>MLSMonitoring-CALIBER</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\MLSMonitoring\1378300\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1378300</ObjectID>
+						<Attachment>CALIBER MLS Monitoring Input</Attachment>
+						<AttachmentType>10</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.csv</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>BoA MLS data monitoring - Request</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>MLSMonitoring-W.J.Bradley </Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\MLSMonitoring\1409003\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1409003</ObjectID>
+						<Attachment>W.J.Bradley MLS Monitoring Input</Attachment>
+						<AttachmentType>10</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.csv</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>BoA MLS data monitoring - Request</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>MLSMonitoring-DEFENDER</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\MLSMonitoring\1376478\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1376478</ObjectID>
+						<Attachment>DEFENDER MLS Monitoring Input</Attachment>
+						<AttachmentType>10</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.txt</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>BoA MLS data monitoring - Request</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<Name>MLSMonitoring-PHHMortgage</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\MLSMonitoring\1378441\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1378441</ObjectID>
+						<Attachment>PHH Mortgage MLS Monitoring Input</Attachment>
+						<AttachmentType>10</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.csv</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>BoA MLS data monitoring - Request</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<Name>MLSMonitoring-FreedomMortgage</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\MLSMonitoring\1415970\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1415970</ObjectID>
+						<Attachment>Freedom Mortgage MLS Monitoring Input</Attachment>
+						<AttachmentType>10</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.csv</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>BoA MLS data monitoring - Request</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<Name>LienReport ProductOrder</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\LienReport\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>Lien Report</Attachment>
+						<AttachmentType>4</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.xlsx</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+							<Cc></Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>Address Standardization Ordering</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\AddressStandardization\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1016</ObjectID>
+						<Attachment>Address Standardization</Attachment>
+						<AttachmentType>11</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.txt</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>AddressStandardization ProductOrder Import</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>Custom Append- Wells Fargo</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\ProductOrder\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>168059</ObjectID>
+						<Attachment>Marketrac Custom Append</Attachment>
+						<AttachmentType>18</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.gz</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>AddressStandardization ProductOrder Import</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>FICA ProductOrder</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\FICA\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>FICA</Attachment>
+						<AttachmentType>20</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.xls</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+							<Cc></Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>BOA LienReport</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\LienReport\14822\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>14822</ObjectID>
+						<Attachment>Lien Report</Attachment>
+						<AttachmentType>4</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.txt</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>LER-Lien Equity Repository</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\LER\35\In\Add</Folder>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>CLEAR</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.*</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<ValidateFileName>true</ValidateFileName>
+						<ValidateFileExtension>true</ValidateFileExtension>
+						<FileCategory>Input</FileCategory>
+						<ErrorNotificationType>InvalidFileFormat</ErrorNotificationType>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<Name>LienWatch</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\upload\LienWatch\FTP\LER\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>CLEAR LienWatch Zip</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.zip</NotifyFilters>
+						<ProcessedFolder>LienWatch\In</ProcessedFolder>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<NotifyEvents>Import LER Public data Monitoring Results</NotifyEvents>
+						<IsFileMove>true</IsFileMove>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>True</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>MLSMonitoring-Renovate America</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\MLSMonitoring\1516897\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1516897</ObjectID>
+						<Attachment>Renovate America MLS Monitoring Input</Attachment>
+						<AttachmentType>10</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.csv</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>BoA MLS data monitoring - Request</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<Name>ODNI Input</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\Custom\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1537514</ObjectID>
+						<Attachment>ODNI Decrypt</Attachment>
+						<AttachmentType>24</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.pgp</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>File Decryption</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>ODNI Input from CMAS</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\Custom\CMAS\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1537514</ObjectID>
+						<Attachment>ODNI Custom</Attachment>
+						<AttachmentType>24</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.txt</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>SSM</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\SSM\35\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>SSM</Attachment>
+						<AttachmentType>32</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.xlsx</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<!--CLEAR Organization Add folder for 'Bank of America - CLEAR'-->
+						<Name>LER-Lien Equity Repository</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\LER\1523803\In\Add</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1523803</ObjectID>
+						<Attachment>CLEAR</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.*</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<ValidateFileName>true</ValidateFileName>
+						<ValidateFileExtension>true</ValidateFileExtension>
+						<FileCategory>Input</FileCategory>
+						<ErrorNotificationType>InvalidFileFormat</ErrorNotificationType>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<!--CLEAR Organization Add folder for 'Servis One'-->
+						<Name>LER-Lien Equity Repository</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\LER\1545910\In\Add</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1545910</ObjectID>
+						<Attachment>CLEAR</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.xlsx</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<!--CLEAR Organization Add folder for All Organizations-->
+						<Name>LER-Lien Equity Repository</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\EDE_FTP\CLEAR_Inbound</Folder>
+						<Object>Organization</Object>
+						<Attachment>CLEAR</Attachment>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.*</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Auto Load-Ordering process</NotifyEvents>
+						<ValidateFileName>true</ValidateFileName>
+						<ValidateFileExtension>true</ValidateFileExtension>
+						<FileCategory>Input</FileCategory>
+						<ErrorNotificationType>InvalidFileFormat</ErrorNotificationType>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+					<FileMonitorItem>
+						<Name>BANARequestfile</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\EquityAnalysis\1293755\Manual\In</Folder>
+						<Object>Organization</Object>
+						<ObjectID>1293755</ObjectID>
+						<Attachment>BAC EA SLA Request</Attachment>
+						<AttachmentType>8</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.xlsx</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<NotifyEvents>Import BAC EA SLA Requests</NotifyEvents>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+
+
+					<FileMonitorItem>
+						<Name>LER-Lien Equity Repository</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\CreateSetup\In\</Folder>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>CLEAR</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.xlsx</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Create Client Setup for On-Boarding</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+							<Cc></Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>Output Processing</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\EDE_FTP\OutputProcessing</Folder>
+						<Attachment>CLEAR</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.*</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Validating and Transmitting Output File</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<FileCategory>Output</FileCategory>
+						<ErrorNotificationType>InvalidFileFormatOutput</ErrorNotificationType>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>DataCorrection</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\DataCorrection\In\</Folder>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>CLEAR Data Correction</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+						<NotifyFilters>*.xlsx</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<ExcludeFolders></ExcludeFolders>
+						<NotifyEvents>Data Correction Util</NotifyEvents>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>Invoke Pothole Data Load SSIS Package through SQL Job</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\PotholeImport</Folder>
+						<NotifyFilters>*.csv</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<NotifyUser>false</NotifyUser>
+						<NotifyEvents>Invoke Pothole Data Load SSIS Package through SQL</NotifyEvents>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>CLEAR Pothole Excel</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+					</FileMonitorItem>
+					<FileMonitorItem>
+						<Name>Trigger tax Watch Response</Name>
+						<Folder>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\upload\TaxWatch\In</Folder>
+						<NotifyFilters>*.txt</NotifyFilters>
+						<DateFormat>yyyyMMdd</DateFormat>
+						<NotifyUser>false</NotifyUser>
+						<NotifyEvents>TaxWatch Response Processor</NotifyEvents>
+						<EmailNotification>
+							<From>advisorysupport@corelogic.com</From>
+							<To>DFW01.ADV_DAAS.adav@corelogic.com</To>
+							<Cc>ADAN-DL-AdvisorySupport.adan@corelogic.com</Cc>
+						</EmailNotification>
+						<Move>true</Move>
+						<Attach>true</Attach>
+						<Process>true</Process>
+						<Object>Organization</Object>
+						<ObjectID>35</ObjectID>
+						<Attachment>TaxWatch Response</Attachment>
+						<AttachmentType>23</AttachmentType>
+						<IncludeSubdirectories>false</IncludeSubdirectories>
+					</FileMonitorItem>
+				</MonitoringPath>
+			</FileMonitorConfig>
+		</FileMonitorCollection>
+	</adv>
+
+	<log4net>
+		<root>
+			<level value="All"/>
+			<appender-ref ref="LogFileAppender"/>
+		</root>
+		<logger name="FileWatcherService.FileProcessor">
+			<level value="All" />
+			<appender-ref ref="EmailAppender" />
+		</logger>
+		<logger name="FileWatcherService.FileMonitor">
+			<level value="All" />
+			<appender-ref ref="EmailAppenderLienWatch" />
+		</logger>
+		<appender name="LogFileAppender" type="log4net.Appender.RollingFileAppender">
+			<param name="File" value="\\reg_file_pams.solutions.corelogic.com\filer\ApplicationLog\FileWatcherLogs\AdvisoryFileWatcherLog.txt"/>
+			<param name="AppendToFile" value="true"/>
+			<rollingStyle value="Size"/>
+			<maxSizeRollBackups value="10"/>
+			<maximumFileSize value="10MB"/>
+			<staticLogFileName value="true"/>
+			<layout type="log4net.Layout.PatternLayout">
+				<param name="ConversionPattern" value="%d{ddd dd, HH:mm:ss} [%-5p] %m%n"/>
+				<param name="ConversionPattern" value="%date [%thread] %-5level %logger %method - %message%newline"/>
+				<param name="ConversionPattern" value="%d{ddd dd, HH:mm:ss} [%-5p] %m (%logger:%L)%n" />
+			</layout>
+		</appender>
+		<appender name="EmailAppender" type="ADV.Utilities.Logging.SmtpAppender">
+			<threshold value="All"/>
+			<!-- <to value="nmajeti@corelogic.com;advisorysupport@corelogic.com" /> -->
+			<to value="DFW01.ADV_DAAS.adav@corelogic.com" />
+			<from value="advisorysupport@corelogic.com" />
+			<subject value="FTP File Error" />
+			<smtpHost value="smtp.corelogic.com" />
+			<layout type="log4net.Layout.PatternLayout">
+				<conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline%newline%newline" />
+			</layout>
+		</appender>
+		<appender name="EmailAppenderLienWatch" type="ADV.Utilities.Logging.SmtpAppender">
+			<threshold value="All"/>
+			<!--<bufferSize value="512" />-->
+			<!--<lossy value="false" />-->
+			<to value="DFW01.ADV_DAAS.adav@corelogic.com" />
+			<from value="advisorysupport@corelogic.com" />
+			<subject value="FileWatcher Error" />
+			<!--<smtpHost value="mail.cognizant.com" />-->
+			<smtpHost value="smtp.corelogic.com" />
+			<layout type="log4net.Layout.PatternLayout">
+				<conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline%newline%newline" />
+			</layout>
+		</appender>
+	</log4net>
+
+	<startup>
+		<supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+	</startup>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

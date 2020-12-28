@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<NotificationContent>
+	<Notification Name="FileAcknowledgement">
+	<LogBody FileType="Drop" Text ="The Drop File that you recently sent has been received. Details on the file are below. It is currently being analyzed for validation, and another email regarding the validation results will be sent to you within 1 business day. Upon successful validation, loans will be deactivated within 2 business days of original received date*." />
+    <LogBody FileType="Add_Update" Text ="The file that you recently sent has been received. Details on the file are below. It is currently being analyzed for validation, and another email regarding the validation results will be sent to you within 1 business day*." />
+	</Notification>
+
+  <Notification Name="OrderStatus">
+    <LogBody FileType="Drop" Text ="The validation process on your Drop File has been completed. Details on the validation results are below. Any records that failed validation are contained in Validation Error file with reasons for failing and has been transmitted to you. Any records that passed validation are now being processed to be deactivated and will be completed within 2 business days of original received date*." />
+    <LogBody FileType="Add_Update" Text ="The validation process on your file has been completed. Details on the validation results are below. Any records that failed validation are contained in Validation Error file with reasons for failing and has been transmitted to you. Any records that passed validation are now being processed within Clear for analysis. Another email providing a summary of the file and the results of the analysis will be sent to you within 3 business days of the original received day*." />
+  </Notification>
+  
+  <Notification Name="FileSummary">
+    <LogBody FileType="Add_Update" Text ="The analysis on your file has been completed. The Output Summary and Output Detail files have been transmitted to you. A summary on your order is below." />
+    <LogBody FileType="Drop" Text ="Your Drop File has been processed. A summary on your drop request is below." />
+  </Notification>
+  
+  <Notification Name="NotificationforChangeFilesbyORG">
+    <LogBody FileType="Generic" Text ="Activity on your loans were detected during the previous month. The Change Summary and Change Detail files have been sent to you. Details on these two files are below." />
+    <LogBody FileType="NoActivity" Text ="No activity occurred on your loans during the previous month. Therefore, the Change Summary and Change Detail files will not be sent to you." />
+  </Notification>
+
+  <Notification Name="FooterMessage">
+    <LogBody FileType="Generic" Text ="*Files must be received by 2:00 PM Central Time; otherwise, the following business day will be considered as the first effective business day." />
+  </Notification>
+  
+  <Notification Name="PollingEventExecutionNotification">
+    <LogBody FileType="FailedPollingevent" Text ="Find the re-queued polling event detail in Attachment if priority is HIGH need immediate action." />
+    <LogBody FileType="NoFailedPollingevent" Text ="There are no failed polling event to re-queue." />
+  </Notification>
+  
+  <Notification Name="UnworkableReportForMSPConversion">
+    <LogBody FileType="MSPLoanExists" Text ="Attached is the report containing Unworkable Loan records for the past 1 week." />
+    <LogBody FileType="NoMSPLoanRecord" Text ="There are no unworkable Loan records for the past week." />
+  </Notification>
+  
+  <Notification Name="NotificationforCLEARRenewalbyORG">
+    <LogBody FileType="Generic" Text ="Following is a summary of loans that are due for renewal in the current month. A file containing the loan details has been transmitted to you. Please note that the last day to send us drop file(s) to avoid renewal of loans due in this month, is " />
+  </Notification>
+   <Notification Name="DataCorrectionImport">
+    <LogBody ContentType="ExcelSheetCountMisMatch" Text ="The data could not be loaded as the excel template does not contain the expected count of sheets i.e. 2. Please provide the expected sheet in the template and reload it."/>
+    <LogBody ContentType="ExcelSheetNameMisMatch" Text ="The data could not be loaded as the excel template does not contain the expected sheet names i.e. datacorrection, configurationoptions. Please provide the expected sheet in the template and reload it."/>
+	<LogBody ContentType="GenericErrorWhileImport" Text ="An error occurred while importing the data. Please reach out to Support Mailbox for assistance." />
+	<LogBody ContentType="ImportCompletedSuccessfully" Text ="The data has been imported successfully. You will be notified again after the CLEAR refresh." />
+	<LogBody ContentType="ExecutionCompleted" Text ="The data has been corrected and CLEAR results are available for review." />
+  </Notification>
+  
+</NotificationContent>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CustomErrorMessages>
+	<Page Name="Login">
+		<ErrorMsg CODE="Login Failure Password Expired" Text ="" />
+		<ErrorMsg CODE="Login Failure Invalid username, password or PIN" Text ="" />
+		<ErrorMsg CODE="Login Failure Account is locked out" Text ="" />
+		<ErrorMsg CODE="Invalid IP Address" Text ="You do not have permission to access the website based on your current location. Please contact &lt;a href=mailto:advisorysupport@corelogic.com &gt; Advisory Support&lt;/a&gt; to get your location approved." />
+		<ErrorMsg CODE="Login Failure Invalid IP Address" Text ="You do not have permission to access the website based on your current location. Please contact &lt;a href=mailto:advisorysupport@corelogic.com &gt; Advisory Support&lt;/a&gt; to get your location approved." />	
+	</Page>
+
+	<Page Name="SSOLanding">
+		<ErrorMsg CODE="Unauthorised" Text ="Your access to the Advisory will be routed through Single Sign On.  You must use your organization’s Single Sign On process to access the Advisory Portal.  If you have any questions on how to navigate to your organization’s Single Sign On, please consult with your manager." />
+		<ErrorMsg CODE="RestrictPwdChange" Text ="Passwords cannot be reset for Single Sign-On Users. Please contact your System Administrator to reset your password." />
+		<ErrorMsg CODE="IPRestrict" Text ="You do not have permission to access the website based on your current location. Please contact &lt;a href=mailto:advisorysupport@corelogic.com &gt; Advisory Support&lt;/a&gt; to get your location approved." />
+	</Page>
+  
+  <Page Name="OrderPOR">
+		<ErrorMsg CODE="Invalid POR" Text ="This loan is not eligible for POR order!" />
+    <ErrorMsg CODE="Open Aux" Text ="Cannot order POR. An existing Aux order is currently pending. Please wait until the existing Aux order is completed and refreshed in CLEAR." />
+		<ErrorMsg CODE="Duplicate POR" Text ="A POR already exists for this loan; are you sure that you want to continue ordering a new one?" />
+		<ErrorMsg CODE="Valid POR" Text ="Do you want to continue?" />
+    <ErrorMsg CODE="Success" Text ="Your request for a POR order has been placed successfully!" />
+    <ErrorMsg CODE="Failure" Text ="POR order failed!" /> 
+	</Page>
+
+	<Page Name="DeliverSLUResponse">
+		<ErrorMsg CODE="No CLEAR" Text ="Cannot deliver SLU: No active CLEAR Loan available!" />
+		<ErrorMsg CODE="Pending SLU" Text ="Cannot deliver SLU: Pending SLU Order!" />
+		<ErrorMsg CODE="No SLU" Text ="Cannot deliver SLU: No SLU Request Exists. Please place a request and try again later." />
+		<ErrorMsg CODE="Valid SLU" Text ="Do you want to continue?" />
+		<ErrorMsg CODE="Expired SLU" Text ="Cannot deliver SLU: SLU Request Expired. Please place a new request and try again later." />
+		<ErrorMsg CODE="Success" Text ="SLU Response generated successfully!" />
+		<ErrorMsg CODE="QC Failure" Text ="QC Process Failed! Unable to generate SLU Response." />
+		<ErrorMsg CODE="EventQueue Failure" Text ="An error was encountered during SLU response delivery process. Please contact advisory support." />
+		<ErrorMsg CODE="No CLEARrSLU" Text ="SLU Response Delivery feature is only applicable for CLEAR and SLU loans. Please verify the loan number." />
+	</Page>
+</CustomErrorMessages>

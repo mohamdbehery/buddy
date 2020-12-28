@@ -1,0 +1,14 @@
+String : AccountId=Id#55&Password=password&SenderName=Sender&ReceiverMSISDN=01256899965&SMSText=HELLO
+key    : 283C6661BC88EB331B97CCFD4F
+hash   : 80D1D59E37553806FABE0CE46E6E86497573A0C24FA5F47069F790E000BC1822
+-------------------------------------------------------------------------------------------------------------
+
+String : AccountId=344k4&Password=12345678&SenderName=MyName&ReceiverMSISDN=0100000000&SMSText=  H E L L O.
+key    : 283C6661BC88EB331B972342424234FBCD
+hash   : B29142C6B2335D9B199BCE419C16C72EA446D10B93A90836D9EE5726B27FFB1F
+-------------------------------------------------------------------------------------------------------------
+
+String : AnyString
+key    : 804275F71EFB5699DD2C
+hash   : F7B4E33AA019F1033FCC536FA50B1B0C899A8E60462F4E8334A8121271A23208
+--------------------------------------------------------------------------------------------------------------

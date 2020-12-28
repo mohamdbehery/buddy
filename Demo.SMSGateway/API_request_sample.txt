@@ -1,0 +1,20 @@
+POST https://e3len.vodafone.com.eg/web2sms/sms/submit/ HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: application/xml
+Content-Length: 554
+Host: e3len.vodafone.com.eg
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SubmitSMSRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:="http://www.edafa.com/web2sms/sms/model/" xsi:schemaLocation="http://www.edafa.com/web2sms/sms/model/SMSAPI.xsd " xsi:type="SubmitSMSRequest">
+<AccountId>111111</AccountId>
+<Password>DDDDDDD</Password>
+<SecureHash>13FA8D3CFE5E31FE0EE1614110AE75E27A29EA7B70BA7DD48350D6BCA63D7C92</SecureHash>
+<SMSList>
+    <SenderName>AAAAA</SenderName>
+    <ReceiverMSISDN>01005090044</ReceiverMSISDN>
+    <SMSText>Test SMS.</SMSText>
+</SMSList>
+</SubmitSMSRequest>

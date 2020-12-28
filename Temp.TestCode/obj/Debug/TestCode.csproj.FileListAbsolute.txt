@@ -1,0 +1,17 @@
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\TestCode.exe.config
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\TestCode.exe
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\TestCode.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\obj\Debug\TestCode.exe
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\obj\Debug\TestCode.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\Buddy.Utilities.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\Newtonsoft.Json.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\Microsoft.Web.Administration.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\Buddy.Utilities.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\Newtonsoft.Json.xml
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\obj\Debug\TestCode.csprojResolveAssemblyReference.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\EntityFramework.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\RazorEngine.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\System.Web.Razor.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\RazorEngine.xml
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\TestCode\bin\Debug\System.Web.Razor.xml

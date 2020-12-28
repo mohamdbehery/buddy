@@ -1,0 +1,14 @@
+E:\Projects\Try Projects\UsingCase\DesignPatterns\bin\Release\DesignPatterns.exe.config
+E:\Projects\Try Projects\UsingCase\DesignPatterns\bin\Release\DesignPatterns.exe
+E:\Projects\Try Projects\UsingCase\DesignPatterns\bin\Release\DesignPatterns.pdb
+E:\Projects\Try Projects\UsingCase\DesignPatterns\obj\Release\DesignPatterns.csprojResolveAssemblyReference.cache
+E:\Projects\Try Projects\UsingCase\DesignPatterns\obj\Release\DesignPatterns.csproj.CoreCompileInputs.cache
+E:\Projects\Try Projects\UsingCase\DesignPatterns\obj\Release\DesignPatterns.exe
+E:\Projects\Try Projects\UsingCase\DesignPatterns\obj\Release\DesignPatterns.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\DesignPatterns\bin\Release\DesignPatterns.exe.config
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\DesignPatterns\bin\Release\DesignPatterns.exe
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\DesignPatterns\bin\Release\DesignPatterns.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\DesignPatterns\obj\Release\DesignPatterns.csprojAssemblyReference.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\DesignPatterns\obj\Release\DesignPatterns.csproj.CoreCompileInputs.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\DesignPatterns\obj\Release\DesignPatterns.exe
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\UsingCase\DesignPatterns\obj\Release\DesignPatterns.pdb

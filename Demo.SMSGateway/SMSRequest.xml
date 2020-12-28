@@ -1,0 +1,11 @@
+﻿
+<SubmitSMSRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.edafa.com/web2sms/sms/model/" xsi:schemaLocation="http://www.edafa.com/web2sms/sms/model/SMSAPI.xsd" xsi:type="SubmitSMSRequest">
+  <AccountId/>
+  <Password/>
+  <SecureHash/>
+  <SMSList>
+    <SenderName/>
+    <ReceiverMSISDN/>
+    <SMSText/>
+  </SMSList>
+</SubmitSMSRequest>
