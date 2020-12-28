@@ -1,3 +1,4 @@
+# SC Delete FileWatcherService
 
 $FileWatcherServiceName = "FileWatcherService"
 $FileWatcherPath = "C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Demo.FileWatcherWinService\bin\Release\FileWatcherWinService.exe"

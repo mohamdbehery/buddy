@@ -36,13 +36,12 @@ namespace Buddy.Utilities
         private SqlConnection SQLCon;
         private SqlCommand SQLCMD;
         private SqlDataAdapter SQLDataAd;
-        readonly FileStream logsFileStream;
-        readonly StreamWriter logsStreamWriter;
+        FileStream logsFileStream;
+        StreamWriter logsStreamWriter;
 
-        public Helper(bool withLogs)
+        public Helper(bool initLogging)
         {
-            logsFileStream = new FileStream(LogFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
-            logsStreamWriter = new StreamWriter(logsFileStream, Encoding.UTF8, 4096, true);
+            
         }
 
         public Helper()
@@ -1066,6 +1065,8 @@ namespace Buddy.Utilities
 
         public void AppendTextToFile(string text)
         {
+            logsFileStream = new FileStream(LogFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+            logsStreamWriter = new StreamWriter(logsFileStream, Encoding.UTF8, 4096, true);
             logsStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
             logsStreamWriter.WriteLineAsync(text);
             logsStreamWriter.Flush();
