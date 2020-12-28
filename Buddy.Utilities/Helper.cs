@@ -1208,6 +1208,16 @@ namespace Buddy.Utilities
             logMessage = $"{DateTime.Now.ToString("hh.mm.ss.ffffff")} : {methodName} >> {logMessage}";
             AppendTextToFile(logMessage);
         }
+
+        public void ManualLog(string message)
+        {
+            FileStream logsFileStream = new FileStream(@"C:\Inetpub\temLog.txt", FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+            StreamWriter logsStreamWriter = new StreamWriter(logsFileStream, System.Text.Encoding.UTF8, 4096, true);
+            logsStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
+            logsStreamWriter.WriteLineAsync(message);
+            logsStreamWriter.Flush();
+            logsStreamWriter.Close();
+        }
     }
 
     public class VirtualXML

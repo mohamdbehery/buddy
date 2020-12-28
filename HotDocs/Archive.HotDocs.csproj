@@ -49,5 +49,8 @@
     <Content Include="Virgin PW.txt" />
     <Content Include="visual studio 2019 serial.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

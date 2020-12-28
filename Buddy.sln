@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Business", "App.Busines
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buddy.Program", "Buddy.Program\Buddy.Program.csproj", "{3F952758-E0CA-40D0-A7B1-76A3EC1E2F19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotDocs", "HotDocs\HotDocs.csproj", "{DCEBBD3B-31CB-41C4-BB55-36DFD3A0E589}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archive.HotDocs", "HotDocs\Archive.HotDocs.csproj", "{DCEBBD3B-31CB-41C4-BB55-36DFD3A0E589}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

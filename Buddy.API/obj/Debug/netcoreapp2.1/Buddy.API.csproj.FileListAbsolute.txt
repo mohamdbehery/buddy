@@ -18,3 +18,28 @@ D:\Training\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.AssemblyInfo.cs
 D:\Training\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.RazorTargetAssemblyInfo.cache
 D:\Training\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.dll
 D:\Training\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Buddy.API.deps.json
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Buddy.API.runtimeconfig.json
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Buddy.API.runtimeconfig.dev.json
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Buddy.API.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Buddy.API.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\App.Data.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Buddy.Utilities.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\DocumentFormat.OpenXml.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Microsoft.Web.Administration.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\App.Data.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\bin\Debug\netcoreapp2.1\Buddy.Utilities.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.csprojAssemblyReference.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.AssemblyInfoInputs.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.AssemblyInfo.cs
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.csproj.CoreCompileInputs.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.RazorAssemblyInfo.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.RazorAssemblyInfo.cs
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.RazorTargetAssemblyInfo.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.csproj.CopyComplete
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.API\obj\Debug\netcoreapp2.1\Buddy.API.genruntimeconfig.cache

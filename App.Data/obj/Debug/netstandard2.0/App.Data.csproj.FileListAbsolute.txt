@@ -7,3 +7,11 @@ D:\Training\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.AssemblyInfo.cs
 D:\Training\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.dll
 D:\Training\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.pdb
 D:\Training\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.csprojResolveAssemblyReference.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\bin\Debug\netstandard2.0\App.Data.deps.json
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\bin\Debug\netstandard2.0\App.Data.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\bin\Debug\netstandard2.0\App.Data.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.AssemblyInfoInputs.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.AssemblyInfo.cs
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.csproj.CoreCompileInputs.cache
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.dll
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\App.Data\obj\Debug\netstandard2.0\App.Data.pdb
