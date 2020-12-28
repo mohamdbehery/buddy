@@ -10,3 +10,4 @@ C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Archive.HotDocs\bin
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Archive.HotDocs\obj\Debug\Archive.HotDocs.csproj.CoreCompileInputs.cache
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Archive.HotDocs\obj\Debug\HotDocs.exe
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Archive.HotDocs\obj\Debug\HotDocs.pdb
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Archive.HotDocs\obj\Debug\Archive.HotDocs.csprojAssemblyReference.cache
