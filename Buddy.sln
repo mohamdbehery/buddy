@@ -38,8 +38,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.XSLT", "Demo.XSLT\Demo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temp.TestCode", "Temp.TestCode\Temp.TestCode.csproj", "{1F00D325-25B4-4326-B9A3-A08C9F80DBA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temp.TestCodeWeb", "Temp.TestCodeWeb\Temp.TestCodeWeb.csproj", "{BB8C2748-CE7D-45D5-A054-50F8BF1BA17D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{F8B4BEC0-608D-4C99-BFB8-AB640D83BAD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{8D074988-C253-4685-98D8-7996403C20F1}"
@@ -118,10 +116,6 @@ Global
 		{1F00D325-25B4-4326-B9A3-A08C9F80DBA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F00D325-25B4-4326-B9A3-A08C9F80DBA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F00D325-25B4-4326-B9A3-A08C9F80DBA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB8C2748-CE7D-45D5-A054-50F8BF1BA17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB8C2748-CE7D-45D5-A054-50F8BF1BA17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB8C2748-CE7D-45D5-A054-50F8BF1BA17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB8C2748-CE7D-45D5-A054-50F8BF1BA17D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
