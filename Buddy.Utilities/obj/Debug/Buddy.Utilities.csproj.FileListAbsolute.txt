@@ -17,3 +17,4 @@ C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.Utilities\obj
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.Utilities\obj\Debug\Buddy.Utilities.pdb
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.Utilities\obj\Debug\Buddy.Utilities.csproj.CoreCompileInputs.cache
 C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.Utilities\obj\Debug\Buddy.Utilities.csproj.CopyComplete
+C:\Users\mohamed_behery\Desktop\My Partition\Free Time\Buddy\Buddy.Utilities\obj\Debug\Buddy.Utilities.csprojAssemblyReference.cache
