@@ -19,7 +19,7 @@ namespace RabbitMQClientWinService.Helpers
         }
         public IModel Channel { get; set; }
 
-        public Helper helper
+        public Helper Helper
         {
             get
             {
@@ -32,32 +32,32 @@ namespace RabbitMQClientWinService.Helpers
             {
                 var factory = new ConnectionFactory
                 {
-                    Uri = new Uri(helper.GetAppKey("RabbitMQUri"))
+                    Uri = new Uri(Helper.GetAppKey("RabbitMQUri"))
                 };
                 var connection = factory.CreateConnection();
                 Channel = connection.CreateModel();
             }
             catch (Exception ex)
             {
-                helper.Log($"Rabbit MQ Exception: {ex.ToString()}");
+                Helper.Log($"Rabbit MQ Exception: {ex.ToString()}");
             }
         }
 
         public void ConsumeNewMessages()
         {
-            helper.Log("Consumer started..");
+            Helper.Log("Consumer started..");
             string demoQueue = "demo-queue";
             this.EstablishRabbitMQ();
             Channel.QueueDeclare(demoQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
             var consumer = new EventingBasicConsumer(Channel);
             consumer.Received += (sender, e) =>
             {
-                helper.Log($"////////////////////////// Message Received ///////////////////////////");
+                Helper.Log($"////////////////////////// Message Received ///////////////////////////");
                 var body = e.Body.ToArray();
                 var messageJson = Encoding.UTF8.GetString(body);
                 Message message = JsonConvert.DeserializeObject<Message>(messageJson);
                 if (dbHelper.ExecuteMQMessage(message) > 0)
-                    helper.Log($"Done executnig message: {message.MessageID}");
+                    Helper.Log($"Done executnig message: {message.MessageID}");
                 else
                 {
                     dbHelper.RecordMessageFailure(message, "Failed to execute, please review the logs");
@@ -73,16 +73,16 @@ namespace RabbitMQClientWinService.Helpers
                 string demoQueue = "demo-queue";
                 this.EstablishRabbitMQ();
                 Channel.QueueDeclare(demoQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
-                helper.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
+                Helper.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
                 foreach (Message msg in messages)
                 {
                     PublishMessage(demoQueue, msg);
                 }
-                helper.Log($"Done publishing messages...");
+                Helper.Log($"Done publishing messages...");
             }
             catch (Exception ex)
             {
-                helper.Log($"Exception: {ex.ToString()}");
+                Helper.Log($"Exception: {ex.ToString()}");
             }
         }
 

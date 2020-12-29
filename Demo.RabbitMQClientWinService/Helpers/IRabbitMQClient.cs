@@ -11,7 +11,7 @@ namespace RabbitMQClientWinService.Helpers
     public interface IRabbitMQClient
     {
         IModel Channel { get; set; }
-        Helper helper { get; }
+        Helper Helper { get; }
         void EstablishRabbitMQ();
         void PublishNewMessages(List<Message> messages);
 
