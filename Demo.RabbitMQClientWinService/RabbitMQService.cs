@@ -15,8 +15,10 @@ namespace RabbitMQClientWinService
 {
     partial class RabbitMQService : ServiceBase
     {
-        RabbitMQHelper rabbitMQ = new RabbitMQHelper();
+        RabbitMQClient rabbitMQClient;
         Helper helper = new Helper();
+        DBHelper dbHelper = new DBHelper();
+
         Timer serviceTimer = new Timer();
         public RabbitMQService()
         {
@@ -25,30 +27,29 @@ namespace RabbitMQClientWinService
 
         protected override void OnStart(string[] args)
         {
+            rabbitMQClient = new RabbitMQClient();
             try
             {
                 helper.Log("RabbitMQ Service started...");
-                var channel = rabbitMQ.EstablishRabbitMQ();
-                if (channel != null)
+                helper.Log("Publisher started..");
+                serviceTimer.Elapsed += (sender, e) =>
                 {
-                    helper.Log("Publisher started..");
-                    serviceTimer.Elapsed += (sender, e) => EstablishRabbitMQPublisher(sender, e, channel);
-                    serviceTimer.Interval = 5000;
-                    serviceTimer.Enabled = true;
+                    helper.Log("... ^_^ ...");
+                    List<Message> messages = dbHelper.FetchMQMessages();
+                    if (messages.Count > 0)
+                    {
+                        rabbitMQClient.PublishNewMessages(messages);
+                    }
+                };
+                serviceTimer.Interval = 5000;
+                serviceTimer.Enabled = true;
 
-                    QueueConsumer.ConsumeNewMessages(channel);
-                }
+                rabbitMQClient.ConsumeNewMessages();
             }
             catch (Exception ex)
             {
                 helper.Log($"Rabbit MQ Exception: {ex.ToString()}");
             }
-        }
-
-        private void EstablishRabbitMQPublisher(object source, ElapsedEventArgs e, IModel channel)
-        {
-            helper.Log("... ^_^ ...");
-            QueuePublisher.PublishNewMessages(channel);
         }
 
         protected override void OnStop()
