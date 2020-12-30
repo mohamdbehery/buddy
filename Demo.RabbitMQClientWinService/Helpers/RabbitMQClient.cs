@@ -12,6 +12,7 @@ namespace RabbitMQClientWinService.Helpers
 {
     public class RabbitMQClient : IRabbitMQClient
     {
+        // TODO create instance factory
         DBHelper dbHelper;
         public RabbitMQClient()
         {
