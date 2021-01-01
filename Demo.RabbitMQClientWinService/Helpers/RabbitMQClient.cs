@@ -12,53 +12,46 @@ namespace RabbitMQClientWinService.Helpers
 {
     public class RabbitMQClient : IRabbitMQClient
     {
-        // TODO create instance factory
         DBHelper dbHelper;
+        Helper helper;
         public RabbitMQClient()
         {
-            dbHelper = new DBHelper();
+            dbHelper = Helper.CreateInstance<DBHelper>();
+            helper = Helper.CreateInstance<Helper>();
         }
         public IModel Channel { get; set; }
-
-        public Helper Helper
-        {
-            get
-            {
-                return new Helper();
-            }
-        }
         public void EstablishRabbitMQ()
         {
             try
             {
                 var factory = new ConnectionFactory
                 {
-                    Uri = new Uri(Helper.GetAppKey("RabbitMQUri"))
+                    Uri = new Uri(helper.GetAppKey("RabbitMQUri"))
                 };
                 var connection = factory.CreateConnection();
                 Channel = connection.CreateModel();
             }
             catch (Exception ex)
             {
-                Helper.Log($"Rabbit MQ Exception: {ex.ToString()}");
+                helper.Log($"Rabbit MQ Exception: {ex.ToString()}");
             }
         }
 
         public void ConsumeNewMessages()
         {
-            Helper.Log("Consumer started..");
+            helper.Log("Consumer started..");
             string demoQueue = "demo-queue";
             this.EstablishRabbitMQ();
             Channel.QueueDeclare(demoQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
             var consumer = new EventingBasicConsumer(Channel);
             consumer.Received += (sender, e) =>
             {
-                Helper.Log($"////////////////////////// Message Received ///////////////////////////");
+                helper.Log($"////////////////////////// Message Received ///////////////////////////");
                 var body = e.Body.ToArray();
                 var messageJson = Encoding.UTF8.GetString(body);
                 Message message = JsonConvert.DeserializeObject<Message>(messageJson);
                 if (dbHelper.ExecuteMQMessage(message) > 0)
-                    Helper.Log($"Done executnig message: {message.MessageID}");
+                    helper.Log($"Done executnig message: {message.MessageID}");
                 else
                 {
                     dbHelper.RecordMessageFailure(message, "Failed to execute, please review the logs");
@@ -74,16 +67,16 @@ namespace RabbitMQClientWinService.Helpers
                 string demoQueue = "demo-queue";
                 this.EstablishRabbitMQ();
                 Channel.QueueDeclare(demoQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
-                Helper.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
+                helper.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
                 foreach (Message msg in messages)
                 {
                     PublishMessage(demoQueue, msg);
                 }
-                Helper.Log($"Done publishing messages...");
+                helper.Log($"Done publishing messages...");
             }
             catch (Exception ex)
             {
-                Helper.Log($"Exception: {ex.ToString()}");
+                helper.Log($"Exception: {ex.ToString()}");
             }
         }
 

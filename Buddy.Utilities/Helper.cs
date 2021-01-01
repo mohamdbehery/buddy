@@ -38,24 +38,36 @@ namespace Buddy.Utilities
         private SqlDataAdapter SQLDataAd;
         FileStream logsFileStream;
         StreamWriter logsStreamWriter;
+        private string[] CustomParams = { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
 
         public Helper(bool initLogging)
         {
-            
+
         }
 
-        public Helper()
+        private Helper()
         {
 
         }
 
-        public string LogFilePath {
-            get{
-                int fileMaxSizeInBytes = 2000000;
+        public string LogFilePath
+        {
+            get
+            {
                 string logFileExtension = ".txt";
-                string LogsBaseDirectory = @"C:\Inetpub";
                 string LogFileNamePrefix = "Log";
-                string LogsDirectory = Path.Combine(LogsBaseDirectory, "BuddyLogger");
+
+                int fileMaxSizeInBytes = 2000000;
+                if (!string.IsNullOrEmpty(GetAppKey("LogsMaxFileSize")))
+                {
+                    if (!int.TryParse(GetAppKey("LogsMaxFileSize"), out fileMaxSizeInBytes))
+                        fileMaxSizeInBytes = 2000000;
+                }
+
+                string LogsDirectory = @"C:\Inetpub\BuddyLogger";
+                if (!string.IsNullOrEmpty(GetAppKey("LogsDicrectory")))
+                    LogsDirectory = GetAppKey("LogsDicrectory");
+
                 StackTrace stackTrace = new StackTrace();
                 string projectName = "UnknownSource";
                 try
@@ -100,7 +112,15 @@ namespace Buddy.Utilities
             }
         }
 
-        private string[] CustomParams = { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
+        public static Helper CreateInstance()
+        {
+            return new Helper();
+        }
+        public static Type CreateInstance<Type>()
+        {
+            Type objectInstance = (Type)Activator.CreateInstance(typeof(Type));
+            return objectInstance;
+        }
 
         public string GetConfigKey(string Key)
         {
@@ -1012,7 +1032,7 @@ namespace Buddy.Utilities
 
         public DestinationType MapObjects<SourceType, DestinationType>(SourceType objSource)
         {
-            DestinationType objDestination = (DestinationType)Activator.CreateInstance(typeof(DestinationType));
+            DestinationType objDestination = CreateInstance<DestinationType>();
             var objDestinationPropInfo = typeof(DestinationType).GetProperties();
             Type objSourceType = typeof(SourceType);
             foreach (PropertyInfo destProp in objDestinationPropInfo)

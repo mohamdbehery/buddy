@@ -13,7 +13,7 @@ namespace TestCode
 {
     public class XMLDBOperations
     {
-        Helper helper = new Helper();
+        Helper helper = Helper.CreateInstance();
         DataTable dt = new DataTable();
         public void GetXMLData()
         {

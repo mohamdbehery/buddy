@@ -16,10 +16,10 @@ namespace RabbitMQClientWinService
     partial class RabbitMQService : ServiceBase
     {
         RabbitMQClient rabbitMQClient;
-        Helper helper = new Helper();
-        DBHelper dbHelper = new DBHelper();
+        Helper helper = Helper.CreateInstance();
+        DBHelper dbHelper = Helper.CreateInstance <DBHelper>();
+        Timer serviceTimer = Helper.CreateInstance<Timer>();
 
-        Timer serviceTimer = new Timer();
         public RabbitMQService()
         {
             InitializeComponent();
@@ -27,14 +27,14 @@ namespace RabbitMQClientWinService
 
         protected override void OnStart(string[] args)
         {
-            rabbitMQClient = new RabbitMQClient();
+            rabbitMQClient = Helper.CreateInstance<RabbitMQClient>();
             try
             {
                 helper.Log("RabbitMQ Service started...");
                 helper.Log("Publisher started..");
                 serviceTimer.Elapsed += (sender, e) =>
                 {
-                    helper.Log("... ^_^ ...");
+                    helper.Log("...^_^...");
                     List<Message> messages = dbHelper.FetchMQMessages();
                     if (messages.Count > 0)
                     {
@@ -43,7 +43,6 @@ namespace RabbitMQClientWinService
                 };
                 serviceTimer.Interval = 5000;
                 serviceTimer.Enabled = true;
-
                 rabbitMQClient.ConsumeNewMessages();
             }
             catch (Exception ex)

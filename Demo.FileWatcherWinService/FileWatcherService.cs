@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FileWatcherWinService
@@ -16,7 +17,7 @@ namespace FileWatcherWinService
     partial class FileWatcherService : ServiceBase
     {
 
-        Helper helper = new Helper();
+        Helper helper = Helper.CreateInstance();
         public FileWatcherService()
         {
             InitializeComponent();
@@ -76,6 +77,7 @@ namespace FileWatcherWinService
                     ReturnedData returnedData = helper.ExecuteSQLDB_SP(conString, "spBulkEnqueueMessages", parameters, out affectedRows);
                     if (returnedData.errorCode == 0)
                     {
+                        Thread.Sleep(2000);
                         File.Delete(e.FullPath);
                         helper.Log($"End processing file, {affectedRows} messages insrted.");
                     }

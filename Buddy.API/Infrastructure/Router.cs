@@ -13,7 +13,7 @@ namespace Buddy.API.Infrastructure
 {
     public class Router
     {
-        readonly Helper helper = new Helper();
+        readonly Helper helper = Helper.CreateInstance();
         readonly IConfiguration config;
 
         public Router(IConfiguration iConfig)

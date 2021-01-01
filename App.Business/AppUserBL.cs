@@ -11,7 +11,7 @@ namespace App.Business
 {
     public class AppUserBL	
     {
-        Helper helper = new Helper();
+        Helper helper = Helper.CreateInstance();
         readonly BuddyDBContext db = new BuddyDBContext();
         public List<AppUser> GetUsers(AppUserModel appUserModel)
         {

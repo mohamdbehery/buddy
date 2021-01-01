@@ -12,7 +12,7 @@ namespace RabbitMQClientWinService.Helpers
 {
     public class DBHelper
     {
-        static Helper helper = new Helper();
+        static Helper helper = Helper.CreateInstance();
         string conStr = "";
         public DBHelper()
         {

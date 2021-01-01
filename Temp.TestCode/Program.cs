@@ -19,7 +19,7 @@ namespace TestCode
 {
     class Program
     {
-        static Helper helper = new Helper();
+        static Helper helper = Helper.CreateInstance();
         DataTable dt = new DataTable();
         static void Main(string[] args)
         {
