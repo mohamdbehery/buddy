@@ -17,7 +17,7 @@ namespace RabbitMQClientWinService.Helpers
         public RabbitMQClient()
         {
             dbHelper = Helper.CreateInstance<DBHelper>();
-            helper = Helper.CreateInstance<Helper>();
+            helper = Helper.CreateInstance();
         }
         public IModel Channel { get; set; }
         public void EstablishRabbitMQ()
@@ -50,7 +50,8 @@ namespace RabbitMQClientWinService.Helpers
                 var body = e.Body.ToArray();
                 var messageJson = Encoding.UTF8.GetString(body);
                 Message message = JsonConvert.DeserializeObject<Message>(messageJson);
-                if (dbHelper.ExecuteMQMessage(message) > 0)
+                var affectedRows = Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }); ;
+                if (affectedRows.Result > 0)
                     helper.Log($"Done executnig message: {message.MessageID}");
                 else
                 {

@@ -27,15 +27,14 @@ namespace Buddy.Utilities
         public int errorCode = 100;
         CommonProps _props = new CommonProps();
         private XmlDocument xmlDoc;
-        private XmlNode RootNode;
-        private XmlNode Node;
-        private XmlAttribute Attr;
-
-        private DataTable DT1;
-        private DataSet DS1;
-        private SqlConnection SQLCon;
-        private SqlCommand SQLCMD;
-        private SqlDataAdapter SQLDataAd;
+        private XmlNode rootNode;
+        private XmlNode node;
+        private XmlAttribute xmlAttribute;
+        private DataTable dt1;
+        private DataSet ds1;
+        private SqlConnection sqlConnection;
+        private SqlCommand sqlCommand;
+        private SqlDataAdapter sqlDataAdapter;
         FileStream logsFileStream;
         StreamWriter logsStreamWriter;
         private string[] CustomParams = { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
@@ -56,20 +55,23 @@ namespace Buddy.Utilities
             {
                 string logFileExtension = ".txt";
                 string LogFileNamePrefix = "Log";
-
+                string projectName = "UnknownSource";
                 int fileMaxSizeInBytes = 2000000;
+                string LogsDirectory = @"C:\Inetpub\BuddyLogger";
+                string currentDate = DateTime.Now.ToString("MM-dd-yyyy");
+                string currentHour = DateTime.Now.Hour.ToString();
+
                 if (!string.IsNullOrEmpty(GetAppKey("LogsMaxFileSize")))
                 {
-                    if (!int.TryParse(GetAppKey("LogsMaxFileSize"), out fileMaxSizeInBytes))
-                        fileMaxSizeInBytes = 2000000;
+                    int temp = 0;
+                    if (int.TryParse(GetAppKey("LogsMaxFileSize"), out temp))
+                        fileMaxSizeInBytes = temp;
                 }
 
-                string LogsDirectory = @"C:\Inetpub\BuddyLogger";
                 if (!string.IsNullOrEmpty(GetAppKey("LogsDicrectory")))
                     LogsDirectory = GetAppKey("LogsDicrectory");
 
                 StackTrace stackTrace = new StackTrace();
-                string projectName = "UnknownSource";
                 try
                 {
                     string assemblyName = Assembly.GetEntryAssembly().ManifestModule.Name;
@@ -80,8 +82,7 @@ namespace Buddy.Utilities
                 if (!Directory.Exists(LogsDirectory))
                     Directory.CreateDirectory(LogsDirectory);
 
-                string crDate = DateTime.Now.ToString("MM-dd-yyyy");
-                string DayLogsDirectory = Path.Combine(LogsDirectory, crDate);
+                string DayLogsDirectory = Path.Combine(LogsDirectory, currentDate);
                 if (!Directory.Exists(DayLogsDirectory))
                     Directory.CreateDirectory(DayLogsDirectory);
 
@@ -89,8 +90,7 @@ namespace Buddy.Utilities
                 if (!Directory.Exists(ProjectDirectory))
                     Directory.CreateDirectory(ProjectDirectory);
 
-                string crHour = DateTime.Now.Hour.ToString();
-                string hourLogsFilePath = Path.Combine(ProjectDirectory, $"{LogFileNamePrefix}-{crDate}-{crHour}-1{logFileExtension}");
+                string hourLogsFilePath = Path.Combine(ProjectDirectory, $"{LogFileNamePrefix}-{currentDate}-{currentHour}-1{logFileExtension}");
 
                 if (File.Exists(hourLogsFilePath))
                 {
@@ -129,36 +129,38 @@ namespace Buddy.Utilities
 
         public string GetAppKey(string Key)
         {
-            return ConfigurationManager.AppSettings[Key].ToString();
+            if (ConfigurationManager.AppSettings[Key] != null)
+                return ConfigurationManager.AppSettings[Key].ToString();
+            return string.Empty;
         }
 
-        public string GetSubString(string Content, string From, string To)
+        public string GetSubString(string content, string from, string to)
         {
-            int FromIndex = Content.IndexOf(From) + From.Length;
-            int ToIndex = Content.LastIndexOf(To);
-            return Content.Substring(FromIndex, ToIndex - FromIndex);
+            int FromIndex = content.IndexOf(from) + from.Length;
+            int ToIndex = content.LastIndexOf(to);
+            return content.Substring(FromIndex, ToIndex - FromIndex);
         }
 
-        public string RemoveSubString(string Content, string From, string To)
+        public string RemoveSubString(string content, string from, string to)
         {
-            if (Content.Contains(From) && Content.Contains(To))
+            if (content.Contains(from) && content.Contains(to))
             {
-                int FromIndex = Content.IndexOf(From);
-                int ToIndex = Content.IndexOf(To, FromIndex);
-                return Content.Remove(FromIndex, ((ToIndex + To.Length) - FromIndex));
+                int FromIndex = content.IndexOf(from);
+                int ToIndex = content.IndexOf(to, FromIndex);
+                return content.Remove(FromIndex, ((ToIndex + to.Length) - FromIndex));
             }
             else
-                return Content;
+                return content;
         }
 
-        public string BindStringAttributes(string Content, XmlNode Source)
+        public string BindStringAttributes(string content, XmlNode source)
         {
-            foreach (XmlAttribute Item in Source.Attributes)
+            foreach (XmlAttribute Item in source.Attributes)
             {
-                if (Content.Contains("#" + Item.Name.ToString() + "#"))
-                    Content = Content.Replace("#" + Item.Name.ToString() + "#", Item.Value);
+                if (content.Contains("#" + Item.Name.ToString() + "#"))
+                    content = content.Replace("#" + Item.Name.ToString() + "#", Item.Value);
             }
-            return Content;
+            return content;
         }
 
         public string ReplaceDelimeterInString(string Content, string Delimeter, string Replacement)
@@ -304,18 +306,18 @@ namespace Buddy.Utilities
             try
             {
                 xmlDoc = new XmlDocument();
-                RootNode = xmlDoc.CreateElement(RootName);
-                xmlDoc.AppendChild(RootNode);
+                rootNode = xmlDoc.CreateElement(RootName);
+                xmlDoc.AppendChild(rootNode);
                 foreach (DataRow row in DT.Rows)
                 {
-                    Node = xmlDoc.CreateElement(ChildName);
+                    node = xmlDoc.CreateElement(ChildName);
                     foreach (DataColumn col in DT.Columns)
                     {
-                        Attr = xmlDoc.CreateAttribute(col.ColumnName);
-                        Attr.Value = row[col].ToString().Trim(' ');
-                        Node.Attributes.Append(Attr);
+                        xmlAttribute = xmlDoc.CreateAttribute(col.ColumnName);
+                        xmlAttribute.Value = row[col].ToString().Trim(' ');
+                        node.Attributes.Append(xmlAttribute);
                     }
-                    RootNode.AppendChild(Node);
+                    rootNode.AppendChild(node);
                 }
                 outXmlDoc = xmlDoc;
                 retObj.errorCode = 0;
@@ -351,7 +353,7 @@ namespace Buddy.Utilities
             ReturnedData retObj = new ReturnedData();
             try
             {
-                DS1 = new DataSet();
+                ds1 = new DataSet();
                 using (SqlConnection SQLCon = new SqlConnection(ConString))
                 {
                     using (SqlCommand SQLCMD = new SqlCommand(SP, SQLCon))
@@ -376,14 +378,14 @@ namespace Buddy.Utilities
                             }
                         }
                         SQLCon.Open();
-                        SQLDataAd = new SqlDataAdapter(SQLCMD);
-                        SQLDataAd.Fill(DS1);
+                        sqlDataAdapter = new SqlDataAdapter(SQLCMD);
+                        sqlDataAdapter.Fill(ds1);
 
                         SQLCon.Close();
-                        SQLDataAd.Dispose();
+                        sqlDataAdapter.Dispose();
                     }
                 }
-                outDS = DS1;
+                outDS = ds1;
                 retObj.errorCode = 0;
                 retObj.errorException = null;
                 return retObj;
@@ -402,7 +404,7 @@ namespace Buddy.Utilities
             ReturnedData retObj = new ReturnedData();
             try
             {
-                DT1 = new DataTable();
+                dt1 = new DataTable();
                 using (SqlConnection SQLCon = new SqlConnection(ConString))
                 {
                     using (SqlCommand SQLCMD = new SqlCommand(SP, SQLCon))
@@ -427,14 +429,14 @@ namespace Buddy.Utilities
                             }
                         }
                         SQLCon.Open();
-                        SQLDataAd = new SqlDataAdapter(SQLCMD);
-                        SQLDataAd.Fill(DT1);
+                        sqlDataAdapter = new SqlDataAdapter(SQLCMD);
+                        sqlDataAdapter.Fill(dt1);
 
                         SQLCon.Close();
-                        SQLDataAd.Dispose();
+                        sqlDataAdapter.Dispose();
                     }
                 }
-                outDT = DT1;
+                outDT = dt1;
                 retObj.errorCode = 0;
                 retObj.errorException = null;
                 return retObj;
@@ -453,34 +455,34 @@ namespace Buddy.Utilities
             ReturnedData retObj = new ReturnedData();
             try
             {
-                DS1 = new DataSet();
-                SQLCon = new SqlConnection(ConString);
-                SQLCMD = new SqlCommand(Query, SQLCon);
+                ds1 = new DataSet();
+                sqlConnection = new SqlConnection(ConString);
+                sqlCommand = new SqlCommand(Query, sqlConnection);
                 if (Params != null && Params.Count > 0)
                 {
                     foreach (var Param in Params)
                     {
                         if (string.IsNullOrEmpty(Param.Value))
-                            SQLCMD.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
+                            sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
                         else
                         {
                             if (CustomParams.Contains(Param.Key))
                             {
                                 byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                SQLCMD.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
+                                sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
                             }
                             else
-                                SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
+                                sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
                         }
                     }
                 }
-                SQLCon.Open();
-                SQLDataAd = new SqlDataAdapter(SQLCMD);
-                SQLDataAd.Fill(DS1);
+                sqlConnection.Open();
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                sqlDataAdapter.Fill(ds1);
 
-                SQLCon.Close();
-                SQLDataAd.Dispose();
-                outDS = DS1;
+                sqlConnection.Close();
+                sqlDataAdapter.Dispose();
+                outDS = ds1;
                 retObj.errorCode = 0;
                 retObj.errorException = null;
                 return retObj;
@@ -499,34 +501,34 @@ namespace Buddy.Utilities
             ReturnedData retObj = new ReturnedData();
             try
             {
-                DT1 = new DataTable();
-                SQLCon = new SqlConnection(ConString);
-                SQLCMD = new SqlCommand(Query, SQLCon);
+                dt1 = new DataTable();
+                sqlConnection = new SqlConnection(ConString);
+                sqlCommand = new SqlCommand(Query, sqlConnection);
                 if (Params != null && Params.Count > 0)
                 {
                     foreach (var Param in Params)
                     {
                         if (string.IsNullOrEmpty(Param.Value))
-                            SQLCMD.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
+                            sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
                         else
                         {
                             if (CustomParams.Contains(Param.Key))
                             {
                                 byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                SQLCMD.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
+                                sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
                             }
                             else
-                                SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
+                                sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
                         }
                     }
                 }
-                SQLCon.Open();
-                SQLDataAd = new SqlDataAdapter(SQLCMD);
-                SQLDataAd.Fill(DT1);
-                SQLCon.Close();
-                SQLDataAd.Dispose();
+                sqlConnection.Open();
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                sqlDataAdapter.Fill(dt1);
+                sqlConnection.Close();
+                sqlDataAdapter.Dispose();
 
-                outDT = DT1;
+                outDT = dt1;
                 retObj.errorCode = 0;
                 retObj.errorException = null;
                 return retObj;
@@ -546,32 +548,32 @@ namespace Buddy.Utilities
             try
             {
                 int Rows = 0;
-                using (SQLCon = new SqlConnection(ConStr))
+                using (sqlConnection = new SqlConnection(ConStr))
                 {
-                    using (SQLCMD = new SqlCommand(SP, SQLCon))
+                    using (sqlCommand = new SqlCommand(SP, sqlConnection))
                     {
-                        SQLCMD.CommandType = CommandType.StoredProcedure;
+                        sqlCommand.CommandType = CommandType.StoredProcedure;
                         if (Params != null && Params.Count > 0)
                         {
                             foreach (var Param in Params)
                             {
                                 if (string.IsNullOrEmpty(Param.Value))
-                                    SQLCMD.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
+                                    sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
                                 else
                                 {
                                     if (CustomParams.Contains(Param.Key))
                                     {
                                         byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
+                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
                                     }
                                     else
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
+                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
                                 }
                             }
                         }
-                        SQLCon.Open();
-                        Rows = SQLCMD.ExecuteNonQuery();
-                        SQLCon.Close();
+                        sqlConnection.Open();
+                        Rows = sqlCommand.ExecuteNonQuery();
+                        sqlConnection.Close();
                     }
                 }
                 AffectedRows = Rows;
@@ -595,32 +597,32 @@ namespace Buddy.Utilities
             try
             {
                 string FieldValue = "";
-                using (SQLCon = new SqlConnection(ConStr))
+                using (sqlConnection = new SqlConnection(ConStr))
                 {
-                    using (SQLCMD = new SqlCommand(SP, SQLCon))
+                    using (sqlCommand = new SqlCommand(SP, sqlConnection))
                     {
-                        SQLCMD.CommandType = CommandType.StoredProcedure;
+                        sqlCommand.CommandType = CommandType.StoredProcedure;
                         if (Params != null && Params.Count > 0)
                         {
                             foreach (var Param in Params)
                             {
                                 if (string.IsNullOrEmpty(Param.Value))
-                                    SQLCMD.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
+                                    sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
                                 else
                                 {
                                     if (CustomParams.Contains(Param.Key))
                                     {
                                         byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
+                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
                                     }
                                     else
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
+                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
                                 }
                             }
                         }
-                        SQLCon.Open();
-                        FieldValue = SQLCMD.ExecuteScalar().ToString();
-                        SQLCon.Close();
+                        sqlConnection.Open();
+                        FieldValue = sqlCommand.ExecuteScalar().ToString();
+                        sqlConnection.Close();
                     }
                 }
                 ReturnedField = FieldValue;
@@ -643,31 +645,31 @@ namespace Buddy.Utilities
             try
             {
                 string FieldValue = "";
-                using (SQLCon = new SqlConnection(ConStr))
+                using (sqlConnection = new SqlConnection(ConStr))
                 {
-                    using (SQLCMD = new SqlCommand(Query, SQLCon))
+                    using (sqlCommand = new SqlCommand(Query, sqlConnection))
                     {
                         if (Params != null && Params.Count > 0)
                         {
                             foreach (var Param in Params)
                             {
                                 if (string.IsNullOrEmpty(Param.Value))
-                                    SQLCMD.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
+                                    sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
                                 else
                                 {
                                     if (CustomParams.Contains(Param.Key))
                                     {
                                         byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
+                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
                                     }
                                     else
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
+                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
                                 }
                             }
                         }
-                        SQLCon.Open();
-                        FieldValue = SQLCMD.ExecuteScalar().ToString();
-                        SQLCon.Close();
+                        sqlConnection.Open();
+                        FieldValue = sqlCommand.ExecuteScalar().ToString();
+                        sqlConnection.Close();
                     }
                 }
                 ReturnedField = FieldValue;
@@ -690,31 +692,31 @@ namespace Buddy.Utilities
             try
             {
                 int Rows = 0;
-                using (SQLCon = new SqlConnection(ConStr))
+                using (sqlConnection = new SqlConnection(ConStr))
                 {
-                    using (SQLCMD = new SqlCommand(Query, SQLCon))
+                    using (sqlCommand = new SqlCommand(Query, sqlConnection))
                     {
                         if (Params != null && Params.Count > 0)
                         {
                             foreach (var Param in Params)
                             {
                                 if (string.IsNullOrEmpty(Param.Value))
-                                    SQLCMD.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
+                                    sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
                                 else
                                 {
                                     if (CustomParams.Contains(Param.Key))
                                     {
                                         byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
+                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
                                     }
                                     else
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
+                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
                                 }
                             }
                         }
-                        SQLCon.Open();
-                        Rows = SQLCMD.ExecuteNonQuery();
-                        SQLCon.Close();
+                        sqlConnection.Open();
+                        Rows = sqlCommand.ExecuteNonQuery();
+                        sqlConnection.Close();
                     }
                 }
 
@@ -766,8 +768,8 @@ namespace Buddy.Utilities
             ReturnedData retObj = new ReturnedData();
             try
             {
-                DT1 = new DataTable();
-                SQLCon = new SqlConnection(ConStr);
+                dt1 = new DataTable();
+                sqlConnection = new SqlConnection(ConStr);
                 string ParamsValues = "";
                 if (Params != null && Params.Count > 0)
                 {
@@ -780,19 +782,19 @@ namespace Buddy.Utilities
                 if (!string.IsNullOrEmpty(KeywordToSetParamsValue))
                     Query = Query.Replace(KeywordToSetParamsValue, ParamsValues);
 
-                SQLCMD = new SqlCommand(Query);
-                SQLCMD.CommandType = CommandType.Text;
-                SQLCon.Open();
-                SQLCon.InfoMessage += delegate (object sender, SqlInfoMessageEventArgs e)
+                sqlCommand = new SqlCommand(Query);
+                sqlCommand.CommandType = CommandType.Text;
+                sqlConnection.Open();
+                sqlConnection.InfoMessage += delegate (object sender, SqlInfoMessageEventArgs e)
                 {
                     SQLMessages.Add(e.Message);
                 };
-                SQLDataAd = new SqlDataAdapter(SQLCMD.CommandText.ToString(), SQLCon);
-                SQLDataAd.Fill(DT1);
-                SQLCon.Close();
-                SQLDataAd.Dispose();
+                sqlDataAdapter = new SqlDataAdapter(sqlCommand.CommandText.ToString(), sqlConnection);
+                sqlDataAdapter.Fill(dt1);
+                sqlConnection.Close();
+                sqlDataAdapter.Dispose();
 
-                outDT = DT1;
+                outDT = dt1;
                 outMessages = SQLMessages;
                 retObj.errorCode = 0;
                 retObj.errorException = null;
@@ -1244,21 +1246,21 @@ namespace Buddy.Utilities
     public class VirtualXML
     {
         string _rootNode;
-        StringBuilder VDocument;
+        StringBuilder vDocument;
         public VirtualXML(string rootNode)
         {
             _rootNode = rootNode;
-            VDocument = new StringBuilder($"<{rootNode}>");
+            vDocument = new StringBuilder($"<{rootNode}>");
         }
         public void AddNode(string nodeName, Dictionary<string, string> nodeAttributes)
         {
             string nodeAttr = string.Join(" ", nodeAttributes.Select(pair => $"{pair.Key}='{pair.Value}' ").ToArray());
-            VDocument.Append($"<{nodeName} {nodeAttr}/>");
+            vDocument.Append($"<{nodeName} {nodeAttr}/>");
         }
         public string Get()
         {
-            VDocument.Append($"</{_rootNode}>");
-            return VDocument.ToString();
+            vDocument.Append($"</{_rootNode}>");
+            return vDocument.ToString();
         }
     }
 
