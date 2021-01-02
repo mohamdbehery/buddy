@@ -90,7 +90,7 @@ namespace RabbitMQClientWinService.Helpers
             var body = e.Body.ToArray();
             var messageJson = Encoding.UTF8.GetString(body);
             Message message = JsonConvert.DeserializeObject<Message>(messageJson);
-            var affectedRows = await Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }); ;
+            var affectedRows = await Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); });
             if (affectedRows > 0)
                 helper.Log($"Done executnig message: {message.MessageID}");
             else
