@@ -37,30 +37,6 @@ namespace RabbitMQClientWinService.Helpers
             }
         }
 
-        public void ConsumeNewMessages()
-        {
-            helper.Log("Consumer started..");
-            string demoQueue = "demo-queue";
-            this.EstablishRabbitMQ();
-            Channel.QueueDeclare(demoQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
-            var consumer = new EventingBasicConsumer(Channel);
-            consumer.Received += (sender, e) =>
-            {
-                helper.Log($"////////////////////////// Message Received ///////////////////////////");
-                var body = e.Body.ToArray();
-                var messageJson = Encoding.UTF8.GetString(body);
-                Message message = JsonConvert.DeserializeObject<Message>(messageJson);
-                var affectedRows = Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }); ;
-                if (affectedRows.Result > 0)
-                    helper.Log($"Done executnig message: {message.MessageID}");
-                else
-                {
-                    dbHelper.RecordMessageFailure(message, "Failed to execute, please review the logs");
-                }
-            };
-            Channel.BasicConsume(demoQueue, true, consumer);
-        }
-
         public void PublishNewMessages(List<Message> messages)
         {
             try
@@ -91,6 +67,35 @@ namespace RabbitMQClientWinService.Helpers
             catch (Exception ex)
             {
                 dbHelper.RecordMessageFailure(msg, $"Failed to publish: {ex.ToString()}");
+            }
+        }
+
+        public void ConsumeNewMessages()
+        {
+            helper.Log("Consumer started..");
+            string demoQueue = "demo-queue";
+            this.EstablishRabbitMQ();
+            Channel.QueueDeclare(demoQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
+            var consumer = new EventingBasicConsumer(Channel);
+            consumer.Received += (sender, e) =>
+            {
+                ConsumeMessageAsync(e);
+            };
+            Channel.BasicConsume(demoQueue, true, consumer);
+        }
+
+        public async void ConsumeMessageAsync(BasicDeliverEventArgs e)
+        {
+            helper.Log($"////////////////////////// Message Received ///////////////////////////");
+            var body = e.Body.ToArray();
+            var messageJson = Encoding.UTF8.GetString(body);
+            Message message = JsonConvert.DeserializeObject<Message>(messageJson);
+            var affectedRows = await Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }); ;
+            if (affectedRows > 0)
+                helper.Log($"Done executnig message: {message.MessageID}");
+            else
+            {
+                dbHelper.RecordMessageFailure(message, "Failed to execute, please review the logs");
             }
         }
     }
