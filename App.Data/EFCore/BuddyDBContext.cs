@@ -25,7 +25,28 @@ namespace App.Data.EFCore
             .Build();
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("BuddyEntities"));
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<InfraAccessType>().HasData(
+                new { Id = 1, Name = "Admin" },
+                new { Id = 2, Name = "Normal User" },
+                new { Id = 3, Name = "Anonymous" }
+            );
+
+            modelBuilder.Entity<InfraCachingType>().HasData(
+                new { Id = 1, Name = "No Cache" },
+                new { Id = 2, Name = "Server Cache" },
+                new { Id = 3, Name = "Client Cache" }
+            );
+        }
 
         public DbSet<AppUser> AppUsers { set; get; }
+        public DbSet<InfraAccessType> InfraAccessType { set; get; }
+        public DbSet<InfraAssembly> InfraAssembly { set; get; }
+        public DbSet<InfraCachingType> InfraCachingType { set; get; }
+        public DbSet<InfraClass> InfraClass { set; get; }
+        public DbSet<InfraService> InfraService { set; get; }
+        public DbSet<DemoMQExecution> DemoMQExecution { set; get; }
+        public DbSet<DemoMQMessage> DemoMQMessage { set; get; }
     }
 }

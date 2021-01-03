@@ -10,5 +10,6 @@
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.server.iisintegration\2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Server.IISIntegration.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.server.iisintegration\2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Server.IISIntegration.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.server.iis\2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Server.IIS.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.server.iis\2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Server.IIS.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.extensions\2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.extensions\2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.targets')" />
+    <Import Project="$(NuGetPackageRoot)entityframework\6.4.4\buildTransitive\EntityFramework.targets" Condition="Exists('$(NuGetPackageRoot)entityframework\6.4.4\buildTransitive\EntityFramework.targets')" />
   </ImportGroup>
 </Project>

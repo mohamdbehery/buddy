@@ -4,14 +4,16 @@ using App.Data.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace App.Data.Migrations
 {
     [DbContext(typeof(BuddyDBContext))]
-    partial class BuddyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210103165825_CreateInfraAndDemoTables")]
+    partial class CreateInfraAndDemoTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,7 +66,7 @@ namespace App.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("App.User");
+                    b.ToTable("Infra.User");
                 });
 
             modelBuilder.Entity("App.Data.EFCore.ConceptualModels.DemoMQExecution", b =>
@@ -75,9 +77,6 @@ namespace App.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ExecutionResult")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IsActive")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MessageID")
@@ -146,23 +145,6 @@ namespace App.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Infra.AccessType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Normal User"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Anonymous"
-                        });
                 });
 
             modelBuilder.Entity("App.Data.EFCore.ConceptualModels.InfraAssembly", b =>
@@ -199,23 +181,6 @@ namespace App.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Infra.CachingType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "No Cache"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Server Cache"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Client Cache"
-                        });
                 });
 
             modelBuilder.Entity("App.Data.EFCore.ConceptualModels.InfraClass", b =>

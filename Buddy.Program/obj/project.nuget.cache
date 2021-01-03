@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UiLkEoMJ/M4s9IajYl9+vOeOFkhUFht0dPH/kOH3i4twtBVyJuiqVIxECh17l7iBJbCUczqeWpaU10C6w5oCcQ==",
+  "dgSpecHash": "9ig+ZBclUHnEiAbkcLGxGSm+ovZX8k80waduV9/MConsHJMhOujiaTJn5OxLjGbTvJBlGehSqZV2wdnfU3BdKw==",
   "success": true,
   "projectFilePath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Program\\Buddy.Program.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mohamed_behery\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\mohamed_behery\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\mohamed_behery\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\mohamed_behery\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\mohamed_behery\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

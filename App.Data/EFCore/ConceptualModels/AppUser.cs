@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace App.Data.EFCore.ConceptualModels
 {
+    [Table("App.User")]
     public class AppUser
     {
         [Key]

@@ -4,14 +4,16 @@ using App.Data.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace App.Data.Migrations
 {
     [DbContext(typeof(BuddyDBContext))]
-    partial class BuddyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210103174806_AddSeedData")]
+    partial class AddSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,9 +77,6 @@ namespace App.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ExecutionResult")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IsActive")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MessageID")
