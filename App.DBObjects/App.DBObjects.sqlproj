@@ -84,7 +84,6 @@
     <Build Include="Stored Procedures\spGetXMLRows.sql" />
     <Build Include="Stored Procedures\spBulkUpdate.sql" />
     <Build Include="Stored Procedures\spBulkInsert.sql" />
-    <Build Include="Stored Procedures\spTTTTTTT.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Import Schema Logs\App.DBObjects_20210110070040.log" />
