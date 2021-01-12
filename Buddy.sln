@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temp.TestCodeWeb", "Temp.Te
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "App.DBObjects", "App.DBObjects\App.DBObjects.sqlproj", "{28D85706-AF54-47DD-98A9-A6B3597DDB98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.GetFolderFileNames", "Demo.GetFolderFileNames\Demo.GetFolderFileNames.csproj", "{B9A50027-6DE2-44DF-A5AD-D17BE117B11F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -130,6 +132,10 @@ Global
 		{28D85706-AF54-47DD-98A9-A6B3597DDB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28D85706-AF54-47DD-98A9-A6B3597DDB98}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28D85706-AF54-47DD-98A9-A6B3597DDB98}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B9A50027-6DE2-44DF-A5AD-D17BE117B11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A50027-6DE2-44DF-A5AD-D17BE117B11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A50027-6DE2-44DF-A5AD-D17BE117B11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A50027-6DE2-44DF-A5AD-D17BE117B11F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,6 +157,7 @@ Global
 		{303CB5A6-084D-4B37-B105-4E90F661362D} = {8D074988-C253-4685-98D8-7996403C20F1}
 		{DEC6591C-847C-430E-BB16-86F6FFDC6565} = {8D074988-C253-4685-98D8-7996403C20F1}
 		{28D85706-AF54-47DD-98A9-A6B3597DDB98} = {F8B4BEC0-608D-4C99-BFB8-AB640D83BAD0}
+		{B9A50027-6DE2-44DF-A5AD-D17BE117B11F} = {8D074988-C253-4685-98D8-7996403C20F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA80C294-1A14-4DD4-9850-3EB435A70912}

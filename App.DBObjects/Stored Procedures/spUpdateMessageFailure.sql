@@ -4,4 +4,4 @@
 as
 
 update [Demo.MQMessage] set FailureDate = GETDATE(), FailureMessage  =@FailureMessage 
-where MessageID = @MessageID
+where Id = @MessageID
