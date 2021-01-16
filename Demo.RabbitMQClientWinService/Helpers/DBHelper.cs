@@ -42,7 +42,7 @@ namespace RabbitMQClientWinService.Helpers
                 {
                     messages.Add(new Message()
                     {
-                        MessageID = Convert.ToInt32(item["MessageID"]),
+                        MessageID = Convert.ToInt32(item["Id"]),
                         MessageData = Convert.ToString(item["MessageData"])
                     });
                 }

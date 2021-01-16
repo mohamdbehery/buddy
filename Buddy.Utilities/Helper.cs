@@ -356,6 +356,9 @@ namespace Buddy.Utilities
                 ds1 = new DataSet();
                 using (SqlConnection SQLCon = new SqlConnection(ConString))
                 {
+                    SQLCon.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
+                        SQLMessageHandler(sender, e, ref retObj);
+                    });
                     using (SqlCommand SQLCMD = new SqlCommand(SP, SQLCon))
                     {
                         SQLCMD.CommandType = CommandType.StoredProcedure;
@@ -407,6 +410,9 @@ namespace Buddy.Utilities
                 dt1 = new DataTable();
                 using (SqlConnection SQLCon = new SqlConnection(ConString))
                 {
+                    SQLCon.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
+                        SQLMessageHandler(sender, e, ref retObj);
+                    });
                     using (SqlCommand SQLCMD = new SqlCommand(SP, SQLCon))
                     {
                         SQLCMD.CommandType = CommandType.StoredProcedure;
@@ -457,6 +463,9 @@ namespace Buddy.Utilities
             {
                 ds1 = new DataSet();
                 sqlConnection = new SqlConnection(ConString);
+                sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
+                    SQLMessageHandler(sender, e, ref retObj);
+                });
                 sqlCommand = new SqlCommand(Query, sqlConnection);
                 if (Params != null && Params.Count > 0)
                 {
@@ -502,7 +511,10 @@ namespace Buddy.Utilities
             try
             {
                 dt1 = new DataTable();
-                sqlConnection = new SqlConnection(ConString);
+                sqlConnection = new SqlConnection(ConString); 
+                sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
+                    SQLMessageHandler(sender, e, ref retObj);
+                });
                 sqlCommand = new SqlCommand(Query, sqlConnection);
                 if (Params != null && Params.Count > 0)
                 {
@@ -550,6 +562,9 @@ namespace Buddy.Utilities
                 int Rows = 0;
                 using (sqlConnection = new SqlConnection(ConStr))
                 {
+                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => { 
+                        SQLMessageHandler(sender, e, ref retObj); 
+                    });
                     using (sqlCommand = new SqlCommand(SP, sqlConnection))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -599,6 +614,9 @@ namespace Buddy.Utilities
                 string FieldValue = "";
                 using (sqlConnection = new SqlConnection(ConStr))
                 {
+                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
+                        SQLMessageHandler(sender, e, ref retObj);
+                    });
                     using (sqlCommand = new SqlCommand(SP, sqlConnection))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -647,6 +665,9 @@ namespace Buddy.Utilities
                 string FieldValue = "";
                 using (sqlConnection = new SqlConnection(ConStr))
                 {
+                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
+                        SQLMessageHandler(sender, e, ref retObj);
+                    });
                     using (sqlCommand = new SqlCommand(Query, sqlConnection))
                     {
                         if (Params != null && Params.Count > 0)
@@ -694,6 +715,9 @@ namespace Buddy.Utilities
                 int Rows = 0;
                 using (sqlConnection = new SqlConnection(ConStr))
                 {
+                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
+                        SQLMessageHandler(sender, e, ref retObj);
+                    });
                     using (sqlCommand = new SqlCommand(Query, sqlConnection))
                     {
                         if (Params != null && Params.Count > 0)
@@ -769,7 +793,10 @@ namespace Buddy.Utilities
             try
             {
                 dt1 = new DataTable();
-                sqlConnection = new SqlConnection(ConStr);
+                sqlConnection = new SqlConnection(ConStr); 
+                sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
+                    SQLMessageHandler(sender, e, ref retObj);
+                });
                 string ParamsValues = "";
                 if (Params != null && Params.Count > 0)
                 {
@@ -809,6 +836,16 @@ namespace Buddy.Utilities
                     retObj.errorException += "  Query  : " + Query;
                 outMessages = null;
                 return retObj;
+            }
+        }
+
+        private void SQLMessageHandler(object sender, SqlInfoMessageEventArgs e, ref ReturnedData returnedData)
+        {
+            // This gets all the messages generated during the execution of the SQL, 
+            // including low-severity error messages.
+            foreach (SqlError err in e.Errors)
+            {
+                returnedData.executionMessages += $"  // SQL Exception // {err.Message}";
             }
         }
 
@@ -1254,7 +1291,7 @@ namespace Buddy.Utilities
         }
         public void AddNode(string nodeName, Dictionary<string, string> nodeAttributes)
         {
-            string nodeAttr = string.Join(" ", nodeAttributes.Select(pair => $"{pair.Key}='{pair.Value}' ").ToArray());
+            string nodeAttr = string.Join(" ", nodeAttributes.Select(pair => $"{pair.Key}='{pair.Value.Trim()}' ").ToArray());
             vDocument.Append($"<{nodeName} {nodeAttr}/>");
         }
         public string Get()
@@ -1272,10 +1309,11 @@ namespace Buddy.Utilities
 
     public class ReturnedData
     {
-        public int errorCode;
-        public string errorException;
-        public DataSet dataContainer;
-        public int affectedRows;
+        public int errorCode { get; set; }
+        public string errorException { get; set; }
+        public string executionMessages { get; set; }
+        public DataSet dataContainer { get; set; }
+        public int affectedRows { get; set; }
         public XmlDocument SerializeToXML(ReturnedData _RetData)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -1297,19 +1335,19 @@ namespace Buddy.Utilities
 
     public class SendMailData
     {
-        public string SenderName;
-        public string SenderMail;
-        public string SenderPassword;
-        public string SMTPClientHost;
-        public int SMTPClientPort;
-        public bool IsSSLEnabled;
-        public int SMTPClientTimeout;
-        public string RecieverName;
-        public string RecieverMail;
+        public string SenderName { get; set; }
+        public string SenderMail { get; set; }
+        public string SenderPassword { get; set; }
+        public string SMTPClientHost { get; set; }
+        public int SMTPClientPort { get; set; }
+        public bool IsSSLEnabled { get; set; }
+        public int SMTPClientTimeout { get; set; }
+        public string RecieverName { get; set; }
+        public string RecieverMail { get; set; }
         public string CCs = "";
-        public string MailSubject;
+        public string MailSubject { get; set; }
         public string AttFilePath = "";
-        public string MailBody;
+        public string MailBody { get; set; }
     }
 
     public class CommonProps

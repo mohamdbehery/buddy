@@ -73,10 +73,13 @@ namespace FileWatcherWinService
                     }
                     Dictionary<string, string> parameters = new Dictionary<string, string> { { "@Messages", messages } };
                     string conString = helper.GetAppKey("conStr");
+                    helper.Log(conString);
+                    helper.Log(messages);
                     int affectedRows = 0;
                     ReturnedData returnedData = helper.ExecuteSQLDB_SP(conString, "spBulkEnqueueMessages", parameters, out affectedRows);
                     if (returnedData.errorCode == 0)
                     {
+                        helper.Log(returnedData.executionMessages);
                         Thread.Sleep(2000);
                         File.Delete(e.FullPath);
                         helper.Log($"End processing file, {affectedRows} messages insrted.");
