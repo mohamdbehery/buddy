@@ -41,7 +41,7 @@ namespace RabbitMQClientWinService.Helpers
         {
             try
             {
-                string demoQueue = "demo-queue";
+                string demoQueue = "mbehery";
                 this.EstablishRabbitMQ();
                 RabbitMQChannel.QueueDeclare(demoQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
                 helper.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
