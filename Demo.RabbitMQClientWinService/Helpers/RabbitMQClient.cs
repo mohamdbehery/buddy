@@ -86,7 +86,7 @@ namespace RabbitMQClientWinService.Helpers
             {
                 ConsumeMessageAsync(e);
             };
-            RabbitMQChannel.BasicConsume(demoQueue, true, consumer);
+            RabbitMQChannel.BasicConsume(demoQueue, false, consumer);
         }
 
         public void ConsumeMessageAsync(BasicDeliverEventArgs e)
@@ -102,9 +102,9 @@ namespace RabbitMQClientWinService.Helpers
             }
             else
             {
-                //Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }).ContinueWith((taskExec) =>
-                //{
-                    if (dbHelper.ExecuteMQMessage(message) > 0)
+                Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }).ContinueWith((taskExec) =>
+                {
+                    if (taskExec.Result > 0)
                     {
                         helper.Log($"Done executnig message id ({message.MessageID})");
                         MessageAknowledge(e, ReceivedMessageState.SuccessfullyProcessed);
@@ -114,7 +114,7 @@ namespace RabbitMQClientWinService.Helpers
                         dbHelper.RecordMessageFailure(message, "Failed to execute, please review the logs");
                         MessageAknowledge(e, ReceivedMessageState.UnsuccessfulProcessing);
                     }
-                //});
+                });
             }
         }
 
