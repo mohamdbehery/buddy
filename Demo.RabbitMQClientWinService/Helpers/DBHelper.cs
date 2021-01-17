@@ -86,7 +86,7 @@ namespace RabbitMQClientWinService.Helpers
             if (UpdateMQMeesage("spStartMessageExecution", Params) > 0)
             {
                 helper.Log($"Start executing message: {message.MessageID}");
-                Thread.Sleep(5000);
+                Thread.Sleep(20000);
                 Params.Add("@MessageData", message.MessageData.ToString());
                 return UpdateMQMeesage("spFinishMessageExecution", Params);
             }

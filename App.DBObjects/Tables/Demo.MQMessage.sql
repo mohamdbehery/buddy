@@ -1,6 +1,5 @@
 ﻿CREATE TABLE [dbo].[Demo.MQMessage] (
     [Id]             INT            IDENTITY (1, 1) NOT NULL,
-    [FetchDate]      DATETIME2 (7)  NULL,
     [QueueDate]      DATETIME2 (7)  NULL,
     [MessageData]    NVARCHAR (MAX) NULL,
     [ExecuteDate]    DATETIME2 (7)  NULL,

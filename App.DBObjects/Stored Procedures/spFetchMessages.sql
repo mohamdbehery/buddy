@@ -1,10 +1,24 @@
 ﻿CREATE procedure [dbo].[spFetchMessages]
 as
+begin transaction [txnFetchMessages]
+  begin try
+	-- select the non picked up messages before OR the failed meessages since 12 hours or more
+	select top(5) * into #temp from [Demo.MQMessage] 
+	where (IsActive = 1 AND QueueDate is null AND MSBatchID is null) OR 
+	(FailureDate is not null AND datediff(hour, FailureDate, getdate()) >= 12)
 
-select * into #temp from [Demo.MQMessage] where IsActive = 1 and FetchDate is null and QueueDate is null or FailureDate is not null or MSBatchID is null
+	update [Demo.MQMessage] 
+	set QueueDate = getdate(), 
+	MSBatchID = concat(newid(),'^',t.id)
+	from #temp t
+	where [Demo.MQMessage].Id = t.Id
 
-update [Demo.MQMessage] set FetchDate = getdate(), QueueDate = getdate() where IsActive = 1 and FetchDate is null and QueueDate is null
+	select * from #temp
 
-select * from #temp
+	IF OBJECT_ID('tempdb..#temp') IS NOT NULL DROP TABLE #temp
+	commit transaction [txnFetchMessages]
 
-IF OBJECT_ID('tempdb..#temp') IS NOT NULL DROP TABLE #temp
+  end try
+	begin catch
+      rollback transaction [txnFetchMessages]
+  end catch

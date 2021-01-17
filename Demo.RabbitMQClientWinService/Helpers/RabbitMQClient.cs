@@ -63,7 +63,11 @@ namespace RabbitMQClientWinService.Helpers
             {
                 var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(msg));
                 string exchangeType = ""; // "" = default exchange
-                RabbitMQChannel.BasicPublish(exchangeType, queue, null, body);
+                var msgProps = RabbitMQChannel.CreateBasicProperties();
+                msgProps.DeliveryMode = 2; // presistent message
+                msgProps.Persistent = true; 
+                msgProps.Expiration = "36000000"; // in millisecond
+                RabbitMQChannel.BasicPublish(exchangeType, queue, msgProps, body);
             }
             catch (Exception ex)
             {
@@ -93,14 +97,14 @@ namespace RabbitMQClientWinService.Helpers
             Message message = JsonConvert.DeserializeObject<Message>(messageJson);
             if (string.IsNullOrEmpty(message.MessageData) || message.MessageData == "INVALID")
             {
-                helper.Log($"Invalid Message: message id ({message.MessageID}) is empty");
+                helper.Log($"Invalid Message: message id ({message.MessageID}) has invalid data!");
                 MessageAknowledge(e, ReceivedMessageState.MessageRejected);
             }
             else
             {
-                Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }).ContinueWith((affectedRows) =>
-                {
-                    if (affectedRows.Result > 0)
+                //Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }).ContinueWith((taskExec) =>
+                //{
+                    if (dbHelper.ExecuteMQMessage(message) > 0)
                     {
                         helper.Log($"Done executnig message id ({message.MessageID})");
                         MessageAknowledge(e, ReceivedMessageState.SuccessfullyProcessed);
@@ -110,7 +114,7 @@ namespace RabbitMQClientWinService.Helpers
                         dbHelper.RecordMessageFailure(message, "Failed to execute, please review the logs");
                         MessageAknowledge(e, ReceivedMessageState.UnsuccessfulProcessing);
                     }
-                });
+                //});
             }
         }
 
