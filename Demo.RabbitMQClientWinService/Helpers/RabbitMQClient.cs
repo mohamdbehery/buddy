@@ -137,7 +137,7 @@ namespace RabbitMQClientWinService.Helpers
         {
             if (returnedData.errorCode == 0)
             {
-                helper.Log($"Done executnig message id ({message.MessageID})");
+                helper.Log($"Done executing message id ({message.MessageID})");
                 MessageAknowledge(e, RabbitMQMessageState.SuccessfullyProcessed);
             }
             else
