@@ -22,22 +22,10 @@ namespace RabbitMQClientWinService.Helpers
         public List<Message> FetchMQMessages()
         {
             List<Message> messages = new List<Message>();
-            try
+            DataTable dtMessages = new DataTable();
+            ReturnedData returnedData = helper.GetDTFromSQLDB_SP(conStr, "spFetchMessages", null, out dtMessages);
+            if (returnedData.errorCode == 0)
             {
-                DataTable dtMessages = new DataTable();
-                using (SqlConnection SQLCon = new SqlConnection(conStr))
-                {
-                    using (SqlCommand SQLCMD = new SqlCommand("spFetchMessages", SQLCon))
-                    {
-                        SQLCMD.CommandType = CommandType.StoredProcedure;
-                        SQLCon.Open();
-                        SqlDataAdapter SQLDataAd = new SqlDataAdapter(SQLCMD);
-                        SQLDataAd.Fill(dtMessages);
-
-                        SQLCon.Close();
-                        SQLDataAd.Dispose();
-                    }
-                }
                 foreach (DataRow item in dtMessages.Rows)
                 {
                     messages.Add(new Message()
@@ -47,50 +35,34 @@ namespace RabbitMQClientWinService.Helpers
                     });
                 }
             }
-            catch (Exception ex)
-            {
-                helper.Log($"Exception: {ex.ToString()}");
-            }
+            else
+                helper.Log($"DB Error (spFetchMessages) {returnedData.errorException}");
+            
             return messages;
         }
 
-        public int UpdateMQMeesage(string procedure, Dictionary<string, string> Params)
-        {
-            int rows = 0;
-            using (SqlConnection SQLCon = new SqlConnection(conStr))
-            {
-                using (SqlCommand SQLCMD = new SqlCommand(procedure, SQLCon))
-                {
-                    SQLCMD.CommandType = CommandType.StoredProcedure;
-                    if (Params != null && Params.Count > 0)
-                    {
-                        foreach (var Param in Params)
-                        {
-                            SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                        }
-                    }
-                    SQLCon.Open();
-                    rows = SQLCMD.ExecuteNonQuery();
-                    SQLCon.Close();
-                }
-            }
-            return rows;
-        }
-
-        public int ExecuteMQMessage(Message message)
+        public ReturnedData ExecuteMQMessage(Message message)
         {
             Dictionary<string, string> Params = new Dictionary<string, string>()
             {
                 {"@MessageID", message.MessageID.ToString()},
             };
-            if (UpdateMQMeesage("spStartMessageExecution", Params) > 0)
+            int affectedRows = 0;
+            ReturnedData returnedData = helper.ExecuteSQLDB_SP(conStr, "spStartMessageExecution", Params, out affectedRows);
+            if (returnedData.errorCode == 0)
             {
                 helper.Log($"Start executing message: {message.MessageID}");
-                Thread.Sleep(20000);
+                Thread.Sleep(10000);
                 Params.Add("@MessageData", message.MessageData.ToString());
-                return UpdateMQMeesage("spFinishMessageExecution", Params);
+                affectedRows = 0;
+                returnedData = helper.ExecuteSQLDB_SP(conStr, "spFinishMessageExecution", Params, out affectedRows);
+                if (returnedData.errorCode != 0)
+                    helper.Log($"DB Error (spFinishMessageExecution) {returnedData.errorException}");
             }
-            return 0;
+            else
+                helper.Log($"DB Error (spStartMessageExecution) {returnedData.errorException}");
+
+            return returnedData;
         }
 
         public void RecordMessageFailure(Message msg, string failureMessage)
@@ -101,7 +73,10 @@ namespace RabbitMQClientWinService.Helpers
                     {"@MessageID", msg.MessageID.ToString()},
                     {"@FailureMessage", failureMessage}
                 };
-            UpdateMQMeesage("spUpdateMessageFailure", Params);
+            int affectedRows = 0;
+            ReturnedData returnedData = helper.ExecuteSQLDB_SP(conStr, "spUpdateMessageFailure", Params, out affectedRows);
+            if (returnedData.errorCode != 0)
+                helper.Log($"DB Error (spUpdateMessageFailure) {returnedData.errorException}");
         }
     }
 }

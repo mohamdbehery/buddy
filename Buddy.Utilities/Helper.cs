@@ -397,7 +397,7 @@ namespace Buddy.Utilities
             {
                 outDS = null;
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 return retObj;
             }
         }
@@ -451,7 +451,7 @@ namespace Buddy.Utilities
             {
                 outDT = null;
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 return retObj;
             }
         }
@@ -500,7 +500,7 @@ namespace Buddy.Utilities
             {
                 outDS = null;
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 return retObj;
             }
         }
@@ -549,7 +549,7 @@ namespace Buddy.Utilities
             {
                 outDT = null;
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 return retObj;
             }
         }
@@ -601,7 +601,7 @@ namespace Buddy.Utilities
             {
                 AffectedRows = 0;
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 return retObj;
             }
         }
@@ -652,7 +652,7 @@ namespace Buddy.Utilities
             {
                 ReturnedField = "";
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 return retObj;
             }
         }
@@ -702,7 +702,7 @@ namespace Buddy.Utilities
             {
                 ReturnedField = "";
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 return retObj;
             }
         }
@@ -753,7 +753,7 @@ namespace Buddy.Utilities
             {
                 AffectedRows = 0;
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 return retObj;
             }
         }
@@ -831,7 +831,7 @@ namespace Buddy.Utilities
             {
                 outDT = null;
                 retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
                 if (ex.InnerException is SqlException)
                     retObj.errorException += "  Query  : " + Query;
                 outMessages = null;
