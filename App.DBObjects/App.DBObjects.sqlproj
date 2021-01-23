@@ -87,6 +87,7 @@
     <Build Include="Stored Procedures\spBulkUpdate.sql" />
     <Build Include="Stored Procedures\spBulkInsert.sql" />
     <Build Include="Security\NT AUTHORITY_SYSTEM.sql" />
+    <Build Include="Stored Procedures\initMQMessages.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Import Schema Logs\App.DBObjects_20210110070040.log" />

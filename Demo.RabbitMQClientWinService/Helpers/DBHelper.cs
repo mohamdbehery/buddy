@@ -52,7 +52,13 @@ namespace RabbitMQClientWinService.Helpers
             if (returnedData.errorCode == 0)
             {
                 helper.Log($"Start executing message: {message.MessageID}");
-                Thread.Sleep(10000);
+                int timeToSleep = 10000;
+                if(message.MessageData.Split('$').Count() == 2)
+                {
+                    var tempMsg = message.MessageData.Split('$');
+                    timeToSleep = int.Parse(message.MessageData.Split('$')[1]) * 1000;
+                }
+                Thread.Sleep(timeToSleep);
                 Params.Add("@MessageData", message.MessageData.ToString());
                 affectedRows = 0;
                 returnedData = helper.ExecuteSQLDB_SP(conStr, "spFinishMessageExecution", Params, out affectedRows);

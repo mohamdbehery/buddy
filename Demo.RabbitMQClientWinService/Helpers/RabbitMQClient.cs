@@ -25,7 +25,7 @@ namespace RabbitMQClientWinService.Helpers
         {
             get
             {
-                string temp = helper.GetAppKey("DefaultQueue");
+                string temp = helper.GetAppKey("RabbitMQDefaultQueue");
                 return string.IsNullOrEmpty(temp) ? "mbehery" : temp;
             }
         }
@@ -34,6 +34,13 @@ namespace RabbitMQClientWinService.Helpers
             get
             {
                 return helper.GetAppKey("ParallelExecuteMessages") == "1" ? true : false;
+            }
+        }
+        public bool UseThreadPool
+        {
+            get
+            {
+                return helper.GetAppKey("UseThreadPool") == "1" ? true : false;
             }
         }
 
@@ -100,17 +107,20 @@ namespace RabbitMQClientWinService.Helpers
             var consumer = new EventingBasicConsumer(RabbitMQChannel);
             consumer.Received += (sender, e) =>
             {
-                ConsumeMessageAsync(e);
+                ConsumeMessage(e);
             };
             RabbitMQChannel.BasicConsume(DefaultQueue, false, consumer);
         }
 
-        public void ConsumeMessageAsync(BasicDeliverEventArgs e)
+        public void ConsumeMessage(BasicDeliverEventArgs e, Message message = null)
         {
             helper.Log($"///////////// Message Received /////////////");
-            var body = e.Body.ToArray();
-            var messageJson = Encoding.UTF8.GetString(body);
-            Message message = JsonConvert.DeserializeObject<Message>(messageJson);
+            if (message == null)
+            {
+                var body = e.Body.ToArray();
+                var messageJson = Encoding.UTF8.GetString(body);
+                message = JsonConvert.DeserializeObject<Message>(messageJson);
+            }
             if (string.IsNullOrEmpty(message.MessageData) || message.MessageData == "INVALID")
             {
                 dbHelper.RecordMessageFailure(message, $"Invalid Message: message id ({message.MessageID}) has invalid data!");
@@ -118,7 +128,7 @@ namespace RabbitMQClientWinService.Helpers
             }
             else
             {
-                if (ParallelExecuteMessages)
+                if (!UseThreadPool && ParallelExecuteMessages)
                 {
                     Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }).ContinueWith((taskExec) =>
                     {

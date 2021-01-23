@@ -1,26 +1,92 @@
-﻿<REQUEST_GROUP MISMOVersionID="2.3.1">
-	<REQUESTING_PARTY>
-		<PREFERRED_RESPONSE _Format="PDF" _UseEmbeddedFileIndicator="Y" />
-		<PREFERRED_RESPONSE _Format="XML" _VersionIdentifier="2.3.1" />
-	</REQUESTING_PARTY>
-	<SUBMITTING_PARTY _Identifier="FSO" />
-	<REQUEST LoginAccountIdentifier="4343071" LoginAccountPassword="DXBNH35W">
-		<KEY _Name="Object" _Value="Loan" />
-		<KEY _Name="ObjectID" _Value="3895133" />
-		<KEY _Name="OrganizationID" _Value="1261098" />
-		<KEY _Name="PrimaryBorrowerID" _Value="2745015" />
-		<KEY _Name="PrimaryBorrowerContactID" _Value="71227066" />
-		<REQUEST_DATA>
-			<CREDIT_REQUEST MISMOVersionID="2.3.1">
-				<CREDIT_REQUEST_DATA BorrowerID="ID2745015" CreditReportRequestActionType="Submit" CreditReportType="Merge" CreditRequestType="Individual">
-					<CREDIT_REPOSITORY_INCLUDED _EquifaxIndicator="N" _ExperianIndicator="Y" _TransUnionIndicator="N" />
-				</CREDIT_REQUEST_DATA>
-				<LOAN_APPLICATION>
-					<BORROWER BorrowerID="ID2745015" _FirstName="REGINA" _LastName="GAROFANO-BARRY" _PrintPositionType="Borrower" _SSN="123456789">
-						<_RESIDENCE _StreetAddress="4 HIGH LONESOME TER" _City="WALLKILL" _State="NY" _PostalCode="12589" BorrowerResidencyType="Current" />
-					</BORROWER>
-				</LOAN_APPLICATION>
-			</CREDIT_REQUEST>
-		</REQUEST_DATA>
-	</REQUEST>
-</REQUEST_GROUP>
+﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
+	<xsl:template match="*">
+		<Action>
+			<EmailReport>
+				<ReportItems>
+					<ReportID>1777</ReportID>
+					<EmailNotificationList>
+						<EmailItems>
+							<From>abc@corelogic.com</From>
+							<To>abc@corelogic.com;abc@corelogic.com;abc@corelogic.com</To>
+							<Cc>abc@corelogic.com;abc@corelogic.com</Cc>
+							<Subject>BANA Daily Reports</Subject>
+							<Body>Hello - Please find attached the Daily Reports</Body>
+							<MailSignature>
+								.<br /><br />        Thank you, <br/><br/><b> CoreLogic Advisory Services</b> <br /><b>  </b> <br />
+							</MailSignature>
+						</EmailItems>
+					</EmailNotificationList>
+				</ReportItems>
+			</EmailReport>
+		</Action>
+	</xsl:template>
+</xsl:stylesheet>
+
+
+<!--<Action xmlns:qbo="http://services.quandis.com/">
+	<EmailReport>
+		<ReportItems>
+			<ReportID>1777</ReportID>
+			<EmailNotificationList>
+				<EmailItems>
+					<From>abc@corelogic.com</From>
+					<To>abc@corelogic.com;abc@corelogic.com;abc@corelogic.com</To>
+					<Cc>abc@corelogic.com;abc@corelogic.com</Cc>
+					<Subject>BANA Daily Reports</Subject>
+					<Body>Hello - Please find attached the Daily Reports</Body>
+					<MailSignature>
+						.<br /><br />        Thank you, <br /><br /><b> CoreLogic Advisory Services</b><br /><b /><br />
+					</MailSignature>
+				</EmailItems>
+			</EmailNotificationList>
+		</ReportItems>
+	</EmailReport>
+</Action>
+
+
+<QueryStructure queryName="BANAReport_DailyResponse" procedureName="">
+	<Select>
+		<Column table="ActLiq" name="Zone" alias="Zone"/>
+	</Select>
+	<From>
+		<Table name="ActLiq" alias="ActLiq"/>
+	</From>
+	<Where/>
+	<GroupBy/>
+	<OrderBy/>
+</QueryStructure>
+
+<QueryStructure queryName="BANAReportsDailyDelivery" procedureName="">
+	<Select>
+		<Column table="ActLiq" name="ActLiqID" alias="ActLiqID"/>
+	</Select>
+	<From>
+		<Table name="ActLiq" alias="ActLiq"/>
+	</From>
+	<Where/>
+	<GroupBy/>
+	<OrderBy/>
+</QueryStructure>
+
+<QueryStructure queryName="BANAReport_DailyProducts" procedureName="">
+	<Select>
+		<Column table="ActLiq" name="ActLiqID" alias="ActLiqID"/>
+	</Select>
+	<From>
+		<Table name="ActLiq" alias="ActLiq"/>
+	</From>
+	<Where/>
+	<GroupBy/>
+	<OrderBy/>
+</QueryStructure>
+
+<QueryStructure queryName="BANAReport_DailyCounts" procedureName="">
+	<Select/>
+	<From>
+		<Table name="ActLiq" alias="ActLiq"/>
+	</From>
+	<Where/>
+	<GroupBy/>
+	<OrderBy/>
+</QueryStructure>-->

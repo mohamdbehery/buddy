@@ -20,7 +20,7 @@ namespace RabbitMQClientWinService.Helpers
 
         void PublishMessage(string queue, Message msg);
         void ConsumeNewMessages();
-        void ConsumeMessageAsync(BasicDeliverEventArgs e);
+        void ConsumeMessage(BasicDeliverEventArgs e, Message message);
         void MessageAknowledge(BasicDeliverEventArgs e, RabbitMQMessageState state);
     }
 }
