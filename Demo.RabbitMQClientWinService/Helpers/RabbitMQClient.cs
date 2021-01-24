@@ -137,22 +137,22 @@ namespace RabbitMQClientWinService.Helpers
                 }
                 else
                 {
-                    ReturnedData returnedData = dbHelper.ExecuteMQMessage(message);
+                    DBExecResult returnedData = dbHelper.ExecuteMQMessage(message);
                     AfterMessageExecution(e, message, returnedData);
                 }
             }
         }
 
-        public void AfterMessageExecution(BasicDeliverEventArgs e, Message message, ReturnedData returnedData)
+        public void AfterMessageExecution(BasicDeliverEventArgs e, Message message, DBExecResult returnedData)
         {
-            if (returnedData.errorCode == 0)
+            if (returnedData.ErrorCode == 0)
             {
                 helper.Log($"Done executing message id ({message.MessageID})");
                 MessageAknowledge(e, RabbitMQMessageState.SuccessfullyProcessed);
             }
             else
             {
-                dbHelper.RecordMessageFailure(message, $"Failed to execute, {returnedData.errorException}");
+                dbHelper.RecordMessageFailure(message, $"Failed to execute, {returnedData.ErrorException}");
                 MessageAknowledge(e, RabbitMQMessageState.UnsuccessfulProcessing);
             }
         }

@@ -1,5 +1,4 @@
-﻿using Buddy.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace TestCode
+namespace Buddy.Utilities
 {
     public class XMLDBOperations
     {
@@ -181,5 +180,23 @@ namespace TestCode
 
             Console.WriteLine(Rows);
         }
+    }
+
+    public class Person
+    {
+        public int BusinessEntityID { get; set; }
+        public string PersonType { get; set; }
+        public string rowguid { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public List<Phone> PersonPhones { get; set; }
+    }
+
+    public class Phone
+    {
+        public string PhoneNumber { get; set; }
+        public int PhoneNumberTypeID { get; set; }
+        public DateTime ModifiedDate { get; set; }
     }
 }

@@ -22,34 +22,32 @@ namespace RabbitMQClientWinService.Helpers
         public List<Message> FetchMQMessages()
         {
             List<Message> messages = new List<Message>();
-            DataTable dtMessages = new DataTable();
-            ReturnedData returnedData = helper.GetDTFromSQLDB_SP(conStr, "spFetchMessages", null, out dtMessages);
-            if (returnedData.errorCode == 0)
+            DBExecResult execResult = helper.DBExecution(new DBExecParams() { ConString = conStr, StoredProcedure = "spFetchMessages", ExecType = DBExecType.DataAdapter });
+            if (execResult.ErrorCode == 0)
             {
-                foreach (DataRow item in dtMessages.Rows)
+                if (execResult.ResultSet.Tables.Count > 0)
                 {
-                    messages.Add(new Message()
+                    foreach (DataRow item in execResult.ResultSet.Tables[0].Rows)
                     {
-                        MessageID = Convert.ToInt32(item["Id"]),
-                        MessageData = Convert.ToString(item["MessageData"])
-                    });
+                        messages.Add(new Message()
+                        {
+                            MessageID = Convert.ToInt32(item["Id"]),
+                            MessageData = Convert.ToString(item["MessageData"])
+                        });
+                    }
                 }
-            }
-            else
-                helper.Log($"DB Error (spFetchMessages) {returnedData.errorException}");
-            
+            }            
             return messages;
         }
 
-        public ReturnedData ExecuteMQMessage(Message message)
+        public DBExecResult ExecuteMQMessage(Message message)
         {
-            Dictionary<string, string> Params = new Dictionary<string, string>()
+            Dictionary<string, string> parameters = new Dictionary<string, string>()
             {
                 {"@MessageID", message.MessageID.ToString()},
             };
-            int affectedRows = 0;
-            ReturnedData returnedData = helper.ExecuteSQLDB_SP(conStr, "spStartMessageExecution", Params, out affectedRows);
-            if (returnedData.errorCode == 0)
+            DBExecResult execResult = helper.DBExecution(new DBExecParams() { ConString = conStr, StoredProcedure = "spStartMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+            if (execResult.ErrorCode == 0)
             {
                 helper.Log($"Start executing message: {message.MessageID}");
                 int timeToSleep = 10000;
@@ -59,30 +57,22 @@ namespace RabbitMQClientWinService.Helpers
                     timeToSleep = int.Parse(message.MessageData.Split('$')[1]) * 1000;
                 }
                 Thread.Sleep(timeToSleep);
-                Params.Add("@MessageData", message.MessageData.ToString());
-                affectedRows = 0;
-                returnedData = helper.ExecuteSQLDB_SP(conStr, "spFinishMessageExecution", Params, out affectedRows);
-                if (returnedData.errorCode != 0)
-                    helper.Log($"DB Error (spFinishMessageExecution) {returnedData.errorException}");
+                parameters.Add("@MessageData", message.MessageData.ToString());
+                execResult = helper.DBExecution(new DBExecParams() { ConString = conStr, StoredProcedure = "spFinishMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
             }
-            else
-                helper.Log($"DB Error (spStartMessageExecution) {returnedData.errorException}");
 
-            return returnedData;
+            return execResult;
         }
 
         public void RecordMessageFailure(Message msg, string failureMessage)
         {
             helper.Log(failureMessage);
-            Dictionary<string, string> Params = new Dictionary<string, string>()
+            Dictionary<string, string> parameters = new Dictionary<string, string>()
                 {
                     {"@MessageID", msg.MessageID.ToString()},
                     {"@FailureMessage", failureMessage}
                 };
-            int affectedRows = 0;
-            ReturnedData returnedData = helper.ExecuteSQLDB_SP(conStr, "spUpdateMessageFailure", Params, out affectedRows);
-            if (returnedData.errorCode != 0)
-                helper.Log($"DB Error (spUpdateMessageFailure) {returnedData.errorException}");
+            DBExecResult returnedData = helper.DBExecution(new DBExecParams() { ConString = conStr, StoredProcedure = "spUpdateMessageFailure", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
         }
     }
 }

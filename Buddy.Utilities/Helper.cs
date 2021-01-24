@@ -300,9 +300,9 @@ namespace Buddy.Utilities
             return Returned.ToString();
         }
 
-        public ReturnedData DT2XML(DataTable DT, string RootName, string ChildName, out XmlDocument outXmlDoc)
+        public DBExecResult DT2XML(DataTable DT, string RootName, string ChildName, out XmlDocument outXmlDoc)
         {
-            ReturnedData retObj = new ReturnedData();
+            DBExecResult retObj = new DBExecResult();
             try
             {
                 xmlDoc = new XmlDocument();
@@ -320,15 +320,15 @@ namespace Buddy.Utilities
                     rootNode.AppendChild(node);
                 }
                 outXmlDoc = xmlDoc;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
+                retObj.ErrorCode = 0;
+                retObj.ErrorException = null;
                 return retObj;
             }
             catch (Exception ex)
             {
                 outXmlDoc = null;
-                retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.ErrorCode = errorCode;
+                retObj.ErrorException = ex.ToString();
                 return retObj;
             }
         }
@@ -347,431 +347,76 @@ namespace Buddy.Utilities
             xml.LoadXml(xmlString);
             return xml;
         }
-
-        public ReturnedData GetDSFromSQLDB_SP(string ConString, string SP, Dictionary<string, string> Params, out DataSet outDS)
+        public DBExecResult DBExecution(DBExecParams dBExecParams)
         {
-            ReturnedData retObj = new ReturnedData();
+            bool isStoredProcedure = string.IsNullOrEmpty(dBExecParams.StoredProcedure) ? false : true;
+            bool isSQLFile = string.IsNullOrEmpty(dBExecParams.SQLFilePath) ? false : true;
+            if (isSQLFile)
+                dBExecParams.Query = ExtractQueryFromSQLFile(dBExecParams);
+
+            DBExecResult execResult = new DBExecResult();
+            execResult.ResultSet = new DataSet();
             try
             {
-                ds1 = new DataSet();
-                using (SqlConnection SQLCon = new SqlConnection(ConString))
+                using (sqlConnection = new SqlConnection(dBExecParams.ConString))
                 {
-                    SQLCon.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
-                        SQLMessageHandler(sender, e, ref retObj);
+                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) =>
+                    {
+                        SQLMessageHandler(sender, e, ref execResult);
                     });
-                    using (SqlCommand SQLCMD = new SqlCommand(SP, SQLCon))
+                    using (sqlCommand = new SqlCommand(isStoredProcedure ? dBExecParams.StoredProcedure : dBExecParams.Query, sqlConnection))
                     {
-                        SQLCMD.CommandType = CommandType.StoredProcedure;
-                        if (Params != null && Params.Count > 0)
+                        sqlCommand.CommandType = isStoredProcedure ? CommandType.StoredProcedure : CommandType.Text;
+                        if (!isSQLFile && dBExecParams.Parameters != null && dBExecParams.Parameters.Count > 0)
                         {
-                            foreach (var Param in Params)
-                            {
-                                if (string.IsNullOrEmpty(Param.Value))
-                                    SQLCMD.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
-                                else
-                                {
-                                    if (CustomParams.Contains(Param.Key))
-                                    {
-                                        byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                                    }
-                                    else
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                                }
-                            }
-                        }
-                        SQLCon.Open();
-                        sqlDataAdapter = new SqlDataAdapter(SQLCMD);
-                        sqlDataAdapter.Fill(ds1);
-
-                        SQLCon.Close();
-                        sqlDataAdapter.Dispose();
-                    }
-                }
-                outDS = ds1;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
-            }
-            catch (Exception ex)
-            {
-                outDS = null;
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                return retObj;
-            }
-        }
-
-        public ReturnedData GetDTFromSQLDB_SP(string ConString, string SP, Dictionary<string, string> Params, out DataTable outDT)
-        {
-            ReturnedData retObj = new ReturnedData();
-            try
-            {
-                dt1 = new DataTable();
-                using (SqlConnection SQLCon = new SqlConnection(ConString))
-                {
-                    SQLCon.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
-                        SQLMessageHandler(sender, e, ref retObj);
-                    });
-                    using (SqlCommand SQLCMD = new SqlCommand(SP, SQLCon))
-                    {
-                        SQLCMD.CommandType = CommandType.StoredProcedure;
-                        if (Params != null && Params.Count > 0)
-                        {
-                            foreach (var Param in Params)
-                            {
-                                if (string.IsNullOrEmpty(Param.Value))
-                                    SQLCMD.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
-                                else
-                                {
-                                    if (CustomParams.Contains(Param.Key))
-                                    {
-                                        byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                                    }
-                                    else
-                                        SQLCMD.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                                }
-                            }
-                        }
-                        SQLCon.Open();
-                        sqlDataAdapter = new SqlDataAdapter(SQLCMD);
-                        sqlDataAdapter.Fill(dt1);
-
-                        SQLCon.Close();
-                        sqlDataAdapter.Dispose();
-                    }
-                }
-                outDT = dt1;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
-            }
-            catch (Exception ex)
-            {
-                outDT = null;
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                return retObj;
-            }
-        }
-
-        public ReturnedData GetDSFromSQLDB_Query(string ConString, string Query, Dictionary<string, string> Params, out DataSet outDS)
-        {
-            ReturnedData retObj = new ReturnedData();
-            try
-            {
-                ds1 = new DataSet();
-                sqlConnection = new SqlConnection(ConString);
-                sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
-                    SQLMessageHandler(sender, e, ref retObj);
-                });
-                sqlCommand = new SqlCommand(Query, sqlConnection);
-                if (Params != null && Params.Count > 0)
-                {
-                    foreach (var Param in Params)
-                    {
-                        if (string.IsNullOrEmpty(Param.Value))
-                            sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
-                        else
-                        {
-                            if (CustomParams.Contains(Param.Key))
-                            {
-                                byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                            }
-                            else
-                                sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                        }
-                    }
-                }
-                sqlConnection.Open();
-                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                sqlDataAdapter.Fill(ds1);
-
-                sqlConnection.Close();
-                sqlDataAdapter.Dispose();
-                outDS = ds1;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
-            }
-            catch (Exception ex)
-            {
-                outDS = null;
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                return retObj;
-            }
-        }
-
-        public ReturnedData GetDTFromSQLDB_Query(string ConString, string Query, Dictionary<string, string> Params, out DataTable outDT)
-        {
-            ReturnedData retObj = new ReturnedData();
-            try
-            {
-                dt1 = new DataTable();
-                sqlConnection = new SqlConnection(ConString); 
-                sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
-                    SQLMessageHandler(sender, e, ref retObj);
-                });
-                sqlCommand = new SqlCommand(Query, sqlConnection);
-                if (Params != null && Params.Count > 0)
-                {
-                    foreach (var Param in Params)
-                    {
-                        if (string.IsNullOrEmpty(Param.Value))
-                            sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
-                        else
-                        {
-                            if (CustomParams.Contains(Param.Key))
-                            {
-                                byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                            }
-                            else
-                                sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                        }
-                    }
-                }
-                sqlConnection.Open();
-                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                sqlDataAdapter.Fill(dt1);
-                sqlConnection.Close();
-                sqlDataAdapter.Dispose();
-
-                outDT = dt1;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
-            }
-            catch (Exception ex)
-            {
-                outDT = null;
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                return retObj;
-            }
-        }
-
-        public ReturnedData ExecuteSQLDB_SP(string ConStr, string SP, Dictionary<string, string> Params, out int AffectedRows)
-        {
-            ReturnedData retObj = new ReturnedData();
-            try
-            {
-                int Rows = 0;
-                using (sqlConnection = new SqlConnection(ConStr))
-                {
-                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => { 
-                        SQLMessageHandler(sender, e, ref retObj); 
-                    });
-                    using (sqlCommand = new SqlCommand(SP, sqlConnection))
-                    {
-                        sqlCommand.CommandType = CommandType.StoredProcedure;
-                        if (Params != null && Params.Count > 0)
-                        {
-                            foreach (var Param in Params)
-                            {
-                                if (string.IsNullOrEmpty(Param.Value))
-                                    sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
-                                else
-                                {
-                                    if (CustomParams.Contains(Param.Key))
-                                    {
-                                        byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                                    }
-                                    else
-                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                                }
-                            }
+                            FillSQLParams(dBExecParams, ref sqlCommand);
                         }
                         sqlConnection.Open();
-                        Rows = sqlCommand.ExecuteNonQuery();
+                        switch (dBExecParams.ExecType)
+                        {
+                            case DBExecType.ExecuteNonQuery:
+                                execResult.AffectedRowsCount = sqlCommand.ExecuteNonQuery();
+                                break;
+                            case DBExecType.DataAdapter:
+                                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                                sqlDataAdapter.Fill(execResult.ResultSet);
+                                sqlDataAdapter.Dispose();
+                                break;
+                            case DBExecType.ExecuteScalar:
+                                execResult.ResultField = sqlCommand.ExecuteScalar().ToString();
+                                break;
+                        }
+                        sqlConnection.
                         sqlConnection.Close();
                     }
                 }
-                AffectedRows = Rows;
-                retObj.affectedRows = AffectedRows;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
+                execResult.ErrorCode = 0;
+                execResult.ErrorException = null;
+                return execResult;
             }
             catch (Exception ex)
             {
-                AffectedRows = 0;
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                return retObj;
+                execResult.AffectedRowsCount = 0;
+                execResult.ErrorCode = errorCode;
+                execResult.ErrorException = $"ADO.NET Exception: {ex.ToString()}";
+                Log($"//_-_\\ {dBExecParams.StoredProcedure} {dBExecParams.Query}: {execResult.ErrorException}");
+                return execResult;
             }
         }
 
-        public ReturnedData ExecuteSQLDB_SP(string ConStr, string SP, Dictionary<string, string> Params, out string ReturnedField)
+        private string ExtractQueryFromSQLFile(DBExecParams dBExecParams)
         {
-            ReturnedData retObj = new ReturnedData();
-            try
+            string Query = File.ReadAllText(dBExecParams.SQLFilePath).Replace("\n", " \n ");
+            if (dBExecParams.WordsToKeepInSQLFile != null)
             {
-                string FieldValue = "";
-                using (sqlConnection = new SqlConnection(ConStr))
-                {
-                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
-                        SQLMessageHandler(sender, e, ref retObj);
-                    });
-                    using (sqlCommand = new SqlCommand(SP, sqlConnection))
-                    {
-                        sqlCommand.CommandType = CommandType.StoredProcedure;
-                        if (Params != null && Params.Count > 0)
-                        {
-                            foreach (var Param in Params)
-                            {
-                                if (string.IsNullOrEmpty(Param.Value))
-                                    sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
-                                else
-                                {
-                                    if (CustomParams.Contains(Param.Key))
-                                    {
-                                        byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                                    }
-                                    else
-                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                                }
-                            }
-                        }
-                        sqlConnection.Open();
-                        FieldValue = sqlCommand.ExecuteScalar().ToString();
-                        sqlConnection.Close();
-                    }
-                }
-                ReturnedField = FieldValue;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
-            }
-            catch (Exception ex)
-            {
-                ReturnedField = "";
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                return retObj;
-            }
-        }
-
-        public ReturnedData ExecuteSQLDB_Query(string ConStr, string Query, Dictionary<string, string> Params, out string ReturnedField)
-        {
-            ReturnedData retObj = new ReturnedData();
-            try
-            {
-                string FieldValue = "";
-                using (sqlConnection = new SqlConnection(ConStr))
-                {
-                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
-                        SQLMessageHandler(sender, e, ref retObj);
-                    });
-                    using (sqlCommand = new SqlCommand(Query, sqlConnection))
-                    {
-                        if (Params != null && Params.Count > 0)
-                        {
-                            foreach (var Param in Params)
-                            {
-                                if (string.IsNullOrEmpty(Param.Value))
-                                    sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
-                                else
-                                {
-                                    if (CustomParams.Contains(Param.Key))
-                                    {
-                                        byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                                    }
-                                    else
-                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                                }
-                            }
-                        }
-                        sqlConnection.Open();
-                        FieldValue = sqlCommand.ExecuteScalar().ToString();
-                        sqlConnection.Close();
-                    }
-                }
-                ReturnedField = FieldValue;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
-            }
-            catch (Exception ex)
-            {
-                ReturnedField = "";
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                return retObj;
-            }
-        }
-
-        public ReturnedData ExecuteSQLDB_Query(string ConStr, string Query, Dictionary<string, string> Params, out int AffectedRows)
-        {
-            ReturnedData retObj = new ReturnedData();
-            try
-            {
-                int Rows = 0;
-                using (sqlConnection = new SqlConnection(ConStr))
-                {
-                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
-                        SQLMessageHandler(sender, e, ref retObj);
-                    });
-                    using (sqlCommand = new SqlCommand(Query, sqlConnection))
-                    {
-                        if (Params != null && Params.Count > 0)
-                        {
-                            foreach (var Param in Params)
-                            {
-                                if (string.IsNullOrEmpty(Param.Value))
-                                    sqlCommand.Parameters.Add(new SqlParameter(Param.Key, DBNull.Value));
-                                else
-                                {
-                                    if (CustomParams.Contains(Param.Key))
-                                    {
-                                        byte[] ParamValue = ConvertFileBase64StringToByteArray(Param.Value);
-                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                                    }
-                                    else
-                                        sqlCommand.Parameters.Add(new SqlParameter(Param.Key, Param.Value));
-                                }
-                            }
-                        }
-                        sqlConnection.Open();
-                        Rows = sqlCommand.ExecuteNonQuery();
-                        sqlConnection.Close();
-                    }
-                }
-
-                AffectedRows = Rows;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
-            }
-            catch (Exception ex)
-            {
-                AffectedRows = 0;
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                return retObj;
-            }
-        }
-
-        public ReturnedData ExecuteSQLDB_File(string ConStr, string FilePath, Dictionary<string, string> Params, List<string> WordsToDeleteFromSQLFile, List<string> WordsToKeepInSQLFile, string KeywordToSetParamsValue, out DataTable outDT, out List<string> outMessages)
-        {
-            string Query = File.ReadAllText(FilePath).Replace("\n", " \n ");
-            if (WordsToKeepInSQLFile != null)
-            {
-                foreach (var word in WordsToKeepInSQLFile)
+                foreach (var word in dBExecParams.WordsToKeepInSQLFile)
                 {
                     Query = Query.Replace(word, SpreadWord(word));
                 }
             }
-            //.Replace("\r", " ").Replace("GOOD", "MOOD").Replace("\t", " ").Replace("\n", " \n ").Replace("GO ", " ").Replace(" GO", " ").Replace("MOOD", "GOOD").Replace("USE ETX_DB", " ");
-            if (WordsToDeleteFromSQLFile != null)
+            if (dBExecParams.WordsToDeleteFromSQLFile != null)
             {
-                foreach (var word in WordsToDeleteFromSQLFile)
+                foreach (var word in dBExecParams.WordsToDeleteFromSQLFile)
                 {
                     Query = Query.Replace(word, " ");
                     Query = Query.Replace(" " + word + " ", " ");
@@ -780,72 +425,53 @@ namespace Buddy.Utilities
                 }
             }
 
-            if (WordsToKeepInSQLFile != null)
+            if (dBExecParams.WordsToKeepInSQLFile != null)
             {
-                foreach (var word in WordsToKeepInSQLFile)
+                foreach (var word in dBExecParams.WordsToKeepInSQLFile)
                 {
                     Query = Query.Replace(SpreadWord(word), word);
                 }
             }
-
-            List<string> SQLMessages = new List<string>();
-            ReturnedData retObj = new ReturnedData();
-            try
+            string paramsValues = "";
+            if (dBExecParams.Parameters != null && dBExecParams.Parameters.Count > 0)
             {
-                dt1 = new DataTable();
-                sqlConnection = new SqlConnection(ConStr); 
-                sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) => {
-                    SQLMessageHandler(sender, e, ref retObj);
-                });
-                string ParamsValues = "";
-                if (Params != null && Params.Count > 0)
+                foreach (var param in dBExecParams.Parameters)
                 {
-                    foreach (var Param in Params)
-                    {
-                        ParamsValues += " SET " + Param.Key + "=" + (!string.IsNullOrEmpty(Param.Value) ? (Param.Key.Contains("CODE") ? "'" + Param.Value + "'" : Param.Value) : "NULL; ");
-                    }
+                    paramsValues += " SET " + param.Key + "=" + (!string.IsNullOrEmpty(param.Value) ? (param.Key.Contains("CODE") ? "'" + param.Value + "'" : param.Value) : "NULL; ");
                 }
-
-                if (!string.IsNullOrEmpty(KeywordToSetParamsValue))
-                    Query = Query.Replace(KeywordToSetParamsValue, ParamsValues);
-
-                sqlCommand = new SqlCommand(Query);
-                sqlCommand.CommandType = CommandType.Text;
-                sqlConnection.Open();
-                sqlConnection.InfoMessage += delegate (object sender, SqlInfoMessageEventArgs e)
-                {
-                    SQLMessages.Add(e.Message);
-                };
-                sqlDataAdapter = new SqlDataAdapter(sqlCommand.CommandText.ToString(), sqlConnection);
-                sqlDataAdapter.Fill(dt1);
-                sqlConnection.Close();
-                sqlDataAdapter.Dispose();
-
-                outDT = dt1;
-                outMessages = SQLMessages;
-                retObj.errorCode = 0;
-                retObj.errorException = null;
-                return retObj;
             }
-            catch (Exception ex)
+
+            if (!string.IsNullOrEmpty(dBExecParams.KeywordToSetParamsValue))
+                Query = Query.Replace(dBExecParams.KeywordToSetParamsValue, paramsValues);
+
+            return Query;
+        }
+        private void FillSQLParams(DBExecParams dBExecParams, ref SqlCommand sqlCommand)
+        {
+            foreach (var param in dBExecParams.Parameters)
             {
-                outDT = null;
-                retObj.errorCode = errorCode;
-                retObj.errorException = $"ADO.NET Exception: {ex.ToString()}";
-                if (ex.InnerException is SqlException)
-                    retObj.errorException += "  Query  : " + Query;
-                outMessages = null;
-                return retObj;
+                if (string.IsNullOrEmpty(param.Value))
+                    sqlCommand.Parameters.Add(new SqlParameter(param.Key, DBNull.Value));
+                else
+                {
+                    if (CustomParams.Contains(param.Key))
+                    {
+                        byte[] ParamValue = ConvertFileBase64StringToByteArray(param.Value);
+                        sqlCommand.Parameters.Add(new SqlParameter(param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
+                    }
+                    else
+                        sqlCommand.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                }
             }
         }
 
-        private void SQLMessageHandler(object sender, SqlInfoMessageEventArgs e, ref ReturnedData returnedData)
+        private void SQLMessageHandler(object sender, SqlInfoMessageEventArgs e, ref DBExecResult returnedData)
         {
             // This gets all the messages generated during the execution of the SQL, 
             // including low-severity error messages.
             foreach (SqlError err in e.Errors)
             {
-                returnedData.executionMessages += $"  // SQL Exception // {err.Message}";
+                returnedData.ExecutionMessages += $"  // $$ // {err.Message}";
             }
         }
 
@@ -921,9 +547,9 @@ namespace Buddy.Utilities
             return false;
         }
 
-        public ReturnedData SendMail(SendMailData mailData)
+        public DBExecResult SendMail(SendMailData mailData)
         {
-            ReturnedData retObj = new ReturnedData();
+            DBExecResult retObj = new DBExecResult();
             //Dictionary<string, string> dcGeneralMailSettings = GetLookups("GeneralMailSettings");
             //mailData.MailBody = dcGeneralMailSettings["SendMailBodyPrefix"] + mailData.MailBody + dcGeneralMailSettings["SendMailBodySuffix"];
 
@@ -983,16 +609,16 @@ namespace Buddy.Utilities
                 //client.Timeout = Convert.ToInt32(dcGeneralMailSettings["SendMailSMTPClientTimeout"]);
 
                 client.Send(msg);
-                retObj.errorCode = 0;
-                retObj.errorException = null;
+                retObj.ErrorCode = 0;
+                retObj.ErrorException = null;
                 LogMail(mailData, true, "");
                 return retObj;
             }
             catch (Exception ex)
             {
                 LogMail(mailData, false, ex.ToString());
-                retObj.errorCode = errorCode;
-                retObj.errorException = ex.ToString();
+                retObj.ErrorCode = errorCode;
+                retObj.ErrorException = ex.ToString();
                 return retObj;
             }
             finally
@@ -1001,24 +627,22 @@ namespace Buddy.Utilities
             }
         }
 
-        public void LogMail(SendMailData mailData, bool IsSent, string Exception)
+        public void LogMail(SendMailData mailData, bool isSent, string exception)
         {
             try
             {
                 if (mailData.AttFilePath != "ExceptionMail")
                 {
-                    Dictionary<string, string> Params = new Dictionary<string, string>();
-                    Params.Add("@Attachments", string.IsNullOrEmpty(mailData.AttFilePath) ? "" : mailData.AttFilePath);
-                    Params.Add("@MailCC", string.IsNullOrEmpty(mailData.CCs) ? "" : mailData.CCs);
-                    Params.Add("@MailBody", string.IsNullOrEmpty(mailData.MailBody) ? "" : mailData.MailBody);
-                    Params.Add("@MailSubject", string.IsNullOrEmpty(mailData.MailSubject) ? "" : mailData.MailSubject);
-                    Params.Add("@MailTo", string.IsNullOrEmpty(mailData.RecieverMail) ? "" : mailData.RecieverMail);
-                    Params.Add("@MailFrom", string.IsNullOrEmpty(mailData.SenderMail) ? "" : mailData.SenderMail);
-                    Params.Add("@IsSent", IsSent ? "1" : "0");
-                    Params.Add("@Exception", string.IsNullOrEmpty(Exception) ? "No Exception" : Exception);
-
-                    int outAffectedRows = 0;
-                    ExecuteSQLDB_SP("dr", "spAppLogsMailLog", Params, out outAffectedRows);
+                    Dictionary<string, string> parameters = new Dictionary<string, string>();
+                    parameters.Add("@Attachments", string.IsNullOrEmpty(mailData.AttFilePath) ? "" : mailData.AttFilePath);
+                    parameters.Add("@MailCC", string.IsNullOrEmpty(mailData.CCs) ? "" : mailData.CCs);
+                    parameters.Add("@MailBody", string.IsNullOrEmpty(mailData.MailBody) ? "" : mailData.MailBody);
+                    parameters.Add("@MailSubject", string.IsNullOrEmpty(mailData.MailSubject) ? "" : mailData.MailSubject);
+                    parameters.Add("@MailTo", string.IsNullOrEmpty(mailData.RecieverMail) ? "" : mailData.RecieverMail);
+                    parameters.Add("@MailFrom", string.IsNullOrEmpty(mailData.SenderMail) ? "" : mailData.SenderMail);
+                    parameters.Add("@IsSent", isSent ? "1" : "0");
+                    parameters.Add("@Exception", string.IsNullOrEmpty(exception) ? "No Exception" : exception);
+                    DBExecution(new DBExecParams() { ConString = "", StoredProcedure = "spAppLogsMailLog", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
                 }
             }
             catch (Exception ex)
@@ -1318,28 +942,49 @@ namespace Buddy.Utilities
         public string MonthName_AR;
     }
 
-    public class ReturnedData
+    public enum DBExecType
     {
-        public int errorCode { get; set; }
-        public string errorException { get; set; }
-        public string executionMessages { get; set; }
-        public DataSet dataContainer { get; set; }
-        public int affectedRows { get; set; }
-        public XmlDocument SerializeToXML(ReturnedData _RetData)
+        ExecuteNonQuery = 1,
+        ExecuteScalar = 2,
+        DataAdapter = 3
+    }
+
+    public class DBExecParams
+    {
+        public string ConString { get; set; }
+        public string StoredProcedure { get; set; }
+        public Dictionary<string, string> Parameters { get; set; }
+        public DBExecType ExecType { get; set; }
+        public string Query { get; set; }
+        public List<string> WordsToDeleteFromSQLFile { get; set; }
+        public List<string> WordsToKeepInSQLFile { get; set; }
+        public string KeywordToSetParamsValue { get; set; }
+        public string SQLFilePath { get; set; }
+    }
+
+    public class DBExecResult
+    {
+        public int ErrorCode { get; set; }
+        public string ErrorException { get; set; }
+        public string ExecutionMessages { get; set; }
+        public DataSet ResultSet { get; set; }
+        public string ResultField { get; set; }
+        public int AffectedRowsCount { get; set; }
+        public XmlDocument SerializeToXML()
         {
             XmlDocument xmlDoc = new XmlDocument();
-            XmlSerializer xsData = new XmlSerializer(typeof(ReturnedData));
-            var ReturnedXML = "";
+            XmlSerializer xsData = new XmlSerializer(typeof(DBExecResult));
+            var returnedXML = "";
 
             using (var SW = new StringWriter())
             {
                 using (XmlWriter XW = XmlWriter.Create(SW))
                 {
-                    xsData.Serialize(XW, _RetData);
-                    ReturnedXML = SW.ToString(); // Your XML
+                    xsData.Serialize(XW, this);
+                    returnedXML = SW.ToString(); // Your XML
                 }
             }
-            xmlDoc.LoadXml(ReturnedXML);
+            xmlDoc.LoadXml(returnedXML);
             return xmlDoc;
         }
     }
