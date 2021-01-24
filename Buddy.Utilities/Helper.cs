@@ -386,7 +386,6 @@ namespace Buddy.Utilities
                                 execResult.ResultField = sqlCommand.ExecuteScalar().ToString();
                                 break;
                         }
-                        sqlConnection.
                         sqlConnection.Close();
                     }
                 }
