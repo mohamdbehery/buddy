@@ -22,7 +22,7 @@ namespace RabbitMQClientWinService.Helpers
         public List<Message> FetchMQMessages()
         {
             List<Message> messages = new List<Message>();
-            DBExecResult execResult = helper.DBExecution(new DBExecParams() { ConString = conStr, StoredProcedure = "spFetchMessages", ExecType = DBExecType.DataAdapter });
+            DBExecResult execResult = helper.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spFetchMessages", ExecType = DBExecType.DataAdapter });
             if (execResult.ErrorCode == 0)
             {
                 if (execResult.ResultSet.Tables.Count > 0)
@@ -46,7 +46,7 @@ namespace RabbitMQClientWinService.Helpers
             {
                 {"@MessageID", message.MessageID.ToString()},
             };
-            DBExecResult execResult = helper.DBExecution(new DBExecParams() { ConString = conStr, StoredProcedure = "spStartMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+            DBExecResult execResult = helper.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spStartMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
             if (execResult.ErrorCode == 0)
             {
                 helper.Log($"Start executing message: {message.MessageID}");
@@ -58,7 +58,7 @@ namespace RabbitMQClientWinService.Helpers
                 }
                 Thread.Sleep(timeToSleep);
                 parameters.Add("@MessageData", message.MessageData.ToString());
-                execResult = helper.DBExecution(new DBExecParams() { ConString = conStr, StoredProcedure = "spFinishMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+                execResult = helper.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spFinishMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
             }
 
             return execResult;
@@ -72,7 +72,7 @@ namespace RabbitMQClientWinService.Helpers
                     {"@MessageID", msg.MessageID.ToString()},
                     {"@FailureMessage", failureMessage}
                 };
-            DBExecResult returnedData = helper.DBExecution(new DBExecParams() { ConString = conStr, StoredProcedure = "spUpdateMessageFailure", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+            DBExecResult returnedData = helper.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spUpdateMessageFailure", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
         }
     }
 }

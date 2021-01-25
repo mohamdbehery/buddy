@@ -73,7 +73,7 @@ namespace FileWatcherWinService
                     }
                     Dictionary<string, string> parameters = new Dictionary<string, string> { { "@Messages", messages } };
                     string conString = helper.GetAppKey("conStr");
-                    DBExecResult execResult = helper.DBExecution(new DBExecParams() { ConString = conString, StoredProcedure = "spBulkEnqueueMessages", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+                    DBExecResult execResult = helper.CallSQLDB(new DBExecParams() { ConString = conString, StoredProcedure = "spBulkEnqueueMessages", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
                     if (execResult.ErrorCode == 0)
                     {
                         helper.Log(execResult.ExecutionMessages);

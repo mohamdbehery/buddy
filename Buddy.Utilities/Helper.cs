@@ -347,7 +347,7 @@ namespace Buddy.Utilities
             xml.LoadXml(xmlString);
             return xml;
         }
-        public DBExecResult DBExecution(DBExecParams dBExecParams)
+        public DBExecResult CallSQLDB(DBExecParams dBExecParams)
         {
             bool isStoredProcedure = string.IsNullOrEmpty(dBExecParams.StoredProcedure) ? false : true;
             bool isSQLFile = string.IsNullOrEmpty(dBExecParams.SQLFilePath) ? false : true;
@@ -641,7 +641,7 @@ namespace Buddy.Utilities
                     parameters.Add("@MailFrom", string.IsNullOrEmpty(mailData.SenderMail) ? "" : mailData.SenderMail);
                     parameters.Add("@IsSent", isSent ? "1" : "0");
                     parameters.Add("@Exception", string.IsNullOrEmpty(exception) ? "No Exception" : exception);
-                    DBExecution(new DBExecParams() { ConString = "", StoredProcedure = "spAppLogsMailLog", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+                    CallSQLDB(new DBExecParams() { ConString = "", StoredProcedure = "spAppLogsMailLog", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
                 }
             }
             catch (Exception ex)
