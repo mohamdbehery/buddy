@@ -470,7 +470,7 @@ namespace Buddy.Utilities
             // including low-severity error messages.
             foreach (SqlError err in e.Errors)
             {
-                returnedData.ExecutionMessages += $"  // $$ // {err.Message}";
+                returnedData.ExecutionMessages += $"  // $$ // {err.Procedure} line: {err.LineNumber} >> {err.Message}";
             }
         }
 
