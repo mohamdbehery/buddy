@@ -9,6 +9,31 @@
 						<EmailItems>
 							<From>abc@corelogic.com</From>
 							<To>abc@corelogic.com;abc@corelogic.com;abc@corelogic.com</To>
+							<Cc>abc@corelogic.com;abc@corelogic.com;</Cc>
+							<Subject>BANA Daily Reports</Subject>
+							<Body>Hello - Please find attached the Daily Reports</Body>
+							<MailSignature>
+								.<br /><br />        Thank you, <br/><br/><b> CoreLogic Advisory Services</b> <br /><b>  </b> <br />
+							</MailSignature>
+						</EmailItems>
+					</EmailNotificationList>
+				</ReportItems>
+			</EmailReport>
+		</Action>
+	</xsl:template>
+</xsl:stylesheet>
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
+	<xsl:template match="*">
+		<Action>
+			<EmailReport>
+				<ReportItems>
+					<ReportID>1777</ReportID>
+					<EmailNotificationList>
+						<EmailItems>
+							<From>abc@corelogic.com</From>
+							<To>abc@corelogic.com;abc@corelogic.com;abc@corelogic.com</To>
 							<Cc>abc@corelogic.com;abc@corelogic.com</Cc>
 							<Subject>BANA Daily Reports</Subject>
 							<Body>Hello - Please find attached the Daily Reports</Body>
