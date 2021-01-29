@@ -42,11 +42,13 @@
     <None Include="Apartamento\ORDEN DOMICILIACION BANCARIA LUZ MOHAMED BEHERE.doc" />
     <None Include="Apartamento\SEGURO MOHAMED BEHERE REALE PROY 4-8-20.pdf" />
     <None Include="App.config" />
+    <None Include="Car Receipt.docx" />
     <None Include="Digital Certificate\user.crt" />
     <None Include="Digital Certificate\userbk.p12" />
     <None Include="GCP Associate Cloud Engineer ACE.docx" />
     <None Include="Mohamed Behery - Software Engineer.docx" />
     <None Include="MyResume.docx" />
+    <None Include="packages.config" />
     <None Include="Prepare For Interview.docx" />
     <None Include="Raghda Ali - Accountant.docx" />
     <None Include="Relocation Docs\Family Relocation\14.pdf" />
@@ -61,8 +63,10 @@
     <None Include="Relocation Docs\Legalized_Mohamed_Behery_Marriage_Certificate.pdf" />
     <None Include="Relocation Docs\Legalized_Omar_Mohamed_Behery_Birth_Certificate.pdf" />
     <None Include="Relocation Docs\Legalized_University_Certificate_Mohamed_Behery.pdf" />
+    <None Include="Relocation Docs\Mohamed_Behery-Passport.pdf" />
     <None Include="Relocation Docs\Signed_Contrato_000234_SABBAH  YOUSSEF,MOHAMED BEHERY_signed.pdf" />
     <None Include="Relocation Docs\Signed_Employment Contract SPAIN -  CONFIDENTIAL_Behery Sabbah Youssef,  Mohamed_01.06.2020.pdf" />
+    <None Include="Relocation Docs\SKM_C554e20123018120.pdf" />
     <None Include="Relocation Docs\TownHall Registeration Mohamed Behery.pdf" />
     <None Include="Relocation Docs\TownHall Registeration\Hoja de empadronamiento %28impreso autorrellenable%29.pdf" />
     <None Include="Relocation Docs\TownHall Registeration\Work Permit Approval_Mohamed  Behery.pdf" />
@@ -128,6 +132,7 @@
     <Content Include="Relocation Docs\IMG20200519164236.jpg" />
     <Content Include="Relocation Docs\Legalized_University_Certificate_Mohamed_Behery-1.jpg" />
     <Content Include="Relocation Docs\Local ID Mohamed Behery.jpg" />
+    <Content Include="Relocation Docs\Mohamed_Behery-Passport.jpg" />
     <Content Include="Relocation Docs\Passport Mohamed Behery.jpg" />
     <Content Include="Relocation Docs\Receipts\Abroad work permit.png" />
     <Content Include="Relocation Docs\Receipts\DHL to send the SSN documents.png" />
