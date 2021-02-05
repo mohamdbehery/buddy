@@ -347,6 +347,7 @@ namespace Buddy.Utilities
             xml.LoadXml(xmlString);
             return xml;
         }
+
         public DBExecResult CallSQLDB(DBExecParams dBExecParams)
         {
             bool isStoredProcedure = string.IsNullOrEmpty(dBExecParams.StoredProcedure) ? false : true;
