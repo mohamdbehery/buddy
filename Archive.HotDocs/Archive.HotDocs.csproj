@@ -35,12 +35,7 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Apartamento\ANEXO CORRESPONDIENTE AL INVENTARIO MOBILIARIO piso 1 MOHAMED BEHERE.doc" />
-    <None Include="Apartamento\ANEXO RECOMENDACIONES DE MANTENIMIENTO DE SU PISO DE ALQUILER - piso 1.doc" />
-    <None Include="Apartamento\CONTRATO ARRENDAMIENTO VIVIENDA MOHAMED BEHERY 07082020.doc" />
     <None Include="Apartamento\Documento_2021-02-05-17.17.03.452000.pdf" />
-    <None Include="Apartamento\ORDEN DOMICILIACION BANCARIA AGUA MOHAMED BEHERE.doc" />
-    <None Include="Apartamento\ORDEN DOMICILIACION BANCARIA LUZ MOHAMED BEHERE.doc" />
     <None Include="Apartamento\S521020516000-signed.pdf" />
     <None Include="Apartamento\S521020517320.pdf" />
     <None Include="Apartamento\San Andres 30\ANEXO CORRESPONDIENTE AL INVENTARIO MOBILIARIO piso 1 MOHAMED BEHERE.doc" />
@@ -51,7 +46,6 @@
     <None Include="Apartamento\San Andres 30\Rental agreement termination notice.docx" />
     <None Include="Apartamento\San Andres 30\Rental agreement termination notice.pdf" />
     <None Include="Apartamento\San Andres 30\SEGURO MOHAMED BEHERE REALE PROY 4-8-20.pdf" />
-    <None Include="Apartamento\SEGURO MOHAMED BEHERE REALE PROY 4-8-20.pdf" />
     <None Include="App.config" />
     <None Include="Car Receipt.docx" />
     <None Include="Digital Certificate\user.crt" />
@@ -86,33 +80,6 @@
   <ItemGroup>
     <Content Include="About me.txt" />
     <Content Include="add project to git.txt" />
-    <Content Include="Apartamento\foto piso 1-07082020-1.JPG" />
-    <Content Include="Apartamento\foto piso 1-07082020-10.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-11.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-13.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-14.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-15.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-16.JPG" />
-    <Content Include="Apartamento\foto piso 1-07082020-17.JPG" />
-    <Content Include="Apartamento\foto piso 1-07082020-18.JPG" />
-    <Content Include="Apartamento\foto piso 1-07082020-19.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-2.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-20.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-21.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-22.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-23.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-24.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-25.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-26.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-27.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-28.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-3.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-4.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-5.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-6.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-7.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-8.jpg" />
-    <Content Include="Apartamento\foto piso 1-07082020-9.jpg" />
     <Content Include="Apartamento\San Andres 30\foto piso 1-07082020-1.JPG" />
     <Content Include="Apartamento\San Andres 30\foto piso 1-07082020-10.jpg" />
     <Content Include="Apartamento\San Andres 30\foto piso 1-07082020-11.jpg" />
@@ -143,9 +110,6 @@
     <Content Include="Apartamento\San Andres 30\WhatsApp Image 2020-08-07 at 2.33.12 PM.jpeg" />
     <Content Include="Apartamento\San Andres 30\WhatsApp Image 2020-08-07 at 2.33.13 PM %281%29.jpeg" />
     <Content Include="Apartamento\San Andres 30\WhatsApp Image 2020-08-07 at 2.33.13 PM.jpeg" />
-    <Content Include="Apartamento\WhatsApp Image 2020-08-07 at 2.33.12 PM.jpeg" />
-    <Content Include="Apartamento\WhatsApp Image 2020-08-07 at 2.33.13 PM %281%29.jpeg" />
-    <Content Include="Apartamento\WhatsApp Image 2020-08-07 at 2.33.13 PM.jpeg" />
     <Content Include="big signature.jpg" />
     <Content Include="gitlab access token.txt" />
     <Content Include="Mohamed Behery.jpg" />
