@@ -332,7 +332,7 @@ namespace Buddy.Utilities
                 return retObj;
             }
         }
-
+         
         public string GetApplicationPath()
         {
             return AppContext.BaseDirectory.Substring(0, AppContext.BaseDirectory.IndexOf("bin"));
