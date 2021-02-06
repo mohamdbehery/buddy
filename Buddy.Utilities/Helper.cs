@@ -227,7 +227,7 @@ namespace Buddy.Utilities
             {
                 dicAllKeys.Add(node.Attributes["key"].Value, node.Attributes["value"].Value);
             }
-            return dicAllKeys; 
+            return dicAllKeys;  
         }
 
         public DataTable ReadExceltoDT(string ExcelFilePath)
