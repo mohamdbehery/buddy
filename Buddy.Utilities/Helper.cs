@@ -475,16 +475,16 @@ namespace Buddy.Utilities
             }
         }
 
-        public string SpreadWord(string Word)
+        public string SpreadWord(string word)
         {
-            string[] TempWord = new string[Word.Length * 2];
+            string[] tempWord = new string[word.Length * 2];
             int counter = 0;
-            foreach (var ch in Word)
+            foreach (var ch in word)
             {
-                TempWord[counter] = ch + "_";
+                tempWord[counter] = ch + "_";
                 counter++;
             }
-            return TempWord.ToString();
+            return tempWord.ToString();
         }
 
         public string ConvertImageURLToBase64(string url)
