@@ -61,6 +61,7 @@
     <None Include="Relocation Docs\Family Relocation\Legalized Birth Certificate_Omar Behery_ES_SCAN.pdf" />
     <None Include="Relocation Docs\Family Relocation\Legalized Marriage Certificate_Raghda Ali.pdf" />
     <None Include="Relocation Docs\Family Relocation\Legalized Marriage Certificate_Raghda Ali_ES_SCAN.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Legalized PCC Certificate_Raghda Ali.pdf" />
     <None Include="Relocation Docs\Family Relocation\OMAR MOHAMED BEHARY SABBAH YOUSSEF RESOLUTION.pdf" />
     <None Include="Relocation Docs\Family Relocation\Omar Mohamed Behery - Passport.pdf" />
     <None Include="Relocation Docs\Family Relocation\Raghda Ali Mahmoud - Passport.pdf" />
@@ -131,6 +132,7 @@
     <Content Include="Receipts\500 - Transportation for visiting the spanish consulate for delivering the marriage and birth certificates for legalization.jpg" />
     <Content Include="Receipts\500 - Transportation for visiting the spanish consulate for delivering the PCC certificate for legalization.jpg" />
     <Content Include="Receipts\57 - transportation for visiting the Civil office and then the ministry of forign affairs for legalizing the marriage certificate and birth certificate.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Omar Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Omar passport.png" />
     <Content Include="Relocation Docs\Family Relocation\Raghda Passport.png" />
     <Content Include="Relocation Docs\Hot Data.txt" />
@@ -139,7 +141,6 @@
     <Content Include="Relocation Docs\Legalized_University_Certificate_Mohamed_Behery-1.jpg" />
     <Content Include="Relocation Docs\Local ID Mohamed Behery.jpg" />
     <Content Include="Relocation Docs\Mohamed_Behery-Passport.jpg" />
-    <Content Include="Relocation Docs\Passport Mohamed Behery.jpg" />
     <Content Include="Relocation Docs\Receipts\Abroad work permit.png" />
     <Content Include="Relocation Docs\Receipts\DHL to send the SSN documents.png" />
     <Content Include="Relocation Docs\Receipts\Legalize birth and marriage certificates.png" />

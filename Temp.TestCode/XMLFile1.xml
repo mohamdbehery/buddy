@@ -9,31 +9,6 @@
 						<EmailItems>
 							<From>abc@corelogic.com</From>
 							<To>abc@corelogic.com;abc@corelogic.com;abc@corelogic.com</To>
-							<Cc>abc@corelogic.com;abc@corelogic.com;</Cc>
-							<Subject>BANA Daily Reports</Subject>
-							<Body>Hello - Please find attached the Daily Reports</Body>
-							<MailSignature>
-								.<br /><br />        Thank you, <br/><br/><b> CoreLogic Advisory Services</b> <br /><b>  </b> <br />
-							</MailSignature>
-						</EmailItems>
-					</EmailNotificationList>
-				</ReportItems>
-			</EmailReport>
-		</Action>
-	</xsl:template>
-</xsl:stylesheet>
-
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
-	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
-	<xsl:template match="*">
-		<Action>
-			<EmailReport>
-				<ReportItems>
-					<ReportID>1777</ReportID>
-					<EmailNotificationList>
-						<EmailItems>
-							<From>abc@corelogic.com</From>
-							<To>abc@corelogic.com;abc@corelogic.com;abc@corelogic.com</To>
 							<Cc>abc@corelogic.com;abc@corelogic.com</Cc>
 							<Subject>BANA Daily Reports</Subject>
 							<Body>Hello - Please find attached the Daily Reports</Body>
@@ -47,71 +22,3 @@
 		</Action>
 	</xsl:template>
 </xsl:stylesheet>
-
-
-<!--<Action xmlns:qbo="http://services.quandis.com/">
-	<EmailReport>
-		<ReportItems>
-			<ReportID>1777</ReportID>
-			<EmailNotificationList>
-				<EmailItems>
-					<From>abc@corelogic.com</From>
-					<To>abc@corelogic.com;abc@corelogic.com;abc@corelogic.com</To>
-					<Cc>abc@corelogic.com;abc@corelogic.com</Cc>
-					<Subject>BANA Daily Reports</Subject>
-					<Body>Hello - Please find attached the Daily Reports</Body>
-					<MailSignature>
-						.<br /><br />        Thank you, <br /><br /><b> CoreLogic Advisory Services</b><br /><b /><br />
-					</MailSignature>
-				</EmailItems>
-			</EmailNotificationList>
-		</ReportItems>
-	</EmailReport>
-</Action>
-
-
-<QueryStructure queryName="BANAReport_DailyResponse" procedureName="">
-	<Select>
-		<Column table="ActLiq" name="Zone" alias="Zone"/>
-	</Select>
-	<From>
-		<Table name="ActLiq" alias="ActLiq"/>
-	</From>
-	<Where/>
-	<GroupBy/>
-	<OrderBy/>
-</QueryStructure>
-
-<QueryStructure queryName="BANAReportsDailyDelivery" procedureName="">
-	<Select>
-		<Column table="ActLiq" name="ActLiqID" alias="ActLiqID"/>
-	</Select>
-	<From>
-		<Table name="ActLiq" alias="ActLiq"/>
-	</From>
-	<Where/>
-	<GroupBy/>
-	<OrderBy/>
-</QueryStructure>
-
-<QueryStructure queryName="BANAReport_DailyProducts" procedureName="">
-	<Select>
-		<Column table="ActLiq" name="ActLiqID" alias="ActLiqID"/>
-	</Select>
-	<From>
-		<Table name="ActLiq" alias="ActLiq"/>
-	</From>
-	<Where/>
-	<GroupBy/>
-	<OrderBy/>
-</QueryStructure>
-
-<QueryStructure queryName="BANAReport_DailyCounts" procedureName="">
-	<Select/>
-	<From>
-		<Table name="ActLiq" alias="ActLiq"/>
-	</From>
-	<Where/>
-	<GroupBy/>
-	<OrderBy/>
-</QueryStructure>-->
