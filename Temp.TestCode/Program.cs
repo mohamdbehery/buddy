@@ -23,9 +23,16 @@ namespace TestCode
         DataTable dt = new DataTable();
         static void Main(string[] args)
         {
-
+            var ph = new Phone() { PhoneNumber = "123" };
+            writeTest(ph);
+            Console.WriteLine(ph.PhoneNumber);
             Console.ReadLine();
         } 
+
+        private static void writeTest(Phone v)
+        {
+            v.PhoneNumber = "ch";
+        }
 
         public void CheckParallelLoopsPerformance()
         {
