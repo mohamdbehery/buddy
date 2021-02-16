@@ -1,14 +1,13 @@
-﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/"   version="1.0">
-	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
+﻿<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="*">
 		<Action>
-			<StoredProcedure name="rQueueOutputFileAndErrorFilebyObject">
-				<Object>Organization</Object>
-				<ObjectID>
-					<xsl:value-of select="//ObjectID"/>
-				</ObjectID>
-				<ProductName>CLEAR</ProductName>
-			</StoredProcedure>
+			<xsl:if test="count(//DecisionsNotProcessedItemItem) &gt; 0">
+				<DecisionProcess>
+					<xsl:for-each select="//DecisionsNotProcessedItemItem">
+						<xsl:copy-of select="DecisionID"/>
+					</xsl:for-each>
+				</DecisionProcess>
+			</xsl:if>
 		</Action>
 	</xsl:template>
 </xsl:stylesheet>
