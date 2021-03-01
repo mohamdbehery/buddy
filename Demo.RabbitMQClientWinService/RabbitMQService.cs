@@ -16,7 +16,7 @@ namespace RabbitMQClientWinService
 {
     partial class RabbitMQService : ServiceBase
     {
-        RabbitMQClient rabbitMQClient;
+        IMessageQueueClient rabbitMQClient;
         Helper helper = Helper.CreateInstance();
         DBHelper dbHelper = Helper.CreateInstance<DBHelper>();
         Timer serviceTimer = Helper.CreateInstance<Timer>();

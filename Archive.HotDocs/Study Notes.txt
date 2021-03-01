@@ -1,2 +1,52 @@
 - Assembly > Namespace > Class > Props & Methods
 - AssemblyInfo.cs is containing all data related to your assembly like Title, Desc, CopyRight, TradeMark and Version
+- Reserved Bytes for data types: bool: 1, int: 4, string: 4, float: 4, double: 8, decimal: 16
+- By default the C# compiler treat number as double so to prevent this we can add a suffix (f) to the number like this float number = 12.45f;
+- If you have to inherit from BaseClass and interface you should put the BaseClass first like this public class ChildClass : BaseClass, IClass (not the oposite)
+- If you want to segregate two interfaces without repeat members you can do this 
+	public interface IProduct{
+		void A();
+		void B();
+	}
+	public interface IClothes{
+		void C();
+	}
+
+	public class Dress: IClothes{
+
+	}
+
+- Abstract class doesn't allow us to instantiate it but inherit
+- Abstract class > what if you have 2 different class with the same target like SQLDataAccess and OracleDataAccess, then the optimum way to design it like below:
+	like this we have implemented the common methons only one time and give the ability to the child classes to override the methods that they have a difference in implementation.
+	Also, if you want to give the ability (as optional) to the child classes to override the LoadConnectionString method just put (virtual) keywaord in its signature
+
+	public abstract class DataAccess{
+		public void LoadConnectionString(){
+			....
+		}
+
+		public abstract void LoadData();
+		public abstract void SaveData();
+	}
+
+	public class SQLDataAccess: DataAccess{
+		public override void LoadData(){
+			
+		}
+
+		public override void SaveData(){
+			
+		}
+	}
+
+	public class OracleDataAccess: DataAccess{
+		public override void LoadData(){
+			
+		}
+
+		public override void SaveData(){
+			
+		}
+	}
+

@@ -10,11 +10,11 @@ using static RabbitMQClientWinService.Helpers.Enums;
 
 namespace RabbitMQClientWinService.Helpers
 {
-    public interface IRabbitMQClient
+    public interface IMessageQueueClient
     {
         IModel RabbitMQChannel { get; set; }
-        public string DefaultQueue { get; }
-        public bool ParallelExecuteMessages { get; }
+        string DefaultQueue { get; }
+        bool ParallelExecuteMessages { get; }
         void EstablishRabbitMQ();
         void PublishNewMessages(List<Message> messages);
 

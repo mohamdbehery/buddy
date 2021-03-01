@@ -11,7 +11,7 @@ using static RabbitMQClientWinService.Helpers.Enums;
 
 namespace RabbitMQClientWinService.Helpers
 {
-    public class RabbitMQClient : IRabbitMQClient
+    public class RabbitMQClient : IMessageQueueClient
     {
         DBHelper dbHelper;
         Helper helper;
