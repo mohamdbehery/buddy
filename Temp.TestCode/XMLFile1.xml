@@ -1,13 +1,31 @@
-﻿<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
 	<xsl:template match="*">
 		<Action>
-			<xsl:if test="count(//DecisionsNotProcessedItemItem) &gt; 0">
-				<DecisionProcess>
-					<xsl:for-each select="//DecisionsNotProcessedItemItem">
-						<xsl:copy-of select="DecisionID"/>
-					</xsl:for-each>
-				</DecisionProcess>
-			</xsl:if>
+			<PlaceLocalOrder>
+				<OrderType>Snapshot</OrderType>
+				<CustomerGroupID>CLEAR</CustomerGroupID>
+				<InputFolder>lw-faslo/Snapshot/PUBO/Res-In</InputFolder>
+				<CollectionName>LienWatch Snapshot Loans</CollectionName>
+				<CustomerID>RP747019</CustomerID>
+				<RequestFileStartsWith>TEST.</RequestFileStartsWith>
+				<ZipFileStartsWith>TADV.ZYONT.F0010116.</ZipFileStartsWith>
+				<CoveredCountiesCollectionID>102</CoveredCountiesCollectionID>
+				<ProductOrderID>
+					<xsl:value-of select="//ProductOrderID"/>
+				</ProductOrderID>
+				<LoanCollectionID>132</LoanCollectionID>
+				<FixedWidthFileRequired>false</FixedWidthFileRequired>
+				<DelimitedFileRequired>true</DelimitedFileRequired>
+				<FileNameEndsWith>Request</FileNameEndsWith>
+				<NotificationType>CLEAR CMAS Request</NotificationType>
+				<ProductName>CLEAR</ProductName>
+				<IsValidFileCheckRequired>true</IsValidFileCheckRequired>
+				<TempFileName>
+					<xsl:value-of select ="concat(qbo:GetConfigSetting('gcp.TempFile.BasePath'),qbo:GetConfigSetting('qbo.GenericFTPTempFolder'),'/')"/>
+				</TempFileName>
+				<TempReqfilePath>C:/inetpub/wwwroot/upload/</TempReqfilePath>
+			</PlaceLocalOrder>
 		</Action>
 	</xsl:template>
 </xsl:stylesheet>

@@ -1,0 +1,2 @@
+- Assembly > Namespace > Class > Props & Methods
+- AssemblyInfo.cs is containing all data related to your assembly like Title, Desc, CopyRight, TradeMark and Version
