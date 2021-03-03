@@ -66,3 +66,4 @@
 	}
 
 - When to use Struct
+- Simple definition for Interface: for example the company needs a Developer with a specific skills Not need (Mohamed) so in any time the company may replace Mohamed with any other Developer that has these skills so the Interface here is the Developer Skills as a Contract.
