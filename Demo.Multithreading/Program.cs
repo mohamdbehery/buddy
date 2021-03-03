@@ -64,7 +64,7 @@ namespace Multithreading
             Console.WriteLine($"Hello from thread {Thread.CurrentThread.ManagedThreadId}");
             foreach (int item in dataList)
             {
-                helper.Log($"Hello from {item}");
+                helper.Logger.Log($"Hello from {item}");
             }
         }
 

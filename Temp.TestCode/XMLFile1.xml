@@ -1,31 +1,90 @@
-﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
-	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
+﻿<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:output method="xml" omit-xml-declaration="yes" />
 	<xsl:template match="*">
-		<Action>
-			<PlaceLocalOrder>
-				<OrderType>Snapshot</OrderType>
-				<CustomerGroupID>CLEAR</CustomerGroupID>
-				<InputFolder>lw-faslo/Snapshot/PUBO/Res-In</InputFolder>
-				<CollectionName>LienWatch Snapshot Loans</CollectionName>
-				<CustomerID>RP747019</CustomerID>
-				<RequestFileStartsWith>TEST.</RequestFileStartsWith>
-				<ZipFileStartsWith>TADV.ZYONT.F0010116.</ZipFileStartsWith>
-				<CoveredCountiesCollectionID>102</CoveredCountiesCollectionID>
-				<ProductOrderID>
-					<xsl:value-of select="//ProductOrderID"/>
-				</ProductOrderID>
-				<LoanCollectionID>132</LoanCollectionID>
-				<FixedWidthFileRequired>false</FixedWidthFileRequired>
-				<DelimitedFileRequired>true</DelimitedFileRequired>
-				<FileNameEndsWith>Request</FileNameEndsWith>
-				<NotificationType>CLEAR CMAS Request</NotificationType>
-				<ProductName>CLEAR</ProductName>
-				<IsValidFileCheckRequired>true</IsValidFileCheckRequired>
-				<TempFileName>
-					<xsl:value-of select ="concat(qbo:GetConfigSetting('gcp.TempFile.BasePath'),qbo:GetConfigSetting('qbo.GenericFTPTempFolder'),'/')"/>
-				</TempFileName>
-				<TempReqfilePath>C:/inetpub/wwwroot/upload/</TempReqfilePath>
-			</PlaceLocalOrder>
-		</Action>
+		<ServiceOrderCollection>
+			<ServiceOrderItem>
+				<ProductType>BlueStreak</ProductType>
+				<ServiceID>3</ServiceID>
+				<LoanID>
+					<xsl:value-of select="//ObjectID" />
+				</LoanID>
+				<SaveNativeResponse>true</SaveNativeResponse>
+				<RequestXml>
+					<BluestreakItem>
+						<ServiceOrderCollection>
+							<ServiceOrderItem>
+								<ServiceOrderTemplateSubscriberID>services.testservices.com-ServiceOrderTemplate-CoreLogicExtended</ServiceOrderTemplateSubscriberID>
+								<DestinationOrganizationSubscriberID>services.testservices.com-Organization-TestOrganization</DestinationOrganizationSubscriberID>
+								<ServiceType>bluestreak</ServiceType>
+								<ProductType>Property Search</ProductType>
+								<Object>
+									<xsl:text>Loan</xsl:text>
+								</Object>
+								<ObjectID>
+									<xsl:value-of select="//ObjectID" />
+								</ObjectID>
+								<Product>POR</Product>
+								<SourceObject>
+									<xsl:text>Property</xsl:text>
+								</SourceObject>
+								<SourceObjectID>
+									<xsl:value-of select="//PropertyID"/>
+								</SourceObjectID>
+								<SearchIndexCollection>
+									<SearchIndexItem>
+										<Attribute>LoanID</Attribute>
+										<Value>
+											<xsl:value-of select="//ObjectID"/>
+										</Value>
+									</SearchIndexItem>
+								</SearchIndexCollection>
+								<RequestXml>
+									<PropertySearch>
+										<Address>
+											<xsl:value-of select="//Address"/>
+										</Address>
+										<City>
+											<xsl:value-of select="//City"/>
+										</City>
+										<State>
+											<xsl:value-of select="//State"/>
+										</State>
+										<PostalCode>
+											<xsl:value-of select="//PostalCode"/>
+										</PostalCode>
+										<BorrowerFirst>
+											<xsl:value-of select="//PrimaryBorrowerFirstName"/>
+										</BorrowerFirst>
+										<BorrowerMiddle>
+											<xsl:value-of select="//PrimaryBorrowerMiddleName"/>
+										</BorrowerMiddle>
+										<BorrowerLast>
+											<xsl:value-of select="//PrimaryBorrowerLastName"/>
+										</BorrowerLast>
+										<CoBorrowerFirst>
+											<xsl:value-of select="//SecondaryBorrowerFirstName"/>
+										</CoBorrowerFirst>
+										<CoBorrowerMiddle>
+											<xsl:value-of select="//SecondaryBorrowerMiddleName"/>
+										</CoBorrowerMiddle>
+										<CoBorrowerLast>
+											<xsl:value-of select="//SecondaryBorrowerLastName"/>
+										</CoBorrowerLast>
+										<IncludeImages>1</IncludeImages>
+										<!-- <LoanNumber>                        <xsl:value-of select="//Loan"/>                      </LoanNumber> -->
+										<LoanFundingDate>
+											<xsl:value-of select="//LoanFundingDate"/>
+										</LoanFundingDate>
+										<LoanOriginalBalance>
+											<xsl:value-of select="//OriginalBalance"/>
+										</LoanOriginalBalance>
+									</PropertySearch>
+								</RequestXml>
+							</ServiceOrderItem>
+						</ServiceOrderCollection>
+					</BluestreakItem>
+				</RequestXml>
+			</ServiceOrderItem>
+		</ServiceOrderCollection>
 	</xsl:template>
 </xsl:stylesheet>

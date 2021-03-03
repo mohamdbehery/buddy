@@ -31,22 +31,38 @@
 	}
 
 	public class SQLDataAccess: DataAccess{
-		public override void LoadData(){
-			
+		public override void LoadData(){			
 		}
 
-		public override void SaveData(){
-			
+		public override void SaveData(){			
 		}
 	}
 
 	public class OracleDataAccess: DataAccess{
-		public override void LoadData(){
-			
+		public override void LoadData(){			
 		}
 
-		public override void SaveData(){
-			
+		public override void SaveData(){			
 		}
 	}
 
+- If you have more than 1 constructor and you want to call one from another (like that the base constructor will run first):
+	public class Customer{
+		public int Id;
+		public string Name;
+		public Order _order;
+
+		public Customer(){
+			this.Id = 1;
+		}
+
+		public Customer(string name): this(){
+			this.Name = name;
+			this._order = new Order{
+				Id = this.Id,
+				Name = this.Name
+			};
+		}
+	}
+
+- 

@@ -1,4 +1,5 @@
 ﻿using Buddy.Utilities;
+using Buddy.Utilities.DB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,12 +28,12 @@ namespace FileWatcherWinService
         {
             try
             {
-                helper.Log("File Watcher Service started...");
+                helper.Logger.Log("File Watcher Service started...");
                 EstablishFileWatcher();
             }
             catch (Exception ex)
             {
-                helper.Log($"File Watcher Exception: {ex.ToString()}");
+                helper.Logger.Log($"File Watcher Exception: {ex.ToString()}");
             }
         }
 
@@ -53,7 +54,7 @@ namespace FileWatcherWinService
             {
                 if (File.Exists(e.FullPath))
                 {
-                    helper.Log($"Start processing file: {e.FullPath}");
+                    helper.Logger.Log($"Start processing file: {e.FullPath}");
                     string messages;
                     const Int32 BufferSize = 128;
                     using (var fileStream = File.OpenRead(e.FullPath))
@@ -73,25 +74,25 @@ namespace FileWatcherWinService
                     }
                     Dictionary<string, string> parameters = new Dictionary<string, string> { { "@Messages", messages } };
                     string conString = helper.GetAppKey("conStr");
-                    DBExecResult execResult = helper.CallSQLDB(new DBExecParams() { ConString = conString, StoredProcedure = "spBulkEnqueueMessages", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+                    ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conString, StoredProcedure = "spBulkEnqueueMessages", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
                     if (execResult.ErrorCode == 0)
                     {
-                        helper.Log(execResult.ExecutionMessages);
+                        helper.Logger.Log(execResult.ExecutionMessages);
                         Thread.Sleep(1000);
                         File.Delete(e.FullPath);
-                        helper.Log($"End processing file, {execResult.AffectedRowsCount} messages insrted.");
+                        helper.Logger.Log($"End processing file, {execResult.AffectedRowsCount} messages insrted.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                helper.Log($"Exception {ex.ToString()}");
+                helper.Logger.Log($"Exception {ex.ToString()}");
             }
         }
 
         protected override void OnStop()
         {
-            helper.Log("File Watcher Service stopped...");
+            helper.Logger.Log("File Watcher Service stopped...");
         }
     }
 }

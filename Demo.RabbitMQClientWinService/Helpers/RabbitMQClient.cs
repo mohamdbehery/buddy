@@ -57,7 +57,7 @@ namespace RabbitMQClientWinService.Helpers
             }
             catch (Exception ex)
             {
-                helper.Log($"Rabbit MQ Exception: {ex.ToString()}");
+                helper.Logger.Log($"Rabbit MQ Exception: {ex.ToString()}");
             }
         }
 
@@ -67,16 +67,16 @@ namespace RabbitMQClientWinService.Helpers
             {
                 this.EstablishRabbitMQ();
                 RabbitMQChannel.QueueDeclare(DefaultQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
-                helper.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
+                helper.Logger.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
                 foreach (Message msg in messages)
                 {
                     PublishMessage(DefaultQueue, msg);
                 }
-                helper.Log($"Done publishing messages...");
+                helper.Logger.Log($"Done publishing messages...");
             }
             catch (Exception ex)
             {
-                helper.Log($"Exception: {ex.ToString()}");
+                helper.Logger.Log($"Exception: {ex.ToString()}");
             }
         }
 
@@ -101,7 +101,7 @@ namespace RabbitMQClientWinService.Helpers
 
         public void ConsumeNewMessages()
         {
-            helper.Log("Consumer started..");
+            helper.Logger.Log("Consumer started..");
             this.EstablishRabbitMQ();
             RabbitMQChannel.QueueDeclare(DefaultQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
             var consumer = new EventingBasicConsumer(RabbitMQChannel);
@@ -114,7 +114,7 @@ namespace RabbitMQClientWinService.Helpers
 
         public void ConsumeMessage(BasicDeliverEventArgs e, Message message = null)
         {
-            helper.Log($"///////////// Message Received /////////////");
+            helper.Logger.Log($"///////////// Message Received /////////////");
             if (message == null)
             {
                 var body = e.Body.ToArray();
@@ -137,17 +137,17 @@ namespace RabbitMQClientWinService.Helpers
                 }
                 else
                 {
-                    DBExecResult returnedData = dbHelper.ExecuteMQMessage(message);
+                    ExecResult returnedData = dbHelper.ExecuteMQMessage(message);
                     AfterMessageExecution(e, message, returnedData);
                 }
             }
         }
 
-        public void AfterMessageExecution(BasicDeliverEventArgs e, Message message, DBExecResult returnedData)
+        public void AfterMessageExecution(BasicDeliverEventArgs e, Message message, ExecResult returnedData)
         {
             if (returnedData.ErrorCode == 0)
             {
-                helper.Log($"Done executing message id ({message.MessageID})");
+                helper.Logger.Log($"Done executing message id ({message.MessageID})");
                 MessageAknowledge(e, RabbitMQMessageState.SuccessfullyProcessed);
             }
             else
@@ -163,17 +163,17 @@ namespace RabbitMQClientWinService.Helpers
             {
                 case RabbitMQMessageState.SuccessfullyProcessed:
                     // Success remove from queue
-                    helper.Log("Success remove from queue");
+                    helper.Logger.Log("Success remove from queue");
                     RabbitMQChannel.BasicAck(e.DeliveryTag,false);
                     break;
                 case RabbitMQMessageState.UnsuccessfulProcessing:
                     // Unsuccessful, requeue and retry
-                    helper.Log("Unsuccessful, requeue and retry");
+                    helper.Logger.Log("Unsuccessful, requeue and retry");
                     RabbitMQChannel.BasicNack(e.DeliveryTag, false, true);
                     break;
                 default:
                     // Bad Message, Reject and Delete
-                    helper.Log("Bad Message, Reject and Delete");
+                    helper.Logger.Log("Bad Message, Reject and Delete");
                     RabbitMQChannel.BasicReject(e.DeliveryTag, false);
                     break;
             }

@@ -51,14 +51,14 @@ namespace RabbitMQClientWinService
         protected override void OnStart(string[] args)
         {
 
-            helper.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
+            helper.Logger.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
             rabbitMQClient = Helper.CreateInstance<RabbitMQClient>();
             try
             {
-                helper.Log("Publisher started..");
+                helper.Logger.Log("Publisher started..");
                 serviceTimer.Elapsed += (sender, e) =>
                 {
-                    helper.Log("...^_^...");
+                    helper.Logger.Log("...^_^...");
                     List<Message> messages = dbHelper.FetchMQMessages();
                     if (messages.Count > 0)
                     {
@@ -75,7 +75,7 @@ namespace RabbitMQClientWinService
             }
             catch (Exception ex)
             {
-                helper.Log($"Rabbit MQ Exception: {ex.ToString()}");
+                helper.Logger.Log($"Rabbit MQ Exception: {ex.ToString()}");
             }
         }
 
@@ -89,13 +89,13 @@ namespace RabbitMQClientWinService
             Task.WaitAll(taskList.ToArray());
             Task.WhenAll(taskList).ContinueWith((res) =>
             {
-                helper.Log($"Done executing messages in thread pool...");
+                helper.Logger.Log($"Done executing messages in thread pool...");
             });
         }
 
         protected override void OnStop()
         {
-            helper.Log("Rabbit MQ Service stopped...");
+            helper.Logger.Log("Rabbit MQ Service stopped...");
         }
     }
 }

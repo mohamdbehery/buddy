@@ -1,4 +1,5 @@
 ﻿using Buddy.Utilities;
+using Buddy.Utilities.DB;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +23,7 @@ namespace RabbitMQClientWinService.Helpers
         public List<Message> FetchMQMessages()
         {
             List<Message> messages = new List<Message>();
-            DBExecResult execResult = helper.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spFetchMessages", ExecType = DBExecType.DataAdapter });
+            ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spFetchMessages", ExecType = DBExecType.DataAdapter });
             if (execResult.ErrorCode == 0)
             {
                 if (execResult.ResultSet.Tables.Count > 0)
@@ -40,16 +41,16 @@ namespace RabbitMQClientWinService.Helpers
             return messages;
         }
 
-        public DBExecResult ExecuteMQMessage(Message message)
+        public ExecResult ExecuteMQMessage(Message message)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>()
             {
                 {"@MessageID", message.MessageID.ToString()},
             };
-            DBExecResult execResult = helper.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spStartMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+            ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spStartMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
             if (execResult.ErrorCode == 0)
             {
-                helper.Log($"Start executing message: {message.MessageID}");
+                helper.Logger.Log($"Start executing message: {message.MessageID}");
                 int timeToSleep = 10000;
                 if(message.MessageData.Split('$').Count() == 2)
                 {
@@ -58,7 +59,7 @@ namespace RabbitMQClientWinService.Helpers
                 }
                 Thread.Sleep(timeToSleep);
                 parameters.Add("@MessageData", message.MessageData.ToString());
-                execResult = helper.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spFinishMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+                execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spFinishMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
             }
 
             return execResult;
@@ -66,13 +67,15 @@ namespace RabbitMQClientWinService.Helpers
 
         public void RecordMessageFailure(Message msg, string failureMessage)
         {
-            helper.Log(failureMessage);
+            helper.Logger.Log(failureMessage);
             Dictionary<string, string> parameters = new Dictionary<string, string>()
                 {
                     {"@MessageID", msg.MessageID.ToString()},
                     {"@FailureMessage", failureMessage}
                 };
-            DBExecResult returnedData = helper.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spUpdateMessageFailure", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+            ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spUpdateMessageFailure", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+            if(execResult.ErrorCode != HelperEnums.ErrorCode.Zero)
+                helper.Logger.Log("failed to log exception into Database!!");
         }
     }
 }

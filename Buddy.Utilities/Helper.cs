@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Packaging;
+﻿using Buddy.Utilities.DB;
+using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.Web.Administration;
 using Newtonsoft.Json.Linq;
@@ -22,22 +23,16 @@ using System.Xml.Serialization;
 
 namespace Buddy.Utilities
 {
-    public class Helper
+    public class Helper: HelperBase
     {
-        public int errorCode = 100;
-        CommonProps _props = new CommonProps();
-        private XmlDocument xmlDoc;
-        private XmlNode rootNode;
-        private XmlNode node;
-        private XmlAttribute xmlAttribute;
-        private DataTable dt1;
-        private DataSet ds1;
-        private SqlConnection sqlConnection;
-        private SqlCommand sqlCommand;
-        private SqlDataAdapter sqlDataAdapter;
-        FileStream logsFileStream;
-        StreamWriter logsStreamWriter;
-        private string[] CustomParams = { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
+        private int ErrorCode = 100;
+        private XmlDocument XMLDoc;
+        private XmlNode RootNode;
+        private XmlNode XMLNode;
+        private XmlAttribute XMLAttribute;
+        ExecResult execResult;
+        public DBConsumer DBConsumer { get; private set; }
+        public Logger Logger { get; private set; }
 
         public Helper(bool initLogging)
         {
@@ -46,70 +41,8 @@ namespace Buddy.Utilities
 
         private Helper()
         {
-
-        }
-
-        public string LogFilePath
-        {
-            get
-            {
-                string logFileExtension = ".txt";
-                string LogFileNamePrefix = "Log";
-                string projectName = "UnknownSource";
-                int fileMaxSizeInBytes = 2000000;
-                string LogsDirectory = @"C:\Inetpub\BuddyLogger";
-                string currentDate = DateTime.Now.ToString("MM-dd-yyyy");
-                string currentHour = DateTime.Now.Hour.ToString();
-
-                if (!string.IsNullOrEmpty(GetAppKey("LogsMaxFileSize")))
-                {
-                    int temp = 0;
-                    if (int.TryParse(GetAppKey("LogsMaxFileSize"), out temp))
-                        fileMaxSizeInBytes = temp;
-                }
-
-                if (!string.IsNullOrEmpty(GetAppKey("LogsDicrectory")))
-                    LogsDirectory = GetAppKey("LogsDicrectory");
-
-                StackTrace stackTrace = new StackTrace();
-                try
-                {
-                    string assemblyName = Assembly.GetEntryAssembly().ManifestModule.Name;
-                    projectName = assemblyName.Remove(assemblyName.IndexOf('.'));
-                }
-                catch { }
-
-                if (!Directory.Exists(LogsDirectory))
-                    Directory.CreateDirectory(LogsDirectory);
-
-                string DayLogsDirectory = Path.Combine(LogsDirectory, currentDate);
-                if (!Directory.Exists(DayLogsDirectory))
-                    Directory.CreateDirectory(DayLogsDirectory);
-
-                string ProjectDirectory = Path.Combine(DayLogsDirectory, projectName);
-                if (!Directory.Exists(ProjectDirectory))
-                    Directory.CreateDirectory(ProjectDirectory);
-
-                string hourLogsFilePath = Path.Combine(ProjectDirectory, $"{LogFileNamePrefix}-{currentDate}-{currentHour}-1{logFileExtension}");
-
-                if (File.Exists(hourLogsFilePath))
-                {
-                    FileInfo logFileInfo = new FileInfo(hourLogsFilePath);
-                    if (logFileInfo.Length > fileMaxSizeInBytes)
-                    {
-                        string logFileName = Path.GetFileNameWithoutExtension(hourLogsFilePath);
-                        string[] logFileNameParts = logFileName.Split('-');
-                        int fileVersion = 0;
-                        if (int.TryParse(logFileNameParts[logFileNameParts.Length - 1], out fileVersion))
-                        {
-                            fileVersion++;
-                            logFileNameParts[logFileNameParts.Length - 1] = fileVersion.ToString();
-                            hourLogsFilePath = Path.Combine(ProjectDirectory, $"{string.Join("-", logFileNameParts)}{logFileExtension}");
-                        }
-                    }
-                }
-                return hourLogsFilePath;
-            }
+            DBConsumer = CreateInstance<DBConsumer>();
+            Logger = CreateInstance<Logger>();
         }
 
         public static Helper CreateInstance()
@@ -120,18 +53,6 @@ namespace Buddy.Utilities
         {
             Type objectInstance = (Type)Activator.CreateInstance(typeof(Type));
             return objectInstance;
-        }
-
-        public string GetConfigKey(string Key)
-        {
-            return ConfigurationManager.ConnectionStrings[Key].ToString();
-        }
-
-        public string GetAppKey(string Key)
-        {
-            if (ConfigurationManager.AppSettings[Key] != null)
-                return ConfigurationManager.AppSettings[Key].ToString();
-            return string.Empty;
         }
 
         public string GetSubString(string content, string from, string to)
@@ -300,36 +221,34 @@ namespace Buddy.Utilities
             return Returned.ToString();
         }
 
-        public DBExecResult DT2XML(DataTable DT, string RootName, string ChildName, out XmlDocument outXmlDoc)
+        public ExecResult DT2XML(DataTable DT, string RootName, string ChildName, out XmlDocument outXmlDoc)
         {
-            DBExecResult retObj = new DBExecResult();
+            execResult = new ExecResult();
             try
             {
-                xmlDoc = new XmlDocument();
-                rootNode = xmlDoc.CreateElement(RootName);
-                xmlDoc.AppendChild(rootNode);
+                XMLDoc = new XmlDocument();
+                RootNode = XMLDoc.CreateElement(RootName);
+                XMLDoc.AppendChild(RootNode);
                 foreach (DataRow row in DT.Rows)
                 {
-                    node = xmlDoc.CreateElement(ChildName);
+                    XMLNode = XMLDoc.CreateElement(ChildName);
                     foreach (DataColumn col in DT.Columns)
                     {
-                        xmlAttribute = xmlDoc.CreateAttribute(col.ColumnName);
-                        xmlAttribute.Value = row[col].ToString().Trim(' ');
-                        node.Attributes.Append(xmlAttribute);
+                        XMLAttribute = XMLDoc.CreateAttribute(col.ColumnName);
+                        XMLAttribute.Value = row[col].ToString().Trim(' ');
+                        XMLNode.Attributes.Append(XMLAttribute);
                     }
-                    rootNode.AppendChild(node);
+                    RootNode.AppendChild(XMLNode);
                 }
-                outXmlDoc = xmlDoc;
-                retObj.ErrorCode = 0;
-                retObj.ErrorException = null;
-                return retObj;
+                outXmlDoc = XMLDoc;
+                return execResult;
             }
             catch (Exception ex)
             {
                 outXmlDoc = null;
-                retObj.ErrorCode = errorCode;
-                retObj.ErrorException = ex.ToString();
-                return retObj;
+                execResult.ErrorCode = HelperEnums.ErrorCode.Exception;
+                execResult.ErrorException = ex.ToString();
+                return execResult;
             }
         }
          
@@ -347,146 +266,7 @@ namespace Buddy.Utilities
             xml.LoadXml(xmlString);
             return xml;
         }
-
-        public DBExecResult CallSQLDB(DBExecParams dBExecParams)
-        {
-            bool isStoredProcedure = string.IsNullOrEmpty(dBExecParams.StoredProcedure) ? false : true;
-            bool isSQLFile = string.IsNullOrEmpty(dBExecParams.SQLFilePath) ? false : true;
-            if (isSQLFile)
-                dBExecParams.Query = ExtractQueryFromSQLFile(dBExecParams);
-
-            DBExecResult execResult = new DBExecResult();
-            execResult.ResultSet = new DataSet();
-            try
-            {
-                using (sqlConnection = new SqlConnection(dBExecParams.ConString))
-                {
-                    sqlConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) =>
-                    {
-                        SQLMessageHandler(sender, e, ref execResult);
-                    });
-                    using (sqlCommand = new SqlCommand(isStoredProcedure ? dBExecParams.StoredProcedure : dBExecParams.Query, sqlConnection))
-                    {
-                        sqlCommand.CommandType = isStoredProcedure ? CommandType.StoredProcedure : CommandType.Text;
-                        if (!isSQLFile && dBExecParams.Parameters != null && dBExecParams.Parameters.Count > 0)
-                        {
-                            FillSQLParams(dBExecParams, ref sqlCommand);
-                        }
-                        sqlConnection.Open();
-                        switch (dBExecParams.ExecType)
-                        {
-                            case DBExecType.ExecuteNonQuery:
-                                execResult.AffectedRowsCount = sqlCommand.ExecuteNonQuery();
-                                break;
-                            case DBExecType.DataAdapter:
-                                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                                sqlDataAdapter.Fill(execResult.ResultSet);
-                                sqlDataAdapter.Dispose();
-                                break;
-                            case DBExecType.ExecuteScalar:
-                                execResult.ResultField = sqlCommand.ExecuteScalar().ToString();
-                                break;
-                        }
-                        sqlConnection.Close();
-                    }
-                }
-                execResult.ErrorCode = 0;
-                execResult.ErrorException = null;
-                return execResult;
-            }
-            catch (Exception ex)
-            {
-                execResult.AffectedRowsCount = 0;
-                execResult.ErrorCode = errorCode;
-                execResult.ErrorException = $"ADO.NET Exception: {ex.ToString()}";
-                Log($"//_-_\\ {dBExecParams.StoredProcedure} {dBExecParams.Query}: {execResult.ErrorException}");
-                return execResult;
-            }
-        }
-
-        private string ExtractQueryFromSQLFile(DBExecParams dBExecParams)
-        {
-            string Query = File.ReadAllText(dBExecParams.SQLFilePath).Replace("\n", " \n ");
-            if (dBExecParams.WordsToKeepInSQLFile != null)
-            {
-                foreach (var word in dBExecParams.WordsToKeepInSQLFile)
-                {
-                    Query = Query.Replace(word, SpreadWord(word));
-                }
-            }
-            if (dBExecParams.WordsToDeleteFromSQLFile != null)
-            {
-                foreach (var word in dBExecParams.WordsToDeleteFromSQLFile)
-                {
-                    Query = Query.Replace(word, " ");
-                    Query = Query.Replace(" " + word + " ", " ");
-                    Query = Query.Replace(" " + word, " ");
-                    Query = Query.Replace(word + " ", " ");
-                }
-            }
-
-            if (dBExecParams.WordsToKeepInSQLFile != null)
-            {
-                foreach (var word in dBExecParams.WordsToKeepInSQLFile)
-                {
-                    Query = Query.Replace(SpreadWord(word), word);
-                }
-            }
-            string paramsValues = "";
-            if (dBExecParams.Parameters != null && dBExecParams.Parameters.Count > 0)
-            {
-                foreach (var param in dBExecParams.Parameters)
-                {
-                    paramsValues += " SET " + param.Key + "=" + (!string.IsNullOrEmpty(param.Value) ? (param.Key.Contains("CODE") ? "'" + param.Value + "'" : param.Value) : "NULL; ");
-                }
-            }
-
-            if (!string.IsNullOrEmpty(dBExecParams.KeywordToSetParamsValue))
-                Query = Query.Replace(dBExecParams.KeywordToSetParamsValue, paramsValues);
-
-            return Query;
-        }
-        private void FillSQLParams(DBExecParams dBExecParams, ref SqlCommand sqlCommand)
-        {
-            foreach (var param in dBExecParams.Parameters)
-            {
-                if (string.IsNullOrEmpty(param.Value))
-                    sqlCommand.Parameters.Add(new SqlParameter(param.Key, DBNull.Value));
-                else
-                {
-                    if (CustomParams.Contains(param.Key))
-                    {
-                        byte[] ParamValue = ConvertFileBase64StringToByteArray(param.Value);
-                        sqlCommand.Parameters.Add(new SqlParameter(param.Key, SqlDbType.VarBinary, ParamValue.Length)).Value = ParamValue;
-                    }
-                    else
-                        sqlCommand.Parameters.Add(new SqlParameter(param.Key, param.Value));
-                }
-            }
-        }
-
-        private void SQLMessageHandler(object sender, SqlInfoMessageEventArgs e, ref DBExecResult returnedData)
-        {
-            // This gets all the messages generated during the execution of the SQL, 
-            // including low-severity error messages.
-            foreach (SqlError err in e.Errors)
-            {
-                returnedData.ExecutionMessages += $"  // $$ // {err.Procedure} line: {err.LineNumber} >> {err.Message}";
-            }
-        }
-
-        public string SpreadWord(string word)
-        {
-            string[] tempWord = new string[word.Length * 2];
-            int counter = 0;
-            foreach (var ch in word)
-            {
-                tempWord[counter] = ch + "_";
-                counter++;
-            }
-            return tempWord.ToString();
-        }
-
+                
         public string ConvertImageURLToBase64(string url)
         {
             StringBuilder _sb = new StringBuilder();
@@ -547,9 +327,9 @@ namespace Buddy.Utilities
             return false;
         }
 
-        public DBExecResult SendMail(SendMailData mailData)
+        public ExecResult SendMail(SendMailData mailData)
         {
-            DBExecResult retObj = new DBExecResult();
+            ExecResult execResult = new ExecResult();
             //Dictionary<string, string> dcGeneralMailSettings = GetLookups("GeneralMailSettings");
             //mailData.MailBody = dcGeneralMailSettings["SendMailBodyPrefix"] + mailData.MailBody + dcGeneralMailSettings["SendMailBodySuffix"];
 
@@ -609,17 +389,17 @@ namespace Buddy.Utilities
                 //client.Timeout = Convert.ToInt32(dcGeneralMailSettings["SendMailSMTPClientTimeout"]);
 
                 client.Send(msg);
-                retObj.ErrorCode = 0;
-                retObj.ErrorException = null;
+                execResult.ErrorCode = 0;
+                execResult.ErrorException = null;
                 LogMail(mailData, true, "");
-                return retObj;
+                return execResult;
             }
             catch (Exception ex)
             {
                 LogMail(mailData, false, ex.ToString());
-                retObj.ErrorCode = errorCode;
-                retObj.ErrorException = ex.ToString();
-                return retObj;
+                execResult.ErrorCode = HelperEnums.ErrorCode.Exception;
+                execResult.ErrorException = ex.ToString();
+                return execResult;
             }
             finally
             {
@@ -642,7 +422,7 @@ namespace Buddy.Utilities
                     parameters.Add("@MailFrom", string.IsNullOrEmpty(mailData.SenderMail) ? "" : mailData.SenderMail);
                     parameters.Add("@IsSent", isSent ? "1" : "0");
                     parameters.Add("@Exception", string.IsNullOrEmpty(exception) ? "No Exception" : exception);
-                    CallSQLDB(new DBExecParams() { ConString = "", StoredProcedure = "spAppLogsMailLog", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+                    DBConsumer.CallSQLDB(new DBExecParams() { ConString = "", StoredProcedure = "spAppLogsMailLog", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
                 }
             }
             catch (Exception ex)
@@ -671,14 +451,6 @@ namespace Buddy.Utilities
         //    string script = "alert(\"" + Message + "\");";
         //    ScriptManager.RegisterStartupScript(Page, GetType(), "ServerControlScript", script, true);
         //}
-
-        public byte[] ConvertFileBase64StringToByteArray(string File)
-        {
-            string[] FileData = File.Split(',');
-            string FileString = FileData[1];
-            //return Convert.FromBase64String(FileString);
-            return Encoding.UTF8.GetBytes(FileString);
-        }
 
         public object MapObjects(JObject objSource, object objDestination)
         {
@@ -744,17 +516,7 @@ namespace Buddy.Utilities
 
                 return ReturnedValue;
             }
-        }
-
-        public void AppendTextToFile(string text)
-        {
-            logsFileStream = new FileStream(LogFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
-            logsStreamWriter = new StreamWriter(logsFileStream, Encoding.UTF8, 4096, true);
-            logsStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
-            logsStreamWriter.WriteLineAsync(text);
-            logsStreamWriter.Flush();
-            logsStreamWriter.Close();
-        }
+        }        
 
         public Dictionary<string, string> ConvertToDictionary(DataTable DT)
         {
@@ -884,35 +646,6 @@ namespace Buddy.Utilities
         {
             return System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
         }
-
-        public void Log(string logMessage)
-        {
-            StackTrace stackTrace = new StackTrace();
-            string methodName = stackTrace.GetFrame(1).GetMethod().Name;
-            logMessage = $"{DateTime.Now.ToString("hh.mm.ss.ffffff")} : {methodName} >> {logMessage}";
-            AppendTextToFile(logMessage);
-        }
-
-        public void ManualLog(string message, XmlDocument xmlDocument = null)
-        {
-            message = $"{DateTime.Now.ToString("hh.mm.ss.ffffff")} >> {message}";
-            if (xmlDocument != null)
-            {
-                using (var stringWriter = new StringWriter())
-                using (var xmlTextWriter = XmlWriter.Create(stringWriter))
-                {
-                    xmlDocument.WriteTo(xmlTextWriter);
-                    xmlTextWriter.Flush();
-                    message += $" // XML // {stringWriter.GetStringBuilder().ToString()}";
-                }
-            }
-            FileStream logsFileStream = new FileStream(@"C:\Inetpub\temLog.txt", FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
-            StreamWriter logsStreamWriter = new StreamWriter(logsFileStream, System.Text.Encoding.UTF8, 4096, true);
-            logsStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
-            logsStreamWriter.WriteLineAsync(message);
-            logsStreamWriter.Flush();
-            logsStreamWriter.Close();
-        }
     }
 
     public class VirtualXML
@@ -940,54 +673,7 @@ namespace Buddy.Utilities
     {
         public string MonthName_EN;
         public string MonthName_AR;
-    }
-
-    public enum DBExecType
-    {
-        ExecuteNonQuery = 1,
-        ExecuteScalar = 2,
-        DataAdapter = 3
-    }
-
-    public class DBExecParams
-    {
-        public string ConString { get; set; }
-        public string StoredProcedure { get; set; }
-        public Dictionary<string, string> Parameters { get; set; }
-        public DBExecType ExecType { get; set; }
-        public string Query { get; set; }
-        public List<string> WordsToDeleteFromSQLFile { get; set; }
-        public List<string> WordsToKeepInSQLFile { get; set; }
-        public string KeywordToSetParamsValue { get; set; }
-        public string SQLFilePath { get; set; }
-    }
-
-    public class DBExecResult
-    {
-        public int ErrorCode { get; set; }
-        public string ErrorException { get; set; }
-        public string ExecutionMessages { get; set; }
-        public DataSet ResultSet { get; set; }
-        public string ResultField { get; set; }
-        public int AffectedRowsCount { get; set; }
-        public XmlDocument SerializeToXML()
-        {
-            XmlDocument xmlDoc = new XmlDocument();
-            XmlSerializer xsData = new XmlSerializer(typeof(DBExecResult));
-            var returnedXML = "";
-
-            using (var SW = new StringWriter())
-            {
-                using (XmlWriter XW = XmlWriter.Create(SW))
-                {
-                    xsData.Serialize(XW, this);
-                    returnedXML = SW.ToString(); // Your XML
-                }
-            }
-            xmlDoc.LoadXml(returnedXML);
-            return xmlDoc;
-        }
-    }
+    }  
 
     public class SendMailData
     {
@@ -1004,10 +690,5 @@ namespace Buddy.Utilities
         public string MailSubject { get; set; }
         public string AttFilePath = "";
         public string MailBody { get; set; }
-    }
-
-    public class CommonProps
-    {
-        public string FailedAttibute { get; set; }
     }
 }

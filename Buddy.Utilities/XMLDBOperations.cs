@@ -73,15 +73,15 @@ namespace Buddy.Utilities
             watch.Start();
             StringBuilder xmlDox = new StringBuilder("<phones>");
             int total = 500000;
-            helper.Log("start");
+            helper.Logger.Log("start");
             for (int i = 0; i < total; i++)
             {
-                helper.Log(i.ToString());
+                helper.Logger.Log(i.ToString());
                 xmlDox.Append($"<phone BusinessEntityID='2' PhoneNumber='NPX{i}' IsActive='{true}' PhoneNumberTypeID='1' ModifiedDate='{DateTime.Now}'/>");
             }
             xmlDox.Append("</phones>");
             watch.Stop();
-            helper.Log("xml is ready after " + watch.ElapsedMilliseconds + "ms");
+            helper.Logger.Log("xml is ready after " + watch.ElapsedMilliseconds + "ms");
 
             watch = new Stopwatch();
             watch.Start();
@@ -108,7 +108,7 @@ namespace Buddy.Utilities
                 }
             }
             watch.Stop();
-            helper.Log("xml is processed after " + watch.ElapsedMilliseconds + "ms");
+            helper.Logger.Log("xml is processed after " + watch.ElapsedMilliseconds + "ms");
             Console.WriteLine(Rows);
         }
 
