@@ -16,9 +16,8 @@ namespace RabbitMQClientWinService
 {
     partial class RabbitMQService : ServiceBase
     {
-        IMessageQueueClient rabbitMQClient;
+        MessageQueueClient mQClient;
         Helper helper = Helper.CreateInstance();
-        DBHelper dbHelper = Helper.CreateInstance<DBHelper>();
         Timer serviceTimer = Helper.CreateInstance<Timer>();
         public bool UseThreadPool
         {
@@ -32,14 +31,8 @@ namespace RabbitMQClientWinService
         {
             get
             {
-                int defaultInterval = 5000;
-                var temp = helper.GetAppKey("FetchMessagesTimeIntervalInMSs");
-                if(!string.IsNullOrEmpty(temp))
-                {
-                    int interval = 0;
-                    return int.TryParse(temp, out interval)? interval: defaultInterval;
-                }
-                return defaultInterval;
+                int interval = 0;
+                return int.TryParse(helper.GetAppKey("FetchMessagesTimeIntervalInMSs"), out interval) ? interval : 5000;
             }
         }
 
@@ -52,45 +45,28 @@ namespace RabbitMQClientWinService
         {
 
             helper.Logger.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
-            rabbitMQClient = Helper.CreateInstance<RabbitMQClient>();
+            if (UseThreadPool)
+                mQClient = new ManualMQClient();
+            else
+                mQClient = new RabbitMQClient();
+
             try
             {
                 helper.Logger.Log("Publisher started..");
                 serviceTimer.Elapsed += (sender, e) =>
                 {
                     helper.Logger.Log("...^_^...");
-                    List<Message> messages = dbHelper.FetchMQMessages();
+                    List<Message> messages = mQClient.FetchMQMessages();
                     if (messages.Count > 0)
-                    {
-                        if (UseThreadPool)
-                            PublishMessagesToThreadPool(messages);
-                        else
-                            rabbitMQClient.PublishNewMessages(messages);
-                    }
+                        mQClient.PublishNewMessages(messages);
                 };
                 serviceTimer.Interval = FetchMessagesTimeIntervalInMSs;
                 serviceTimer.Enabled = true;
-                if (!UseThreadPool)
-                    rabbitMQClient.ConsumeNewMessages();
             }
             catch (Exception ex)
             {
                 helper.Logger.Log($"Rabbit MQ Exception: {ex.ToString()}");
             }
-        }
-
-        private void PublishMessagesToThreadPool(List<Message> messages)
-        {
-            List<Task> taskList = new List<Task>();
-            foreach (var message in messages)
-            {
-                taskList.Add(Task.Run(() => { rabbitMQClient.ConsumeMessage(null, message); }));
-            }
-            Task.WaitAll(taskList.ToArray());
-            Task.WhenAll(taskList).ContinueWith((res) =>
-            {
-                helper.Logger.Log($"Done executing messages in thread pool...");
-            });
         }
 
         protected override void OnStop()

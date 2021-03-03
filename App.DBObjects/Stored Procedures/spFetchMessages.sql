@@ -1,9 +1,10 @@
 ﻿CREATE procedure [dbo].[spFetchMessages]
+@FetchMessageCount int
 as
 begin transaction [txnFetchMessages]
   begin try
 	-- select the non picked up messages before OR the failed meessages since 12 hours or more
-	select top(5) * into #temp from [Demo.MQMessage] 
+	select top(@FetchMessageCount) * into #temp from [Demo.MQMessage] 
 	where (IsActive = 1 AND QueueDate is null AND MSBatchID is null) OR 
 	(FailureDate is not null AND datediff(hour, FailureDate, getdate()) >= 12)
 

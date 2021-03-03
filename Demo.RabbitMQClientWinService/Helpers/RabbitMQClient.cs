@@ -11,38 +11,20 @@ using static RabbitMQClientWinService.Helpers.Enums;
 
 namespace RabbitMQClientWinService.Helpers
 {
-    public class RabbitMQClient : IMessageQueueClient
+    public class RabbitMQClient : MessageQueueClient
     {
-        DBHelper dbHelper;
-        Helper helper;
         public RabbitMQClient()
         {
-            dbHelper = Helper.CreateInstance<DBHelper>();
-            helper = Helper.CreateInstance();
         }
-        public IModel RabbitMQChannel { get; set; }
-        public string DefaultQueue
-        {
-            get
-            {
-                string temp = helper.GetAppKey("RabbitMQDefaultQueue");
-                return string.IsNullOrEmpty(temp) ? "mbehery" : temp;
-            }
+
+        public override int MessageCountToFetch { 
+            get{
+
+                int temp = 5;
+                return int.TryParse(helper.GetAppKey("RabbitMQMessageCountToFetch"), out temp) ? temp : 5;
+            } 
         }
-        public bool ParallelExecuteMessages
-        {
-            get
-            {
-                return helper.GetAppKey("ParallelExecuteMessages") == "1" ? true : false;
-            }
-        }
-        public bool UseThreadPool
-        {
-            get
-            {
-                return helper.GetAppKey("UseThreadPool") == "1" ? true : false;
-            }
-        }
+        public IModel RabbitMQChannel { get; set; }             
 
         public void EstablishRabbitMQ()
         {
@@ -61,7 +43,7 @@ namespace RabbitMQClientWinService.Helpers
             }
         }
 
-        public void PublishNewMessages(List<Message> messages)
+        public override void PublishNewMessages(List<Message> messages)
         {
             try
             {
@@ -73,6 +55,8 @@ namespace RabbitMQClientWinService.Helpers
                     PublishMessage(DefaultQueue, msg);
                 }
                 helper.Logger.Log($"Done publishing messages...");
+
+                ConsumeNewMessages();
             }
             catch (Exception ex)
             {
@@ -95,7 +79,7 @@ namespace RabbitMQClientWinService.Helpers
             }
             catch (Exception ex)
             {
-                dbHelper.RecordMessageFailure(msg, $"Failed to publish: {ex.ToString()}");
+                RecordMessageFailure(msg, $"Failed to publish: {ex.ToString()}");
             }
         }
 
@@ -112,61 +96,16 @@ namespace RabbitMQClientWinService.Helpers
             RabbitMQChannel.BasicConsume(DefaultQueue, false, consumer);
         }
 
-        public void ConsumeMessage(BasicDeliverEventArgs e, Message message = null)
-        {
-            helper.Logger.Log($"///////////// Message Received /////////////");
-            if (message == null)
-            {
-                var body = e.Body.ToArray();
-                var messageJson = Encoding.UTF8.GetString(body);
-                message = JsonConvert.DeserializeObject<Message>(messageJson);
-            }
-            if (string.IsNullOrEmpty(message.MessageData) || message.MessageData == "INVALID")
-            {
-                dbHelper.RecordMessageFailure(message, $"Invalid Message: message id ({message.MessageID}) has invalid data!");
-                MessageAknowledge(e, RabbitMQMessageState.MessageRejected);
-            }
-            else
-            {
-                if (!UseThreadPool && ParallelExecuteMessages)
-                {
-                    Task.Factory.StartNew(() => { return dbHelper.ExecuteMQMessage(message); }).ContinueWith((taskExec) =>
-                    {
-                        AfterMessageExecution(e, message, taskExec.Result);
-                    });
-                }
-                else
-                {
-                    ExecResult returnedData = dbHelper.ExecuteMQMessage(message);
-                    AfterMessageExecution(e, message, returnedData);
-                }
-            }
-        }
-
-        public void AfterMessageExecution(BasicDeliverEventArgs e, Message message, ExecResult returnedData)
-        {
-            if (returnedData.ErrorCode == 0)
-            {
-                helper.Logger.Log($"Done executing message id ({message.MessageID})");
-                MessageAknowledge(e, RabbitMQMessageState.SuccessfullyProcessed);
-            }
-            else
-            {
-                dbHelper.RecordMessageFailure(message, $"Failed to execute, {returnedData.ErrorException}");
-                MessageAknowledge(e, RabbitMQMessageState.UnsuccessfulProcessing);
-            }
-        }
-
-        public void MessageAknowledge(BasicDeliverEventArgs e, RabbitMQMessageState state)
+        public override void MessageAknowledge(MQMessageState state, BasicDeliverEventArgs e)
         {
             switch (state)
             {
-                case RabbitMQMessageState.SuccessfullyProcessed:
+                case MQMessageState.SuccessfullyProcessed:
                     // Success remove from queue
                     helper.Logger.Log("Success remove from queue");
                     RabbitMQChannel.BasicAck(e.DeliveryTag,false);
                     break;
-                case RabbitMQMessageState.UnsuccessfulProcessing:
+                case MQMessageState.UnsuccessfulProcessing:
                     // Unsuccessful, requeue and retry
                     helper.Logger.Log("Unsuccessful, requeue and retry");
                     RabbitMQChannel.BasicNack(e.DeliveryTag, false, true);

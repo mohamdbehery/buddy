@@ -73,9 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\IMessageQueueClient.cs" />
+    <Compile Include="Helpers\ManualMQClient.cs" />
+    <Compile Include="Helpers\MessageQueueClient.cs" />
     <Compile Include="Helpers\RabbitMQClient.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />

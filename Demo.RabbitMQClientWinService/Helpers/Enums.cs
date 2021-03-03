@@ -8,7 +8,7 @@ namespace RabbitMQClientWinService.Helpers
 {
     public class Enums
     {
-        public enum RabbitMQMessageState : int
+        public enum MQMessageState : int
         {
             Unknown = 0,
             SuccessfullyProcessed = 1,
