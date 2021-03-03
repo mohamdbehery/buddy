@@ -1,5 +1,6 @@
 ﻿using Buddy.Utilities;
 using Buddy.Utilities.DB;
+using Buddy.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static Buddy.Utilities.HelperEnums;
 
 namespace RabbitMQClientWinService.Helpers
 {

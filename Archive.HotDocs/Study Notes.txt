@@ -65,4 +65,4 @@
 		}
 	}
 
-- 
+- When to use Struct

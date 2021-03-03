@@ -8,6 +8,12 @@ namespace Buddy.Utilities
 {
     public struct HelperEnums
     {
+        public enum DBExecType
+        {
+            ExecuteNonQuery = 1,
+            ExecuteScalar = 2,
+            DataAdapter = 3
+        }
         public enum ErrorCode: int
         {
             Zero = 0,

@@ -1,4 +1,5 @@
 ﻿using Buddy.Utilities.DB;
+using Buddy.Utilities.Models;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.Web.Administration;
@@ -20,6 +21,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
+using static Buddy.Utilities.HelperEnums;
 
 namespace Buddy.Utilities
 {

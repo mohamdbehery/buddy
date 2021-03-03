@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Buddy.Utilities.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using static Buddy.Utilities.HelperEnums;
 
 namespace Buddy.Utilities.DB
 {
@@ -151,25 +153,5 @@ namespace Buddy.Utilities.DB
                 returnedData.ExecutionMessages += $"  // $$ // {err.Procedure} line: {err.LineNumber} >> {err.Message}";
             }
         }
-    }
-
-    public enum DBExecType
-    {
-        ExecuteNonQuery = 1,
-        ExecuteScalar = 2,
-        DataAdapter = 3
-    }
-
-    public class DBExecParams
-    {
-        public string ConString { get; set; }
-        public string StoredProcedure { get; set; }
-        public Dictionary<string, string> Parameters { get; set; }
-        public DBExecType ExecType { get; set; }
-        public string Query { get; set; }
-        public List<string> WordsToDeleteFromSQLFile { get; set; }
-        public List<string> WordsToKeepInSQLFile { get; set; }
-        public string KeywordToSetParamsValue { get; set; }
-        public string SQLFilePath { get; set; }
-    }
+    }   
 }
