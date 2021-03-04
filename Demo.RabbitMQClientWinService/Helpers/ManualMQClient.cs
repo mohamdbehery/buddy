@@ -3,13 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using static RabbitMQClientWinService.Helpers.Enums;
 
 namespace RabbitMQClientWinService.Helpers
 {
-    public class ManualMQClient: MessageQueueClient
+    public class ManualMQClient : MessageQueueClient
     {
+        private bool continueRun = true;
         public override int MessageCountToFetch
         {
             get
@@ -18,13 +20,40 @@ namespace RabbitMQClientWinService.Helpers
                 return int.TryParse(helper.GetAppKey("ManualMQMessageCountToFetch"), out temp) ? temp : 1;
             }
         }
+
+        public override void StartMessenger()
+        {
+            helper.Logger.Log("Publisher started..");
+            try
+            {
+                do
+                {
+                    List<Message> messages = FetchMQMessages();
+                    if (messages.Any())
+                        this.PublishNewMessages(messages);
+                    else
+                        Thread.Sleep(FetchMessagesTimeIntervalInMSs);
+
+                }
+                while (continueRun);
+            }
+            catch (Exception ex)
+            {
+                helper.Logger.Log($"Exception: {ex.ToString()}");
+                continueRun = false;
+            }
+            finally
+            {
+
+            }
+        }
+
         public override void PublishNewMessages(List<Message> messages)
         {
-
             List<Task> taskList = new List<Task>();
             foreach (var message in messages)
             {
-                if(ParallelExecuteMessages)
+                if (ParallelExecuteMessages)
                     taskList.Add(Task.Run(() => { ConsumeMessage(null, message); }));
                 else
                     ConsumeMessage(null, message);
@@ -34,11 +63,12 @@ namespace RabbitMQClientWinService.Helpers
                 Task.WaitAll(taskList.ToArray());
                 Task.WhenAll(taskList).ContinueWith((res) =>
                 {
-                    helper.Logger.Log($"Done executing messages in thread pool...");
+                    helper.Logger.Log($"Done executing message by thread pool...");
                 });
             }
             else
-                helper.Logger.Log($"Done executing messages in thread pool...");
+                helper.Logger.Log($"Done executing message by thread pool...");
+
         }
 
         public override void MessageAknowledge(MQMessageState state, BasicDeliverEventArgs e)

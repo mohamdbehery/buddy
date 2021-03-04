@@ -23,6 +23,10 @@ namespace TestCode
         DataTable dt = new DataTable();
         static void Main(string[] args)
         {
+            Console.WriteLine("1");
+            Person person = new Person { BusinessEntityID = 1 };
+            Console.WriteLine("2");
+            Person person2 = new Person() { BusinessEntityID = 1 };
             Console.ReadLine();
         } 
 
@@ -105,6 +109,10 @@ namespace TestCode
 
     public class Person
     {
+        public Person()
+        {
+            Console.WriteLine("Person Ctor");
+        }
         public int BusinessEntityID { get; set; }
         public string PersonType { get; set; }
         public string rowguid { get; set; }

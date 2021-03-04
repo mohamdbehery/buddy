@@ -14,14 +14,14 @@ using static RabbitMQClientWinService.Helpers.Enums;
 
 namespace RabbitMQClientWinService.Helpers
 {
-    public abstract class MessageQueueClient : IMessageQueueClient
+    public abstract class MessageQueueClient
     {
         public Helper helper;
         public string conStr = "";
         public MessageQueueClient()
         {
-            conStr = helper.GetAppKey("conStr");
             helper = Helper.CreateInstance();
+            conStr = helper.GetAppKey("conStr");
         }
         public string DefaultQueue
         {
@@ -40,7 +40,17 @@ namespace RabbitMQClientWinService.Helpers
             }
         }
 
+        public int FetchMessagesTimeIntervalInMSs
+        {
+            get
+            {
+                int interval = 0;
+                return int.TryParse(helper.GetAppKey("FetchMessagesTimeIntervalInMSs"), out interval) ? interval : 5000;
+            }
+        }
+
         public abstract int MessageCountToFetch { get; }
+        public abstract void StartMessenger();
         public List<Message> FetchMQMessages()
         {
             List<Message> messages = new List<Message>();

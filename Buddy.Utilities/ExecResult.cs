@@ -16,7 +16,9 @@ namespace Buddy.Utilities
         public ExecResult()
         {
             ErrorCode = Constants.DefaultErrorCode;
+            Success = true;
         }
+        public bool Success { get; set; }
         public ErrorCode ErrorCode { get; set; }
         public string ErrorException { get; set; }
         public string ExecutionMessages { get; set; }

@@ -14,21 +14,34 @@ namespace Buddy.Utilities
     {
         private FileStream LogFileStream;
         private StreamWriter LogStreamWriter;
+        string projectName = Constants.UnknownProjectName;
+        string logsDirectory = "";
+        int logFileMaxSizeInBytes = Constants.LogFileMaxSizeInBytes;
         public Logger()
         {
             LogFileStream = new FileStream(LogFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
             LogStreamWriter = new StreamWriter(LogFileStream, Encoding.UTF8, 4096, true);
         }
 
-        private string LogFilePath
+        /// <summary>
+        /// ex: "C:\Inetpub\BuddyLogger"
+        /// </summary>
+        /// <param name="logDirectory"></param>
+        public Logger(string logDirectory)
+        {
+            this.LogsDirectory = logDirectory;
+        }
+
+        public string LogsDirectory {
+            get => logsDirectory;
+            set => this.logsDirectory = value;
+        }
+        public string LogFilePath
         {
             get
             {
-                string logsDirectory = Constants.DefaultLogsDirectory;
-                int logFileMaxSizeInBytes = Constants.LogFileMaxSizeInBytes;
                 string currentDate = DateTime.Now.ToString("MM-dd-yyyy");
                 string currentHour = DateTime.Now.Hour.ToString();
-                string projectName = Constants.UnknownProjectName;
 
                 if (!string.IsNullOrEmpty(GetAppKey("LogsMaxFileSize")))
                 {
@@ -37,9 +50,13 @@ namespace Buddy.Utilities
                         logFileMaxSizeInBytes = temp;
                 }
 
-                if (!string.IsNullOrEmpty(GetAppKey("LogsDicrectory")))
-                    logsDirectory = GetAppKey("LogsDicrectory");
-
+                if (string.IsNullOrEmpty(LogsDirectory))
+                {
+                    if (!string.IsNullOrEmpty(GetAppKey("LogsDicrectory")))
+                        LogsDirectory = GetAppKey("LogsDicrectory");
+                    else
+                        LogsDirectory = Constants.DefaultLogsDirectory;
+                }
                 StackTrace stackTrace = new StackTrace();
                 try
                 {
@@ -90,10 +107,6 @@ namespace Buddy.Utilities
             LogStreamWriter.WriteLineAsync(logMessage);
             LogStreamWriter.Flush();
             LogStreamWriter.Close();
-        }
-        public void AppendTextToFile(string text)
-        {
-            
         }
         public void ManualLog(string message, XmlDocument xmlDocument = null)
         {

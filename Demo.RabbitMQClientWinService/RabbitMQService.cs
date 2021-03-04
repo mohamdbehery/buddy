@@ -18,21 +18,11 @@ namespace RabbitMQClientWinService
     {
         MessageQueueClient mQClient;
         Helper helper = Helper.CreateInstance();
-        Timer serviceTimer = Helper.CreateInstance<Timer>();
         public bool UseThreadPool
         {
             get
             {
                 return helper.GetAppKey("UseThreadPool") == "1" ? true : false;
-            }
-        }
-
-        public int FetchMessagesTimeIntervalInMSs
-        {
-            get
-            {
-                int interval = 0;
-                return int.TryParse(helper.GetAppKey("FetchMessagesTimeIntervalInMSs"), out interval) ? interval : 5000;
             }
         }
 
@@ -45,23 +35,14 @@ namespace RabbitMQClientWinService
         {
 
             helper.Logger.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
-            if (UseThreadPool)
-                mQClient = new ManualMQClient();
-            else
-                mQClient = new RabbitMQClient();
-
             try
             {
-                helper.Logger.Log("Publisher started..");
-                serviceTimer.Elapsed += (sender, e) =>
-                {
-                    helper.Logger.Log("...^_^...");
-                    List<Message> messages = mQClient.FetchMQMessages();
-                    if (messages.Count > 0)
-                        mQClient.PublishNewMessages(messages);
-                };
-                serviceTimer.Interval = FetchMessagesTimeIntervalInMSs;
-                serviceTimer.Enabled = true;
+                if (UseThreadPool)
+                    mQClient = new ManualMQClient();
+                else
+                    mQClient = new RabbitMQClient();
+
+                mQClient.StartMessenger();                
             }
             catch (Exception ex)
             {

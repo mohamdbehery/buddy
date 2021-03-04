@@ -27,7 +27,6 @@ namespace Buddy.Utilities
 {
     public class Helper: HelperBase
     {
-        private int ErrorCode = 100;
         private XmlDocument XMLDoc;
         private XmlNode RootNode;
         private XmlNode XMLNode;
@@ -36,15 +35,19 @@ namespace Buddy.Utilities
         public DBConsumer DBConsumer { get; private set; }
         public Logger Logger { get; private set; }
 
-        public Helper(bool initLogging)
+        public Helper(string LogsDirectory = "")
         {
-
+            this.Logger = new Logger();
         }
 
-        private Helper()
+        public Helper(bool initDBConsumer, string LogsDirectory = ""): this(LogsDirectory)
         {
-            DBConsumer = CreateInstance<DBConsumer>();
-            Logger = CreateInstance<Logger>();
+            this.DBConsumer = CreateInstance<DBConsumer>();
+        }
+
+        private Helper(): this(true)
+        {
+           
         }
 
         public static Helper CreateInstance()

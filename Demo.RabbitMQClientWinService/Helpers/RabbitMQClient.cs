@@ -7,24 +7,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using static RabbitMQClientWinService.Helpers.Enums;
 
 namespace RabbitMQClientWinService.Helpers
 {
     public class RabbitMQClient : MessageQueueClient
     {
+        Timer serviceTimer = Helper.CreateInstance<Timer>();
         public RabbitMQClient()
         {
         }
 
-        public override int MessageCountToFetch { 
-            get{
-
+        public override int MessageCountToFetch
+        {
+            get
+            {
                 int temp = 5;
                 return int.TryParse(helper.GetAppKey("RabbitMQMessageCountToFetch"), out temp) ? temp : 5;
-            } 
+            }
         }
-        public IModel RabbitMQChannel { get; set; }             
+        public IModel RabbitMQChannel { get; set; }
+        public override void StartMessenger()
+        {
+            helper.Logger.Log("Publisher started..");
+            serviceTimer.Elapsed += (sender, e) =>
+            {
+                helper.Logger.Log("...^_^...");
+                List<Message> messages = FetchMQMessages();
+                if (messages.Count > 0)
+                    PublishNewMessages(messages);
+            };
+            serviceTimer.Interval = FetchMessagesTimeIntervalInMSs;
+            serviceTimer.Enabled = true;
+        }
 
         public void EstablishRabbitMQ()
         {
@@ -72,7 +88,7 @@ namespace RabbitMQClientWinService.Helpers
                 string exchangeType = ""; // "" = default exchange
                 var msgProps = RabbitMQChannel.CreateBasicProperties();
                 msgProps.DeliveryMode = 1; // Non presistent message
-                msgProps.Persistent = false; 
+                msgProps.Persistent = false;
                 msgProps.Expiration = "36000000"; // in millisecond
                 msgProps.MessageId = msg.MessageID.ToString();
                 RabbitMQChannel.BasicPublish(exchangeType, queue, msgProps, body);
@@ -103,7 +119,7 @@ namespace RabbitMQClientWinService.Helpers
                 case MQMessageState.SuccessfullyProcessed:
                     // Success remove from queue
                     helper.Logger.Log("Success remove from queue");
-                    RabbitMQChannel.BasicAck(e.DeliveryTag,false);
+                    RabbitMQChannel.BasicAck(e.DeliveryTag, false);
                     break;
                 case MQMessageState.UnsuccessfulProcessing:
                     // Unsuccessful, requeue and retry

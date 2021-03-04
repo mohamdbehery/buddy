@@ -15,6 +15,8 @@ namespace RabbitMQClientWinService.Helpers
         string DefaultQueue { get; }
         int MessageCountToFetch { get; }
         bool ParallelExecuteMessages { get; }
+        public int FetchMessagesTimeIntervalInMSs { get; }
+        void StartMessenger();
         void PublishNewMessages(List<Message> messages);
         void ConsumeMessage(BasicDeliverEventArgs e, Message message);
         void MessageAknowledge(MQMessageState state, BasicDeliverEventArgs e = null);

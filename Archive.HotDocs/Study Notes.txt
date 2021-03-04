@@ -67,3 +67,9 @@
 
 - When to use Struct
 - Simple definition for Interface: for example the company needs a Developer with a specific skills Not need (Mohamed) so in any time the company may replace Mohamed with any other Developer that has these skills so the Interface here is the Developer Skills as a Contract.
+- Interface objects should not have access modifiers in signature, just return type, name and parameters
+- the class that implement interface should have the implemented methods as public
+- static class should not have a constructor because it cannot be instantiated
+- Override keyword is used in either implementing a abstract method in the base class or overriding a method in base class that has virtual in its signature
+- Overloading can be acheived by difference in return type as long as we have a difference in parameters
+- No difference between Person person1 = new Person{ Name = ""}; AND Person person1 = new Person(){ Name = ""};
