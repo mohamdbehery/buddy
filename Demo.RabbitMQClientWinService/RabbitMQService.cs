@@ -33,7 +33,6 @@ namespace RabbitMQClientWinService
 
         protected override void OnStart(string[] args)
         {
-
             helper.Logger.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
             try
             {

@@ -30,7 +30,7 @@ namespace RabbitMQClientWinService.Helpers
                 {
                     List<Message> messages = FetchMQMessages();
                     if (messages.Any())
-                        this.PublishNewMessages(messages);
+                        PublishNewMessages(messages);
                     else
                         Thread.Sleep(FetchMessagesTimeIntervalInMSs);
 
@@ -41,10 +41,6 @@ namespace RabbitMQClientWinService.Helpers
             {
                 helper.Logger.Log($"Exception: {ex.ToString()}");
                 continueRun = false;
-            }
-            finally
-            {
-
             }
         }
 

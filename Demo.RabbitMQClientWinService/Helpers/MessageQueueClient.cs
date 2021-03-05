@@ -16,12 +16,16 @@ namespace RabbitMQClientWinService.Helpers
 {
     public abstract class MessageQueueClient
     {
-        public Helper helper;
-        public string conStr = "";
+        public Helper helper = new Helper();
+        private string conStr
+        {
+            get
+            {
+                return helper.GetAppKey("conStr");
+            }
+        }
         public MessageQueueClient()
         {
-            helper = Helper.CreateInstance();
-            conStr = helper.GetAppKey("conStr");
         }
         public string DefaultQueue
         {
@@ -71,6 +75,7 @@ namespace RabbitMQClientWinService.Helpers
                     }
                 }
             }
+            helper.Logger.Log($"{messages.Count()} messages fetched...");
             return messages;
         }
         public abstract void PublishNewMessages(List<Message> messages);
