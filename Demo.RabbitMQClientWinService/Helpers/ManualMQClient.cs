@@ -58,7 +58,7 @@ namespace RabbitMQClientWinService.Helpers
                 else
                     ConsumeMessage(null, message);
             }
-            if (taskList.Count > 0)
+            if (taskList.Any())
             {
                 Task.WaitAll(taskList.ToArray());
                 Task.WhenAll(taskList).ContinueWith((res) =>

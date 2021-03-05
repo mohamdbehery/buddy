@@ -73,3 +73,4 @@
 - Override keyword is used in either implementing a abstract method in the base class or overriding a method in base class that has virtual in its signature
 - Overloading can be acheived by difference in return type as long as we have a difference in parameters
 - No difference between Person person1 = new Person{ Name = ""}; AND Person person1 = new Person(){ Name = ""};
+- CTE can be refertenced only once, right after defining it, so if you want to use a permenant table consider using temp table or table variable
