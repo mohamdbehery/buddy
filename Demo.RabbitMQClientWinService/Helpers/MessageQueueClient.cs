@@ -1,4 +1,5 @@
 ﻿using Buddy.Utilities;
+using Buddy.Utilities.Enums;
 using Buddy.Utilities.Models;
 using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static Buddy.Utilities.HelperEnums;
+using static Buddy.Utilities.Enums.HelperEnums;
 using static RabbitMQClientWinService.Helpers.Enums;
 
 namespace RabbitMQClientWinService.Helpers

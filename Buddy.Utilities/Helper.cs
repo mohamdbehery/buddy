@@ -1,4 +1,5 @@
 ﻿using Buddy.Utilities.DB;
+using Buddy.Utilities.Enums;
 using Buddy.Utilities.Models;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
@@ -6,22 +7,15 @@ using Microsoft.Web.Administration;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Mail;
-using System.Net.Mime;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Xml;
-using System.Xml.Serialization;
-using static Buddy.Utilities.HelperEnums;
 
 namespace Buddy.Utilities
 {
@@ -35,17 +29,17 @@ namespace Buddy.Utilities
         public DBConsumer DBConsumer { get; private set; }
         public Logger Logger { get; private set; }
 
-        public Helper(string LogsDirectory = "")
+        public Helper(string LogsDirectory)
         {
-            this.Logger = new Logger();
+            this.Logger = new Logger(LogsDirectory);
         }
 
-        public Helper(bool initDBConsumer, string LogsDirectory = ""): this(LogsDirectory)
+        public Helper(bool initDBConsumer): this ("")
         {
             this.DBConsumer = CreateInstance<DBConsumer>();
         }
 
-        private Helper(): this(true)
+        public Helper(): this(true)
         {
            
         }
@@ -332,125 +326,6 @@ namespace Buddy.Utilities
             return false;
         }
 
-        public ExecResult SendMail(SendMailData mailData)
-        {
-            ExecResult execResult = new ExecResult();
-            //Dictionary<string, string> dcGeneralMailSettings = GetLookups("GeneralMailSettings");
-            //mailData.MailBody = dcGeneralMailSettings["SendMailBodyPrefix"] + mailData.MailBody + dcGeneralMailSettings["SendMailBodySuffix"];
-
-            MailMessage msg = new MailMessage();
-            try
-            {
-                msg.From = new MailAddress(mailData.SenderMail, mailData.SenderName);
-
-                string[] Recievers = mailData.RecieverMail.Split(',');
-                for (int i = 0; i < Recievers.Length; i++)
-                {
-                    msg.To.Add(Recievers[i]);
-                }
-
-                if (!string.IsNullOrEmpty(mailData.CCs))
-                {
-                    string[] CCs = mailData.CCs.Split(',');
-                    for (int i = 0; i < CCs.Length; i++)
-                    {
-                        msg.CC.Add(CCs[i]);
-                    }
-                }
-
-                if (!string.IsNullOrEmpty(mailData.AttFilePath) && mailData.AttFilePath != "ExceptionMail")
-                {
-                    string[] Attachments = mailData.AttFilePath.Split(',');
-                    for (int i = 0; i < Attachments.Length; i++)
-                    {
-                        Attachment attachment = new Attachment(Attachments[i], MediaTypeNames.Application.Octet);
-                        ContentDisposition disposition = attachment.ContentDisposition;
-                        disposition.CreationDate = File.GetCreationTime(Attachments[i]);
-                        disposition.ModificationDate = File.GetLastWriteTime(Attachments[i]);
-                        disposition.ReadDate = File.GetLastAccessTime(Attachments[i]);
-                        disposition.FileName = Path.GetFileName(Attachments[i]);
-                        disposition.Size = new FileInfo(Attachments[i]).Length;
-                        disposition.DispositionType = DispositionTypeNames.Attachment;
-                        msg.Attachments.Add(attachment);
-                    }
-                }
-
-                msg.Subject = mailData.MailSubject;
-                msg.IsBodyHtml = true;
-                msg.Body = HttpUtility.UrlDecode(mailData.MailBody);
-                SmtpClient client = new SmtpClient();
-                client.UseDefaultCredentials = true;
-                //client.Host = dcGeneralMailSettings["SendMailSMTPClientHost"];
-                //client.Port = Convert.ToInt32(dcGeneralMailSettings["SendMailSMTPClientPort"]);
-                //client.EnableSsl = Convert.ToBoolean(Convert.ToInt32(dcGeneralMailSettings["SendMailIsSSLEnabled"]));
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-
-                if (mailData.SenderPassword != "")
-                {
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(msg.From.User, mailData.SenderPassword);
-                }
-
-                //client.Timeout = Convert.ToInt32(dcGeneralMailSettings["SendMailSMTPClientTimeout"]);
-
-                client.Send(msg);
-                execResult.ErrorCode = 0;
-                execResult.ErrorException = null;
-                LogMail(mailData, true, "");
-                return execResult;
-            }
-            catch (Exception ex)
-            {
-                LogMail(mailData, false, ex.ToString());
-                execResult.ErrorCode = HelperEnums.ErrorCode.Exception;
-                execResult.ErrorException = ex.ToString();
-                return execResult;
-            }
-            finally
-            {
-                msg.Dispose();
-            }
-        }
-
-        public void LogMail(SendMailData mailData, bool isSent, string exception)
-        {
-            try
-            {
-                if (mailData.AttFilePath != "ExceptionMail")
-                {
-                    Dictionary<string, string> parameters = new Dictionary<string, string>();
-                    parameters.Add("@Attachments", string.IsNullOrEmpty(mailData.AttFilePath) ? "" : mailData.AttFilePath);
-                    parameters.Add("@MailCC", string.IsNullOrEmpty(mailData.CCs) ? "" : mailData.CCs);
-                    parameters.Add("@MailBody", string.IsNullOrEmpty(mailData.MailBody) ? "" : mailData.MailBody);
-                    parameters.Add("@MailSubject", string.IsNullOrEmpty(mailData.MailSubject) ? "" : mailData.MailSubject);
-                    parameters.Add("@MailTo", string.IsNullOrEmpty(mailData.RecieverMail) ? "" : mailData.RecieverMail);
-                    parameters.Add("@MailFrom", string.IsNullOrEmpty(mailData.SenderMail) ? "" : mailData.SenderMail);
-                    parameters.Add("@IsSent", isSent ? "1" : "0");
-                    parameters.Add("@Exception", string.IsNullOrEmpty(exception) ? "No Exception" : exception);
-                    DBConsumer.CallSQLDB(new DBExecParams() { ConString = "", StoredProcedure = "spAppLogsMailLog", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-            }
-        }
-
-        public void SendExceptionMail(string ExceptionFiredFrom, string ExceptionDetails)
-        {
-            //SendMailData mailData = new SendMailData();
-            //Dictionary<string, string> dcExceptionMailSettings = GetLookups("ExceptionMailSettings");
-            //mailData.MailBody = dcExceptionMailSettings["ExceptionMailBody"].Replace("#*FirstName*#", dcExceptionMailSettings["ExceptionReceiverName"]).Replace("#*ExceptionFiredFrom*#", ExceptionFiredFrom).Replace("#*ExceptionDetails*#", ExceptionDetails);
-            //mailData.AttFilePath = "ExceptionMail"; // used to detect that this mail is Exception mail so it will not logged.
-            //mailData.MailSubject = dcExceptionMailSettings["ExceptionMailSubject"].Replace("#*ExceptionFiredFrom*#", ExceptionFiredFrom);
-            //mailData.RecieverMail = dcExceptionMailSettings["ExceptionReceiverMail"];
-            //mailData.RecieverName = dcExceptionMailSettings["ExceptionReceiverName"];
-            //mailData.SenderMail = dcExceptionMailSettings["ExceptionSenderMail"];
-            //mailData.SenderName = dcExceptionMailSettings["ExceptionSenderName"];
-            //mailData.SenderPassword = dcExceptionMailSettings["ExceptionSenderPassword"];
-            //SendMail(mailData);
-        }
-
         //public void ShowJSAlert(System.Web.UI.Page Page, string Message)
         //{
         //    string script = "alert(\"" + Message + "\");";
@@ -679,21 +554,4 @@ namespace Buddy.Utilities
         public string MonthName_EN;
         public string MonthName_AR;
     }  
-
-    public class SendMailData
-    {
-        public string SenderName { get; set; }
-        public string SenderMail { get; set; }
-        public string SenderPassword { get; set; }
-        public string SMTPClientHost { get; set; }
-        public int SMTPClientPort { get; set; }
-        public bool IsSSLEnabled { get; set; }
-        public int SMTPClientTimeout { get; set; }
-        public string RecieverName { get; set; }
-        public string RecieverMail { get; set; }
-        public string CCs = "";
-        public string MailSubject { get; set; }
-        public string AttFilePath = "";
-        public string MailBody { get; set; }
-    }
 }

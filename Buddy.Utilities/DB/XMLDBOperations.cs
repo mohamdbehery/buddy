@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Buddy.Utilities
+namespace Buddy.Utilities.DB
 {
     public class XMLDBOperations
     {

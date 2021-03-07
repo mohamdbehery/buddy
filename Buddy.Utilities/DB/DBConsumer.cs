@@ -1,15 +1,11 @@
-﻿using Buddy.Utilities.Models;
+﻿using Buddy.Utilities.Enums;
+using Buddy.Utilities.Models;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Serialization;
-using static Buddy.Utilities.HelperEnums;
+using static Buddy.Utilities.Enums.HelperEnums;
 
 namespace Buddy.Utilities.DB
 {

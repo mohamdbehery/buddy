@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Buddy.Utilities.HelperEnums;
+using static Buddy.Utilities.Enums.HelperEnums;
 
-namespace Buddy.Utilities
+namespace Buddy.Utilities.Enums
 {
     public static class Constants
     {

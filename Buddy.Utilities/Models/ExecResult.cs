@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Buddy.Utilities.Enums;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -7,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using static Buddy.Utilities.HelperEnums;
+using static Buddy.Utilities.Enums.HelperEnums;
 
-namespace Buddy.Utilities
+namespace Buddy.Utilities.Models
 {
     public class ExecResult
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Buddy.Utilities.Enums;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -27,7 +28,7 @@ namespace Buddy.Utilities
         /// ex: "C:\Inetpub\BuddyLogger"
         /// </summary>
         /// <param name="logDirectory"></param>
-        public Logger(string logDirectory)
+        public Logger(string logDirectory): this()
         {
             this.LogsDirectory = logDirectory;
         }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Buddy.Utilities.HelperEnums;
+﻿using System.Collections.Generic;
+using static Buddy.Utilities.Enums.HelperEnums;
 
 namespace Buddy.Utilities.Models
 {

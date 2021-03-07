@@ -36,12 +36,16 @@ namespace RabbitMQClientWinService
             helper.Logger.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
             try
             {
-                if (UseThreadPool)
-                    mQClient = new ManualMQClient();
-                else
-                    mQClient = new RabbitMQClient();
+                // placing the start code in a task so that i can give the control back to the service
+                Task.Factory.StartNew(() =>
+                {
+                    if (UseThreadPool)
+                        mQClient = new ManualMQClient();
+                    else
+                        mQClient = new RabbitMQClient();
 
-                mQClient.StartMessenger();                
+                    mQClient.StartMessenger();
+                });
             }
             catch (Exception ex)
             {

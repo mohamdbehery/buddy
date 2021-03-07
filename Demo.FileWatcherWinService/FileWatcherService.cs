@@ -13,7 +13,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static Buddy.Utilities.HelperEnums;
+using static Buddy.Utilities.Enums.HelperEnums;
 
 namespace FileWatcherWinService
 {
