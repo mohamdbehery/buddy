@@ -72,6 +72,7 @@
 - No difference between Person person1 = new Person{ Name = ""}; AND Person person1 = new Person(){ Name = ""};
 - CTE can be refertenced only once, right after defining it, so if you want to use a permenant table consider using temp table or table variable
 - Delegates: is and agreement\contract between publisher and subscriber, so simply if you want to do some generic functionality right after finishing executing some task then implement a Delegate Evenet for example:
+	* so the idea here is that you have the ability to add any other functionality to be executed after finishing video decoder,
 	public class MyApp{
 		public void MyMethod(){
 			VideoDecoder decoder = new VideoDecoder(); //publisher
@@ -83,8 +84,7 @@
 		}
 
 		public class VideoDecoder{ // publisher
-			public delegate void VideoDecodedEventHandler(object source, EventArgs args);
-			public event VideoDecodedEventHandler VideoDecoded;
+			public event EventHandler VideoDecoded;
 
 			public void Decode(){
 				// decoding...

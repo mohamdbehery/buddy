@@ -3,6 +3,7 @@ using Buddy.Utilities.Enums;
 using Buddy.Utilities.Models;
 using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
+using RabbitMQClientWinService.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,14 +12,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using static Buddy.Utilities.Enums.HelperEnums;
-using static RabbitMQClientWinService.Helpers.Enums;
+using static RabbitMQClientWinService.Models.MQEnums;
 
-namespace RabbitMQClientWinService.Helpers
+namespace RabbitMQClientWinService.MessageQueue
 {
     public abstract class MessageQueueClient
     {
-        public delegate void MessengerStartedEventHandler(object source, EventArgs args);
-        public event MessengerStartedEventHandler MessengerStarted;
+        // represents a delegate
+        public event EventHandler MessengerStarted;
 
         public Helper helper = new Helper();
         private string conStr
@@ -65,9 +66,9 @@ namespace RabbitMQClientWinService.Helpers
 
         public abstract int MessageCountToFetch { get; }
         public abstract void StartMessenger();
-        public List<Message> FetchMQMessages()
+        public List<MQMessage> FetchMQMessages()
         {
-            List<Message> messages = new List<Message>();
+            List<MQMessage> messages = new List<MQMessage>();
             ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { 
                 ConString = conStr, StoredProcedure = "spFetchMessages", ExecType = DBExecType.DataAdapter, Parameters = new Dictionary<string, string>() { { "@FetchMessageCount", MessageCountToFetch.ToString() } }
             });
@@ -77,7 +78,7 @@ namespace RabbitMQClientWinService.Helpers
                 {
                     foreach (DataRow item in execResult.ResultSet.Tables[0].Rows)
                     {
-                        messages.Add(new Message()
+                        messages.Add(new MQMessage()
                         {
                             MessageID = Convert.ToInt32(item["Id"]),
                             MessageData = Convert.ToString(item["MessageData"])
@@ -88,15 +89,15 @@ namespace RabbitMQClientWinService.Helpers
             helper.Logger.Log($"{messages.Count()} messages fetched...");
             return messages;
         }
-        public abstract void PublishNewMessages(List<Message> messages);
-        public void ConsumeMessage(BasicDeliverEventArgs e, Message message = null)
+        public abstract void PublishNewMessages(List<MQMessage> messages);
+        public void ConsumeMessage(BasicDeliverEventArgs e, MQMessage message = null)
         {
             helper.Logger.Log($"///////////// Message Received /////////////");
             if (message == null)
             {
                 var body = e.Body.ToArray();
                 var messageJson = Encoding.UTF8.GetString(body);
-                message = JsonConvert.DeserializeObject<Message>(messageJson);
+                message = JsonConvert.DeserializeObject<MQMessage>(messageJson);
             }
             if (string.IsNullOrEmpty(message.MessageData) || message.MessageData == "INVALID")
             {
@@ -119,7 +120,7 @@ namespace RabbitMQClientWinService.Helpers
                 }
             }
         }
-        public ExecResult ExecuteMQMessage(Message message)
+        public ExecResult ExecuteMQMessage(MQMessage message)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>()
             {
@@ -142,7 +143,7 @@ namespace RabbitMQClientWinService.Helpers
 
             return execResult;
         }
-        public void AfterMessageExecution(BasicDeliverEventArgs e, Message message, ExecResult returnedData)
+        public void AfterMessageExecution(BasicDeliverEventArgs e, MQMessage message, ExecResult returnedData)
         {
             if (returnedData.ErrorCode == 0)
             {
@@ -156,7 +157,7 @@ namespace RabbitMQClientWinService.Helpers
             }
         }
         public abstract void MessageAknowledge(MQMessageState state, BasicDeliverEventArgs e = null);
-        public void RecordMessageFailure(Message msg, string failureMessage)
+        public void RecordMessageFailure(MQMessage msg, string failureMessage)
         {
             helper.Logger.Log(failureMessage);
             Dictionary<string, string> parameters = new Dictionary<string, string>()

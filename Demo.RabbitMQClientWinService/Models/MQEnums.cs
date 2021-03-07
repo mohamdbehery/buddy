@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RabbitMQClientWinService.Helpers
+namespace RabbitMQClientWinService.Models
 {
-    public class Enums
+    public class MQEnums
     {
         public enum MQMessageState : int
         {

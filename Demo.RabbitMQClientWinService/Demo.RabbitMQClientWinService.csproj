@@ -73,12 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Enums.cs" />
-    <Compile Include="Helpers\IMessageQueueClient.cs" />
-    <Compile Include="Helpers\ManualMQClient.cs" />
-    <Compile Include="Helpers\MessageQueueClient.cs" />
-    <Compile Include="Helpers\RabbitMQClient.cs" />
-    <Compile Include="Message.cs" />
+    <Compile Include="Models\MQEnums.cs" />
+    <Compile Include="MessageQueue\IMessageQueueClient.cs" />
+    <Compile Include="MessageQueue\ManualMQClient.cs" />
+    <Compile Include="MessageQueue\MessageQueueClient.cs" />
+    <Compile Include="MessageQueue\RabbitMQClient.cs" />
+    <Compile Include="Models\MQMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>

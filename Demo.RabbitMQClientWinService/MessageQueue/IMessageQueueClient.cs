@@ -1,14 +1,15 @@
 ﻿using Buddy.Utilities;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using RabbitMQClientWinService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static RabbitMQClientWinService.Helpers.Enums;
+using static RabbitMQClientWinService.Models.MQEnums;
 
-namespace RabbitMQClientWinService.Helpers
+namespace RabbitMQClientWinService.MessageQueue
 {
     public interface IMessageQueueClient
     {
@@ -17,8 +18,8 @@ namespace RabbitMQClientWinService.Helpers
         bool ParallelExecuteMessages { get; }
         public int FetchMessagesTimeIntervalInMSs { get; }
         void StartMessenger();
-        void PublishNewMessages(List<Message> messages);
-        void ConsumeMessage(BasicDeliverEventArgs e, Message message);
+        void PublishNewMessages(List<MQMessage> messages);
+        void ConsumeMessage(BasicDeliverEventArgs e, MQMessage message);
         void MessageAknowledge(MQMessageState state, BasicDeliverEventArgs e = null);
     }
 }

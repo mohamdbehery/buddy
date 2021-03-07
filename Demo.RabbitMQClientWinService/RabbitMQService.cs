@@ -1,6 +1,6 @@
 ﻿using Buddy.Utilities;
 using RabbitMQ.Client;
-using RabbitMQClientWinService.Helpers;
+using RabbitMQClientWinService.MessageQueue;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

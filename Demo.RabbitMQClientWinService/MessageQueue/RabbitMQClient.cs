@@ -2,15 +2,16 @@
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using RabbitMQClientWinService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-using static RabbitMQClientWinService.Helpers.Enums;
+using static RabbitMQClientWinService.Models.MQEnums;
 
-namespace RabbitMQClientWinService.Helpers
+namespace RabbitMQClientWinService.MessageQueue
 {
     public class RabbitMQClient : MessageQueueClient
     {
@@ -34,7 +35,7 @@ namespace RabbitMQClientWinService.Helpers
             serviceTimer.Elapsed += (sender, e) =>
             {
                 helper.Logger.Log("...^_^...");
-                List<Message> messages = FetchMQMessages();
+                List<MQMessage> messages = FetchMQMessages();
                 if (messages.Count > 0)
                     PublishNewMessages(messages);
             };
@@ -61,14 +62,14 @@ namespace RabbitMQClientWinService.Helpers
             }
         }
 
-        public override void PublishNewMessages(List<Message> messages)
+        public override void PublishNewMessages(List<MQMessage> messages)
         {
             try
             {
                 this.EstablishRabbitMQ();
                 RabbitMQChannel.QueueDeclare(DefaultQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
                 helper.Logger.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
-                foreach (Message msg in messages)
+                foreach (MQMessage msg in messages)
                 {
                     PublishMessage(DefaultQueue, msg);
                 }
@@ -82,7 +83,7 @@ namespace RabbitMQClientWinService.Helpers
             }
         }
 
-        public void PublishMessage(string queue, Message msg)
+        public void PublishMessage(string queue, MQMessage msg)
         {
             try
             {

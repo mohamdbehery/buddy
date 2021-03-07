@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RabbitMQClientWinService
+namespace RabbitMQClientWinService.Models
 {
-    public class Message
+    public class MQMessage
     {
         public int MessageID { get; set; }
         public DateTime FetchDate { get; set; }

@@ -1,13 +1,14 @@
 ﻿using RabbitMQ.Client.Events;
+using RabbitMQClientWinService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static RabbitMQClientWinService.Helpers.Enums;
+using static RabbitMQClientWinService.Models.MQEnums;
 
-namespace RabbitMQClientWinService.Helpers
+namespace RabbitMQClientWinService.MessageQueue
 {
     public class ManualMQClient : MessageQueueClient
     {
@@ -29,7 +30,7 @@ namespace RabbitMQClientWinService.Helpers
                 OnMessengerStarted();
                 do
                 {
-                    List<Message> messages = FetchMQMessages();
+                    List<MQMessage> messages = FetchMQMessages();
                     if (messages.Any())
                         PublishNewMessages(messages);
                     else
@@ -44,7 +45,7 @@ namespace RabbitMQClientWinService.Helpers
             }
         }
 
-        public override void PublishNewMessages(List<Message> messages)
+        public override void PublishNewMessages(List<MQMessage> messages)
         {
             List<Task> taskList = new List<Task>();
             foreach (var message in messages)

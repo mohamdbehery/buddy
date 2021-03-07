@@ -19,7 +19,7 @@ namespace Buddy.Utilities
         private Helper helper = new Helper();
 
         public void OnMessengerStarted(object source, EventArgs args)
-        {
+        {            
             SendSMS();
         }
 
