@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{172A36F1-6C62-4AA5-B14B-D47A96B09F03}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>FileWatcherWinService</RootNamespace>
-    <AssemblyName>FileWatcherWinService</AssemblyName>
+    <RootNamespace>FileWatcher</RootNamespace>
+    <AssemblyName>FileWatcher</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

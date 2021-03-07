@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E2855058-70DB-49FF-8E77-8214300421D7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>RabbitMQClientWinService</RootNamespace>
-    <AssemblyName>RabbitMQClientWinService</AssemblyName>
+    <RootNamespace>MQClient</RootNamespace>
+    <AssemblyName>MQClient</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

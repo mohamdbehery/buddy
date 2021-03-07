@@ -84,7 +84,7 @@ namespace Buddy.Utilities
         }
         public void SendSMS()
         {
-            helper.Logger.Log("Sending SMS");
+            helper.Logger.Log("Sending SMS...");
         }
     }
 }

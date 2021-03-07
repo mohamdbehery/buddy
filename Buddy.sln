@@ -26,11 +26,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.ConnectOracle10G", "De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.DesignPatterns", "Demo.DesignPatterns\Demo.DesignPatterns.csproj", "{C051EF7B-65F7-4075-A10A-9B29B613BF54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.FileWatcherWinService", "Demo.FileWatcherWinService\Demo.FileWatcherWinService.csproj", "{172A36F1-6C62-4AA5-B14B-D47A96B09F03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.FileWatcher", "Demo.FileWatcher\Demo.FileWatcher.csproj", "{172A36F1-6C62-4AA5-B14B-D47A96B09F03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Multithreading", "Demo.Multithreading\Demo.Multithreading.csproj", "{8F6381E2-B065-4063-8748-1DA44C2BC8C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.RabbitMQClientWinService", "Demo.RabbitMQClientWinService\Demo.RabbitMQClientWinService.csproj", "{E2855058-70DB-49FF-8E77-8214300421D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.MQClient", "Demo.MQClient\Demo.MQClient.csproj", "{E2855058-70DB-49FF-8E77-8214300421D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.SMSGateway", "Demo.SMSGateway\Demo.SMSGateway.csproj", "{303CB5A6-084D-4B37-B105-4E90F661362D}"
 EndProject
