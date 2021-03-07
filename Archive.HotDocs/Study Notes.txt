@@ -25,7 +25,6 @@
 		public void LoadConnectionString(){
 			....
 		}
-
 		public abstract void LoadData();
 		public abstract void SaveData();
 	}
@@ -33,7 +32,6 @@
 	public class SQLDataAccess: DataAccess{
 		public override void LoadData(){			
 		}
-
 		public override void SaveData(){			
 		}
 	}
@@ -41,7 +39,6 @@
 	public class OracleDataAccess: DataAccess{
 		public override void LoadData(){			
 		}
-
 		public override void SaveData(){			
 		}
 	}
@@ -110,3 +107,5 @@
 			}
 		}
 	}
+
+- 
