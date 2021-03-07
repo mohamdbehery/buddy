@@ -17,6 +17,12 @@ namespace Buddy.Utilities
     public class Notifier
     {
         private Helper helper = new Helper();
+
+        public void OnMessengerStarted(object source, EventArgs args)
+        {
+            SendSMS();
+        }
+
         public ExecResult SendMail(MailMessage mailMessage)
         {
             ExecResult execResult = new ExecResult();
@@ -75,6 +81,10 @@ namespace Buddy.Utilities
             {
                 msg.Dispose();
             }
+        }
+        public void SendSMS()
+        {
+            helper.Logger.Log("Sending SMS");
         }
     }
 }

@@ -26,6 +26,7 @@ namespace RabbitMQClientWinService.Helpers
             helper.Logger.Log("Publisher started..");
             try
             {
+                OnMessengerStarted();
                 do
                 {
                     List<Message> messages = FetchMQMessages();
@@ -33,7 +34,6 @@ namespace RabbitMQClientWinService.Helpers
                         PublishNewMessages(messages);
                     else
                         Thread.Sleep(FetchMessagesTimeIntervalInMSs);
-
                 }
                 while (continueRun);
             }

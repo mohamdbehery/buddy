@@ -40,6 +40,8 @@ namespace RabbitMQClientWinService.Helpers
             };
             serviceTimer.Interval = FetchMessagesTimeIntervalInMSs;
             serviceTimer.Enabled = true;
+
+            OnMessengerStarted();
         }
 
         public void EstablishRabbitMQ()

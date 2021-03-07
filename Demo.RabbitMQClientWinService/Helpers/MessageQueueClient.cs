@@ -17,6 +17,9 @@ namespace RabbitMQClientWinService.Helpers
 {
     public abstract class MessageQueueClient
     {
+        public delegate void MessengerStartedEventHandler(object source, EventArgs args);
+        public event MessengerStartedEventHandler MessengerStarted;
+
         public Helper helper = new Helper();
         private string conStr
         {
@@ -27,6 +30,12 @@ namespace RabbitMQClientWinService.Helpers
         }
         public MessageQueueClient()
         {
+        }
+
+        protected void OnMessengerStarted()
+        {
+            if (MessengerStarted != null)
+                MessengerStarted(this, EventArgs.Empty);
         }
         public string DefaultQueue
         {

@@ -74,4 +74,39 @@
 - Overloading can be acheived by difference in return type as long as we have a difference in parameters
 - No difference between Person person1 = new Person{ Name = ""}; AND Person person1 = new Person(){ Name = ""};
 - CTE can be refertenced only once, right after defining it, so if you want to use a permenant table consider using temp table or table variable
-- Delegates: is and agreement\contract between publisher and subscriber
+- Delegates: is and agreement\contract between publisher and subscriber, so simply if you want to do some generic functionality right after finishing executing some task then implement a Delegate Evenet for example:
+	public class MyApp{
+		public void MyMethod(){
+			VideoDecoder decoder = new VideoDecoder(); //publisher
+			Notifier notifier = new Notifier(); //subscriber
+
+			// let the notifier subscribe to the VideDecoded event
+			decoder.VideoDecoded += notifier.OnVideoDecoded;
+			decoder.Decode();
+		}
+
+		public class VideoDecoder{ // publisher
+			public delegate void VideoDecodedEventHandler(object source, EventArgs args);
+			public event VideoDecodedEventHandler VideoDecoded;
+
+			public void Decode(){
+				// decoding...
+			}
+			protected void OnVideoDecoded()
+			{
+				if (VideoDecoded != null)
+					VideoDecoded(this, EventArgs.Empty);
+			}			
+		}
+
+		public class Notifier{ // subscriber			
+			public void OnVideoDecoded()
+			{
+				SendMail();
+			}
+			
+			public void SendMail(){
+				// sending mail...
+			}
+		}
+	}

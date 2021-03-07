@@ -36,16 +36,19 @@ namespace RabbitMQClientWinService
             helper.Logger.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
             try
             {
-                // placing the start code in a task so that i can give the control back to the service
-                Task.Factory.StartNew(() =>
-                {
-                    if (UseThreadPool)
-                        mQClient = new ManualMQClient();
-                    else
-                        mQClient = new RabbitMQClient();
+                // the below mQClient is the publisher which has the DelegateEvent implemented
+                // subscriper to DelegateEvent implemented in MessageQueueClient
+                Notifier notifier = new Notifier();
+                if (UseThreadPool)
+                    mQClient = new ManualMQClient();
+                else
+                    mQClient = new RabbitMQClient();
 
-                    mQClient.StartMessenger();
-                });
+                // before StartMessanger, subscripe with notifier
+                mQClient.MessengerStarted += notifier.OnMessengerStarted;
+
+                // placing the start code in a task so that i can give the control back to the service
+                Task.Factory.StartNew(() => { mQClient.StartMessenger(); });
             }
             catch (Exception ex)
             {
