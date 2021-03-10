@@ -108,4 +108,13 @@
 		}
 	}
 
-- 
+- Git is a distributed version control system but TFS is a centralized VCS, so in GIT, every one has a local copy of the source code and also support branching.
+- Git Command (git config) has a 3 levels of configuration: (git config --global) which use the global config file to be applied on all users that use this computer, (git config --system) which use the system config file to be applied on all repositories for current user and (git config --local) use use the repository config file to be applied on a particular repository
+- Every Git Commit contains a complete snapshot of the respo.
+- Use command (git status) to show the status of your changes, or (git status -s) for short status
+- Git > local changes > stagging are (local) the stagging are is called (index) > push to remote server
+- If you want to review the stagged files before commit, use this command (git diff --staged)
+- To view history of repo activities, use (git log)
+- The branch is a new commit that pointing to some particular parent (commit in another branch)
+- The merge is nothing but a new commit that pointing to 2 parents (2 commits in 2 branches)
+- (git rebase) is simply making the branch pointing to some particular parent branch(commit)
