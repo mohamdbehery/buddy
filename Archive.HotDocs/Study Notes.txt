@@ -118,3 +118,4 @@
 - The branch is a new commit that pointing to some particular parent (commit in another branch)
 - The merge is nothing but a new commit that pointing to 2 parents (2 commits in 2 branches)
 - (git rebase) is simply making the branch pointing to some particular parent branch(commit)
+
