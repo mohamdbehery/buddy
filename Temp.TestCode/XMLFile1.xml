@@ -1,90 +1,365 @@
-﻿<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="xml" omit-xml-declaration="yes" />
+﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
+	<xsl:variable name="smallCase" select="'abcdefghijklmnopqrstuvwxyz'"/>
+	<xsl:variable name="upperCase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
 	<xsl:template match="*">
-		<ServiceOrderCollection>
-			<ServiceOrderItem>
-				<ProductType>BlueStreak</ProductType>
-				<ServiceID>3</ServiceID>
-				<LoanID>
-					<xsl:value-of select="//ObjectID" />
-				</LoanID>
-				<SaveNativeResponse>true</SaveNativeResponse>
-				<RequestXml>
-					<BluestreakItem>
-						<ServiceOrderCollection>
-							<ServiceOrderItem>
-								<ServiceOrderTemplateSubscriberID>services.testservices.com-ServiceOrderTemplate-CoreLogicExtended</ServiceOrderTemplateSubscriberID>
-								<DestinationOrganizationSubscriberID>services.testservices.com-Organization-TestOrganization</DestinationOrganizationSubscriberID>
-								<ServiceType>bluestreak</ServiceType>
-								<ProductType>Property Search</ProductType>
-								<Object>
-									<xsl:text>Loan</xsl:text>
-								</Object>
-								<ObjectID>
-									<xsl:value-of select="//ObjectID" />
-								</ObjectID>
-								<Product>POR</Product>
-								<SourceObject>
-									<xsl:text>Property</xsl:text>
-								</SourceObject>
-								<SourceObjectID>
-									<xsl:value-of select="//PropertyID"/>
-								</SourceObjectID>
-								<SearchIndexCollection>
-									<SearchIndexItem>
-										<Attribute>LoanID</Attribute>
-										<Value>
-											<xsl:value-of select="//ObjectID"/>
-										</Value>
-									</SearchIndexItem>
-								</SearchIndexCollection>
-								<RequestXml>
-									<PropertySearch>
-										<Address>
-											<xsl:value-of select="//Address"/>
-										</Address>
-										<City>
-											<xsl:value-of select="//City"/>
-										</City>
-										<State>
-											<xsl:value-of select="//State"/>
-										</State>
-										<PostalCode>
-											<xsl:value-of select="//PostalCode"/>
-										</PostalCode>
-										<BorrowerFirst>
-											<xsl:value-of select="//PrimaryBorrowerFirstName"/>
-										</BorrowerFirst>
-										<BorrowerMiddle>
-											<xsl:value-of select="//PrimaryBorrowerMiddleName"/>
-										</BorrowerMiddle>
-										<BorrowerLast>
-											<xsl:value-of select="//PrimaryBorrowerLastName"/>
-										</BorrowerLast>
-										<CoBorrowerFirst>
-											<xsl:value-of select="//SecondaryBorrowerFirstName"/>
-										</CoBorrowerFirst>
-										<CoBorrowerMiddle>
-											<xsl:value-of select="//SecondaryBorrowerMiddleName"/>
-										</CoBorrowerMiddle>
-										<CoBorrowerLast>
-											<xsl:value-of select="//SecondaryBorrowerLastName"/>
-										</CoBorrowerLast>
-										<IncludeImages>1</IncludeImages>
-										<!-- <LoanNumber>                        <xsl:value-of select="//Loan"/>                      </LoanNumber> -->
-										<LoanFundingDate>
-											<xsl:value-of select="//LoanFundingDate"/>
-										</LoanFundingDate>
-										<LoanOriginalBalance>
-											<xsl:value-of select="//OriginalBalance"/>
-										</LoanOriginalBalance>
-									</PropertySearch>
-								</RequestXml>
-							</ServiceOrderItem>
-						</ServiceOrderCollection>
-					</BluestreakItem>
-				</RequestXml>
-			</ServiceOrderItem>
-		</ServiceOrderCollection>
+		<Action>
+			<xsl:choose>
+				<xsl:when test ="count(//ProductOrderID) = 0 and //isDefault =0" >
+					<LienReportItem>
+						<CustomErrorMessage>Default product not set</CustomErrorMessage>
+					</LienReportItem>
+				</xsl:when>
+				<xsl:otherwise>
+					<LienReportItem>
+						<Product>
+							<xsl:value-of select="//Product" />
+						</Product>
+						<MilestoneTemplateID>2449</MilestoneTemplateID>
+						<NameStandardisationEventObject>Attachment</NameStandardisationEventObject>
+						<NameStandardisationEventID>994</NameStandardisationEventID>
+						<PollingEventID>997</PollingEventID>
+						<Collection>
+							<xsl:value-of select="//Collection" />
+						</Collection>
+						<CollectionType>
+							<xsl:value-of select="//CollectionType" />
+						</CollectionType>
+						<IsProductIsCLEAR>
+							<xsl:choose>
+								<xsl:when test="(//Product='CLEAR') or (//Product= 'Snapshot')">
+									<xsl:text>true</xsl:text>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:text>false</xsl:text>
+								</xsl:otherwise>
+							</xsl:choose>
+						</IsProductIsCLEAR>
+						<SendValidationErrorEmail>true</SendValidationErrorEmail>
+						<xsl:choose>
+							<xsl:when test="//Product='FICA' ">
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<ValidateHeaderColumnsOnlyforQueuedImport>true</ValidateHeaderColumnsOnlyforQueuedImport>
+								<ImportForm>ImportQboImport</ImportForm>
+							</xsl:when>
+							<xsl:when test="//Product='SSM' ">
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<ImportForm>ImportQboImport</ImportForm>
+								<ValidateHeaderColumnsOnlyforQueuedImport>true</ValidateHeaderColumnsOnlyforQueuedImport>
+							</xsl:when>
+							<xsl:when test="//Product='ODNI Custom'">
+								<Delimiter>|</Delimiter>
+								<RequiredUniqueReferenceID>true</RequiredUniqueReferenceID>
+								<ReferenceIDColumnName>ReferenceID</ReferenceIDColumnName>
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<ImportForm>ImportToStaging</ImportForm>
+							</xsl:when>
+							<xsl:when test="((//OrganizationID = 1548624 or //OrganizationID = 1444026 or //OrganizationID = 1289119 or //OrganizationID = 1491518) and (//Product='Lien Report 2.0') or (//Product= 'Lien Report Lite 2.0'))">
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<PrimaryColumnIndex>0</PrimaryColumnIndex>
+								<ImportForm>ImportToStaging</ImportForm>
+								<IsProductOrderStatusUpdateRequired>true</IsProductOrderStatusUpdateRequired>
+								<SkipValidRecords>true</SkipValidRecords>
+							</xsl:when>
+							<xsl:when test="//Product='Lien Report' or 'Property Ownership Report' or 'Lien Report Lite'">
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<PrimaryColumnIndex>0</PrimaryColumnIndex>
+								<xsl:choose>
+									<xsl:when test="//OrganizationID = 14822 and contains(//InputFilePath,'ISERIES')">
+										<AckRequired>true</AckRequired>
+										<OutPutFileName></OutPutFileName>
+										<FromAddress>advisorysupport@corelogic.com</FromAddress>
+										<ToAddress>navi@corelogic.com;mamanoj@corelogic.com;vtulasi@corelogic.com;kakumar@corelogic.com</ToAddress>
+									</xsl:when>
+									<xsl:when test="//OrganizationID = 14822 and contains(//InputFilePath,'DALSINPUT')">
+										<AckRequired>true</AckRequired>
+										<OutPutFileName>TADV.ZYONT.CU1059604.BofaMonitoringAck</OutPutFileName>
+										<FromAddress>advisorysupport@corelogic.com</FromAddress>
+										<ToAddress>navi@corelogic.com;mamanoj@corelogic.com;vtulasi@corelogic.com;kakumar@corelogic.com</ToAddress>
+									</xsl:when>
+								</xsl:choose>
+								<ImportForm>ImportToStaging</ImportForm>
+							</xsl:when>
+							<xsl:when test="(//Product='Portfolio Risk Report') or (//Product ='Portfolio Risk Report Lite')">
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<PrimaryColumnIndex>0</PrimaryColumnIndex>
+								<ImportForm>ImportToStaging</ImportForm>
+							</xsl:when>
+							<xsl:when test="//Product='Lien Report 2.0' or 'Lien Report Lite 2.0'">
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<PrimaryColumnIndex>0</PrimaryColumnIndex>
+								<ImportForm>ImportToStaging</ImportForm>
+							</xsl:when>
+							<xsl:when test="(//Product='Portfolio Risk Report 2.0') or (//Product= 'Portfolio Risk Report Lite 2.0')">
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<PrimaryColumnIndex>0</PrimaryColumnIndex>
+								<ImportForm>ImportToStaging</ImportForm>
+							</xsl:when>
+							<xsl:when test="//OrganizationID = 14822">
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RenameHeaderColumns>false</RenameHeaderColumns>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<ImportForm>ImportToStaging</ImportForm>
+							</xsl:when>
+							<xsl:when test="//OrganizationID = 1060742">
+								<RenameHeaderColumns>false</RenameHeaderColumns>
+								<RequiredLoadInitialData>true</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<ImportForm>ImportToStaging</ImportForm>
+							</xsl:when>
+						</xsl:choose>
+						<xsl:choose>
+							<xsl:when test="//Product= 'CLEAR'">
+								<PrimaryColumnIndex>0</PrimaryColumnIndex>
+								<!--<PrimaryColumnName>LOAN           Number</PrimaryColumnName>-->
+								<IsDuplicateRecordsEliminationRequired>false</IsDuplicateRecordsEliminationRequired>
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<SaveCountOfRecordsReceivedInfile>true</SaveCountOfRecordsReceivedInfile>
+								<xsl:choose>
+									<xsl:when test="//OrganizationID = '1523803'">
+										<OutPutFileName>
+											<xsl:value-of select="concat('TADV.ZYONT.O',//OrganizationID,'.P0000',//ProductId,'.PO',//ProductOrderID,'.CLEARValidationError')"/>
+										</OutPutFileName>
+										<RetainOldFileName>true</RetainOldFileName>
+									</xsl:when>
+									<xsl:otherwise>
+										<OutPutFileName>
+											<xsl:value-of select="concat('TADV.ZYONT.V01',//OrganizationID,'.P0000',//ProductId,'_PO',//ProductOrderID,'_CLEARValidationError')"/>
+										</OutPutFileName>
+										<RetainOldFileName>false</RetainOldFileName>
+									</xsl:otherwise>
+								</xsl:choose>
+								<IsReferenceLoanDuplicateCheckRequired>
+									<xsl:choose>
+										<xsl:when test="//OrganizationID = '1523803'">
+											<xsl:text>false</xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:text>false</xsl:text>
+										</xsl:otherwise>
+									</xsl:choose>
+								</IsReferenceLoanDuplicateCheckRequired>
+								<ImportForm>ImportToStaging</ImportForm>
+								<ImportFileType>
+									<xsl:value-of select="//ImportFileType" />
+								</ImportFileType>
+							</xsl:when>
+							<xsl:when test="//Product='Lien Report' and //OrganizationID =35">
+								<Delimiter>,</Delimiter>
+							</xsl:when>
+						</xsl:choose>
+						<xsl:choose>
+							<xsl:when test="//Product= 'Snapshot'">
+								<PrimaryColumnIndex>0</PrimaryColumnIndex>
+								<!--<PrimaryColumnName>LOAN           Number</PrimaryColumnName>-->
+								<IsDuplicateRecordsEliminationRequired>false</IsDuplicateRecordsEliminationRequired>
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<SaveCountOfRecordsReceivedInfile>true</SaveCountOfRecordsReceivedInfile>
+								<OutPutFileName>
+									<xsl:choose>
+										<xsl:when test="//OrganizationID = '1531775'">
+											<xsl:text>CORE_2ND_IN_CLEARInputError</xsl:text>
+										</xsl:when>
+										<xsl:when test="//OrganizationID = '1523803'">
+											<xsl:value-of select="concat('TADV.ZYONT.O',//OrganizationID,'.P0000',//ProductId,'.CLEARInputError')"/>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:value-of select="concat('TADV.O',//OrganizationID,'.P0000',//ProductId,'.CLEARInputError')"/>
+										</xsl:otherwise>
+									</xsl:choose>
+								</OutPutFileName>
+								<IsReferenceLoanDuplicateCheckRequired>
+									<xsl:choose>
+										<xsl:when test="//OrganizationID = '1523803'">
+											<xsl:text>false</xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:text>false</xsl:text>
+										</xsl:otherwise>
+									</xsl:choose>
+								</IsReferenceLoanDuplicateCheckRequired>
+								<ImportForm>ImportToStaging</ImportForm>
+								<ImportFileType>
+									<xsl:value-of select="//ImportFileType" />
+								</ImportFileType>
+							</xsl:when>
+							<xsl:when test="//Product='Lien Report' and //OrganizationID =35">
+								<Delimiter>,</Delimiter>
+							</xsl:when>
+						</xsl:choose>
+						<xsl:variable name="varAttachmentType">
+							<xsl:if test="//Attachment">
+								<xsl:value-of select ="translate(//Attachment,$smallCase,$upperCase)"></xsl:value-of>
+							</xsl:if>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="//Product= 'CLEAR' and (contains($varAttachmentType,'DROP')) ">
+								<PrimaryColumnIndex>0</PrimaryColumnIndex>
+								<!--<PrimaryColumnName>LOAN           Number</PrimaryColumnName>-->
+								<IsDuplicateRecordsEliminationRequired>false</IsDuplicateRecordsEliminationRequired>
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<SaveCountOfRecordsReceivedInfile>true</SaveCountOfRecordsReceivedInfile>
+								<FileType>drop</FileType>
+								<OutPutFileName>
+									<xsl:choose>
+										<xsl:when test="//OrganizationID = '1531775'">
+											<xsl:text>CORE_2ND_IN_CLEARInputError</xsl:text>
+										</xsl:when>
+										<xsl:when test="//OrganizationID = '1523803'">
+											<xsl:value-of select="concat('TADV.ZYONT.O',//OrganizationID,'.P0000',//ProductId,'.CLEARInputError')"/>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:value-of select="concat('TADV.O',//OrganizationID,'.P0000',//ProductId,'.CLEARInputError')"/>
+										</xsl:otherwise>
+									</xsl:choose>
+								</OutPutFileName>
+								<IsReferenceLoanDuplicateCheckRequired>
+									<xsl:choose>
+										<xsl:when test="//OrganizationID = '1523803'">
+											<xsl:text>false</xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:text>false</xsl:text>
+										</xsl:otherwise>
+									</xsl:choose>
+								</IsReferenceLoanDuplicateCheckRequired>
+								<ImportForm>ImportToStaging</ImportForm>
+								<ImportFileType>
+									<xsl:value-of select="//ImportFileType" />
+								</ImportFileType>
+							</xsl:when>
+							<xsl:when test="//Product='Lien Report' and //OrganizationID =35">
+								<Delimiter>,</Delimiter>
+							</xsl:when>
+						</xsl:choose>
+						<xsl:choose>
+							<xsl:when test="//Product='PreBID'">
+								<RenameHeaderColumns>true</RenameHeaderColumns>
+								<RequiredLoadInitialData>false</RequiredLoadInitialData>
+								<RequiredHeaderValidation>true</RequiredHeaderValidation>
+								<ImportForm>ImportToStaging</ImportForm>
+								<IsProductOrderStatusUpdateRequired>true</IsProductOrderStatusUpdateRequired>
+								<SkipValidRecords>true</SkipValidRecords>
+								<ImportFileType>
+									<xsl:value-of select="//ImportFileType" />
+								</ImportFileType>
+							</xsl:when>
+						</xsl:choose>
+						<xsl:choose>
+							<xsl:when test="//Product='Property Ownership Report' and //OrganizationID =2001">
+								<Delimiter>,</Delimiter>
+							</xsl:when>
+						</xsl:choose>
+						<xsl:choose>
+							<xsl:when test="//Product='Lien Report Lite' and //OrganizationID =35">
+								<Delimiter>,</Delimiter>
+							</xsl:when>
+							<xsl:when test="//Product='CLEAR' and //OrganizationID =35">
+								<Delimiter>,</Delimiter>
+							</xsl:when>
+							<xsl:when test="//Product='Portfolio Risk Report Lite' and //OrganizationID =35">
+								<Delimiter>,</Delimiter>
+							</xsl:when>
+							<xsl:when test="//Product='Portfolio Risk Report' and //OrganizationID =35">
+								<Delimiter>|</Delimiter>
+							</xsl:when>
+						</xsl:choose>
+						<SendValidDataEmail>true</SendValidDataEmail>
+						<BatchSize>5000</BatchSize>
+						<ProductSubscriberURN>
+							<xsl:value-of select="//ProductSubscriberURN" />
+						</ProductSubscriberURN>
+						<ProductOrder>
+							<xsl:value-of select="//ProductOrder" />
+						</ProductOrder>
+						<AttachmentID>
+							<xsl:value-of select="//AttachmentID" />
+						</AttachmentID>
+						<OrganizationID>
+							<xsl:value-of select="//OrganizationID" />
+						</OrganizationID>
+						<OrganizationName>
+							<xsl:value-of select="//Organization" />
+						</OrganizationName>
+						<GroupType>
+							<xsl:value-of select="//GroupType" />
+						</GroupType>
+						<ProductID>
+							<xsl:value-of select="//ProductId" />
+						</ProductID>
+						<ServicePricingID>
+							<xsl:value-of select="//ServicePricingID" />
+						</ServicePricingID>
+						<ServiceName>
+							<xsl:value-of select="//ServiceName" />
+						</ServiceName>
+						<ServicePrice>
+							<xsl:value-of select="//ServicePrice" />
+						</ServicePrice>
+						<DestinationTable>
+							<xsl:value-of select="//DestinationTable" />
+						</DestinationTable>
+						<InputFilePath>
+							<xsl:value-of select="//InputFilePath" />
+						</InputFilePath>
+						<xsl:if test ="//ProductOrderID != ''">
+							<ProductOrderID>
+								<xsl:value-of select="//ProductOrderID" />
+							</ProductOrderID>
+						</xsl:if>
+						<SubscriberURN>
+							<xsl:value-of select="//SubscriberURN" />
+						</SubscriberURN>
+						<ImportValidData>true</ImportValidData>
+						<xsl:choose>
+							<xsl:when test="//Product= 'CLEAR' and (contains($varAttachmentType,'DROP')) ">
+								<EntityTables>
+									<Entity>pBulkCopyLienReportBatchLoad</Entity>
+									<Entity>pBulkCopyValidationErrorDrop</Entity>
+									<Entity>pBulkCopyProductOrderdetailsDrop</Entity>
+									<Entity>pBulkCopyClearConfigDrop</Entity>
+								</EntityTables>
+							</xsl:when>
+							<xsl:otherwise>
+								<EntityTables>
+									<xsl:for-each select="//TableNameItemItem">
+										<Entity>
+											<xsl:value-of select="TableName" />
+										</Entity>
+									</xsl:for-each>
+								</EntityTables>
+							</xsl:otherwise>
+						</xsl:choose>
+						<DefaultExists>
+							<xsl:value-of select="//isDefault"/>
+						</DefaultExists>
+						<SaveFilelevelErrors>true</SaveFilelevelErrors>
+						<FileLevelErrorMessage>More than expected fields found in one or more rows</FileLevelErrorMessage>
+					</LienReportItem>
+				</xsl:otherwise>
+			</xsl:choose>
+		</Action>
 	</xsl:template>
 </xsl:stylesheet>

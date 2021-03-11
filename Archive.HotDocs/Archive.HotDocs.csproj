@@ -56,6 +56,7 @@
     <None Include="Digital Certificate\userbk.p12" />
     <None Include="GCP Associate Cloud Engineer ACE.docx" />
     <None Include="Mohamed Behery - Software Engineer.docx" />
+    <None Include="Mohamed_Behery_Tax_Clarification.pdf" />
     <None Include="MyResume.docx" />
     <None Include="packages.config" />
     <None Include="Prepare For Interview.docx" />
@@ -94,6 +95,7 @@
     <None Include="Relocation Docs\Family Relocation\Raghda - Legalized PCC Certificate.pdf" />
     <None Include="Relocation Docs\Family Relocation\Raghda - NIE Approval.pdf" />
     <None Include="Relocation Docs\Family Relocation\Raghda - Passport.pdf" />
+    <None Include="Relocation Docs\Family Relocation\TownHall.pdf" />
     <None Include="Relocation Docs\Family Relocation\Visa Appointment\Mohamed_Behery-NationalID.pdf" />
     <None Include="Relocation Docs\Family Relocation\Visa Appointment\Omar - Legalized Birth Certificate - Spanish.pdf" />
     <None Include="Relocation Docs\Family Relocation\Visa Appointment\Omar - Minor Travel Consent Form - Arabic.docx" />
@@ -110,6 +112,7 @@
     <None Include="Relocation Docs\Legalized_Mohamed_Behery_Marriage_Certificate.pdf" />
     <None Include="Relocation Docs\Legalized_Omar_Mohamed_Behery_Birth_Certificate.pdf" />
     <None Include="Relocation Docs\Legalized_University_Certificate_Mohamed_Behery.pdf" />
+    <None Include="Relocation Docs\mod145_es_es-signed.pdf" />
     <None Include="Relocation Docs\Mohamed  Behery - Work Permit Approval.pdf" />
     <None Include="Relocation Docs\Mohamed Behery - Residence Card.pdf" />
     <None Include="Relocation Docs\Mohamed_Behery-NationalID.pdf" />
@@ -168,8 +171,10 @@
     <Content Include="Relocation Docs\Family Relocation\After Relocation\TownHall\Mohamed_Behery-Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\After Relocation\TownHall\Omar - Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Omar - Passport.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Omar - Visa.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Raghda - Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Raghda - Passport.png" />
+    <Content Include="Relocation Docs\Family Relocation\Raghda - Visa.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\110 - Birth cretificate legalization from forign affairs.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\110 - Merriage certificate legalization from forign affairs.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\110 - Police Crimenal Clearance legalization fees from Forign Affairs ___ please zoom in to see the number.jpg" />
@@ -179,7 +184,6 @@
     <Content Include="Relocation Docs\Family Relocation\Receipts\140 - legalizing marriage certificate from spanish consulate.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\140 - legalizing PCC certificate from spanish consulate.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\18 - Transportation to receive the Police Crimenal Clearance.jpg" />
-    <Content Include="Relocation Docs\Family Relocation\Receipts\2.53 - to print papers for INSS Family Linkage.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\2.53E - to print papers for INSS Family Linkage.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\20 - Transportation after applying for Police Crimenal Clearance.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\20 - Transportation after receiving the Police Crimenal Clearance.jpg" />
@@ -187,12 +191,13 @@
     <Content Include="Relocation Docs\Family Relocation\Receipts\20 - Transportation to apply for Police Crimenal Clearance.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\42 - Police Crimenal Clearance Issueing fees __ please zoom in to see the number.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\5.10E - printing and scanning papers for INSS Family Linkage .png" />
-    <Content Include="Relocation Docs\Family Relocation\Receipts\500 - Transportation for visiting the spanish consulate for collecting the marriage and birth certificates after legalization.jpg" />
-    <Content Include="Relocation Docs\Family Relocation\Receipts\500 - Transportation for visiting the spanish consulate for collecting the PCC certificate after legalization.jpg" />
-    <Content Include="Relocation Docs\Family Relocation\Receipts\500 - Transportation for visiting the spanish consulate for delivering the marriage and birth certificates for legalization.jpg" />
-    <Content Include="Relocation Docs\Family Relocation\Receipts\500 - Transportation for visiting the spanish consulate for delivering the PCC certificate for legalization.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Receipts\500 - For collecting the PCC certificate after legalization.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Receipts\500 - Transportation to the spanish consulate for collecting the marriage and birth certificates after legalization.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Receipts\500 - Transportation to the spanish consulate for delivering the marriage and birth certificates for legalization.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Receipts\500 - Transportation to the spanish consulate for delivering the PCC certificate for legalization.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\57 - transportation for visiting Civil office &amp; ministry of forign affairs for legalizing marriage and birth certificate.jpg" />
-    <Content Include="Relocation Docs\Family Relocation\Receipts\600 - Transportation for applying for visa.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Receipts\600 - Going to the spanish consulate to apply for visa.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Receipts\690 - For collecting the passports from the spanish consulate after Visa.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Visa Appointment\apply for visa.txt" />
     <Content Include="Relocation Docs\Family Relocation\Visa Appointment\Mohamed Beher residence card 1.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Visa Appointment\Mohamed Beher residence card 2.jpg" />
