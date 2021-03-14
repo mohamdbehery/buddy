@@ -83,6 +83,17 @@
     <None Include="Relocation Docs\Family Relocation\After Relocation\TownHall\Raghda - NIE Approval.pdf" />
     <None Include="Relocation Docs\Family Relocation\After Relocation\TownHall\Raghda - Passport.pdf" />
     <None Include="Relocation Docs\Family Relocation\After Relocation\TownHall\Work Permit Approval_Mohamed  Behery.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\About me.docx" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Contract- Moreti 9.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Mohamed  Behery - Work Permit Approval.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Omar - Healix_ACE Travel Certificate for Epam Systems Inc 2021.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Omar - Minor Travel Consent Form - Arabic.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Omar - Minor Travel Consent Form.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Omar - NIE Approval.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Raghda - Healix_ACE Travel Certificate for Epam Systems Inc 2021.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Raghda - NIE Approval.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Signed_Contrato_000234_SABBAH  YOUSSEF,MOHAMED BEHERY_signed.pdf" />
+    <None Include="Relocation Docs\Family Relocation\Flight\Travel Reservation March 15 for RAGHDA ALI MAHMOUD HASSOUNA.pdf" />
     <None Include="Relocation Docs\Family Relocation\Omar - Legalized Birth Certificate - Spanish.pdf" />
     <None Include="Relocation Docs\Family Relocation\Omar - Legalized Birth Certificate.pdf" />
     <None Include="Relocation Docs\Family Relocation\Omar - Minor Travel Consent Form - Arabic.docx" />
@@ -170,6 +181,8 @@
     <Content Include="Relocation Docs\Family Relocation\After Relocation\Medical Registration\Raghda - Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\After Relocation\TownHall\Mohamed_Behery-Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\After Relocation\TownHall\Omar - Passport.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Flight\Mohamed_Behery-Passport.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Flight\Mohamed_Behery-Visa.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Omar - Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Omar - Visa.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Raghda - Passport.jpg" />
@@ -178,6 +191,7 @@
     <Content Include="Relocation Docs\Family Relocation\Receipts\110 - Birth cretificate legalization from forign affairs.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\110 - Merriage certificate legalization from forign affairs.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\110 - Police Crimenal Clearance legalization fees from Forign Affairs ___ please zoom in to see the number.jpg" />
+    <Content Include="Relocation Docs\Family Relocation\Receipts\1200 - Covid Test for my wife.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\1380 - Visa fees for my son.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\1380 - Visa fees for my wife.jpg" />
     <Content Include="Relocation Docs\Family Relocation\Receipts\140 - legalizing birth certificate from spanish consulate.jpg" />
