@@ -31,6 +31,7 @@ namespace RabbitMQClientWinService.MessageQueue
         }
         public MessageQueueClient()
         {
+            
         }
 
         protected void OnMessengerStarted()

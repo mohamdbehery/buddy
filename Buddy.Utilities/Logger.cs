@@ -111,7 +111,7 @@ namespace Buddy.Utilities
         }
         public void ManualLog(string message, XmlDocument xmlDocument = null)
         {
-            message = $"{DateTime.Now.ToString("hh.mm.ss.ffffff")} >> {message}";
+            message = $"ManualLog {DateTime.Now.ToString("hh.mm.ss.ffffff")} >> {message}";
             if (xmlDocument != null)
             {
                 using (var stringWriter = new StringWriter())
@@ -122,7 +122,7 @@ namespace Buddy.Utilities
                     message += $" // XML // {stringWriter.GetStringBuilder().ToString()}";
                 }
             }
-            FileStream logsFileStream = new FileStream(@"C:\Inetpub\temLog.txt", FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+            FileStream logsFileStream = new FileStream(@"C:\Inetpub\tempLog.txt", FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
             StreamWriter logsStreamWriter = new StreamWriter(logsFileStream, System.Text.Encoding.UTF8, 4096, true);
             logsStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
             logsStreamWriter.WriteLineAsync(message);

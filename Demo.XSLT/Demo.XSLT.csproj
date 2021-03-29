@@ -73,6 +73,11 @@
     <Content Include="CatalogTemplate.xslt" />
     <Content Include="CatalogTemplate2.xslt" />
     <Content Include="Index.aspx" />
+    <Content Include="NewReportOutput.xml" />
+    <Content Include="Report.xml" />
+    <Content Include="Report.xslt" />
+    <Content Include="ReportOutput.xml" />
+    <Content Include="Transform.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +89,13 @@
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transform.aspx.cs">
+      <DependentUpon>Transform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transform.aspx.designer.cs">
+      <DependentUpon>Transform.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

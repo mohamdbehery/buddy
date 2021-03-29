@@ -118,4 +118,26 @@
 - The branch is a new commit that pointing to some particular parent (commit in another branch)
 - The merge is nothing but a new commit that pointing to 2 parents (2 commits in 2 branches)
 - (git rebase) is simply making the branch pointing to some particular parent branch(commit)
+- C# object indexer: An indexer is a special type of property that allows a class or a structure to be accessed like an array for its internal collection. C# allows us to define custom indexers, generic indexers, and also overload indexers, An indexer can be defined the same way as property with this keyword and square brackets []
+	class StringDataStore
+	{
+		private string[] strArr = new string[10]; // internal data storage
+
+		public string this[int index]
+		{
+			get => strArr[index];
+
+			set => strArr[index] = value;
+		}
+	}
+
+- Generics: reduce code redunduncy and increase performance, instead of using objects that make us do boxing and unboxing, we use generics to pass the type 
+	public calss GenericClass<T> where T : IComparable{
+		public T Add(T input1, T input2){
+			
+		}
+	}
+
+	So, here we have applied generics constraint for T to accept any type that implement IComparable, also we can add more constraints (separated by comma)
+- 
 
