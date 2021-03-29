@@ -13,8 +13,8 @@ namespace Buddy.Utilities
 {
     public class Logger: HelperBase
     {
-        private FileStream LogFileStream;
-        private StreamWriter LogStreamWriter;
+        private readonly FileStream LogFileStream;
+        private readonly StreamWriter LogStreamWriter;
         string projectName = Constants.UnknownProjectName;
         string logsDirectory = "";
         int logFileMaxSizeInBytes = Constants.LogFileMaxSizeInBytes;

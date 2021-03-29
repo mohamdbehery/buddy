@@ -16,7 +16,7 @@ namespace Buddy.Utilities
 {
     public class Notifier
     {
-        private Helper helper = new Helper();
+        private readonly Helper helper = new Helper();
 
         public void OnMessengerStarted(object source, EventArgs args)
         {            

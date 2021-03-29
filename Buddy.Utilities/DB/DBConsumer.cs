@@ -5,42 +5,44 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
 using static Buddy.Utilities.Enums.HelperEnums;
 
 namespace Buddy.Utilities.DB
 {
-    public class DBConsumer: HelperBase
+    // sealed here to prevent inheritance
+    public sealed class DBConsumer : HelperBase
     {
         private SqlConnection SQLConnection;
         private SqlCommand SQLCommand;
-        private SqlDataAdapter SQLDataAdapter;
-        private string[] SQLBinaryParams;
         private ExecResult execResult;
-        private Logger logger;
+        private readonly Logger logger;
+        private readonly string[] SQLBinaryParams;
 
         public DBConsumer()
         {
-            SQLBinaryParams = new string[] { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
             logger = new Logger();
+            SQLBinaryParams = new string[] { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
         }
 
         public ExecResult CallSQLDB(DBExecParams dBExecParams)
         {
-            bool isStoredProcedure = string.IsNullOrEmpty(dBExecParams.StoredProcedure) ? false : true;
-            bool isSQLFile = string.IsNullOrEmpty(dBExecParams.SQLFilePath) ? false : true;
+            execResult = new ExecResult();
+            execResult.ResultSet = new DataSet();
+            bool isStoredProcedure = !string.IsNullOrEmpty(dBExecParams.StoredProcedure);
+            bool isSQLFile = !string.IsNullOrEmpty(dBExecParams.SQLFilePath);
             if (isSQLFile)
                 dBExecParams.Query = ExtractQueryFromSQLFile(dBExecParams);
 
-            execResult = new ExecResult();
-            execResult.ResultSet = new DataSet();
             try
             {
                 using (SQLConnection = new SqlConnection(dBExecParams.ConString))
                 {
                     SQLConnection.InfoMessage += new SqlInfoMessageEventHandler((object sender, SqlInfoMessageEventArgs e) =>
                     {
-                        SQLMessageHandler(sender, e, ref execResult);
+                        SQLMessageHandler(e, ref execResult);
                     });
+
                     using (SQLCommand = new SqlCommand(isStoredProcedure ? dBExecParams.StoredProcedure : dBExecParams.Query, SQLConnection))
                     {
                         SQLCommand.CommandType = isStoredProcedure ? CommandType.StoredProcedure : CommandType.Text;
@@ -55,7 +57,7 @@ namespace Buddy.Utilities.DB
                                 execResult.AffectedRowsCount = SQLCommand.ExecuteNonQuery();
                                 break;
                             case DBExecType.DataAdapter:
-                                SQLDataAdapter = new SqlDataAdapter(SQLCommand);
+                                SqlDataAdapter SQLDataAdapter = new SqlDataAdapter(SQLCommand);
                                 SQLDataAdapter.Fill(execResult.ResultSet);
                                 SQLDataAdapter.Dispose();
                                 break;
@@ -110,10 +112,13 @@ namespace Buddy.Utilities.DB
             string paramsValues = "";
             if (dBExecParams.Parameters != null && dBExecParams.Parameters.Count > 0)
             {
+                StringBuilder sqlScripts = new StringBuilder();
                 foreach (var param in dBExecParams.Parameters)
                 {
-                    paramsValues += " SET " + param.Key + "=" + (!string.IsNullOrEmpty(param.Value) ? (param.Key.Contains("CODE") ? "'" + param.Value + "'" : param.Value) : "NULL; ");
+                    sqlScripts.Append(" SET " + param.Key + "=" + (!string.IsNullOrEmpty(param.Value) ? (param.Key.Contains("CODE") ? $"'{param.Value}'" : param.Value) : "NULL; "));
+                    
                 }
+                paramsValues = sqlScripts.ToString();
             }
 
             if (!string.IsNullOrEmpty(dBExecParams.KeywordToSetParamsValue))
@@ -140,14 +145,17 @@ namespace Buddy.Utilities.DB
             }
         }
 
-        private void SQLMessageHandler(object sender, SqlInfoMessageEventArgs e, ref ExecResult returnedData)
+        private void SQLMessageHandler(SqlInfoMessageEventArgs e, ref ExecResult returnedData)
         {
             // This gets all the messages generated during the execution of the SQL, 
             // including low-severity error messages.
+            StringBuilder messages = new StringBuilder();
             foreach (SqlError err in e.Errors)
             {
-                returnedData.ExecutionMessages += $"  // $$ // {err.Procedure} line: {err.LineNumber} >> {err.Message}";
+                messages.Append($" // $$ // {err.Procedure} line: {err.LineNumber} >> {err.Message}");
+                
             }
+            returnedData.ExecutionMessages += messages.ToString();
         }
-    }   
+    }
 }

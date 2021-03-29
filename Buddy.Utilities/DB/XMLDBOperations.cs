@@ -95,7 +95,7 @@ namespace Buddy.Utilities.DB
                 using (SqlCommand SQLCMD = new SqlCommand("spBulkInsert", SQLCon))
                 {
                     SQLCMD.CommandType = CommandType.StoredProcedure;
-                    if (Params != null && Params.Count > 0)
+                    if (Params.Any())
                     {
                         foreach (var Param in Params)
                         {
@@ -130,7 +130,7 @@ namespace Buddy.Utilities.DB
                 using (SqlCommand SQLCMD = new SqlCommand("spBulkUpdate", SQLCon))
                 {
                     SQLCMD.CommandType = CommandType.StoredProcedure;
-                    if (Params != null && Params.Count > 0)
+                    if (Params.Any())
                     {
                         foreach (var Param in Params)
                         {

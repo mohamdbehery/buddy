@@ -29,28 +29,27 @@ namespace Buddy.Utilities
         public DBConsumer DBConsumer { get; private set; }
         public Logger Logger { get; private set; }
 
-        public Helper(string LogsDirectory)
+        public Helper() : this(true)
         {
-            this.Logger = new Logger(LogsDirectory);
-        }
 
-        public Helper(bool initDBConsumer): this ("")
+        }
+        public Helper(bool initDBConsumer) : this("")
         {
             this.DBConsumer = CreateInstance<DBConsumer>();
         }
 
-        public Helper(): this(true)
+        public Helper(string LogsDirectory)
         {
-           
+            this.Logger = new Logger(LogsDirectory);
         }
 
         public static Helper CreateInstance()
         {
             return new Helper();
         }
-        public static Type CreateInstance<Type>()
+        public static T CreateInstance<T>() where T : class
         {
-            Type objectInstance = (Type)Activator.CreateInstance(typeof(Type));
+            T objectInstance = (T)Activator.CreateInstance(typeof(T));
             return objectInstance;
         }
 

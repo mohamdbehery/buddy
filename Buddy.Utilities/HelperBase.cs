@@ -18,7 +18,6 @@ namespace Buddy.Utilities
         {
             string[] FileData = File.Split(',');
             string FileString = FileData[1];
-            //return Convert.FromBase64String(FileString);
             return Encoding.UTF8.GetBytes(FileString);
         }
 
