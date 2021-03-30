@@ -152,8 +152,7 @@ namespace Buddy.Utilities.DB
             StringBuilder messages = new StringBuilder();
             foreach (SqlError err in e.Errors)
             {
-                messages.Append($" // $$ // {err.Procedure} line: {err.LineNumber} >> {err.Message}");
-                
+                messages.Append($" // $$ // {err.Procedure} line: {err.LineNumber} >> {err.Message}");                
             }
             returnedData.ExecutionMessages += messages.ToString();
         }

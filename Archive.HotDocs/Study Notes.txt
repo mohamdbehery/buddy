@@ -139,5 +139,6 @@
 	}
 
 	So, here we have applied generics constraint for T to accept any type that implement IComparable, also we can add more constraints (separated by comma)
-- 
+- Repository Pattern: is a mediate layer between the domain and data mapping layer (ORM) so that you hide how the data is eventually stored or retrieved to and from the DB, so the main purpose here is to make your achitecture a loosly decopled of ORM
+
 

@@ -58,6 +58,7 @@
 		<EquifaxIndicatorItemItem>
 			<ServicerID>35</ServicerID>
 			<TransunionIndicator>Y</TransunionIndicator>
+			
 		</EquifaxIndicatorItemItem>
 	</EquifaxIndicatorItem>
 </ReportCollection>

@@ -32,23 +32,11 @@ namespace App.Business
 
         public int SaveUser(AppUserModel userModel)
         {
-            // TODO implement mapping between entity and model
-            AppUser row = new AppUser()
-            {
-                eMailAddress = userModel.eMailAddress,
-                EntryDate = DateTime.Now,
-                FamilyName = userModel.FamilyName,
-                FirstName = userModel.FirstName,
-                Id = userModel.Id,
-                IsActive = userModel.IsActive,
-                IsDeleted = false,
-                LocationAddress = userModel.LocationAddress,
-                ModifyDate = DateTime.Now,
-                Password = userModel.Password,
-                SecondName = userModel.SecondName,
-                UserName = userModel.SecondName
-            };
-
+            AppUser row = helper.MapObjects<AppUserModel, AppUser>(userModel);
+            row.EntryDate = DateTime.Now;
+            row.IsDeleted = false;
+            row.ModifyDate = DateTime.Now;
+            
             if (userModel.Id > 0)
             {
                 var existRow = db.AppUsers.Find(userModel.Id);

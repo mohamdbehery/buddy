@@ -60,3 +60,31 @@
 		</EquifaxIndicatorItemItem>
 	</EquifaxIndicatorItem>
 </ReportCollection>
+
+
+<REQUEST_GROUP MISMOVersionID="2.3.1">
+	<REQUESTING_PARTY>
+		<PREFERRED_RESPONSE _Format="PDF" _UseEmbeddedFileIndicator="Y" />
+		<PREFERRED_RESPONSE _Format="XML" _VersionIdentifier="2.3.1" />
+	</REQUESTING_PARTY>
+	<SUBMITTING_PARTY _Identifier="FSO" />
+	<REQUEST LoginAccountIdentifier="4003131" LoginAccountPassword="WELCOME1">
+		<KEY _Name="Object" _Value="Loan" />
+		<KEY _Name="ObjectID" _Value="27028334" />
+		<KEY _Name="OrganizationID" _Value="35" />
+		<KEY _Name="PrimaryBorrowerID" _Value="27445494" />
+		<KEY _Name="PrimaryBorrowerContactID" _Value="102257209" />
+		<REQUEST_DATA>
+			<CREDIT_REQUEST MISMOVersionID="2.3.1">
+				<CREDIT_REQUEST_DATA BorrowerID="ID27445494" CreditReportRequestActionType="Submit" CreditReportType="Merge" CreditRequestType="Individual">
+					<CREDIT_REPOSITORY_INCLUDED _EquifaxIndicator="N" _ExperianIndicator="N" _TransUnionIndicator="" />
+				</CREDIT_REQUEST_DATA>
+				<LOAN_APPLICATION>
+					<BORROWER BorrowerID="ID27445494" _FirstName="GARY" _LastName="WEATHERWAX" _PrintPositionType="Borrower" _SSN="140422408">
+						<_RESIDENCE _StreetAddress="Test LR Property110920191" _City="SOUTHPORT" _State="NC" _PostalCode="28461" BorrowerResidencyType="Current" />
+					</BORROWER>
+				</LOAN_APPLICATION>
+			</CREDIT_REQUEST>
+		</REQUEST_DATA>
+	</REQUEST>
+</REQUEST_GROUP>
