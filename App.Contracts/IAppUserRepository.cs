@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace App.Contracts
 {
-    public interface IAppUserRepository<TEntity> where TEntity : class
+    public interface IAppUserRepository<TEntityModel> where TEntityModel : class
     {
-        List<TEntity> CustomGetAll(TEntity entity);
+        List<TEntityModel> CustomGetAll(TEntityModel entityModel);
     }
 }

@@ -6,29 +6,14 @@ using System.Text;
 using App.Data.EFCore.ConceptualModels;
 using App.Data.EFCore;
 using Buddy.Utilities;
+using App.Contracts;
 
 namespace App.Business
 {
-    public class AppUserBL
+    public class AppUserRepository: IAppUserRepository<AppUserModel>
     {
         Helper helper = Helper.CreateInstance();
         readonly BuddyDBContext db = new BuddyDBContext();
-        public List<AppUser> GetUsers(AppUserModel appUserModel)
-        {
-            AppUser appUser = helper.MapObjects<AppUserModel, AppUser>(appUserModel);
-
-            var xx = db.AppUsers.Select(x => x);
-            List<AppUser> users;
-            var query = db.AppUsers;
-            if (appUserModel.Id > 0)
-                users = query.Where(x => x.Id == appUserModel.Id).ToList();
-            else
-                users = query.Where(x => string.IsNullOrEmpty(appUserModel.eMailAddress) || x.eMailAddress == appUserModel.eMailAddress
-                && string.IsNullOrEmpty(appUserModel.Password) || x.Password == appUserModel.Password
-                ).ToList();
-
-            return users;
-        }
 
         public int SaveUser(AppUserModel userModel)
         {
@@ -48,6 +33,22 @@ namespace App.Business
 
             db.SaveChanges();
             return row.Id;
+        }
+
+        public List<AppUserModel> CustomGetAll(AppUserModel appUserModel)
+        {
+            List<AppUser> users;
+            var query = db.AppUsers;
+            if (appUserModel.Id > 0)
+                users = query.Where(x => x.Id == appUserModel.Id).ToList();
+            else
+                users = query.Where(x => string.IsNullOrEmpty(appUserModel.eMailAddress) || x.eMailAddress == appUserModel.eMailAddress
+                && string.IsNullOrEmpty(appUserModel.Password) || x.Password == appUserModel.Password
+                ).ToList();
+
+
+            AppUserModel appUser = helper.MapObjects<AppUserModel, AppUser>(appUserModel);
+            return users;
         }
     }
 }
