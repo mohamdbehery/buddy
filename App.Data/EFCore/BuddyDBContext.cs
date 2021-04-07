@@ -10,6 +10,10 @@ namespace App.Data.EFCore
 {
     public class BuddyDBContext : DbContext
     {
+        public BuddyDBContext(DbContextOptions options) : base(options)
+        {
+
+        }
         /// <summary>
         /// override OnConfiguring method of DBContext class to
         /// 1. add appsettings.json file to configuration builder
@@ -19,10 +23,7 @@ namespace App.Data.EFCore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
-            .AddJsonFile("appsettings.json")
-            .Build();
+            IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(Path.Combine(Directory.GetCurrentDirectory())).AddJsonFile("appsettings.json").Build();
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("BuddyEntities"));
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

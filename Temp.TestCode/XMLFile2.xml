@@ -1,90 +1,41 @@
-﻿<?xml version="1.0"?>
-<ReportCollection>
-	<CreditReportQueryItem>
-		<CreditReportQueryItemItem>
-			<Column1>27445494</Column1>
-		</CreditReportQueryItemItem>
-	</CreditReportQueryItem>
-	<Column1Item>
-		<Column1ItemItem>
-			<Column1>35</Column1>
-		</Column1ItemItem>
-	</Column1Item>
-	<LoanItem>
-		<LoanItemItem>
-			<Loan>Test LR Load15032021FW_1_001</Loan>
-			<Object>Loan</Object>
-			<ObjectID>27028334</ObjectID>
-			<OriginalBalance>18682.1800</OriginalBalance>
-			<PropertyID>31911819</PropertyID>
-			<Address>Test LR Property110920191</Address>
-			<City>SOUTHPORT</City>
-			<State>NC</State>
-			<PostalCode>28461</PostalCode>
-			<ClientName>CoreLogic ADV</ClientName>
-			<ServicerID>35</ServicerID>
-			<SubscriberID>service.faslo.net-Loan-Test LR Load15032021FW_1_001</SubscriberID>
-		</LoanItemItem>
-	</LoanItem>
-	<PrimaryBorrowerItem>
-		<PrimaryBorrowerItemItem>
-			<PrimaryBorrowerID>27445494</PrimaryBorrowerID>
-			<PrimaryBorrowerContactID>102257209</PrimaryBorrowerContactID>
-			<PrimaryBorrowerFirstName>GARY</PrimaryBorrowerFirstName>
-			<PrimaryBorrowerMiddleName>A</PrimaryBorrowerMiddleName>
-			<PrimaryBorrowerLastName>WEATHERWAX</PrimaryBorrowerLastName>
-			<PrimaryBorrowerAddress>Test LR Property110920191</PrimaryBorrowerAddress>
-			<PrimaryBorrowerCity>SOUTHPORT</PrimaryBorrowerCity>
-			<PrimaryBorrowerState>NC</PrimaryBorrowerState>
-			<PrimaryBorrowerPostalCode>28461</PrimaryBorrowerPostalCode>
-			<PrimaryBorrowerUSSSN>140422408</PrimaryBorrowerUSSSN>
-		</PrimaryBorrowerItemItem>
-	</PrimaryBorrowerItem>
-	<SecondaryBorrowerItem>
-		<SecondaryBorrowerItemItem>
-			<SecondaryBorrowerID>27445498</SecondaryBorrowerID>
-			<SecondaryBorrowerContactID>102257213</SecondaryBorrowerContactID>
-			<SecondaryBorrowerFirstName>B2FN-1</SecondaryBorrowerFirstName>
-			<SecondaryBorrowerLastName>WEATHERWAX</SecondaryBorrowerLastName>
-			<SecondaryBorrowerMiddleName>A</SecondaryBorrowerMiddleName>
-			<SecondaryBorrowerAddress>Test LR Property110920191</SecondaryBorrowerAddress>
-			<SecondaryBorrowerCity>SOUTHPORT</SecondaryBorrowerCity>
-			<SecondaryBorrowerState>NC</SecondaryBorrowerState>
-			<SecondaryBorrowerPostalCode>28461</SecondaryBorrowerPostalCode>
-		</SecondaryBorrowerItemItem>
-	</SecondaryBorrowerItem>
-	<PartyItem />
-	<EquifaxIndicatorItem>
-		<EquifaxIndicatorItemItem>
-			<ServicerID>35</ServicerID>
-		</EquifaxIndicatorItemItem>
-	</EquifaxIndicatorItem>
-</ReportCollection>
-
-
-<REQUEST_GROUP MISMOVersionID="2.3.1">
-	<REQUESTING_PARTY>
-		<PREFERRED_RESPONSE _Format="PDF" _UseEmbeddedFileIndicator="Y" />
-		<PREFERRED_RESPONSE _Format="XML" _VersionIdentifier="2.3.1" />
-	</REQUESTING_PARTY>
-	<SUBMITTING_PARTY _Identifier="FSO" />
-	<REQUEST LoginAccountIdentifier="4003131" LoginAccountPassword="WELCOME1">
-		<KEY _Name="Object" _Value="Loan" />
-		<KEY _Name="ObjectID" _Value="27028334" />
-		<KEY _Name="OrganizationID" _Value="35" />
-		<KEY _Name="PrimaryBorrowerID" _Value="27445494" />
-		<KEY _Name="PrimaryBorrowerContactID" _Value="102257209" />
-		<REQUEST_DATA>
-			<CREDIT_REQUEST MISMOVersionID="2.3.1">
-				<CREDIT_REQUEST_DATA BorrowerID="ID27445494" CreditReportRequestActionType="Submit" CreditReportType="Merge" CreditRequestType="Individual">
-					<CREDIT_REPOSITORY_INCLUDED _EquifaxIndicator="N" _ExperianIndicator="N" _TransUnionIndicator="" />
-				</CREDIT_REQUEST_DATA>
-				<LOAN_APPLICATION>
-					<BORROWER BorrowerID="ID27445494" _FirstName="GARY" _LastName="WEATHERWAX" _PrintPositionType="Borrower" _SSN="140422408">
-						<_RESIDENCE _StreetAddress="Test LR Property110920191" _City="SOUTHPORT" _State="NC" _PostalCode="28461" BorrowerResidencyType="Current" />
-					</BORROWER>
-				</LOAN_APPLICATION>
-			</CREDIT_REQUEST>
-		</REQUEST_DATA>
-	</REQUEST>
-</REQUEST_GROUP>
+﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
+	<xsl:template match="*">
+		<Action>
+			<ServiceOrderCollection>
+				<ServiceOrderItem>
+					<ProductType>taxwatch</ProductType>
+					<ServiceID>27</ServiceID>
+					<SaveNativeResponse>true</SaveNativeResponse>
+					<RequestXml>
+						<TaxWatchRequest>
+							<OrderType>Request</OrderType>
+							<Processor>TaxWatchRequestProcessor</Processor>
+							<OrganizationID>
+								<xsl:value-of select="//EventQueueItemItem/ObjectID"/>
+							</OrganizationID>
+							<Product>CLEAR</Product>
+							<TaxOrganizationID>1593425</TaxOrganizationID>
+							<AttachmentType>TaxWatch</AttachmentType>
+							<NotificationType>NotificationforTaxWatch</NotificationType>
+							<SPTaxWatchPodListByStatus>pGetTaxWatchLoanListByPODStatus</SPTaxWatchPodListByStatus>
+							<SPEligibleTaxWatchList>pGetEligibleTaxWatchList</SPEligibleTaxWatchList>
+							<SPUpdateStatusForInvalidRecords>pUpdateStatusForInvalidRecords</SPUpdateStatusForInvalidRecords>
+							<SPTaxRequest>pGetTaxRequestRecords</SPTaxRequest>
+							<EmailStoredProcedure>pSendNotificationforTaxWatch</EmailStoredProcedure>
+							<BatchSize>1000</BatchSize>
+							<ServiceType>TaxWatch</ServiceType>
+							<FilePath>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\TaxWatch\Request</FilePath>
+							<FileName>TaxWatch_RequestFile</FileName>
+							<RequestFileSize>30000</RequestFileSize>
+							<IsTaxRenewal>True</IsTaxRenewal>
+							<QueuedUser>
+								<xsl:value-of select="//EventQueueItemItem/QueuedUser"/>
+							</QueuedUser>
+						</TaxWatchRequest>
+					</RequestXml>
+				</ServiceOrderItem >
+			</ServiceOrderCollection>
+		</Action>
+	</xsl:template>
+</xsl:stylesheet>

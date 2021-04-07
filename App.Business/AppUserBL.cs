@@ -9,7 +9,7 @@ using Buddy.Utilities;
 
 namespace App.Business
 {
-    public class AppUserBL	
+    public class AppUserBL
     {
         Helper helper = Helper.CreateInstance();
         readonly BuddyDBContext db = new BuddyDBContext();

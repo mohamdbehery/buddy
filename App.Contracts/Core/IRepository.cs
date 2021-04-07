@@ -5,8 +5,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MQClient.MessageQueue
+namespace App.Contracts.Core
 {
+    // [Note] created this repo interface to set the main methods for any derived generic repo ex: Repository
     public interface IRepository<TEntity> where TEntity : class
     {
         TEntity Get(int id);

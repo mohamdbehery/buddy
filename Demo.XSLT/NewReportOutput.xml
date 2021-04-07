@@ -1,41 +1,14 @@
-<ServiceOrderCollection>
-	<ServiceOrderItem>
-		<ProductType>credit</ProductType>
-		<IsSimulation>false</IsSimulation>
-		<RequestXml>
-			<CreditReportItem>
-				<CreditConfigItem>
-					<ProductName />
-					<IsPrecheckRequired>false</IsPrecheckRequired>
-					<IsCreditOrderNextDateResetRequired>false</IsCreditOrderNextDateResetRequired>
-				</CreditConfigItem>
-				<ServiceType>credit</ServiceType>
-				<CreditReportType>Merge</CreditReportType>
-				<IncludePDF>true</IncludePDF>
-				<ProductType>Submit</ProductType>
-				<Identifier />
-				<BureauIndicator>
-					<TransUnionIndicator>Y</TransUnionIndicator>
-				</BureauIndicator>
-				<Object>Loan</Object>
-				<ObjectID>27028334</ObjectID>
-				<CheckIfExists>True</CheckIfExists>
-				<OrganizationID>35</OrganizationID>
-				<ClientName>CoreLogic ADV</ClientName>
-				<Address>Test LR Property110920191</Address>
-				<City>SOUTHPORT</City>
-				<State>NC</State>
-				<PostalCode>28461</PostalCode>
-				<BorrowerCollection>
-					<PrimaryBorrower>
-						<PrimaryBorrowerID>27445494</PrimaryBorrowerID>
-						<PrimaryBorrowerContactID>102257209</PrimaryBorrowerContactID>
-						<FirstName>GARY</FirstName>
-						<LastName>WEATHERWAX</LastName>
-						<USSSN>140422408</USSSN>
-					</PrimaryBorrower>
-				</BorrowerCollection>
-			</CreditReportItem>
-		</RequestXml>
-	</ServiceOrderItem>
-</ServiceOrderCollection>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
+	<xsl:template match="*">
+		<Action>
+			<AttachmentID>
+				<xsl:value-of select="//AttachmentID"/>
+			</AttachmentID>
+			<TriggerWorkflow>true</TriggerWorkflow>
+			<LRREventID>812</LRREventID>
+			<StoredProcedure>pPublicDataImportFromPOR</StoredProcedure>
+			<isPORDataCopy>No</isPORDataCopy>
+		</Action>
+	</xsl:template>
+</xsl:stylesheet>
