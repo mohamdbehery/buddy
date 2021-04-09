@@ -114,8 +114,8 @@
   <ItemGroup>
     <Compile Include="Core\IRepository.cs" />
     <Compile Include="Core\Repository.cs" />
-    <Compile Include="IAppUserRepository.cs" />
-    <Compile Include="IMQMessageRepository.cs" />
+    <Compile Include="BusinessContracts\IAppUserRepository.cs" />
+    <Compile Include="BusinessContracts\IMQMessageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

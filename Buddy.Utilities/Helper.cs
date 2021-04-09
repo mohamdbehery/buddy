@@ -344,8 +344,18 @@ namespace Buddy.Utilities
             return objDestination;
         }
 
-        public DestinationType MapObjects<SourceType, DestinationType>(SourceType objSource)
+        // [Note] yeld return should return into IEnumerabe
+        public IEnumerable<DestinationType> MapObjects<SourceType, DestinationType>(List<SourceType> objSourceList, bool hardUpdate = true) where SourceType : class where DestinationType : class
         {
+            foreach (var objectSource in objSourceList)
+            {
+                yield return MapObjects<SourceType, DestinationType>(objectSource, hardUpdate);
+            }
+        }
+
+        public DestinationType MapObjects<SourceType, DestinationType>(SourceType objSource, bool hardUpdate = true) where SourceType : class where DestinationType : class
+        {
+            // if hard update, it always replace values in destination, even the source is null
             DestinationType objDestination = CreateInstance<DestinationType>();
             var objDestinationPropInfo = typeof(DestinationType).GetProperties();
             Type objSourceType = typeof(SourceType);
@@ -357,6 +367,10 @@ namespace Buddy.Utilities
                     if (objSourceType.GetProperty(destProp.Name) != null && srcPropValue != null)
                     {
                         srcPropValue = srcPropValue is Boolean ? Convert.ToString(srcPropValue) : srcPropValue.ToString();
+                        if(srcPropValue == null && !hardUpdate)
+                        {
+                            // do nothing
+                        }
                         destProp.SetValue(objDestination, Convert.ChangeType(srcPropValue, destProp.PropertyType), null);
                     }
                 }

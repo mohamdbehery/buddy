@@ -10,7 +10,7 @@ namespace App.Data.EFCore
 {
     public class BuddyDBContext : DbContext
     {
-        public BuddyDBContext(DbContextOptions options) : base(options)
+        public BuddyDBContext()
         {
 
         }

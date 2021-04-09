@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Contracts
+namespace App.Contracts.BusinessContracts
 {
     public interface IAppUserRepository<TEntityModel> where TEntityModel : class
     {
-        List<TEntityModel> CustomGetAll(TEntityModel entityModel);
+        TEntityModel Save(TEntityModel entityModel);
+        IEnumerable<TEntityModel> GetByCriteria(TEntityModel entityModel);
     }
 }

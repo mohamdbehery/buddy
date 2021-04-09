@@ -137,8 +137,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MessageQueue\IUnitOfWork.cs" />
-    <Compile Include="MessageQueue\UnitOfWork.cs" />
     <Compile Include="Models\MQEnums.cs" />
     <Compile Include="MessageQueue\IMessageQueueClient.cs" />
     <Compile Include="MessageQueue\ManualMQClient.cs" />
