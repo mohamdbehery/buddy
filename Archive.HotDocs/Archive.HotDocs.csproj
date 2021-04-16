@@ -135,6 +135,7 @@
     <None Include="Relocation Docs\TownHall Registeration\Work Permit Approval_Mohamed  Behery.pdf" />
     <None Include="Relocation Docs\Unicaja account bank certificate.pdf" />
     <None Include="Relocation Docs\Work Permit Approval_Mohamed  Behery.pdf" />
+    <None Include="TechArchive\SDLC Workflow and Branching Strategy.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About me.txt" />
