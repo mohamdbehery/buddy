@@ -23,10 +23,18 @@ namespace TestCode
         DataTable dt = new DataTable();
         static void Main(string[] args)
         {
-            Console.WriteLine("1");
-            Person person = new Person { BusinessEntityID = 1 };
-            Console.WriteLine("2");
-            Person person2 = new Person() { BusinessEntityID = 1 };
+
+            //Console.WriteLine("1");
+            //Person person = new Person { BusinessEntityID = 1 };
+            //Console.WriteLine("2");
+            //Person person2 = new Person() { BusinessEntityID = 1 };
+            var path = @"C:\Users\mohamed_behery\Desktop\test\AdvisoryLog.txt04142021.txt";
+            string directoryName = Path.GetDirectoryName(path);
+            string fileNameWithoutExt = Path.GetFileNameWithoutExtension(path);
+            Console.WriteLine(fileNameWithoutExt);
+            var xx = Directory.EnumerateFiles(directoryName).Where((x) => x.Contains(fileNameWithoutExt)).ToList();
+            Console.WriteLine(xx.Count);
+            Console.WriteLine(xx.FirstOrDefault());
             Console.ReadLine();
         } 
 
