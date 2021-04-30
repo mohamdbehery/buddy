@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\App.Contracts\App.Contracts\App.Contracts.csproj" />
+    <ProjectReference Include="..\..\App.Data\App.Data\App.Data.csproj" />
+    <ProjectReference Include="..\..\Buddy.Utilities\Buddy.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -169,14 +169,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\App.Contracts\App.Contracts.csproj">
-      <Project>{2F79DCC7-2424-4A58-A40C-F860709562A5}</Project>
-      <Name>App.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\App.Data\App.Data.csproj">
-      <Project>{07f2c817-d4e7-4e9b-91d9-225abc2a77fa}</Project>
-      <Name>App.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Buddy.Utilities\Buddy.Utilities.csproj">
       <Project>{0cb86c0c-e2eb-4819-89f2-980672a6ce0c}</Project>
       <Name>Buddy.Utilities</Name>

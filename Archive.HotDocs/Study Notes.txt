@@ -144,7 +144,9 @@
 
 - SDLC:
 	- Having a standup everyday for 30 minutes
-	- Having a grooming meeting between all the project teams including the business team to set priorities of backlog tickes and clarify and estimate tickets
+	- Having a grooming meeting (to be recorded) between all the project teams including the business team to set priorities of backlog tickes and clarify and estimate tickets
+	- Integrate Github with Jira to show the created branch, merge or pull request for each ticket
+	- Integrate Jira with WiKI (which contains all project docs and also the grooming recordings)
 
 	Workflow:
 	- Once you have a ticket, create a feature branch (feature/AS-1234) and start develop

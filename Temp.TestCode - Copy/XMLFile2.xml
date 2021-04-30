@@ -1,0 +1,41 @@
+﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0">
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
+	<xsl:template match="*">
+		<Action>
+			<ServiceOrderCollection>
+				<ServiceOrderItem>
+					<ProductType>taxwatch</ProductType>
+					<ServiceID>27</ServiceID>
+					<SaveNativeResponse>true</SaveNativeResponse>
+					<RequestXml>
+						<TaxWatchRequest>
+							<OrderType>Request</OrderType>
+							<Processor>TaxWatchRequestProcessor</Processor>
+							<OrganizationID>
+								<xsl:value-of select="//EventQueueItemItem/ObjectID"/>
+							</OrganizationID>
+							<Product>CLEAR</Product>
+							<TaxOrganizationID>1593425</TaxOrganizationID>
+							<AttachmentType>TaxWatch</AttachmentType>
+							<NotificationType>NotificationforTaxWatch</NotificationType>
+							<SPTaxWatchPodListByStatus>pGetTaxWatchLoanListByPODStatus</SPTaxWatchPodListByStatus>
+							<SPEligibleTaxWatchList>pGetEligibleTaxWatchList</SPEligibleTaxWatchList>
+							<SPUpdateStatusForInvalidRecords>pUpdateStatusForInvalidRecords</SPUpdateStatusForInvalidRecords>
+							<SPTaxRequest>pGetTaxRequestRecords</SPTaxRequest>
+							<EmailStoredProcedure>pSendNotificationforTaxWatch</EmailStoredProcedure>
+							<BatchSize>1000</BatchSize>
+							<ServiceType>TaxWatch</ServiceType>
+							<FilePath>\\reg_file_pams.solutions.corelogic.com\filer\Advisory\Upload\TaxWatch\Request</FilePath>
+							<FileName>TaxWatch_RequestFile</FileName>
+							<RequestFileSize>30000</RequestFileSize>
+							<IsTaxRenewal>True</IsTaxRenewal>
+							<QueuedUser>
+								<xsl:value-of select="//EventQueueItemItem/QueuedUser"/>
+							</QueuedUser>
+						</TaxWatchRequest>
+					</RequestXml>
+				</ServiceOrderItem >
+			</ServiceOrderCollection>
+		</Action>
+	</xsl:template>
+</xsl:stylesheet>
