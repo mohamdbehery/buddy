@@ -12,7 +12,6 @@ namespace Temp.TestCode
     class Program
     {
         static Helper helper = Helper.CreateInstance();
-        DataTable dt = new DataTable();
         static void Main(string[] args)
         {
             MQMessageRepository mQMessageRepository = new MQMessageRepository();
