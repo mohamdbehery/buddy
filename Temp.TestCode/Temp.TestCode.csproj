@@ -71,6 +71,18 @@
     <Content Include="XMLFile2.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\App.Business\App.Business.csproj">
+      <Project>{4A0F6A45-B54E-4581-9007-F1758A53F4CA}</Project>
+      <Name>App.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Contracts\App.Contracts.csproj">
+      <Project>{2F79DCC7-2424-4A58-A40C-F860709562A5}</Project>
+      <Name>App.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Data\App.Data.csproj">
+      <Project>{07F2C817-D4E7-4E9B-91D9-225ABC2A77FA}</Project>
+      <Name>App.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Buddy.Utilities\Buddy.Utilities.csproj">
       <Project>{0cb86c0c-e2eb-4819-89f2-980672a6ce0c}</Project>
       <Name>Buddy.Utilities</Name>

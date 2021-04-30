@@ -20,7 +20,6 @@ namespace RabbitMQClientWinService.MessageQueue
     {
         // represents a delegate
         public event EventHandler MessengerStarted;
-
         public Helper helper = new Helper();
         private string conStr
         {
@@ -29,9 +28,9 @@ namespace RabbitMQClientWinService.MessageQueue
                 return helper.GetAppKey("conStr");
             }
         }
-        public MessageQueueClient()
+        protected MessageQueueClient()
         {
-            
+
         }
 
         protected void OnMessengerStarted()
@@ -52,7 +51,7 @@ namespace RabbitMQClientWinService.MessageQueue
         {
             get
             {
-                return helper.GetAppKey("ParallelExecuteMessages") == "1" ? true : false;
+                return helper.GetAppKey("ParallelExecuteMessages") == "1";
             }
         }
 
@@ -70,24 +69,26 @@ namespace RabbitMQClientWinService.MessageQueue
         public List<MQMessage> FetchMQMessages()
         {
             List<MQMessage> messages = new List<MQMessage>();
-            ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { 
-                ConString = conStr, StoredProcedure = "spFetchMessages", ExecType = DBExecType.DataAdapter, Parameters = new Dictionary<string, string>() { { "@FetchMessageCount", MessageCountToFetch.ToString() } }
-            });
-            if (execResult.ErrorCode == 0)
+            ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams()
             {
-                if (execResult.ResultSet.Tables.Count > 0)
+                ConString = conStr,
+                StoredProcedure = "spFetchMessages",
+                ExecType = DBExecType.DataAdapter,
+                Parameters = new Dictionary<string, string>() { { "@FetchMessageCount", MessageCountToFetch.ToString() } }
+            });
+
+            if (execResult.ErrorCode == 0 && execResult.ResultSet.Tables.Count > 0)
+            {
+                foreach (DataRow item in execResult.ResultSet.Tables[0].Rows)
                 {
-                    foreach (DataRow item in execResult.ResultSet.Tables[0].Rows)
+                    messages.Add(new MQMessage()
                     {
-                        messages.Add(new MQMessage()
-                        {
-                            MessageID = Convert.ToInt32(item["Id"]),
-                            MessageData = Convert.ToString(item["MessageData"])
-                        });
-                    }
+                        MessageID = Convert.ToInt32(item["Id"]),
+                        MessageData = Convert.ToString(item["MessageData"])
+                    });
                 }
             }
-            helper.Logger.Log($"{messages.Count()} messages fetched...");
+            helper.Logger.Log($"{messages.Count} messages fetched...");
             return messages;
         }
         public abstract void PublishNewMessages(List<MQMessage> messages);

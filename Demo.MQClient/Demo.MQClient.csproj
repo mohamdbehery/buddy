@@ -169,6 +169,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\App.Contracts\App.Contracts.csproj">
+      <Project>{2F79DCC7-2424-4A58-A40C-F860709562A5}</Project>
+      <Name>App.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\App.Data\App.Data.csproj">
       <Project>{07f2c817-d4e7-4e9b-91d9-225abc2a77fa}</Project>
       <Name>App.Data</Name>

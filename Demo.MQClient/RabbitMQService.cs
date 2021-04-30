@@ -22,7 +22,7 @@ namespace RabbitMQClientWinService
         {
             get
             {
-                return helper.GetAppKey("UseThreadPool") == "1" ? true : false;
+                return helper.GetAppKey("UseThreadPool") == "1";
             }
         }
 

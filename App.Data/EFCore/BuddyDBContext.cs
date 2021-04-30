@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Text;
+using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 
 namespace App.Data.EFCore
 {
@@ -23,8 +25,17 @@ namespace App.Data.EFCore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(Path.Combine(Directory.GetCurrentDirectory())).AddJsonFile("appsettings.json").Build();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("BuddyEntities"));
+            string conString = string.Empty;
+            if (File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json"))){
+                IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
+                conString = configuration.GetConnectionString("BuddyEntities");
+            }
+            else if (File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "App.config")))
+            {
+                conString = ConfigurationManager.ConnectionStrings["BuddyEntities"].ToString();
+            }
+            if (string.IsNullOrEmpty(conString)) throw new Exception("Connection String is missing");
+            optionsBuilder.UseSqlServer(conString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
