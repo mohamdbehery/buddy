@@ -4,6 +4,7 @@ using App.Data.EFCore;
 using App.Data.EFCore.ConceptualModels;
 using App.Data.LogicalModelsDTO;
 using Buddy.Utilities;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,11 +14,11 @@ namespace App.Business.BusinessObjects
     public class MQMessageRepository: Repository<DemoMQMessage>, IMQMessageRepository<DemoMQMessageModel>
     {
         readonly Helper helper = Helper.CreateInstance();
-        static readonly BuddyDBContext _context = new BuddyDBContext();
+        DbContext _context;
 
-        public MQMessageRepository() : base(_context)
+        public MQMessageRepository(DbContext dbContext) : base(dbContext)
         {
-
+            _context = dbContext;
         }
 
         public IEnumerable<DemoMQMessageModel> GetByCriteria(DemoMQMessageModel entityModel)

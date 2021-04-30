@@ -4,6 +4,7 @@ using App.Data.EFCore;
 using App.Data.EFCore.ConceptualModels;
 using App.Data.Model;
 using Buddy.Utilities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,11 @@ namespace App.Business.BusinessObjects
     public class AppUserRepository : Repository<AppUser>, IAppUserRepository<AppUserModel>
     {
         readonly Helper helper = Helper.CreateInstance();
-        static readonly BuddyDBContext _context = new BuddyDBContext();
+        DbContext _context;
 
-        public AppUserRepository() : base(_context)
+        public AppUserRepository(DbContext dbContext) : base(dbContext)
         {
-
+            _context = dbContext;
         }
 
         public AppUserModel Save(AppUserModel entityModel)

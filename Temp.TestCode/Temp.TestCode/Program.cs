@@ -1,4 +1,5 @@
-﻿using App.Business.BusinessObjects;
+﻿using App.Business;
+using App.Business.BusinessObjects;
 using Buddy.Utilities;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,9 @@ namespace Temp.TestCode
         static Helper helper = Helper.CreateInstance();
         static void Main(string[] args)
         {
-            MQMessageRepository mQMessageRepository = new MQMessageRepository();
-            var xx = mQMessageRepository.FetchNewMessages(1);
+
+            //UnitOfWork unitOfWork = new UnitOfWork(); // 
+            //var xx = unitOfWork.MQMessageRepository.FetchNewMessages(1);
             Console.ReadLine();
         }
         private static void writeTest(Phone v)
