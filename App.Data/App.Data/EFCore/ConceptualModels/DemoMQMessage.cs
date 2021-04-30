@@ -11,7 +11,6 @@ namespace App.Data.EFCore.ConceptualModels
     {
         [Key]
         public int Id { get; set; }
-        public DateTime? FetchDate { get; set; }
         public DateTime? QueueDate { get; set; }
         public string? MessageData { get; set; }
         public DateTime? ExecuteDate { get; set; }
