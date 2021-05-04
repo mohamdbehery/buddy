@@ -2,7 +2,7 @@
 using App.Contracts.Core;
 using App.Data.EFCore;
 using App.Data.EFCore.ConceptualModels;
-using App.Data.Model;
+using App.Data.LogicalModelsDTO;
 using Buddy.Utilities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,14 +21,13 @@ namespace App.Business.BusinessObjects
             _context = dbContext;
         }
 
-        public AppUserModel Save(AppUserModel entityModel)
+        public void AddUser(AppUserModel entityModel)
         {
             AppUser row; 
             if (entityModel.Id > 0)
             {
                 row = Find(user => user.Id == entityModel.Id).FirstOrDefault();
                 row.ModifyDate = DateTime.Now;
-                row.BirthDate = entityModel.BirthDate;
                 row.eMailAddress = entityModel.eMailAddress;
                 row.FamilyName = entityModel.FamilyName;
                 row.FirstName = entityModel.FirstName;
@@ -48,9 +47,9 @@ namespace App.Business.BusinessObjects
             }
 
             // TODO use the UnitOfWork
-            _context.SaveChanges();
-            entityModel.Id = row.Id;
-            return entityModel;
+            //_context.SaveChanges();
+            //entityModel.Id = row.Id;
+            //return entityModel;
         }
 
         public IEnumerable<AppUserModel> GetByCriteria(AppUserModel entityModel)

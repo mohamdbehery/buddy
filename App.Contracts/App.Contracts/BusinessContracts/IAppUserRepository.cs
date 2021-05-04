@@ -8,7 +8,7 @@ namespace App.Contracts.BusinessContracts
 {
     public interface IAppUserRepository<TEntityModel> where TEntityModel : class
     {
-        TEntityModel Save(TEntityModel entityModel);
+        void AddUser(TEntityModel entityModel);
         IEnumerable<TEntityModel> GetByCriteria(TEntityModel entityModel);
     }
 }

@@ -367,11 +367,17 @@ namespace Buddy.Utilities
                     if (objSourceType.GetProperty(destProp.Name) != null && srcPropValue != null)
                     {
                         srcPropValue = srcPropValue is Boolean ? Convert.ToString(srcPropValue) : srcPropValue.ToString();
-                        if(srcPropValue == null && !hardUpdate)
+                        if (srcPropValue == null && !hardUpdate)
                         {
                             // do nothing
                         }
-                        destProp.SetValue(objDestination, Convert.ChangeType(srcPropValue, destProp.PropertyType), null);
+                        else
+                        {
+                            Type destPropType = Nullable.GetUnderlyingType(destProp.PropertyType) ?? destProp.PropertyType;
+                            srcPropValue = srcPropValue is null ? null : Convert.ChangeType(srcPropValue, destPropType);
+                            destProp.SetValue(objDestination, srcPropValue, null);
+                        }
+                            
                     }
                 }
             }

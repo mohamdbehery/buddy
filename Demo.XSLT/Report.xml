@@ -1,64 +1,337 @@
-﻿<?xml version="1.0"?>
-<ReportCollection>
-	<CreditReportQueryItem>
-		<CreditReportQueryItemItem>
-			<Column1>27445494</Column1>
-		</CreditReportQueryItemItem>
-	</CreditReportQueryItem>
-	<Column1Item>
-		<Column1ItemItem>
-			<Column1>35</Column1>
-		</Column1ItemItem>
-	</Column1Item>
-	<LoanItem>
-		<LoanItemItem>
-			<Loan>Test LR Load15032021FW_1_001</Loan>
-			<Object>Loan</Object>
-			<ObjectID>27028334</ObjectID>
-			<OriginalBalance>18682.1800</OriginalBalance>
-			<PropertyID>31911819</PropertyID>
-			<Address>Test LR Property110920191</Address>
-			<City>SOUTHPORT</City>
-			<State>NC</State>
-			<PostalCode>28461</PostalCode>
-			<ClientName>CoreLogic ADV</ClientName>
-			<ServicerID>35</ServicerID>
-			<SubscriberID>service.faslo.net-Loan-Test LR Load15032021FW_1_001</SubscriberID>
-		</LoanItemItem>
-	</LoanItem>
-	<PrimaryBorrowerItem>
-		<PrimaryBorrowerItemItem>
-			<PrimaryBorrowerID>27445494</PrimaryBorrowerID>
-			<PrimaryBorrowerContactID>102257209</PrimaryBorrowerContactID>
-			<PrimaryBorrowerFirstName>GARY</PrimaryBorrowerFirstName>
-			<PrimaryBorrowerMiddleName>A</PrimaryBorrowerMiddleName>
-			<PrimaryBorrowerLastName>WEATHERWAX</PrimaryBorrowerLastName>
-			<PrimaryBorrowerAddress>Test LR Property110920191</PrimaryBorrowerAddress>
-			<PrimaryBorrowerCity>SOUTHPORT</PrimaryBorrowerCity>
-			<PrimaryBorrowerState>NC</PrimaryBorrowerState>
-			<PrimaryBorrowerPostalCode>28461</PrimaryBorrowerPostalCode>
-			<PrimaryBorrowerUSSSN>140422408</PrimaryBorrowerUSSSN>
-		</PrimaryBorrowerItemItem>
-	</PrimaryBorrowerItem>
-	<SecondaryBorrowerItem>
-		<SecondaryBorrowerItemItem>
-			<SecondaryBorrowerID>27445498</SecondaryBorrowerID>
-			<SecondaryBorrowerContactID>102257213</SecondaryBorrowerContactID>
-			<SecondaryBorrowerFirstName>B2FN-1</SecondaryBorrowerFirstName>
-			<SecondaryBorrowerLastName>WEATHERWAX</SecondaryBorrowerLastName>
-			<SecondaryBorrowerMiddleName>A</SecondaryBorrowerMiddleName>
-			<SecondaryBorrowerAddress>Test LR Property110920191</SecondaryBorrowerAddress>
-			<SecondaryBorrowerCity>SOUTHPORT</SecondaryBorrowerCity>
-			<SecondaryBorrowerState>NC</SecondaryBorrowerState>
-			<SecondaryBorrowerPostalCode>28461</SecondaryBorrowerPostalCode>
-		</SecondaryBorrowerItemItem>
-	</SecondaryBorrowerItem>
-	<PartyItem />
-	<EquifaxIndicatorItem>
-		<EquifaxIndicatorItemItem>
-			<ServicerID>35</ServicerID>
-			<TransunionIndicator>Y</TransunionIndicator>
-			
-		</EquifaxIndicatorItemItem>
-	</EquifaxIndicatorItem>
-</ReportCollection>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BureauIndicator>
+	<Servicer ID="14822">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1293755">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1027856">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1060742">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1251503">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1292033">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1173834">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="168059">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1295066">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1365456">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1367837">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1374781">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1291301">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1411963">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1261098">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1241141">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1416122">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1367837">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1164413">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1232536">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1412066">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="27">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="24698">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1288797">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1240233">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1293236">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1405430">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1292033">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1294413">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1253682">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1289118">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1557002">
+		<ExperianIndicator>Y</ExperianIndicator>
+		<TransUnionIndicator>Y</TransUnionIndicator>
+		<EquifaxIndicator>Y</EquifaxIndicator>
+	</Servicer>
+	<Servicer ID="1413421">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1133792">
+		<EquifaxIndicator>Y</EquifaxIndicator>
+	</Servicer>
+	<Servicer ID="1369524">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1376446">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1369512">
+		<ExperianIndicator>Y</ExperianIndicator>
+		<TransUnionIndicator>Y</TransUnionIndicator>
+	</Servicer>
+	<Servicer ID="1409268">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="709914">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1291061">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1373404">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1288449">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1367763">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1177428">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1290450">
+		<ExperianIndicator>Y</ExperianIndicator>
+		<TransUnionIndicator>Y</TransUnionIndicator>
+		<EquifaxIndicator>Y</EquifaxIndicator>
+	</Servicer>
+	<Servicer ID="1402391">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1400294">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1384620">
+		<TransUnionIndicator>Y</TransUnionIndicator>
+	</Servicer>
+	<Servicer ID="1295068">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1234471">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1411016">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1054794">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1241359">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1372299">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1289119">
+		<ExperianIndicator>Y</ExperianIndicator>
+		<TransUnionIndicator>Y</TransUnionIndicator>
+		<EquifaxIndicator>Y</EquifaxIndicator>
+	</Servicer>
+	<Servicer ID="1377858">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1291054">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="138625">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1285847">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1375459">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1377866">
+		<ExperianIndicator>Y</ExperianIndicator>
+		<!--<TransUnionIndicator>Y</TransUnionIndicator>-->
+	</Servicer>
+	<Servicer ID="1411963">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1289905">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1378907">
+		<!--<ExperianIndicator>Y</ExperianIndicator>-->
+		<TransUnionIndicator>Y</TransUnionIndicator>
+	</Servicer>
+	<Servicer ID="1418667">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="150">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1432311">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1449535">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1374950">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1455607">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="557">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1499377">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1134030">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="36003">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1532018">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1535107">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1545992">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1546006">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1544720">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1545909">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1475548">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1545910">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1552773">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1546483">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1554379">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1553938">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1557131">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<!--<Servicer ID="1397882">                                                                                                                                                <ExperianIndicator>Y</ExperianIndicator>                                                                                                                                </Servicer>-->
+	<Servicer ID="167147">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1412066">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1174430">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1429">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1444026">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1560903">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1367412">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1447607">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1566224">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1570906">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1567991">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1554544">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1576510">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1383403">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1290240">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1587638">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1582276">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1016">
+		<ExperianIndicator>Y</ExperianIndicator>
+	</Servicer>
+	<Servicer ID="1290773">
+		<EquifaxIndicator>Y</EquifaxIndicator>
+	</Servicer>
+	<Servicer ID="1294408">
+		<EquifaxIndicator>Y</EquifaxIndicator>
+	</Servicer>
+	<Servicer ID="1592242">
+		<TransUnionIndicator>Y</TransUnionIndicator>
+	</Servicer>
+</BureauIndicator>

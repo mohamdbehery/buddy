@@ -43,11 +43,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.GetFolderFileNames", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Data", "App.Data\App.Data\App.Data.csproj", "{118F9FFC-CFC5-40AC-9219-2E3321189ECE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Business", "App.Business\App.Business\App.Business.csproj", "{C52AE845-A90A-4539-9DE1-1C8DECC4BEB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Business", "App.Business\App.Business\App.Business.csproj", "{C52AE845-A90A-4539-9DE1-1C8DECC4BEB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Contracts", "App.Contracts\App.Contracts\App.Contracts.csproj", "{535C23B3-15CD-4AD4-A969-3DC064F3BC96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Contracts", "App.Contracts\App.Contracts\App.Contracts.csproj", "{535C23B3-15CD-4AD4-A969-3DC064F3BC96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temp.TestCode", "Temp.TestCode\Temp.TestCode\Temp.TestCode.csproj", "{B28C85BB-3D4B-49AC-AB4B-65DB174CC7F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Temp.TestCode", "Temp.TestCode\Temp.TestCode\Temp.TestCode.csproj", "{B28C85BB-3D4B-49AC-AB4B-65DB174CC7F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{67980590-BFD3-4AAD-AA28-32F55A443C68}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

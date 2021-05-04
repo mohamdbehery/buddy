@@ -140,7 +140,7 @@
 
 	So, here we have applied generics constraint for T to accept any type that implement IComparable, also we can add more constraints (separated by comma)
 - Repository Pattern: is a mediate (abstraction) layer between the domain (business) layer and data mapping layer (ORM) so that you hide how the data is eventually stored or retrieved to and from the DB, so the main purpose here is to make your achitecture a loosly decopled of ORM
-
+- One of the benefits of UnitOfWork is that you can savechanges of more than one entity at the same time
 
 - SDLC:
 	- Having a standup everyday for 30 minutes
@@ -158,3 +158,4 @@
 	- Once we have the business team SignOff for all sprint tickets that will be included in the release, we run the jenkins job to deploy to prod from release branch
 	- Once the prod deployment done, the QA should run the regression test
 	- Once we have the prod SignOff, then merge from release to master and develop branches
+

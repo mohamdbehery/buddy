@@ -14,7 +14,7 @@
 							</ProductName>
 							<IsPrecheckRequired>
 								<xsl:choose>
-									<xsl:when test="//IsPrecheckRequired !='' and //IsPrecheckRequired ='Y'">
+									<xsl:when test="//IsPrecheckRequired !='''' and //IsPrecheckRequired =''Y''">
 										<xsl:text>true</xsl:text>
 									</xsl:when>
 									<xsl:otherwise>
@@ -24,7 +24,7 @@
 							</IsPrecheckRequired>
 							<IsCreditOrderNextDateResetRequired>
 								<xsl:choose>
-									<xsl:when test="//IsCreditOrderNextDateResetRequired !='' and //IsCreditOrderNextDateResetRequired ='Y'">
+									<xsl:when test="//IsCreditOrderNextDateResetRequired !='''' and //IsCreditOrderNextDateResetRequired =''Y''">
 										<xsl:text>true</xsl:text>
 									</xsl:when>
 									<xsl:otherwise>
@@ -44,24 +44,24 @@
 							</xsl:otherwise>
 						</xsl:choose>
 						<xsl:choose>
-							<!--xsl:when test="//ContextIdentifierLoanID != '' and //ServicerID = 1133792">                <ProductType>Reissue</ProductType>              </xsl:when-->
-							<xsl:when test="//ContextIdentifierLoanID != '' and //ServicerID = 1365456">
+							<!--xsl:when test="//ContextIdentifierLoanID != '''' and //ServicerID = 1133792"> <ProductType>Reissue</ProductType> </xsl:when-->
+							<xsl:when test="//ContextIdentifierLoanID != '''' and //ServicerID = 1365456">
 								<ProductType>Reissue</ProductType>
 							</xsl:when>
-							<!--xsl:when test ="//ContextIdentifierLoanID != '' and //ServicerID = 1060742">                                         <ProductType>Reissue</ProductType>                                  </xsl:when>-->
+							<!--xsl:when test ="//ContextIdentifierLoanID != '''' and //ServicerID = 1060742"> <ProductType>Reissue</ProductType> </xsl:when>-->
 							<xsl:otherwise>
 								<ProductType>Submit</ProductType>
 							</xsl:otherwise>
 						</xsl:choose>
 						<Identifier>
 							<xsl:choose>
-								<xsl:when test="//ContextIdentifierLoanID != '' and //ServicerID = 1133792">
+								<xsl:when test="//ContextIdentifierLoanID != '''' and //ServicerID = 1133792">
 									<xsl:value-of select="//ContextIdentifierLoanID"/>
 								</xsl:when>
-								<xsl:when test="//ContextIdentifierLoanID != '' and //ServicerID = 1365456">
+								<xsl:when test="//ContextIdentifierLoanID != '''' and //ServicerID = 1365456">
 									<xsl:value-of select="//ContextIdentifierLoanID"/>
 								</xsl:when>
-								<!--xsl:when test ="//ContextIdentifierLoanID != '' and //ServicerID = 1060742">                                                <xsl:value-of select ="//ContextIdentifierLoanID"/>                                          </xsl:when>-->
+								<!--xsl:when test ="//ContextIdentifierLoanID != '''' and //ServicerID = 1060742"> <xsl:value-of select ="//ContextIdentifierLoanID"/> </xsl:when>-->
 							</xsl:choose>
 						</Identifier>
 						<BureauIndicator>

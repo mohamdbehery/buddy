@@ -1,21 +1,24 @@
 ﻿using App.Business.BusinessObjects;
+using App.Contracts;
+using App.Contracts.BusinessContracts;
+using App.Data.EFCore;
+using App.Data.LogicalModelsDTO;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Business
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        DbContext _dbContext;
-        public UnitOfWork(DbContext dbContext)
+        readonly DbContext _dbContext;
+
+        public UnitOfWork()
         {
-            _dbContext = dbContext;
+            _dbContext = new BuddyDBContext();
         }
 
         private AppUserRepository _appUserRepository;
-        public AppUserRepository AppUserRepository
+        public IAppUserRepository<AppUserModel> AppUserRepository
         {
             get
             {
@@ -24,8 +27,9 @@ namespace App.Business
                 return _appUserRepository;
             }
         }
+
         private MQMessageRepository _mQMessageRepository;
-        public MQMessageRepository MQMessageRepository
+        public IMQMessageRepository<DemoMQMessageModel> MQMessageRepository
         {
             get
             {
@@ -34,7 +38,6 @@ namespace App.Business
                 return _mQMessageRepository;
             }
         }
-
         public int Save()
         {
             return _dbContext.SaveChanges();
