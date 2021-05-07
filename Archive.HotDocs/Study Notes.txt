@@ -140,13 +140,15 @@
 
 	So, here we have applied generics constraint for T to accept any type that implement IComparable, also we can add more constraints (separated by comma)
 - Repository Pattern: is a mediate (abstraction) layer between the domain (business) layer and data mapping layer (ORM) so that you hide how the data is eventually stored or retrieved to and from the DB, so the main purpose here is to make your achitecture a loosly decopled of ORM
-- One of the benefits of UnitOfWork is that you can savechanges of more than one entity at the same time
+- One of the benefits of UnitOfWork is that you can savechanges of more than one entity at the same time (like a transaction)
 
 - SDLC:
+	- Project preparation discuss resource and the skills needed, apply tranings or self-study if needed.
 	- Having a standup everyday for 30 minutes
 	- Having a grooming meeting (to be recorded) between all the project teams including the business team to set priorities of backlog tickes and clarify and estimate tickets
 	- Integrate Github with Jira to show the created branch, merge or pull request for each ticket
 	- Integrate Jira with WiKI (which contains all project docs and also the grooming recordings)
+	- Retrospective meetings: (every 2 weeeks) are a great opportunity for people to come together to talk about what went well, what didn’t go so well, and what will be changed for the next project.
 
 	Workflow:
 	- Once you have a ticket, create a feature branch (feature/AS-1234) and start develop

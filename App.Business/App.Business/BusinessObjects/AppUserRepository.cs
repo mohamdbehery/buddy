@@ -45,11 +45,6 @@ namespace App.Business.BusinessObjects
                 row.IsDeleted = false;
                 Add(row);
             }
-
-            // TODO use the UnitOfWork
-            //_context.SaveChanges();
-            //entityModel.Id = row.Id;
-            //return entityModel;
         }
 
         public IEnumerable<AppUserModel> GetByCriteria(AppUserModel entityModel)

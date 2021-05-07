@@ -59,6 +59,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailNotifier.cs" />
     <Compile Include="Enums\Constants.cs" />
     <Compile Include="DB\DBConsumer.cs" />
     <Compile Include="Enums\HelperEnums.cs" />

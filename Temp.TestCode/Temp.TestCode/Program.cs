@@ -15,23 +15,25 @@ namespace Temp.TestCode
         static Helper helper = Helper.CreateInstance();
         static void Main(string[] args)
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            unitOfWork.AppUserRepository.AddUser(new App.Data.LogicalModelsDTO.AppUserModel()
+            using (UnitOfWork unitOfWork = new UnitOfWork())
             {
-                eMailAddress = "mohamd.behery.s@gmail.com",
-                EntryDate = DateTime.Now,
-                FamilyName = "Behery",
-                FirstName = "Mohamed",
-                IsActive = true,
-                IsDeleted = false,
-                LocationAddress = "Calle Moreti 9",
-                ModifyDate = DateTime.Now,
-                Password = "1234@$",
-                SecondName = "Sabbah",
-                UserName = "MBehery"
-            });
-            var affectedRowsCount = unitOfWork.Save();
-            Console.WriteLine(affectedRowsCount);
+                unitOfWork.AppUserRepository.AddUser(new App.Data.LogicalModelsDTO.AppUserModel()
+                {
+                    eMailAddress = "mohamd.behery.s@gmail.com",
+                    EntryDate = DateTime.Now,
+                    FamilyName = "Behery",
+                    FirstName = "Mohamed",
+                    IsActive = true,
+                    IsDeleted = false,
+                    LocationAddress = "Calle Moreti 9",
+                    ModifyDate = DateTime.Now,
+                    Password = "1234@$",
+                    SecondName = "Sabbah",
+                    UserName = "MBehery"
+                });
+                var affectedRowsCount = unitOfWork.Save();
+                Console.WriteLine(affectedRowsCount);
+            }
             Console.ReadLine();
         }
         private static void writeTest(Phone v)
