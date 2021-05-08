@@ -1,75 +1,5 @@
-- Assembly > Namespace > Class > Props & Methods
-- AssemblyInfo.cs is containing all data related to your assembly like Title, Desc, CopyRight, TradeMark and Version
-- Reserved Bytes for data types: bool: 1, int: 4, string: 4, float: 4, double: 8, decimal: 16
-- By default the C# compiler treat number as double so to prevent this we can add a suffix (f) to the number like this float number = 12.45f;
-- If you have to inherit from BaseClass and interface you should put the BaseClass first like this public class ChildClass : BaseClass, IClass (not the oposite)
-- If you want to segregate two interfaces without repeat members you can do this 
-	public interface IProduct{
-		void A();
-		void B();
-	}
-	public interface IClothes{
-		void C();
-	}
 
-	public class Dress: IClothes{
-
-	}
-
-- Abstract class doesn't allow us to instantiate it but inherit
-- Abstract class > what if you have 2 different class with the same target like SQLDataAccess and OracleDataAccess, then the optimum way to design it like below:
-	like this we have implemented the common methons only one time and give the ability to the child classes to override the methods that they have a difference in implementation.
-	Also, if you want to give the ability (as optional) to the child classes to override the LoadConnectionString method just put (virtual) keywaord in its signature
-
-	public abstract class DataAccess{
-		public void LoadConnectionString(){
-			....
-		}
-		public abstract void LoadData();
-		public abstract void SaveData();
-	}
-
-	public class SQLDataAccess: DataAccess{
-		public override void LoadData(){			
-		}
-		public override void SaveData(){			
-		}
-	}
-
-	public class OracleDataAccess: DataAccess{
-		public override void LoadData(){			
-		}
-		public override void SaveData(){			
-		}
-	}
-
-- If you have more than 1 constructor and you want to call one from another (like that the base constructor will run first):
-	public class Customer{
-		public int Id;
-		public string Name;
-		public Order _order;
-
-		public Customer(){
-			this.Id = 1;
-		}
-
-		public Customer(string name): this(){
-			this.Name = name;
-			this._order = new Order{
-				Id = this.Id,
-				Name = this.Name
-			};
-		}
-	}
-
-- When to use Struct
-- Simple definition for Interface: for example the company needs a Developer with a specific skills Not need (Mohamed) so in any time the company may replace Mohamed with any other Developer that has these skills so the Interface here is the Developer Skills as a Contract.
-- Interface objects should not have access modifiers in signature, just return type, name and parameters
-- the class that implement interface should have the implemented methods as public
-- static class should not have a constructor because it cannot be instantiated
-- Override keyword is used in either implementing a abstract method in the base class or overriding a method in base class that has virtual in its signature
-- Overloading can be acheived by difference in return type as long as we have a difference in parameters
-- No difference between Person person1 = new Person{ Name = ""}; AND Person person1 = new Person(){ Name = ""};
+- 
 - CTE can be refertenced only once, right after defining it, so if you want to use a permenant table consider using temp table or table variable
 - Delegates: is and agreement\contract between publisher and subscriber, so simply if you want to do some generic functionality right after finishing executing some task then implement a Delegate Evenet for example:
 	* so the idea here is that you have the ability to add any other functionality to be executed after finishing video decoder,
@@ -140,7 +70,7 @@
 
 	So, here we have applied generics constraint for T to accept any type that implement IComparable, also we can add more constraints (separated by comma)
 - Repository Pattern: is a mediate (abstraction) layer between the domain (business) layer and data mapping layer (ORM) so that you hide how the data is eventually stored or retrieved to and from the DB, so the main purpose here is to make your achitecture a loosly decopled of ORM
-- One of the benefits of UnitOfWork is that you can savechanges of more than one entity at the same time (like a transaction)
+- One of the benefits of UnitOfWork is that you can savechanges of more than one entity at the same time (like a transaction), creating a single database context class shared by all repositories.
 
 - SDLC:
 	- Project preparation discuss resource and the skills needed, apply tranings or self-study if needed.
