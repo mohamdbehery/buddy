@@ -1,0 +1,50 @@
+	1. Archive DevOps code include all processes
+	2. Tutorials about C# 
+		a. Reference Type and value type
+		b. SOLID principles
+		c. OOP tutorials
+		d. .Net tutorials
+		e. .Net Core tutorials
+	3. Watch some GitHub tutorials (Actual cases, when to use rebase, stash, etc…)
+	4. Understand the DWH (Facts & Dimensions)
+	5. Understand MileStone and Polling Event (Practice)
+	6. Understand LogStash, Kibana and ElasticSearch 
+	7. How to define the ticket complexity
+	8. Configure CI\CD on Buddy project
+	9. Data Structures & Algorithms.
+	10. Well understand the cross apply and outer apply and using cases
+	11. Install updates, enable EPAM VPN first
+	12. Consume API from SQL Server
+	13. What exactly is data warehousing??? Facts & Dimensions
+	14. How to do data warehousing with Hadoop
+	15. Remove ReSharper and install Sonar Lint
+	16. Difference between task schedule and windows service
+	17. How select query executed with lock and without
+	18. Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
+	19. Message doesn't delete RabbitMQ dashboard after acknowledge
+	20. Understand the RabbitMQ dashboard
+	21. If more than one rabbitmq server, how acknowledgement reach the correct one
+	22. Difference between RabbitMQ and HangFire
+	23. Meaning of onshore\offshore support
+	24. How to move messages from one queue to another through RabbitMQ dashboard
+	25. Understand how SSO is working
+	26. How the grooming and estimation should be done in Agile scrum
+>>>>>>>>>>>>>>>>>>
+
+	1. DB diagram types?
+	2. onshore and offshore teams?
+	3. S What is the WCF services used in the application
+	4. S Check factory approach
+	5. SQL Execution plan
+	6. Understand the SSH connectivity (Practice)
+	7. DFS (Practice)
+	8. Configure CI\CD with GitHub and Deploy to a Github pages (Practice)
+	9. SSIS packages (recorder Maksym) & (Practice)
+	10. MS Unit Test (Practice)
+	11. ASP.NET Web Forms, 
+	12. ADO code
+	13. WCF Services tutorials.
+	14. Web Services
+	15. Windows services
+	16. Code analysis tools
+LinkedIn English and Skills assessments
