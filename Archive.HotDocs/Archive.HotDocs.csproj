@@ -251,9 +251,11 @@
     <Content Include="Relocation Docs\Receipts\taxi from the airport of malaga.png" />
     <Content Include="Relocation Docs\Receipts\visa fees.png" />
     <Content Include="Relocation Docs\TownHall Registeration\DNI ANTONIO PEREA 2018.jpg" />
+    <Content Include="Relocation procedures.txt" />
     <Content Include="small signature ar.png" />
     <Content Include="small signature en.jpg" />
     <Content Include="Study Notes.txt" />
+    <Content Include="Study TODO.txt" />
     <Content Include="Virgin PW.txt" />
     <Content Include="visual studio 2019 serial.txt" />
   </ItemGroup>
