@@ -1,6 +1,9 @@
 	1. Archive DevOps code include all processes
 	2. Tutorials about C# 
 		a. Reference Type and value type
+		b. O code complexity (Practice)
+		b. Algorithms (approachs not particular ones, ex, Brute Force, Devide and Concor, etc...)
+		b. Data Structures
 		b. SOLID principles
 		c. OOP tutorials
 		d. .Net tutorials
@@ -29,17 +32,17 @@
 	24. How to move messages from one queue to another through RabbitMQ dashboard
 	25. Understand how SSO is working
 	26. How the grooming and estimation should be done in Agile scrum
+
 >>>>>>>>>>>>>>>>>>
 
 	1. DB diagram types?
 	2. onshore and offshore teams?
-	3. S What is the WCF services used in the application
-	4. S Check factory approach
-	5. SQL Execution plan
+	3. What is WCF apps used for?
+	5. SQL Execution plan?
 	6. Understand the SSH connectivity (Practice)
 	7. DFS (Practice)
 	8. Configure CI\CD with GitHub and Deploy to a Github pages (Practice)
-	9. SSIS packages (recorder Maksym) & (Practice)
+	9. SSIS packages(Practice)
 	10. MS Unit Test (Practice)
 	11. ASP.NET Web Forms, 
 	12. ADO code
@@ -47,4 +50,5 @@
 	14. Web Services
 	15. Windows services
 	16. Code analysis tools
+
 LinkedIn English and Skills assessments
