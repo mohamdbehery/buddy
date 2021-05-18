@@ -56,7 +56,7 @@
     <None Include="Digital Certificate\userbk.p12" />
     <None Include="GCP Associate Cloud Engineer ACE.docx" />
     <None Include="Mohamed Behery - Software Engineer.docx" />
-    <None Include="Mohamed_Behery_Tax_Clarification.pdf" />
+    <None Include="Relocation Docs\Mohamed_Behery_Tax_Clarification.pdf" />
     <None Include="MyResume.docx" />
     <None Include="packages.config" />
     <None Include="Review.docx" />
@@ -259,7 +259,6 @@
     <Content Include="small signature en.jpg" />
     <Content Include="Study Notes.txt" />
     <Content Include="Study TODO.txt" />
-    <Content Include="Virgin PW.txt" />
     <Content Include="visual studio 2019 serial.txt" />
   </ItemGroup>
   <ItemGroup>
