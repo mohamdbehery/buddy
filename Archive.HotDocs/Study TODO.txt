@@ -9,6 +9,7 @@
 		d. .Net tutorials
 		e. .Net Core tutorials
 	3. Watch some GitHub tutorials (Actual cases, when to use rebase, stash, etc…)
+	4. Functional Programming (Mohamed Hammad)
 	4. Understand the DWH (Facts & Dimensions)
 	5. Understand MileStone and Polling Event (Practice)
 	6. Understand LogStash, Kibana and ElasticSearch 

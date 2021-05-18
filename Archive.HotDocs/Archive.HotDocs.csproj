@@ -135,6 +135,8 @@
     <None Include="Relocation Docs\TownHall Registeration\Work Permit Approval_Mohamed  Behery.pdf" />
     <None Include="Relocation Docs\Unicaja account bank certificate.pdf" />
     <None Include="Relocation Docs\Work Permit Approval_Mohamed  Behery.pdf" />
+    <None Include="TechArchive\pams-advisory-infra-master.zip" />
+    <None Include="TechArchive\pams-advisory-iws-terraform-master.zip" />
     <None Include="TechArchive\qbo.HeartbeatService.rar" />
     <None Include="TechArchive\SDLC Workflow and Branching Strategy.pdf" />
   </ItemGroup>
