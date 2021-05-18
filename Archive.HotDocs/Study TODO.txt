@@ -1,8 +1,8 @@
 	- Basics 
 		- C# tutorials
 		- OOP tutorials
-		- Big O code complexity (Practice)
-		>>> - Data Structures
+		>>> - Big O code complexity (Practice)
+		- Data Structures
 		- SOLID principles
 		- Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
 		- Design Patterns
@@ -100,4 +100,3 @@
 	1. Cracking the code interview
 	2. Introduction to algorithms
 	3. Leetcode
-
