@@ -26,6 +26,7 @@
 	- DB diagram types?
 	- SQL Execution plan?	
 	- DFS (Practice)
+	- SSRS (Practice)
 	- SSIS (Practice)
 	- MS Unit Test (Practice)
 	- LinkedIn English assessment
