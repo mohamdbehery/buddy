@@ -1,3 +1,11 @@
-- Big O is simply used to describe the performance of an algorithm.
+- Big O is simply used to describe the performance of an algorithm, which describe the Time & Space complexity.
+- Big O: is how much the runtime of this code increases as the size of the input increases
+	- Constant O(1): the time doesnt increase by incresing input size.
+	- Linear O(n): the time consumed increase as much as the input increase.
+	- Quadratic O(n^2):
+- How to calculate the Big O: (ex: cn + dn^2 + e)
+	- choose the fastest growing term > dn^2
+	- Remove the coeffecient > n^2 > Quadratic
+	- so in general, you can check every line of code, how this line can be affected according to the input size.
 - We have to understand Data Structures well because the data structure object you decide to use will affect your code performance
-- 
+- Code performance is always to Save Time and Save Space, so you need to decide which factor is more important so if you are developing a mobile app then saving space is much important and so on.
