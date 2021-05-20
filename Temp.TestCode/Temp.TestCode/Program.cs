@@ -15,6 +15,8 @@ namespace Temp.TestCode
         static Helper helper = Helper.CreateInstance();
         static void Main(string[] args)
         {
+            LinkedTest<string> linkedTest = new LinkedTest<string>();
+            linkedTest.ListCount
             using (UnitOfWork unitOfWork = new UnitOfWork())
             {
                 unitOfWork.AppUserRepository.AddUser(new App.Data.LogicalModelsDTO.AppUserModel()
@@ -111,6 +113,26 @@ namespace Temp.TestCode
         //    Engine.Razor = RazorEngineService.Create(config);
         //    var emailHtmlBody = Engine.Razor.RunCompile(filePath, null, model);
         //}
+    }
+
+    public class LinkedTest<T> where T : class
+    {
+        public int ListCount(NodeTest<T> head)
+        {
+            int count = 0;
+            NodeTest<T> currentNode = head;
+            while (currentNode != null)
+            {
+                currentNode = currentNode.Next;
+                count++;
+            }
+            return count;
+        }
+    }
+    public class NodeTest<T> where T : class
+    {
+        public int Value { get; set; }
+        public NodeTest<T> Next { get; set; }
     }
 
     public class Person

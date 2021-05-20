@@ -19,6 +19,8 @@
 		- SSO (Practice)
 	- Reference Type and value type
 	- Well understand the cross apply and outer apply and using cases
+	- Row lock and table lock
+	- Select rownumber
 	- How select query executed with lock and without
 	- Algorithms (approachs not particular ones, ex, Brute Force, Devide and Concor, etc...)
 	- Watch some GitHub tutorials (Actual cases, when to use rebase, stash, etc…)
