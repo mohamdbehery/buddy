@@ -9,3 +9,7 @@
 	- so in general, you can check every line of code, how this line can be affected according to the input size.
 - We have to understand Data Structures well because the data structure object you decide to use will affect your code performance
 - Code performance is always to Save Time and Save Space, so you need to decide which factor is more important so if you are developing a mobile app then saving space is much important and so on.
+- Data Structures:
+	- Array is a collection of items that should be with a fixed length, and we can't add more numbers to exceed the length BECAUSE, in memory we book a specific number of bytes to insert array values sequentialy so that we may have other variables book the next slots of memory so we can't insert new values beside the old values in memory, because to insert array values we need a bunch of consective bytes.
+	and what about the List (the dynamic array) its working like everytime you add a new value it defines a new array with the length of old + new values and so on
+	- Class is a blue print that you create objects from, so that you define props in class and assign these props values while instantiating it (creating an object), and also you need to make this assignment in class constructor for the mandatory props so that you will defintly pass it when you create object.
