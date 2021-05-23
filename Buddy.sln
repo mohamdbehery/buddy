@@ -54,6 +54,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Demo.SSRS", "Demo.SSRS\Demo.SSRS.rptproj", "{BFFD35B7-6690-4403-854F-FB9649526E47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -178,6 +180,14 @@ Global
 		{B28C85BB-3D4B-49AC-AB4B-65DB174CC7F7}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
 		{B28C85BB-3D4B-49AC-AB4B-65DB174CC7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B28C85BB-3D4B-49AC-AB4B-65DB174CC7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFFD35B7-6690-4403-854F-FB9649526E47}.Debug|Any CPU.ActiveCfg = Debug
+		{BFFD35B7-6690-4403-854F-FB9649526E47}.Debug|Any CPU.Build.0 = Debug
+		{BFFD35B7-6690-4403-854F-FB9649526E47}.Debug|Any CPU.Deploy.0 = Debug
+		{BFFD35B7-6690-4403-854F-FB9649526E47}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{BFFD35B7-6690-4403-854F-FB9649526E47}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{BFFD35B7-6690-4403-854F-FB9649526E47}.Release|Any CPU.ActiveCfg = Release
+		{BFFD35B7-6690-4403-854F-FB9649526E47}.Release|Any CPU.Build.0 = Release
+		{BFFD35B7-6690-4403-854F-FB9649526E47}.Release|Any CPU.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,6 +210,7 @@ Global
 		{118F9FFC-CFC5-40AC-9219-2E3321189ECE} = {F8B4BEC0-608D-4C99-BFB8-AB640D83BAD0}
 		{C52AE845-A90A-4539-9DE1-1C8DECC4BEB3} = {F8B4BEC0-608D-4C99-BFB8-AB640D83BAD0}
 		{535C23B3-15CD-4AD4-A969-3DC064F3BC96} = {F8B4BEC0-608D-4C99-BFB8-AB640D83BAD0}
+		{BFFD35B7-6690-4403-854F-FB9649526E47} = {8D074988-C253-4685-98D8-7996403C20F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA80C294-1A14-4DD4-9850-3EB435A70912}

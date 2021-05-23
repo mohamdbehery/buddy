@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>BuddyDataSource</DataSourceReference>
+      <CommandText>select * from [dbo].[App].[User]</CommandText>
+    </Query>
+  </DataSet>
+</SharedDataSet>

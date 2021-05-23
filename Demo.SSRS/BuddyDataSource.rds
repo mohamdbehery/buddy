@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="BuddyDataSource">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=EPESMALW006D;Initial Catalog=Buddy</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>6529da8d-122a-4546-99f9-88f497a66f6d</DataSourceID>
+</RptDataSource>
