@@ -1,3 +1,6 @@
+- SQL Server Reporting Services (SSRS): is a reporting software that allows you to produce formatted reports with tables in the form of data, graph, images, and charts. These reports are hosted on a server that can be executed any time using parameters defined by the users. It is part of Microsoft SQL Server Services suite.
+You first create the report itself (.rdl) by desiging it and provide the data source (db connection) and the data set (query or stored procedure) and then upload this file to the SSRS platform and configure the report with\out parameters, and then configure the subscription.
+
 - Big O is simply used to describe the performance of an algorithm, which describe the Time & Space complexity.
 - Big O: is how much the runtime of this code increases as the size of the input increases
 	- Constant O(1): the time doesnt increase by incresing input size.
@@ -13,3 +16,22 @@
 	- Array is a collection of items that should be with a fixed length, and we can't add more numbers to exceed the length BECAUSE, in memory we book a specific number of bytes to insert array values sequentialy so that we may have other variables book the next slots of memory so we can't insert new values beside the old values in memory, because to insert array values we need a bunch of consective bytes.
 	and what about the List (the dynamic array) its working like everytime you add a new value it defines a new array with the length of old + new values and so on
 	- Class is a blue print that you create objects from, so that you define props in class and assign these props values while instantiating it (creating an object), and also you need to make this assignment in class constructor for the mandatory props so that you will defintly pass it when you create object.
+	- Tree:
+	- Binary Search: go to the middle point of array and check if the target is greater than the middle then move to the right and repeat:
+	    public static int BinarySearch(int[] source, int target)
+        {
+            int left = 0, middle = 0;
+            int right = source.Length - 1;
+            while (left < right)
+            {
+                middle = (left + right) / 2;
+                if (source[middle] == target)
+                    return middle;
+                else if (target < source[middle])
+                    right = middle - 1;
+                else if (target > source[middle])
+                    left = middle + 1;
+            }
+            return middle;
+        }
+	- Linear Search:

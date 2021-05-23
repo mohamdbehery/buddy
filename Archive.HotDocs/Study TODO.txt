@@ -1,8 +1,8 @@
 	- Basics 
 		- C# tutorials
 		- OOP tutorials
-		>>> - Big O code complexity (Practice)
-		- Data Structures
+		- Big O code complexity (Practice)
+		>>> - Data Structures
 		- SOLID principles
 		- Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
 		- Design Patterns
@@ -52,6 +52,8 @@
 	- How to move messages from one queue to another through RabbitMQ dashboard
 	- If more than one rabbitmq server, how acknowledgement reach the correct one
 	- Message doesn't delete RabbitMQ dashboard after acknowledge	
+	- Hacker Rank Problem Solving 
+	- Practice on Technical assessments
 
 >>>>>>>>>Refernces to big companies>>>>>>>>
 	1. Data structures
