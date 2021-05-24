@@ -1,5 +1,5 @@
 - SQL Server Reporting Services (SSRS): is a reporting software that allows you to produce formatted reports with tables in the form of data, graph, images, and charts. These reports are hosted on a server that can be executed any time using parameters defined by the users. It is part of Microsoft SQL Server Services suite.
-You first create the report itself (.rdl) by desiging it and provide the data source (db connection) and the data set (query or stored procedure) and then upload this file to the SSRS platform and configure the report with\out parameters, and then configure the subscription.
+You first create the report itself (.rdl) by desiging it and provide the data source (db connection) and the data set (query or stored procedure) and then configure the subscription, all of this after configuring the SSRS reporting server and configuring the mail settings, from the SQL Server you can connect to thr Reporting Server and click server properities to get the URL and paste this URL in VS > project properities > Target ServerURL and then right click on project and choose deploy (dont forget to Run As Admin), to view the report open the Web Portal url in IE with Run As Admin 
 
 - Big O is simply used to describe the performance of an algorithm, which describe the Time & Space complexity.
 - Big O: is how much the runtime of this code increases as the size of the input increases
@@ -35,3 +35,4 @@ You first create the report itself (.rdl) by desiging it and provide the data so
             return middle;
         }
 	- Linear Search:
+    - Quick Sort: its a devide and conquer algorithm which select a pivot element (the first\last element of the array) and partitioning the rest of elements into 2 sub-arrays, and check wether every element is less or greater that the pivot and start to sort each sub-array, and so on.

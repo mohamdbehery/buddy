@@ -56,6 +56,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Demo.SSRS", "Demo.SSRS\Demo.SSRS.rptproj", "{BFFD35B7-6690-4403-854F-FB9649526E47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Algorithms", "Demo.Algorithms\Demo.Algorithms.csproj", "{2295FEDA-65EE-4DEB-B0C3-B718B54C872D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +190,12 @@ Global
 		{BFFD35B7-6690-4403-854F-FB9649526E47}.Release|Any CPU.ActiveCfg = Release
 		{BFFD35B7-6690-4403-854F-FB9649526E47}.Release|Any CPU.Build.0 = Release
 		{BFFD35B7-6690-4403-854F-FB9649526E47}.Release|Any CPU.Deploy.0 = Release
+		{2295FEDA-65EE-4DEB-B0C3-B718B54C872D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2295FEDA-65EE-4DEB-B0C3-B718B54C872D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2295FEDA-65EE-4DEB-B0C3-B718B54C872D}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{2295FEDA-65EE-4DEB-B0C3-B718B54C872D}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{2295FEDA-65EE-4DEB-B0C3-B718B54C872D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2295FEDA-65EE-4DEB-B0C3-B718B54C872D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -211,6 +219,7 @@ Global
 		{C52AE845-A90A-4539-9DE1-1C8DECC4BEB3} = {F8B4BEC0-608D-4C99-BFB8-AB640D83BAD0}
 		{535C23B3-15CD-4AD4-A969-3DC064F3BC96} = {F8B4BEC0-608D-4C99-BFB8-AB640D83BAD0}
 		{BFFD35B7-6690-4403-854F-FB9649526E47} = {8D074988-C253-4685-98D8-7996403C20F1}
+		{2295FEDA-65EE-4DEB-B0C3-B718B54C872D} = {8D074988-C253-4685-98D8-7996403C20F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA80C294-1A14-4DD4-9850-3EB435A70912}
