@@ -35,4 +35,51 @@ You first create the report itself (.rdl) by desiging it and provide the data so
             return middle;
         }
 	- Linear Search:
-    - Quick Sort: its a devide and conquer algorithm which select a pivot element (the first\last element of the array) and partitioning the rest of elements into 2 sub-arrays, and check wether every element is less or greater that the pivot and start to sort each sub-array, and so on.
+    - Quick Sort: its a devide and conquer algorithm where every element find its sorted position that follow the below steps:
+        - partition list into 2 sub-arrays by selecting the pivot element:
+            - consider pivot as the first element.
+            - loop through elements if found element < pivot then swap it.
+            - swap the pivot with the last swaped location location (move pivot to its sorted location).
+            - return the last swaped location as the new pivot
+        - repeat the quickSort again from left to pivot
+        - repeat the quickSort again from pivot to right
+        # region Quick Sort
+        public static int[] QuickSort(int[] given_array, int start, int end)
+        {
+            if (start < end)
+            {
+                int pivotIndex = QuickSortPartition(given_array, start, end);
+                QuickSort(given_array, start, pivotIndex);
+                QuickSort(given_array, pivotIndex + 1, end);
+            }
+            return given_array;
+        }
+
+        public static int QuickSortPartition(int[] given_array, int left, int right)
+        {
+            int pivot = given_array[left];
+            int swapIndex = left;
+            for (int i = left + 1; i < right; i++)
+            {
+                if (given_array[i] < pivot)
+                {
+                    swapIndex++;
+                    SwapArray(ref given_array, i, swapIndex); // sort these 2 elements
+                }
+            }
+            SwapArray(ref given_array, left, swapIndex); // move pivot to its sorted location
+            return swapIndex;
+        }
+
+        public static void SwapArray(ref int[] given_array, int firstIndex, int secondIndex)
+        {
+            int temp = given_array[firstIndex];
+            given_array[firstIndex] = given_array[secondIndex];
+            given_array[secondIndex] = temp;
+        }
+        #endregion
+
+    - Dictionary (HashMap in Java): is a collection of KeyValue pairs implemented by HashTable, it talk O(1) time to find an element
+    - Hash Table: a collection of key-and-value pairs that are organized based on the hash code of the key, which uses the Hash Function to hash the key
+        a methodology for storing array elements in indexes related to its values (do some equations to calculate the element index from its value)
+    - 

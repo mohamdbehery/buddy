@@ -18,8 +18,10 @@
 		- Web Services
 		- SSO (Practice)
 	- Reference Type and value type
+	-How c# loops are working, what is the best from performance perspective
 	- Well understand the cross apply and outer apply and using cases
 	- Row lock and table lock
+	- Temp stored procedure
 	- Select rownumber
 	- How select query executed with lock and without
 	- Algorithms (approachs not particular ones, ex, Brute Force, Devide and Concor, etc...)
