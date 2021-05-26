@@ -17,7 +17,10 @@
 		- WCF Services tutorials.
 		- Web Services
 		- SSO (Practice)
+		- Microservices (Practice)
+		- Domain Driven Design (Practice)
 	- Reference Type and value type
+	- When exactly we should use struct rather than class
 	-How c# loops are working, what is the best from performance perspective
 	- Well understand the cross apply and outer apply and using cases
 	- Row lock and table lock
@@ -54,6 +57,8 @@
 	- How to move messages from one queue to another through RabbitMQ dashboard
 	- If more than one rabbitmq server, how acknowledgement reach the correct one
 	- Message doesn't delete RabbitMQ dashboard after acknowledge	
+	- Business Intelligence (SSIS, SSRS, LookerBI)
+	- GCP Review
 	- Hacker Rank Problem Solving 
 	- Practice on Technical assessments
 

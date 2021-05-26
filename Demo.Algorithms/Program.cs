@@ -13,10 +13,12 @@ namespace Demo.Algorithms
             //{
             //    Console.Write($" > {item}");
             //}
-            Dictionary<string, string> dict = new Dictionary<string, string>();
-            dict.Add("test", "y");
-            string d = "zsdf";
-            Console.WriteLine(d.GetHashCode());
+            List<int> df = new List<int>()
+            {
+                1, 2
+            };
+            
+            Console.WriteLine(df[2]);
             Console.ReadLine();
         }
 

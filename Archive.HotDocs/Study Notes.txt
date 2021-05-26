@@ -1,6 +1,6 @@
 - SQL Server Reporting Services (SSRS): is a reporting software that allows you to produce formatted reports with tables in the form of data, graph, images, and charts. These reports are hosted on a server that can be executed any time using parameters defined by the users. It is part of Microsoft SQL Server Services suite.
 You first create the report itself (.rdl) by desiging it and provide the data source (db connection) and the data set (query or stored procedure) and then configure the subscription, all of this after configuring the SSRS reporting server and configuring the mail settings, from the SQL Server you can connect to thr Reporting Server and click server properities to get the URL and paste this URL in VS > project properities > Target ServerURL and then right click on project and choose deploy (dont forget to Run As Admin), to view the report open the Web Portal url in IE with Run As Admin 
-
+- Integer data type reserve a 4 bytes in memory.
 - Big O is simply used to describe the performance of an algorithm, which describe the Time & Space complexity.
 - Big O: is how much the runtime of this code increases as the size of the input increases
 	- Constant O(1): the time doesnt increase by incresing input size.
@@ -15,6 +15,7 @@ You first create the report itself (.rdl) by desiging it and provide the data so
 - Data Structures:
 	- Array is a collection of items that should be with a fixed length, and we can't add more numbers to exceed the length BECAUSE, in memory we book a specific number of bytes to insert array values sequentialy so that we may have other variables book the next slots of memory so we can't insert new values beside the old values in memory, because to insert array values we need a bunch of consective bytes.
 	and what about the List (the dynamic array) its working like everytime you add a new value it defines a new array with the length of old + new values and so on
+      Time needed to access an element in array is O(1) constant time because the array elements are stored in a 
 	- Class is a blue print that you create objects from, so that you define props in class and assign these props values while instantiating it (creating an object), and also you need to make this assignment in class constructor for the mandatory props so that you will defintly pass it when you create object.
 	- Tree:
 	- Binary Search: go to the middle point of array and check if the target is greater than the middle then move to the right and repeat:
@@ -79,7 +80,11 @@ You first create the report itself (.rdl) by desiging it and provide the data so
         }
         #endregion
 
+    - To deside what kind of data structures you should use, you need to consider these factors: size of data, is the data fixed or dynamic, how much frequent operations done, 
     - Dictionary (HashMap in Java): is a collection of KeyValue pairs implemented by HashTable, it talk O(1) time to find an element
     - Hash Table: a collection of key-and-value pairs that are organized based on the hash code of the key, which uses the Hash Function to hash the key
         a methodology for storing array elements in indexes related to its values (do some equations to calculate the element index from its value)
-    - 
+    - List: is a collection of objects with the same data type, it has no good memory utilization since it creates a new memory locations for the whole elements every time you add or remove elements.
+    - Linked List: every node has 2 locations in memory, one for the node value and another for a pointer to the next node, 
+        to access element in the linked list, it takes O(n)
+        what is distinguish linked list than array is that if you want to add\remove an element to\from the linked list you will just need to reference the next element address in its value and also set the new element's address as reference in the previous element, but in array you will need to shift the index increase\decrease for all elements after\before the element you want to delete\add.
