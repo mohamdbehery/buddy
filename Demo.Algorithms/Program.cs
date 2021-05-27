@@ -13,12 +13,7 @@ namespace Demo.Algorithms
             //{
             //    Console.Write($" > {item}");
             //}
-            List<int> df = new List<int>()
-            {
-                1, 2
-            };
-            
-            Console.WriteLine(df[2]);
+            Console.WriteLine();
             Console.ReadLine();
         }
 

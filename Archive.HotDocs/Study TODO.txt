@@ -19,6 +19,7 @@
 		- SSO (Practice)
 		- Microservices (Practice)
 		- Domain Driven Design (Practice)
+	- How to calculate the Space Complexity
 	- Reference Type and value type
 	- When exactly we should use struct rather than class
 	-How c# loops are working, what is the best from performance perspective
