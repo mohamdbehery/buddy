@@ -1,6 +1,8 @@
 - SQL Server Reporting Services (SSRS): is a reporting software that allows you to produce formatted reports with tables in the form of data, graph, images, and charts. These reports are hosted on a server that can be executed any time using parameters defined by the users. It is part of Microsoft SQL Server Services suite.
 You first create the report itself (.rdl) by desiging it and provide the data source (db connection) and the data set (query or stored procedure) and then configure the subscription, all of this after configuring the SSRS reporting server and configuring the mail settings, from the SQL Server you can connect to thr Reporting Server and click server properities to get the URL and paste this URL in VS > project properities > Target ServerURL and then right click on project and choose deploy (dont forget to Run As Admin), to view the report open the Web Portal url in IE with Run As Admin 
 - Integer data type reserve a 4 bytes in memory.
+- When running code, every function reserve a memory location in the stack so any varaible inside this function should be stored in this memory location, so this is how the function scope variables are no longer available as soon as the compiler finished the function execution and go outside it because at that time it should be deleted from memory.
+- The memory of Stack got deallocated as soon as the function ended but in Heap its still as long as the application is running.
 - Any recursive function should have a condition to end the recursion.
 - In mathematical expressions, Multiplication\devision has a priority before addition\substraction.
 - Big O is simply used to describe the performance of an algorithm, which describe the Time & Space complexity.
@@ -95,4 +97,11 @@ You first create the report itself (.rdl) by desiging it and provide the data so
     - Doubly Linked List: is a normal linked list but each element has 2 references, one for the next node and another for the previous node.
     - Most common examples of using Stack data structure is: Function Calls so the last function enter stack is the first one to finish, Also one more example is the Undo function to reverse changes one by one most recently.
     - Stack and Queue can be implemented using Array or LinkedList
-    - Tree data structure is used to store a hierarchical data
+    - Tree data structure is used to store a hierarchical data, where each node has 1 or more childs
+    - Binary Tree: is a normal tree where each node has only 2 childs
+    - Binary Search Tree (BST): is a binary tree where for every node, all nodes on its right side has value greated than its value and all nodes to the left has value less than its value,, exactly like the Binary Search in general we should have the array sorted so this is the same we assume the tree as a binary search tree if each node in the left is less than its sibling in the right.
+        so finding an element in a binary search tree is just costing O(log n).
+        so if you want to find the minimum value in a BST, you just go to the left as much as it exists (the last element), and the miximum is the last element in the right.
+    - Hight of a node: is the number of edges in the longest path from the node to the leaf node.
+    - Keep in mind that, Recursive functions is used in most of Data Structures implementation.
+    - Data Structures has 2 types: Linear Data Structures like Array, Stack, Queue, Linked List and Hierachical Data Structures like Tree and Graphs.
