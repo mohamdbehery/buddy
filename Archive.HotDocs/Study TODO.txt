@@ -1,27 +1,27 @@
-	- Basics 
-		- C# tutorials
-		- OOP tutorials
-		- Big O code complexity (Practice)
-		>>> - Data Structures
-		- Why do we study Data Structures
-		- Practical siotuation about using Data Structures
-		- Algorithms (most famous)
-		- SOLID principles
-		- Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
-		- Design Patterns
-		- ADO code
-		- Entity Framework
-		- SQL basics & advanced
-		- Net tutorials
-		- ASP.NET Web Forms, 
-		- .Net Core tutorials		
-		- Windows services
-		- What is WCF apps used for?
-		- WCF Services tutorials.
-		- Web Services
-		- SSO (Practice)
-		- Microservices (Practice)
-		- Domain Driven Design (Practice)
+>>>>>>>>>>>>>>>>>
+	- C# tutorials
+	- OOP tutorials
+	- Big O code complexity (Practice)
+	>>> - Data Structures
+	- Why do we study Data Structures
+	- Practical siotuation about using Data Structures
+	- Algorithms (most famous)
+	- SOLID principles
+	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
+	- Design Patterns
+	- ADO code
+	- Entity Framework
+	- SQL basics & advanced
+	- Net tutorials
+	- ASP.NET Web Forms, 
+	- .Net Core tutorials		
+	- Windows services
+	- What is WCF apps used for?
+	- WCF Services tutorials.
+	- Web Services
+	- SSO (Practice)
+	- Microservices (Practice)
+	- Domain Driven Design (Practice)
 	- How to calculate the Space Complexity
 	- Reference Type and value type
 	- When exactly we should use struct rather than class

@@ -103,5 +103,8 @@ You first create the report itself (.rdl) by desiging it and provide the data so
         so finding an element in a binary search tree is just costing O(log n).
         so if you want to find the minimum value in a BST, you just go to the left as much as it exists (the last element), and the miximum is the last element in the right.
     - Hight of a node: is the number of edges in the longest path from the node to the leaf node.
+    - Graph: is a Tree but with no leaves, where the number of nodes equal the number of edges.
+    - Directed Graph: where the edges between nodes are in one direction, but the Undirected Graph, the edges have 2 directions.
+        social networks are a good example for the UnDirected Graph where each node has 2 directions to each other.
     - Keep in mind that, Recursive functions is used in most of Data Structures implementation.
     - Data Structures has 2 types: Linear Data Structures like Array, Stack, Queue, Linked List and Hierachical Data Structures like Tree and Graphs.
