@@ -1,11 +1,8 @@
 >>>>>>>>>>>>>>>>>
-	- C# tutorials
-	- OOP tutorials
-	- Big O code complexity (Practice)
-	>>> - Data Structures
-	- Why do we study Data Structures
-	- Practical siotuation about using Data Structures
 	- Algorithms (most famous)
+		- DFS Depth First Search
+		- BFS Breadth First Search
+		- Matching Brackets problem
 	- SOLID principles
 	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
 	- Design Patterns
@@ -25,7 +22,8 @@
 	- How to calculate the Space Complexity
 	- Reference Type and value type
 	- When exactly we should use struct rather than class
-	-How c# loops are working, what is the best from performance perspective
+	- Where to save the Login Token
+	- How c# loops are working, what is the best from performance perspective
 	- Well understand the cross apply and outer apply and using cases
 	- Row lock and table lock
 	- Temp stored procedure
@@ -34,6 +32,7 @@
 	- Algorithms (approachs not particular ones, ex, Brute Force, Devide and Concor, etc...)
 	- Watch some GitHub tutorials (Actual cases, when to use rebase, stash, etc…)
 	- Functional Programming (Mohamed Hammad)	
+	- Dynamic Programming (Practice)
 	- onshore and offshore teams?
 	- DB diagram types?
 	- SQL Execution plan?	

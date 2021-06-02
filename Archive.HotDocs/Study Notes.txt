@@ -3,6 +3,10 @@ You first create the report itself (.rdl) by desiging it and provide the data so
 - Integer data type reserve a 4 bytes in memory.
 - When running code, every function reserve a memory location in the stack so any varaible inside this function should be stored in this memory location, so this is how the function scope variables are no longer available as soon as the compiler finished the function execution and go outside it because at that time it should be deleted from memory.
 - The memory of Stack got deallocated as soon as the function ended but in Heap its still as long as the application is running.
+- When any application start, the memory manager auto reserve a specific size in Stack for it, but the Heap size can vary during the runtime of the application (Heap is a free pool of memory or dynamic memory), so the Stack memory slots auto-cleared as soon as the function finished calling, but the heap memory cleaning is managed by the garbage collector.
+- Memory Leak can happen when we inproperly use Heap so there is a lot of unused or unreferenced blocks in the Heap, but for Stack you may have StackOverFlow error
+- You allocate momory in Heap whenever you use (new) keyword.
+- Memory has different parts: Stack, Heap and Global, Global is used to save the global objects (not function scope)
 - Any recursive function should have a condition to end the recursion.
 - In mathematical expressions, Multiplication\devision has a priority before addition\substraction.
 - Big O is simply used to describe the performance of an algorithm, which describe the Time & Space complexity.
