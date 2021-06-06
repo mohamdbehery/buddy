@@ -3,6 +3,12 @@
 		- DFS Depth First Search
 		- BFS Breadth First Search
 		- Matching Brackets problem
+		- Merge Sort
+		- Bubble Sort
+		- Selection Sort
+		- Quick Sort
+		- Hashing 
+		- How Regular Expression is working?
 	- SOLID principles
 	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
 	- Design Patterns
@@ -24,6 +30,7 @@
 	- When exactly we should use struct rather than class
 	- Where to save the Login Token
 	- How c# loops are working, what is the best from performance perspective
+	- c# implicit convert and explicit convert
 	- Well understand the cross apply and outer apply and using cases
 	- Row lock and table lock
 	- Temp stored procedure
