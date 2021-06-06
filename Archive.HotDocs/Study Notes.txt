@@ -112,3 +112,10 @@ You first create the report itself (.rdl) by desiging it and provide the data so
         social networks are a good example for the UnDirected Graph where each node has 2 directions to each other.
     - Keep in mind that, Recursive functions is used in most of Data Structures implementation.
     - Data Structures has 2 types: Linear Data Structures like Array, Stack, Queue, Linked List and Hierachical Data Structures like Tree and Graphs.
+    - Task implementation steps:
+        - Defining the problem clearly
+        - Breaking the problem down into small, simple parts
+        - Define the solution for each part of the problem
+        - Implementing the solution
+        - Making it efficient (eventually)
+    - One of most usings of Algorithms is finding the shortest routes in google maps and Uber

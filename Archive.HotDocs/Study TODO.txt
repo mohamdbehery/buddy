@@ -1,14 +1,18 @@
 >>>>>>>>>>>>>>>>>
 	- Algorithms (most famous)
+		- Linear Search 
+		- Binary Search
 		- DFS Depth First Search
 		- BFS Breadth First Search
-		- Matching Brackets problem
 		- Merge Sort
 		- Bubble Sort
 		- Selection Sort
 		- Quick Sort
-		- Hashing 
+		- Hashing
+		- Finding Prime Number
+		- Matching Brackets problem
 		- How Regular Expression is working?
+		- How Math.Random() is working?
 	- SOLID principles
 	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
 	- Design Patterns
