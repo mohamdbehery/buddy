@@ -25,8 +25,40 @@ You first create the report itself (.rdl) by desiging it and provide the data so
 	and what about the List (the dynamic array) its working like everytime you add a new value it defines a new array with the length of old + new values and so on
       Time needed to access an element in array is O(1) constant time because the array elements are stored in a contigious block of memory
 	- Class is a blue print that you create objects from, so that you define props in class and assign these props values while instantiating it (creating an object), and also you need to make this assignment in class constructor for the mandatory props so that you will defintly pass it when you create object.
-	- Tree:
-	- Binary Search: go to the middle point of array and check if the target is greater than the middle then move to the right and repeat:
+    - To deside what kind of data structures you should use, you need to consider these factors: size of data, is the data fixed or dynamic, how much frequent operations done (cost of operations), 
+    - Dictionary (HashMap in Java): is a collection of KeyValue pairs implemented by HashTable, it talk O(1) time to find an element
+    - Hash Table: a collection of key-and-value pairs that are organized based on the hash code of the key, which uses the Hash Function to hash the key
+        a methodology for storing array elements in indexes related to its values (do some equations to calculate the element index from its value)
+    - List: is a collection of objects with the same data type, it has no good memory utilization since it creates a new memory locations for the whole elements every time you add or remove elements.
+    - Linked List: every node has 2 locations in memory, one for the node value and another for a pointer to the next node, 
+        to access element in the linked list, it takes O(n), 
+        Apart from storing linked list elements into memory, we need also another memory slot to save the address of the first element in the linked list (a pointer to head) which called the identity of the linked list.
+        what is distinguish linked list than array is that if you want to add\remove an element to\from the linked list you will just need to reference the next element address in its value and also set the new element's address as reference in the previous element, but in array you will need to shift the index increase\decrease for all elements after\before the element you want to delete\add.
+        So in general linked list need extra memroy for every element to store a reference to the next element, but array need only one slot of memory for every element.
+    - Doubly Linked List: is a normal linked list but each element has 2 references, one for the next node and another for the previous node.
+    - Most common examples of using Stack data structure is: Function Calls so the last function enter stack is the first one to finish, Also one more example is the Undo function to reverse changes one by one most recently.
+    - Stack and Queue can be implemented using Array or LinkedList
+    - Tree data structure is used to store a hierarchical data, where each node has 1 or more childs
+    - Binary Tree: is a normal tree where each node has only 2 childs
+    - Binary Search Tree (BST): is a binary tree where for every node, all nodes on its right side has value greated than its value and all nodes to the left has value less than its value,, exactly like the Binary Search in general we should have the array sorted so this is the same we assume the tree as a binary search tree if each node in the left is less than its sibling in the right.
+        so finding an element in a binary search tree is just costing O(log n).
+        so if you want to find the minimum value in a BST, you just go to the left as much as it exists (the last element), and the miximum is the last element in the right.
+    - Hight of a node: is the number of edges in the longest path from the node to the leaf node.
+    - Graph: is a Tree but with no leaves, where the number of nodes equal the number of edges.
+    - Directed Graph: where the edges between nodes are in one direction, but the Undirected Graph, the edges have 2 directions.
+        social networks are a good example for the UnDirected Graph where each node has 2 directions to each other.
+    - Keep in mind that, Recursive functions is used in most of Data Structures implementation.
+    - Data Structures has 2 types: Linear Data Structures like Array, Stack, Queue, Linked List and Hierachical Data Structures like Tree and Graphs.
+    - Task implementation steps:
+        - Defining the problem clearly
+        - Breaking the problem down into small, simple parts
+        - Define the solution for each part of the problem
+        - Implementing the solution
+        - Making it efficient (eventually)
+
+- Algorithms (most famous) algorithms are just ways to do things, mostly for searching and sorting:
+    - Linear Search: It sequentially checks each element of the list until a match is found or the whole list has been searched, it cost O(n)
+	- Binary Search: assuming that the elements are sorted, go to the middle point of array and check if the target is greater than the middle then move to the right and repeat:
 	    public static int BinarySearch(int[] source, int target)
         {
             int left = 0, middle = 0;
@@ -43,7 +75,19 @@ You first create the report itself (.rdl) by desiging it and provide the data so
             }
             return middle;
         }
-	- Linear Search:
+
+    - DFS Depth First Search: is used to find an element in a graph\tree by visiting all graph nodes and exploring all connected nodes as following, it cost O(n): 
+        1. visit any node as a start node, and push to STACK.
+        2. loop through the stack:
+            - for current node, explore one of its connected node and check if its not exist in the stack (not visited) then push to the stack otherwise pop from the stack untill you reach this visited node and check the other connected node for this visited node. 
+            - repeat the process until the stack become empty
+
+    - BFS Breadth First Search: is used to find an element in a graph\tree by visiting all graph nodes and exploring all connected nodes as following, it cost O(n):
+        1. visit any node as a start node, and push to QUEUE.
+        2. loop through the queue
+            - for current node, explore all connected nodes by enqueueing them into queue and delete this node
+            - repeat untill the queue is empty
+
     - Quick Sort: its a devide and conquer algorithm where every element find its sorted position that follow the below steps:
         - partition list into 2 sub-arrays by selecting the pivot element:
             - consider pivot as the first element.
@@ -86,36 +130,4 @@ You first create the report itself (.rdl) by desiging it and provide the data so
             given_array[firstIndex] = given_array[secondIndex];
             given_array[secondIndex] = temp;
         }
-        #endregion
-
-    - To deside what kind of data structures you should use, you need to consider these factors: size of data, is the data fixed or dynamic, how much frequent operations done (cost of operations), 
-    - Dictionary (HashMap in Java): is a collection of KeyValue pairs implemented by HashTable, it talk O(1) time to find an element
-    - Hash Table: a collection of key-and-value pairs that are organized based on the hash code of the key, which uses the Hash Function to hash the key
-        a methodology for storing array elements in indexes related to its values (do some equations to calculate the element index from its value)
-    - List: is a collection of objects with the same data type, it has no good memory utilization since it creates a new memory locations for the whole elements every time you add or remove elements.
-    - Linked List: every node has 2 locations in memory, one for the node value and another for a pointer to the next node, 
-        to access element in the linked list, it takes O(n), 
-        Apart from storing linked list elements into memory, we need also another memory slot to save the address of the first element in the linked list (a pointer to head) which called the identity of the linked list.
-        what is distinguish linked list than array is that if you want to add\remove an element to\from the linked list you will just need to reference the next element address in its value and also set the new element's address as reference in the previous element, but in array you will need to shift the index increase\decrease for all elements after\before the element you want to delete\add.
-        So in general linked list need extra memroy for every element to store a reference to the next element, but array need only one slot of memory for every element.
-    - Doubly Linked List: is a normal linked list but each element has 2 references, one for the next node and another for the previous node.
-    - Most common examples of using Stack data structure is: Function Calls so the last function enter stack is the first one to finish, Also one more example is the Undo function to reverse changes one by one most recently.
-    - Stack and Queue can be implemented using Array or LinkedList
-    - Tree data structure is used to store a hierarchical data, where each node has 1 or more childs
-    - Binary Tree: is a normal tree where each node has only 2 childs
-    - Binary Search Tree (BST): is a binary tree where for every node, all nodes on its right side has value greated than its value and all nodes to the left has value less than its value,, exactly like the Binary Search in general we should have the array sorted so this is the same we assume the tree as a binary search tree if each node in the left is less than its sibling in the right.
-        so finding an element in a binary search tree is just costing O(log n).
-        so if you want to find the minimum value in a BST, you just go to the left as much as it exists (the last element), and the miximum is the last element in the right.
-    - Hight of a node: is the number of edges in the longest path from the node to the leaf node.
-    - Graph: is a Tree but with no leaves, where the number of nodes equal the number of edges.
-    - Directed Graph: where the edges between nodes are in one direction, but the Undirected Graph, the edges have 2 directions.
-        social networks are a good example for the UnDirected Graph where each node has 2 directions to each other.
-    - Keep in mind that, Recursive functions is used in most of Data Structures implementation.
-    - Data Structures has 2 types: Linear Data Structures like Array, Stack, Queue, Linked List and Hierachical Data Structures like Tree and Graphs.
-    - Task implementation steps:
-        - Defining the problem clearly
-        - Breaking the problem down into small, simple parts
-        - Define the solution for each part of the problem
-        - Implementing the solution
-        - Making it efficient (eventually)
-    - One of most usings of Algorithms is finding the shortest routes in google maps and Uber
+        #endregion 

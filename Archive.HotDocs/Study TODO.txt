@@ -1,9 +1,5 @@
 >>>>>>>>>>>>>>>>>
-	- Algorithms (most famous)
-		- Linear Search 
-		- Binary Search
-		- DFS Depth First Search
-		- BFS Breadth First Search
+	- Algorithms (most famous) algorithms are just ways to do things, mostly for searching and sorting:
 		- Merge Sort
 		- Bubble Sort
 		- Selection Sort
@@ -14,14 +10,14 @@
 		- How Regular Expression is working?
 		- How Math.Random() is working?
 	- SOLID principles
-	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads 
+	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads
 	- Design Patterns
 	- ADO code
 	- Entity Framework
 	- SQL basics & advanced
 	- Net tutorials
-	- ASP.NET Web Forms, 
-	- .Net Core tutorials		
+	- ASP.NET Web Forms,
+	- .Net Core tutorials
 	- Windows services
 	- What is WCF apps used for?
 	- WCF Services tutorials.
