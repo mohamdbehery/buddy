@@ -91,7 +91,7 @@ You first create the report itself (.rdl) by desiging it and provide the data so
     - Quick Sort: its a devide and conquer algorithm where every element find its sorted position that follow the below steps:
         - partition list into 2 sub-arrays by selecting the pivot element:
             - consider pivot as the first element.
-            - loop through elements if found element < pivot then swap it.
+            - loop through elements if found element < pivot then swap it, until the left and right pointers replaced
             - swap the pivot with the last swaped location location (move pivot to its sorted location).
             - return the last swaped location as the new pivot
         - repeat the quickSort again from left to pivot
@@ -131,3 +131,74 @@ You first create the report itself (.rdl) by desiging it and provide the data so
             given_array[secondIndex] = temp;
         }
         #endregion 
+    
+    - Merge Sort: based on the Devide and Conquer approach, we devide the list into sub lists until we have a very small lists (1 element) then merge it up (sorted) one by one until merge it all again but in a sorted order, it cost O(n log n)
+        #region Merge Sort
+        public static void Merge(int[] arr, int left, int middle, int right)
+        {
+            int leftArrayLength = middle - left + 1;
+            int rightArrayLength = right - middle;
+
+            // Devide array 
+            int[] leftArray = new int[leftArrayLength], rightArray = new int[rightArrayLength];
+            for (int x = 0; x < leftArrayLength; x++)
+                leftArray[x] = arr[left + x];
+            for (int y = 0; y < rightArrayLength; y++)
+                rightArray[y] = arr[middle + 1 + y];
+
+            // Maintain current index of sub-arrays and main array
+            int i, j, k;
+            i = 0;
+            j = 0;
+            k = left;
+
+            // Until we reach either end of either L or M, pick larger among
+            // elements L and M and place them in the correct position at A[p..r]
+            while (i < leftArrayLength && j < rightArrayLength)
+            {
+                if (leftArray[i] <= rightArray[j])
+                {
+                    arr[k] = leftArray[i];
+                    i++;
+                }
+                else
+                {
+                    arr[k] = rightArray[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // When we run out of elements in either L or M,
+            // pick up the remaining elements and put in A[p..r]
+            while (i < leftArrayLength)
+            {
+                arr[k] = leftArray[i];
+                i++;
+                k++;
+            }
+
+            while (j < rightArrayLength)
+            {
+                arr[k] = rightArray[j];
+                j++;
+                k++;
+            }
+        }
+
+        public static int[] MergeSort(int[] given_array, int left, int right)
+        {
+            if (left >= right)
+            {
+                return given_array;
+            }
+            int middle = left + (right - left) / 2;
+            MergeSort(given_array, left, middle);
+            MergeSort(given_array, middle + 1, right);
+            Merge(given_array, left, middle, right); // merge two subarrays L and M into arr
+
+            return given_array;
+        }
+        #endregion
+
+    - Bubble Sort:
