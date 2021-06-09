@@ -53,12 +53,13 @@
     <None Include="App.config" />
     <None Include="Digital Certificate\user.crt" />
     <None Include="Digital Certificate\userbk.p12" />
+    <None Include="Dumy\Car Receipt.docx" />
     <None Include="GCP Associate Cloud Engineer ACE.docx" />
     <None Include="Mohamed Behery - Software Engineer.docx" />
     <None Include="Relocation Docs\Mohamed_Behery_Tax_Clarification.pdf" />
     <None Include="packages.config" />
     <None Include="Review.docx" />
-    <None Include="Raghda Ali - Accountant.docx" />
+    <None Include="Dumy\Raghda Ali - Accountant.docx" />
     <None Include="Relocation Docs\Blank form Visa Application.pdf" />
     <None Include="Relocation Docs\Family Relocation\6-071_Castellano_10.pdf" />
     <None Include="Relocation Docs\Family Relocation\After Relocation\INSS Linkage\6-071_Castellano_10-signed.pdf" />
@@ -169,6 +170,10 @@
     <Content Include="Apartamento - San Andres 30\Photos\WhatsApp Image 2020-08-07 at 2.33.12 PM.jpeg" />
     <Content Include="Apartamento - San Andres 30\Photos\WhatsApp Image 2020-08-07 at 2.33.13 PM %281%29.jpeg" />
     <Content Include="Apartamento - San Andres 30\Photos\WhatsApp Image 2020-08-07 at 2.33.13 PM.jpeg" />
+    <Content Include="Dumy\About me.txt" />
+    <Content Include="Dumy\add project to git.txt" />
+    <Content Include="Dumy\gitlab access token.txt" />
+    <Content Include="Dumy\nice redux tutorial.txt" />
     <Content Include="Mohamed Behery.jpg" />
     <Content Include="Relocation Docs\Family Relocation\After Relocation\INSS Linkage\Mohamed_Behery-Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\After Relocation\INSS Linkage\Omar - Passport.jpg" />
@@ -247,6 +252,9 @@
     <Content Include="Relocation Docs\Receipts\taxi from the airport of malaga.png" />
     <Content Include="Relocation Docs\Receipts\visa fees.png" />
     <Content Include="Relocation Docs\TownHall Registeration\DNI ANTONIO PEREA 2018.jpg" />
+    <Content Include="Signature\big signature en.jpg" />
+    <Content Include="Signature\small signature ar.png" />
+    <Content Include="Signature\small signature en.jpg" />
     <Content Include="Study Notes.txt" />
     <Content Include="Study TODO.txt" />
     <Content Include="visual studio 2019 serial.txt" />
