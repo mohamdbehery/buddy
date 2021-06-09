@@ -202,4 +202,35 @@ You first create the report itself (.rdl) by desiging it and provide the data so
         }
         #endregion
 
-    - Bubble Sort:
+    - Bubble Sort: loop twice in list elements, so it cost O(n^2)
+        - loop to compare each element with the next one, if the next one is greater, then swap
+        - execlude the last element from the list because it will be already sorted
+        - repeat first step
+        - exclude the last 2 elements, because it will be sorted
+        - repeat this until either excluding all elements or found an iteration without any replacement
+        #region Bubble Sort
+        public static int[] BubbleSort(int[] given_array)
+        {
+            int temp = 0;
+            bool alreadySorted = true;
+
+            for (int i = 0; i < given_array.Length; i++)
+            {
+                alreadySorted = true;
+                for (int j = 0; j < given_array.Length - 1; j++)
+                {
+                    if (given_array[j] > given_array[j + 1])
+                    {
+                        temp = given_array[j + 1];
+                        given_array[j + 1] = given_array[j];
+                        given_array[j] = temp;
+                        alreadySorted = false;
+                    }
+                }
+                if (alreadySorted) { break; /*early escape*/ }
+            }
+            return given_array;
+        }
+        #endregion
+
+    - Selection Sort: 

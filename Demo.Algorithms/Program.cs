@@ -23,6 +23,14 @@ namespace Demo.Algorithms
             //    Console.Write($" > {item}");
             //}
             #endregion
+            #region bubble sort
+            int[] given_array = new[] { 1, 4, 14, 18, 3, 2 };
+            int[] sorted_array = BubbleSort(given_array);
+            foreach (var item in sorted_array)
+            {
+                Console.Write($" > {item}");
+            }
+            #endregion
             Console.WriteLine();
             Console.ReadLine();
         }
@@ -156,6 +164,31 @@ namespace Demo.Algorithms
             MergeSort(given_array, middle + 1, right);
             Merge(given_array, left, middle, right); // merge two subarrays L and M into arr
 
+            return given_array;
+        }
+        #endregion
+
+        #region Bubble Sort
+        public static int[] BubbleSort(int[] given_array)
+        {
+            int temp = 0;
+            bool alreadySorted = true;
+
+            for (int i = 0; i < given_array.Length; i++)
+            {
+                alreadySorted = true;
+                for (int j = 0; j < given_array.Length - 1; j++)
+                {
+                    if (given_array[j] > given_array[j + 1])
+                    {
+                        temp = given_array[j + 1];
+                        given_array[j + 1] = given_array[j];
+                        given_array[j] = temp;
+                        alreadySorted = false;
+                    }
+                }
+                if (alreadySorted) { break; /*early escape*/ }
+            }
             return given_array;
         }
         #endregion

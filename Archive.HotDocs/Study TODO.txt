@@ -1,6 +1,6 @@
 >>>>>>>>>>>>>>>>>
 	- Algorithms (most famous) algorithms are just ways to do things, mostly for searching and sorting:
-		- Selection Sort
+		- 
 		- Hashing
 		- Finding Prime Number
 		- Matching Brackets problem
