@@ -282,3 +282,4 @@ You first create the report itself (.rdl) by desiging it and provide the data so
     - Prime number: is the numbers that has zero reminder % in only 1 and itself (accept devide by 1 and itself)
 
     - Difference between Hashing and Encryption: is that hashing converts the data to message hash that identify the message so that when the receiver recieves your message he will hash the message and compared the generated hash with the one sent in the message, and it should be the same, so Hashing is one-way, while encryption uses a key to convert the message to transmit into an unrecognizable format, two-way encryption.
+        one of the most practical example for Hashing is when you want to check if some data changed in a big combination of data in database, you can simply prepare a selec qurery for it and hash the result and compare the hash with the last hashed value so if they are not the same then one or more columns\tables data changed.
