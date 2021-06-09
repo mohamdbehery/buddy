@@ -51,13 +51,11 @@
     <None Include="Apartamento - San Andres 30\S521020516000-signed.pdf" />
     <None Include="Apartamento - San Andres 30\S521020517320.pdf" />
     <None Include="App.config" />
-    <None Include="Car Receipt.docx" />
     <None Include="Digital Certificate\user.crt" />
     <None Include="Digital Certificate\userbk.p12" />
     <None Include="GCP Associate Cloud Engineer ACE.docx" />
     <None Include="Mohamed Behery - Software Engineer.docx" />
     <None Include="Relocation Docs\Mohamed_Behery_Tax_Clarification.pdf" />
-    <None Include="MyResume.docx" />
     <None Include="packages.config" />
     <None Include="Review.docx" />
     <None Include="Raghda Ali - Accountant.docx" />
@@ -141,8 +139,6 @@
     <None Include="TechArchive\SDLC Workflow and Branching Strategy.pdf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About me.txt" />
-    <Content Include="add project to git.txt" />
     <Content Include="Apartamento - San Andres 30\Photos\foto piso 1-07082020-1.JPG" />
     <Content Include="Apartamento - San Andres 30\Photos\foto piso 1-07082020-10.jpg" />
     <Content Include="Apartamento - San Andres 30\Photos\foto piso 1-07082020-11.jpg" />
@@ -173,10 +169,7 @@
     <Content Include="Apartamento - San Andres 30\Photos\WhatsApp Image 2020-08-07 at 2.33.12 PM.jpeg" />
     <Content Include="Apartamento - San Andres 30\Photos\WhatsApp Image 2020-08-07 at 2.33.13 PM %281%29.jpeg" />
     <Content Include="Apartamento - San Andres 30\Photos\WhatsApp Image 2020-08-07 at 2.33.13 PM.jpeg" />
-    <Content Include="big signature en.jpg" />
-    <Content Include="gitlab access token.txt" />
     <Content Include="Mohamed Behery.jpg" />
-    <Content Include="nice redux tutorial.txt" />
     <Content Include="Relocation Docs\Family Relocation\After Relocation\INSS Linkage\Mohamed_Behery-Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\After Relocation\INSS Linkage\Omar - Passport.jpg" />
     <Content Include="Relocation Docs\Family Relocation\After Relocation\INSS Linkage\Raghda - Passport.png" />
@@ -254,9 +247,6 @@
     <Content Include="Relocation Docs\Receipts\taxi from the airport of malaga.png" />
     <Content Include="Relocation Docs\Receipts\visa fees.png" />
     <Content Include="Relocation Docs\TownHall Registeration\DNI ANTONIO PEREA 2018.jpg" />
-    <Content Include="Relocation procedures.txt" />
-    <Content Include="small signature ar.png" />
-    <Content Include="small signature en.jpg" />
     <Content Include="Study Notes.txt" />
     <Content Include="Study TODO.txt" />
     <Content Include="visual studio 2019 serial.txt" />
