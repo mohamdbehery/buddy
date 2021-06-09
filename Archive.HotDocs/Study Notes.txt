@@ -233,4 +233,52 @@ You first create the report itself (.rdl) by desiging it and provide the data so
         }
         #endregion
 
-    - Selection Sort: 
+    - Selection Sort: simply is foreach element we select the elment that is less than it and swap them, so it cost O(n^2)
+        #region Selection Sort
+        public static int[] SelectionSort(int[] given_array)
+        {
+            int arrayLength = given_array.Length;
+
+            // One by one move boundary of unsorted subarray
+            for (int i = 0; i < arrayLength - 1; i++)
+            {
+                // Find the minimum element in unsorted array
+                int min_idx = i;
+                for (int j = i + 1; j < arrayLength; j++)
+                    if (given_array[j] < given_array[min_idx])
+                        min_idx = j;
+
+                // Swap the found minimum element with the first element
+                int temp = given_array[min_idx];
+                given_array[min_idx] = given_array[i];
+                given_array[i] = temp;
+            }
+            return given_array;
+        }
+        #endregion
+
+    - Insertion Sort: is simply foreach element we insert it in its sorted position, so it cost O(n^2):
+        #region Insertion Sort
+        public static int[] InsertionSort(int[] given_array)
+        {
+            int n = given_array.Length;
+            for (int i = 1; i < n; ++i)
+            {
+                int element = given_array[i];
+                int j = i - 1;
+
+                // Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position
+                while (j >= 0 && given_array[j] > element)
+                {
+                    given_array[j + 1] = given_array[j];
+                    j = j - 1;
+                }
+                given_array[j + 1] = element;
+            }
+            return given_array;
+        }
+        #endregion 
+
+    - Prime number: is the numbers that has zero reminder % in only 1 and itself (accept devide by 1 and itself)
+
+    - Difference between Hashing and Encryption: is that hashing converts the data to message hash that identify the message so that when the receiver recieves your message he will hash the message and compared the generated hash with the one sent in the message, and it should be the same, so Hashing is one-way, while encryption uses a key to convert the message to transmit into an unrecognizable format, two-way encryption.

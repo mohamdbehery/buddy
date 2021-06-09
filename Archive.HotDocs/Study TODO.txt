@@ -1,9 +1,5 @@
 >>>>>>>>>>>>>>>>>
 	- Algorithms (most famous) algorithms are just ways to do things, mostly for searching and sorting:
-		- 
-		- Hashing
-		- Finding Prime Number
-		- Matching Brackets problem
 		- How Regular Expression is working?
 		- How Math.Random() is working?
 	- SOLID principles

@@ -24,14 +24,14 @@ namespace Demo.Algorithms
             //}
             #endregion
             #region bubble sort
-            int[] given_array = new[] { 1, 4, 14, 18, 3, 2 };
-            int[] sorted_array = BubbleSort(given_array);
-            foreach (var item in sorted_array)
-            {
-                Console.Write($" > {item}");
-            }
-            #endregion
-            Console.WriteLine();
+            //int[] given_array = new[] { 1, 4, 14, 18, 3, 2 };
+            //int[] sorted_array = BubbleSort(given_array);
+            //foreach (var item in sorted_array)
+            //{
+            //    Console.Write($" > {item}");
+            //}
+            #endregion    
+            Console.WriteLine(IsPrimeNumber(13));
             Console.ReadLine();
         }
 
@@ -192,5 +192,106 @@ namespace Demo.Algorithms
             return given_array;
         }
         #endregion
+
+        #region Selection Sort
+        public static int[] SelectionSort(int[] given_array)
+        {
+            int arrayLength = given_array.Length;
+
+            // One by one move boundary of unsorted subarray
+            for (int i = 0; i < arrayLength - 1; i++)
+            {
+                // Find the minimum element in unsorted array
+                int min_idx = i;
+                for (int j = i + 1; j < arrayLength; j++)
+                    if (given_array[j] < given_array[min_idx])
+                        min_idx = j;
+
+                // Swap the found minimum element with the first element
+                int temp = given_array[min_idx];
+                given_array[min_idx] = given_array[i];
+                given_array[i] = temp;
+            }
+            return given_array;
+        }
+        #endregion
+
+        #region Insertion Sort
+        public static int[] InsertionSort(int[] given_array)
+        {
+            int n = given_array.Length;
+            for (int i = 1; i < n; ++i)
+            {
+                int element = given_array[i];
+                int j = i - 1;
+
+                // Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position
+                while (j >= 0 && given_array[j] > element)
+                {
+                    given_array[j + 1] = given_array[j];
+                    j = j - 1;
+                }
+                given_array[j + 1] = element;
+            }
+            return given_array;
+        }
+        #endregion 
+
+        private static bool IsPrimeNumber(int number)
+        {
+            int m = number / 2;
+            bool isPrime = true;
+            for (int i = 2; i <= m; i++)
+            {
+                if (number % i == 0)
+                {
+                    isPrime = false;
+                    break;
+                }
+            }
+            return isPrime;
+        }
+
+        private static bool AreBracketsBalanced(string expr)
+        {
+            Stack<char> bracketStack = new Stack<char>();
+            char topBracket;
+
+            // Traversing the Expression
+            for (int i = 0; i < expr.Length; i++)
+            {
+                if (expr[i] == '(' || expr[i] == '[' || expr[i] == '{')
+                {
+                    // push the element in the stack
+                    bracketStack.Push(expr[i]);
+                    continue; // skip the rest of code
+                }
+
+                // IF current current character is not opening
+                // bracket, then it must be closing. So stack
+                // cannot be empty at this point.
+                if (bracketStack.Count == 0)
+                    return false;
+
+                topBracket = bracketStack.Pop();
+                switch (expr[i])
+                {
+                    case ')':
+                        if (topBracket == '{' || topBracket == '[')
+                            return false;
+                        break;
+                    case '}':
+                        if (topBracket == '(' || topBracket == '[')
+                            return false;
+                        break;
+
+                    case ']':
+                        if (topBracket == '(' || topBracket == '{')
+                            return false;
+                        break;
+                }
+            }
+            return (bracketStack.Count == 0);
+        }
     }
 }
