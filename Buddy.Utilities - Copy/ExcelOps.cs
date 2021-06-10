@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using ExcelDataReader;
-//using System.Web.UI;
+using System.Web.UI;
 
 namespace Buddy.Utilities
 {
@@ -58,27 +58,27 @@ namespace Buddy.Utilities
         /// <returns></returns>
         public string GenerateExcelFileFromDataTable(DataTable dtRecords, string excelFilePath)
         {
-            //System.Web.UI.WebControls.DataGrid dgd = new System.Web.UI.WebControls.DataGrid();
-            //StringWriter oStringWriter = new StringWriter();
-            //HtmlTextWriter oHtmlTextWriter = new HtmlTextWriter(oStringWriter);
-            //StreamWriter objStreamWriter = File.AppendText(excelFilePath);
+            System.Web.UI.WebControls.DataGrid dgd = new System.Web.UI.WebControls.DataGrid();
+            StringWriter oStringWriter = new StringWriter();
+            HtmlTextWriter oHtmlTextWriter = new HtmlTextWriter(oStringWriter);
+            StreamWriter objStreamWriter = File.AppendText(excelFilePath);
 
-            //for (int report = 0; report < 1; report++)
-            //{
-            //    dgd.DataSource = dtRecords;
-            //    dgd.DataBind();
+            for (int report = 0; report < 1; report++)
+            {
+                dgd.DataSource = dtRecords;
+                dgd.DataBind();
 
-            //    if (report != 0)
-            //    {
-            //        oHtmlTextWriter.WriteBreak();
-            //    }
-            //    dgd.RenderControl(oHtmlTextWriter);
-            //}
+                if (report != 0)
+                {
+                    oHtmlTextWriter.WriteBreak();
+                }
+                dgd.RenderControl(oHtmlTextWriter);
+            }
 
-            //objStreamWriter.WriteLine(oStringWriter.ToString());
-            //objStreamWriter.Close();
-            //oHtmlTextWriter.Close();
-            //oStringWriter.Close();
+            objStreamWriter.WriteLine(oStringWriter.ToString());
+            objStreamWriter.Close();
+            oHtmlTextWriter.Close();
+            oStringWriter.Close();
             return excelFilePath;
 
         }

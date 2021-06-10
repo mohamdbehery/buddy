@@ -4,21 +4,21 @@
     "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\Buddy.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\Buddy.API.csproj": {
+    "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Contracts\\App.Contracts\\App.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\Buddy.API.csproj",
-        "projectName": "Buddy.API",
-        "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\Buddy.API.csproj",
+        "projectUniqueName": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Contracts\\App.Contracts\\App.Contracts.csproj",
+        "projectName": "App.Contracts",
+        "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Contracts\\App.Contracts\\App.Contracts.csproj",
         "packagesPath": "C:\\Users\\mohamed_behery\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\obj\\",
+        "outputPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Contracts\\App.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mohamed_behery\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.1"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -26,10 +26,10 @@
           "https://repo2.corelogic.net/repository/nuget-hosted/": {}
         },
         "frameworks": {
-          "netcoreapp2.1": {
+          "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\Buddy.Utilities.csproj": {
-                "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\Buddy.Utilities.csproj"
+              "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data\\App.Data.csproj": {
+                "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data\\App.Data.csproj"
               }
             }
           }
@@ -41,61 +41,90 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.1": {
+        "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.AspNetCore": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.AspNetCore.HttpsPolicy": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.AspNetCore.Mvc": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
+              "version": "[5.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.410\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data\\App.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data\\App.Data.csproj",
+        "projectName": "App.Data",
+        "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data\\App.Data.csproj",
+        "packagesPath": "C:\\Users\\mohamed_behery\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Data\\App.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mohamed_behery\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://repo2.corelogic.net/repository/nuget-hosted/": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[5.0.5, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             },
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Microsoft.Extensions.Logging.Configuration": {
-              "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.1.0, )",
-              "autoReferenced": true
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[12.0.3, )"
+              "version": "[5.0.0, )"
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
@@ -112,18 +141,218 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.410\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\Buddy.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\Buddy.API.csproj",
+        "projectName": "Buddy.API",
+        "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\Buddy.API.csproj",
+        "packagesPath": "C:\\Users\\mohamed_behery\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mohamed_behery\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://repo2.corelogic.net/repository/nuget-hosted/": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\Buddy.Utilities.csproj": {
+                "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\Buddy.Utilities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.HttpsPolicy": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.Extensions.Logging.Configuration": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[6.0.0-preview.4.21253.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.410\\RuntimeIdentifierGraph.json"
         }
       }
     },
     "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\Buddy.Utilities.csproj": {
+      "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\Buddy.Utilities.csproj",
         "projectName": "Buddy.Utilities",
-        "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\Buddy.Utilities.csproj"
+        "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\Buddy.Utilities.csproj",
+        "packagesPath": "C:\\Users\\mohamed_behery\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\Buddy.Utilities\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mohamed_behery\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://repo2.corelogic.net/repository/nuget-hosted/": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Contracts\\App.Contracts\\App.Contracts.csproj": {
+                "projectPath": "C:\\Users\\mohamed_behery\\Desktop\\My Partition\\Free Time\\Buddy\\App.Contracts\\App.Contracts\\App.Contracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
       },
       "frameworks": {
-        "net461": {}
+        "netcoreapp3.1": {
+          "dependencies": {
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.13.0, )"
+            },
+            "ExcelDataReader": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "ExcelDataReader.dataset": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Microsoft.Web.Administration": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[6.0.0-preview.4.21253.7, )"
+            },
+            "System.Data.OleDb": {
+              "target": "Package",
+              "version": "[6.0.0-preview.4.21253.7, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.410\\RuntimeIdentifierGraph.json"
+        }
       }
     }
   }

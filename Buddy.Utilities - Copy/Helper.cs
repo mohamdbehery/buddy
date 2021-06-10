@@ -138,14 +138,14 @@ namespace Buddy.Utilities
         public Dictionary<string, string> GetAllAppKeys()
         {
             Dictionary<string, string> dicAllKeys = new Dictionary<string, string>();
-            //XmlDocument document = new XmlDocument();
-            //document.Load(HttpContext.Current.Request.PhysicalApplicationPath + "/Web.config");
-            //XmlNodeList AllKeys = document.SelectNodes("/configuration/appSettings/add");
+            XmlDocument document = new XmlDocument();
+            document.Load(HttpContext.Current.Request.PhysicalApplicationPath + "/Web.config");
+            XmlNodeList AllKeys = document.SelectNodes("/configuration/appSettings/add");
 
-            //foreach (XmlNode node in AllKeys)
-            //{
-            //    dicAllKeys.Add(node.Attributes["key"].Value, node.Attributes["value"].Value);
-            //}
+            foreach (XmlNode node in AllKeys)
+            {
+                dicAllKeys.Add(node.Attributes["key"].Value, node.Attributes["value"].Value);
+            }
             return dicAllKeys;  
         }
 
@@ -298,30 +298,30 @@ namespace Buddy.Utilities
 
         public bool DeletePhysicalFile(string ServerPathFileName)
         {
-            //string filePath = HttpContext.Current.Server.MapPath(ServerPathFileName);
-            //if (System.IO.File.Exists(filePath))
-            //{
-            //    System.IO.File.Delete(filePath);
-            //    return true;
-            //}
+            string filePath = HttpContext.Current.Server.MapPath(ServerPathFileName);
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+                return true;
+            }
             return false;
         }
 
         public bool SaveBase64FileToServer(string ServerPath, string FileName, string FileData)
         {
-            //if (FileData.Contains("base64,"))
-            //{
-            //    String path = HttpContext.Current.Server.MapPath(ServerPath);
-            //    if (!System.IO.Directory.Exists(path))
-            //        System.IO.Directory.CreateDirectory(path);
+            if (FileData.Contains("base64,"))
+            {
+                String path = HttpContext.Current.Server.MapPath(ServerPath);
+                if (!System.IO.Directory.Exists(path))
+                    System.IO.Directory.CreateDirectory(path);
 
-            //    string filePhysicalPath = Path.Combine(path, FileName);
-            //    FileData = FileData.Split(new string[] { "base64," }, StringSplitOptions.None)[1];
-            //    FileData = FileData.Replace('-', '+').Replace('_', '/');
-            //    byte[] imageBytes = Convert.FromBase64String(FileData);
-            //    File.WriteAllBytes(filePhysicalPath, imageBytes);
-            //    return true;
-            //}
+                string filePhysicalPath = Path.Combine(path, FileName);
+                FileData = FileData.Split(new string[] { "base64," }, StringSplitOptions.None)[1];
+                FileData = FileData.Replace('-', '+').Replace('_', '/');
+                byte[] imageBytes = Convert.FromBase64String(FileData);
+                File.WriteAllBytes(filePhysicalPath, imageBytes);
+                return true;
+            }
             return false;
         }
 
@@ -473,7 +473,7 @@ namespace Buddy.Utilities
 
         public string GetCurrentIP()
         {
-            return ""; //HttpContext.Current.Request.UserHostAddress;
+            return HttpContext.Current.Request.UserHostAddress;
         }
 
         public string MaskCardNumber(string CardNumber)
@@ -505,18 +505,18 @@ namespace Buddy.Utilities
 
         public void EncryptKeyInAppSetting(string Key)
         {
-            //string WebConfigPath = HttpContext.Current.Server.MapPath("~/Web.Config");
-            //XmlDocument doc = new XmlDocument();
-            //doc.Load(WebConfigPath);
-            //XmlNodeList list = doc.DocumentElement.SelectNodes(string.Format("appSettings/add[@key='{0}']", Key));
+            string WebConfigPath = HttpContext.Current.Server.MapPath("~/Web.Config");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(WebConfigPath);
+            XmlNodeList list = doc.DocumentElement.SelectNodes(string.Format("appSettings/add[@key='{0}']", Key));
 
-            //if (list.Count == 1)
-            //{
-            //    XmlNode node = list[0];
-            //    string value = node.Attributes["value"].Value;
-            //    node.Attributes["value"].Value = Encrypt(value);
-            //    doc.Save(WebConfigPath);
-            //}
+            if (list.Count == 1)
+            {
+                XmlNode node = list[0];
+                string value = node.Attributes["value"].Value;
+                node.Attributes["value"].Value = Encrypt(value);
+                doc.Save(WebConfigPath);
+            }
         }
 
         public string Encrypt(string clearText)
@@ -543,7 +543,7 @@ namespace Buddy.Utilities
 
         public string GetAppPhysicalPath()
         {
-            return ""; // System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
+            return System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
         }
     }
 

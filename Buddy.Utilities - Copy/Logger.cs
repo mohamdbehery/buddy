@@ -1,5 +1,4 @@
-﻿using App.Contracts.Core;
-using Buddy.Utilities.Enums;
+﻿using Buddy.Utilities.Enums;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -9,7 +8,7 @@ using System.Xml;
 
 namespace Buddy.Utilities
 {
-    public class Logger : HelperBase, ILogger
+    public class Logger : HelperBase
     {
         private readonly FileStream LogFileStream;
         private readonly StreamWriter LogStreamWriter;
