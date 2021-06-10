@@ -1,17 +1,14 @@
 ﻿using Buddy.Utilities.Enums;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Buddy.Utilities
 {
-    public class Logger: HelperBase
+    public class Logger : HelperBase
     {
         private readonly FileStream LogFileStream;
         private readonly StreamWriter LogStreamWriter;
@@ -28,12 +25,13 @@ namespace Buddy.Utilities
         /// ex: "C:\Inetpub\BuddyLogger"
         /// </summary>
         /// <param name="logDirectory"></param>
-        public Logger(string logDirectory): this()
+        public Logger(string logDirectory) : this()
         {
             this.LogsDirectory = logDirectory;
         }
 
-        public string LogsDirectory {
+        public string LogsDirectory
+        {
             get => logsDirectory;
             set => this.logsDirectory = value;
         }
@@ -103,7 +101,7 @@ namespace Buddy.Utilities
             StackTrace stackTrace = new StackTrace();
             string methodName = stackTrace.GetFrame(1).GetMethod().Name;
             logMessage = $"{DateTime.Now.ToString("hh.mm.ss.ffffff")} : {methodName} >> {logMessage}";
-            
+
             LogStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
             LogStreamWriter.WriteLineAsync(logMessage);
             LogStreamWriter.Flush();

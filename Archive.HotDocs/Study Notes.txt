@@ -1,4 +1,8 @@
 - SOLID
 	- Open Close Principle: (Open for extension and Close for modification) and the extension here means to implement an extension method or create a new child class, suppose that you have a class (Shape) that has a (CalcArea) method to calculte shape area, this method has a (if shape is circle then do bla bla bla, else id square then do bla bla) and now you want to add more shape to calculate rectangle are then the principle here is not change that class but idealy to create an abstract class (Shape) that has also an abstract method (CalculteArea) and create a class for eac shape to do special implementation for CalculateArea method
 	- Liskov substitutable principle: the subtype must be substitutable for its base type, so suppose that you have a Rectangle class which has a SetWidth method, and now you want to implement a Square class then you should NOT inherit from Rectangle class to reuse the SetWidth method but idealy to create a base class for both Shape class
-	- Interface Segregation Principle: the child class should not implement not related methods of big interface but idealy you should break down the big interface into a small interfaces based on the business.
+	- Interface Segregation Principle: (Keep your interface as small as possible) the child class should not implement not related methods of big interface but idealy you should break down the big interface into a small interfaces based on the business.
+	- Dependency Inversion Principle: (Depend upon abstractions\interfaces rather than concrete class) 
+
+- Factory pattern is considered a part of Unit Of Work pattern.
+- When you want to use any class that may be changed\replaced in the future then its better to use interface rather than class and inistantiate the class in a Factory class like IClass = new ClassA() then call this Factory anywhere in the application, and once you need to change ClassA then change it in only one place in Factory to IClass = new ClassB();
