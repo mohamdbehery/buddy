@@ -1,5 +1,6 @@
 >>>>>>>>>>>>>>>>>
 	- SOLID principles
+	- SQL ## before table name?
 	- Is Factory pattern implements the Dependency Inversion principle?
 	- What is the difference between Factory and Unit of Work patterns?
 	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads
