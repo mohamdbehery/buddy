@@ -16,7 +16,7 @@ using static RabbitMQClientWinService.Models.MQEnums;
 
 namespace RabbitMQClientWinService.MessageQueue
 {
-    public abstract class MessageQueueClient
+    public abstract class MessageQueueClient : IMessageQueueClient
     {
         // represents a delegate
         public event EventHandler MessengerStarted;
