@@ -7,17 +7,7 @@ using System.Threading.Tasks;
 namespace DesignPatterns
 {
     class Program
-    {
-        public static object AFP_Create(string ClassName, Dictionary<string, object> values)
-        {
-            Type type = Type.GetType(ClassName);
-            object Instance = Activator.CreateInstance(type);
-            foreach (var entry in values)
-            {
-                type.GetProperty(entry.Key).SetValue(Instance, entry.Value);
-            }
-            return Instance;
-        }
+    {        
         static void Main(string[] args)
         {
             #region Abstract Factory Pattern AFP
@@ -60,7 +50,18 @@ namespace DesignPatterns
             Console.WriteLine("out of block...");
             #endregion
         }
-    }
+
+        public static object AFP_Create(string ClassName, Dictionary<string, object> values)
+        {
+            Type type = Type.GetType(ClassName);
+            object Instance = Activator.CreateInstance(type);
+            foreach (var entry in values)
+            {
+                type.GetProperty(entry.Key).SetValue(Instance, entry.Value);
+            }
+            return Instance;
+        }
+    }    
 
     public class AFP_Book
     {
