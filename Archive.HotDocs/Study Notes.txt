@@ -1,8 +1,158 @@
-- SOLID
-	- Open Close Principle: (Open for extension and Close for modification) and the extension here means to implement an extension method or create a new child class, suppose that you have a class (Shape) that has a (CalcArea) method to calculte shape area, this method has a (if shape is circle then do bla bla bla, else id square then do bla bla) and now you want to add more shape to calculate rectangle are then the principle here is not change that class but idealy to create an abstract class (Shape) that has also an abstract method (CalculteArea) and create a class for eac shape to do special implementation for CalculateArea method
-	- Liskov substitutable principle: the subtype must be substitutable for its base type, so suppose that you have a Rectangle class which has a SetWidth method, and now you want to implement a Square class then you should NOT inherit from Rectangle class to reuse the SetWidth method but idealy to create a base class for both Shape class
-	- Interface Segregation Principle: (Keep your interface as small as possible) the child class should not implement not related methods of big interface but idealy you should break down the big interface into a small interfaces based on the business.
-	- Dependency Inversion Principle: (Depend upon abstractions\interfaces rather than concrete class) 
+Design Patterns (Gang of Four): using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
+    Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
+        - Factory Method: Create instances of derived classes, and let the subclass decides which class to instantiate:
+            class ConcreteCreator : Creator
+            {
+                 public override Product FactoryMethod(string type) {
+                    switch (type)  {
+                       case "A": return new ConcreteProductA();
+                       case "B": return new ConcreteProductB();
+                       default: throw new ArgumentException("Invalid type", "type");
+                    }
+                 }
+            }
+        - Abstract Factory: create instances of several classes belonging to different families, so Factory Method is a small part of Abstract Factory
+            class HeroFactory : VehicleFactory {
+               public Bike GetBike(string Bike) {
+                 switch (Bike) {
+                   case "Sports":
+                       return new SportsBike();
+                   case "Regular":
+                       return new RegularBike();
+                   default:
+                       throw new ApplicationException(string.Format("Vehicle '{0}' cannot be created", Bike));
+                  }
+               }
+
+               public Scooter GetScooter(string Scooter) {
+                 switch (Scooter) {
+                   case "Sports":
+                     return new Scooty();
+                   case "Regular":
+                     return new RegularScooter();
+                   default:
+                      throw new ApplicationException(string.Format("Vehicle '{0}' cannot be created", Scooter));
+                  }
+                }
+            }
+        - Singleton: Ensures that a class can has only one instance (lazy initialization)
+            public class Singleton {
+              private static Singleton instance = null;
+              private Singleton() { }
+
+              public static Singleton GetInstance {
+                get  {
+                  return instance == null ? new Singleton() : instance;
+                }
+              }
+            }
+
+        - Builder: 
+        - Prototype: 
+
+
+    Structural Patterns: identifying a simple way to realize relationships between entities.
+        - Addapter:
+        - Bridge:
+        - Composite:
+        - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
+        - Façade:
+        - FlyWeight: minimize resource usage when working with very large numbers of objects.
+        - Proxy: can be used when we don’t want to access to the resource or subject directly.
+            static class Program {
+                static void Main() {
+                    var proxy = new Proxy();
+                    proxy.Operation();
+                }
+            }
+
+            public abstract class SubjectBase {
+                public abstract void Operation();
+            }
+
+            public class RealSubject : SubjectBase {
+                public override void Operation() {
+                    Console.WriteLine("RealSubject.Operation");
+                }
+            }
+
+            public class Proxy : SubjectBase {
+                private RealSubject _realSubject;
+
+                public override void Operation() {
+                    _realSubject = _realSubject == null ? new RealSubject() : realSubject;
+                    _realSubject.Operation();
+                }
+            }
+    Behavioural Patterns: how objects do interactions between each others.
+        - Chain of Responsibility: Passes a request among a list or chain of objects.
+        - Command:
+        - Interpreter: 
+        - Iterator: Provides a way to access the elements of a collection object in sequential manner without knowing its underlying structure.
+        - Mediator: 
+        - Memento:
+        - Observer: Allows an object (subject) to publish changes to its state and other objects (observer) that depend upon that object are automatically notified of any changes to the subject's state.
+        - State:
+        - Strategy:
+        - Visitor:
+        - Templete Method: used to define the basic steps of an algorithm and allow the implementation of the individual steps to be changed.
+            public abstract class AbstractClass{
+             public void TemplateMethod() {
+              Step1();
+              Step2();
+              Step3();
+             }
+             public abstract void Step1();
+             public abstract void Step2();
+             public abstract void Step3();
+            }
+
+            public class ConcreteClassA : AbstractClass {
+             public override void Step1() {
+              Console.WriteLine("Concrete Class A, Step 1");
+             }
+             public override void Step2() {
+              Console.WriteLine("Concrete Class A, Step 2");
+             }
+             public override void Step3() {
+              Console.WriteLine("Concrete Class A, Step 3");
+             }
+            }
+
+    - One of the benefits of UnitOfWork is that you can savechanges of more than one entity at the same time (like a transaction), creating a single database context class shared by all repositories.
+    - Unit of Work in Repository Pattern: (increase the level of abstraction) is referred to as a single transaction that involves multiple operations of insert/update/delete and so on. Unit of Work is the concept related to the effective implementation of the Repository Pattern.
+        For example: Insteed of making every repository create instance of DBContext we can create only one instance for all of these repositories as a one Unit Of Work:
+        public class UnitOfWork
+        {
+            private OrderRepository _orderRepository;
+            private CustomerRepository _customerRepository;
+            private Entities _entities;
+            public UnitOfWork(Entities entities)
+            {
+                _entities = entities;
+            }
+
+            public CustomerRepository CustomerRepo { get {
+                    if(_customerRepository == null)
+                        _customerRepository = new CustomerRepository(_entities)
+
+                    return _customerRepository;
+                }
+            }
+
+            public OrderRepository OrderRepo
+            {
+                get
+                {
+                    if (_orderRepository == null)
+                        _orderRepository = new OrderRepository(_entities)
+
+                    return _orderRepository;
+                }
+            }
+
+            public void Save() { _entities.SaveChanges(); }
+        }
 
 - Factory pattern is considered a part of Unit Of Work pattern.
 - When you want to use any class that may be changed\replaced in the future then its better to use interface rather than class and inistantiate the class in a Factory class like IClass = new ClassA() then call this Factory anywhere in the application, and once you need to change ClassA then change it in only one place in Factory to IClass = new ClassB();

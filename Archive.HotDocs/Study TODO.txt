@@ -41,6 +41,7 @@
 	- SSRS (Practice)
 	- SSIS (Practice)
 	- MS Unit Test (Practice)
+	- $$ in Review.docx
 	- LinkedIn English assessment
 	- LinkedIn Skills assessments	
 	- Understand the DWH (Facts & Dimensions)
