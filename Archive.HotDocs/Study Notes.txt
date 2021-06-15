@@ -1,4 +1,8 @@
-Design Patterns (Gang of Four): using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
+
+- INFO: When you start writing code just focus on make the code wrok, but after that its very important to clean your code, always keep in mind that: Clead Code does one thing well :)
+- INFO: Every large function is actually should be a class with small methods
+- 
+- Design Patterns (Gang of Four): using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
     Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
         - Factory Method: Create instances of derived classes, and let the subclass decides which class to instantiate:
             class ConcreteCreator : Creator

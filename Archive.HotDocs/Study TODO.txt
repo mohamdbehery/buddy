@@ -1,10 +1,14 @@
+
 >>>>>>>>>>>>>>>>>
-	- SOLID principles
+	- Design Patterns
+	- What is the problem that each design pattern solved?
 	- SQL ## before table name?
 	- Is Factory pattern implements the Dependency Inversion principle?
 	- What is the difference between Factory and Unit of Work patterns?
+	- What is the most proper location for declaring valiables in method?
+	- How is the nested try catch blocks works, which one that will fire, child or parent?
 	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads
-	- Design Patterns
+	- How to make the pull request small, even the task needs a lot of changes?
 	- SQL select row_number over partition by?
 	- ADO code
 	- Entity Framework
@@ -12,6 +16,7 @@
 	- Net tutorials
 	- ASP.NET Web Forms,
 	- .Net Core tutorials
+	- Structured Programing (Practice)
 	- Windows services
 	- What is WCF apps used for?
 	- WCF Services tutorials.
