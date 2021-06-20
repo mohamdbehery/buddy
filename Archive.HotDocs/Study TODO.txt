@@ -19,6 +19,8 @@
 	- Structured Programing (Practice)
 	- Windows services
 	- What is WCF apps used for?
+	- UML (Practice)
+	- DataDD, TDD, and DomainDD
 	- WCF Services tutorials.
 	- Web Services
 	- SSO (Practice)
