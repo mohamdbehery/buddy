@@ -3,7 +3,7 @@
 - INFO: Every large function is actually should be a class with small methods
 - INFO: its not prefered that an object change the state of another object like this Class cls = new Class(); cls.Prop = "test"; but its better to handle this state change in the Class it self by public class Class{ public void Class(string prop){ this.Prop = prop} } and path the value while instantiating Class cls = new Class("test");
 
-- Design Patterns (Gang of Four): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
+- Design Patterns (Gang of Four Authers, 23 patterns): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
     Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
         - Simple Factory: (Encapsulates object creation in one place, always a static method) a class that has one creation method with a large conditional that based on method parameters chooses which product class to instantiate and then return, for example if I have IMessageQueue interface and have 2 or more classes implements it and in the application somewhere i need to instantiate one of them based on some conditions 
             then its better to create a new static class called MessageQueueFactory that has a method GetInstance() to return a new object of one of a MessageQueue classes based on paramter and the return type will be of type Interface IMessageQueue, so thet the application just passed the type of class and the factory created and return it back to the application in an abstract way,
@@ -81,7 +81,7 @@
 
 
     Structural Patterns: identifying a simple way to realize relationships between entities.
-        - Addapter:
+        - Addapter: 
         - Bridge:
         - Composite:
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
