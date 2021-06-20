@@ -1,11 +1,36 @@
 
 - INFO: When you start writing code just focus on make the code wrok, but after that its very important to clean your code, always keep in mind that: Clead Code does one thing well :)
 - INFO: Every large function is actually should be a class with small methods
-- 
+- INFO: its not prefered that an object change the state of another object like this Class cls = new Class(); cls.Prop = "test"; but its better to handle this state change in the Class it self by public class Class{ public void Class(string prop){ this.Prop = prop} } and path the value while instantiating Class cls = new Class("test");
+
 - Design Patterns (Gang of Four): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
     Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
-        - Factory Method: Create instances of derived classes, and let the subclass decides which class to instantiate:
-            class ConcreteCreator : Creator
+        - Simple Factory: (Encapsulates object creation in one place, always a static method) a class that has one creation method with a large conditional that based on method parameters chooses which product class to instantiate and then return, for example if I have IMessageQueue interface and have 2 or more classes implements it and in the application somewhere i need to instantiate one of them based on some conditions 
+            then its better to create a new static class called MessageQueueFactory that has a method GetInstance() to return a new object of one of a MessageQueue classes based on paramter and the return type will be of type Interface IMessageQueue, so thet the application just passed the type of class and the factory created and return it back to the application in an abstract way,
+            class Program
+            {        
+                static void Main(string[] args)
+                { 
+                    IMessageQueue messageQueue = SimpleFactory.GetInstance("rmq");
+                }
+            }    
+
+            public static class SimpleFactory
+            {
+                public static IMessageQueue GetInstance(string type)
+                {
+                    switch (type)
+                    {
+                        case "rmq": return new RabbitMQ();
+                        case "mmq": return new ManualMQ();
+                        default: return null;
+                    }
+                }
+            }
+
+        - Factory Method: same as Simple Factory but for a bunch of products where the products has more than one category (factory of factories), create instances of derived classes, and let the subclass decides which class to instantiate by calling method FactoryMethod() and path the type:
+            So you break down the Factory to small categorized factories (Classes) which implement the big factory (ICreator)
+            class ConcreteCreatorA : ICreator
             {
                  public override Product FactoryMethod(string type) {
                     switch (type)  {
