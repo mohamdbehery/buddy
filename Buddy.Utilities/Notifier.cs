@@ -8,6 +8,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using App.Contracts.Core;
 using Buddy.Utilities.Enums;
 using Buddy.Utilities.Models;
 using MailMessage = Buddy.Utilities.Models.MailMessage;
@@ -16,7 +17,8 @@ namespace Buddy.Utilities
 {
     public class Notifier
     {
-        private readonly Helper helper = new Helper();
+        readonly Helper helper = Helper.CreateInstance();
+        readonly ILogger logger = Logger.GetInstance();
 
         public void OnMessengerStarted(object source, EventArgs args)
         {            
@@ -84,7 +86,7 @@ namespace Buddy.Utilities
         }
         public void SendSMS()
         {
-            helper.Logger.Log("Sending SMS...");
+            logger.Log("Sending SMS...");
         }
     }
 }

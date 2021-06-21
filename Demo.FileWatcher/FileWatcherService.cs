@@ -1,4 +1,5 @@
-﻿using Buddy.Utilities;
+﻿using App.Contracts.Core;
+using Buddy.Utilities;
 using Buddy.Utilities.DB;
 using Buddy.Utilities.Models;
 using System;
@@ -21,6 +22,8 @@ namespace FileWatcherWinService
     {
 
         Helper helper = Helper.CreateInstance();
+        ILogger logger = Logger.GetInstance();
+        DBConsumer dbConsumer = DBConsumer.CreateInstance();
         public FileWatcherService()
         {
             InitializeComponent();
@@ -30,12 +33,12 @@ namespace FileWatcherWinService
         {
             try
             {
-                helper.Logger.Log("File Watcher Service started...");
+                logger.Log("File Watcher Service started...");
                 EstablishFileWatcher();
             }
             catch (Exception ex)
             {
-                helper.Logger.Log($"File Watcher Exception: {ex.ToString()}");
+                logger.Log($"File Watcher Exception: {ex.ToString()}");
             }
         }
 
@@ -56,7 +59,7 @@ namespace FileWatcherWinService
             {
                 if (File.Exists(e.FullPath))
                 {
-                    helper.Logger.Log($"Start processing file: {e.FullPath}");
+                    logger.Log($"Start processing file: {e.FullPath}");
                     string messages;
                     const Int32 BufferSize = 128;
                     using (var fileStream = File.OpenRead(e.FullPath))
@@ -76,25 +79,25 @@ namespace FileWatcherWinService
                     }
                     Dictionary<string, string> parameters = new Dictionary<string, string> { { "@Messages", messages } };
                     string conString = helper.GetAppKey("conStr");
-                    ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conString, StoredProcedure = "spBulkEnqueueMessages", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+                    ExecResult execResult = dbConsumer.CallSQLDB(new DBExecParams() { ConString = conString, StoredProcedure = "spBulkEnqueueMessages", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
                     if (execResult.ErrorCode == 0)
                     {
-                        helper.Logger.Log(execResult.ExecutionMessages);
+                        logger.Log(execResult.ExecutionMessages);
                         Thread.Sleep(1000);
                         File.Delete(e.FullPath);
-                        helper.Logger.Log($"End processing file, {execResult.AffectedRowsCount} messages insrted.");
+                        logger.Log($"End processing file, {execResult.AffectedRowsCount} messages insrted.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                helper.Logger.Log($"Exception {ex.ToString()}");
+                logger.Log($"Exception {ex.ToString()}");
             }
         }
 
         protected override void OnStop()
         {
-            helper.Logger.Log("File Watcher Service stopped...");
+            logger.Log("File Watcher Service stopped...");
         }
     }
 }

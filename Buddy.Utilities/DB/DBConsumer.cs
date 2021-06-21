@@ -1,4 +1,5 @@
-﻿using Buddy.Utilities.Enums;
+﻿using App.Contracts.Core;
+using Buddy.Utilities.Enums;
 using Buddy.Utilities.Models;
 using System;
 using System.Data;
@@ -16,13 +17,17 @@ namespace Buddy.Utilities.DB
         private SqlConnection SQLConnection;
         private SqlCommand SQLCommand;
         private ExecResult execResult;
-        private readonly Logger logger;
+        private readonly ILogger logger = Logger.GetInstance();
         private readonly string[] SQLBinaryParams;
 
-        public DBConsumer()
+        private DBConsumer()
         {
-            logger = new Logger();
             SQLBinaryParams = new string[] { "@HRPersonalPhoto", "@FollowUpAttachmentFilePath" };
+        }
+
+        public static DBConsumer CreateInstance()
+        {
+            return new DBConsumer();
         }
 
         public ExecResult CallSQLDB(DBExecParams dBExecParams)

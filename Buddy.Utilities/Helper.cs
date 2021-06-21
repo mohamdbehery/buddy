@@ -26,21 +26,10 @@ namespace Buddy.Utilities
         private XmlNode XMLNode;
         private XmlAttribute XMLAttribute;
         ExecResult execResult;
-        public DBConsumer DBConsumer { get; private set; }
-        public Logger Logger { get; private set; }
 
-        public Helper() : this(true)
+        public Helper()
         {
 
-        }
-        public Helper(bool initDBConsumer) : this("")
-        {
-            this.DBConsumer = CreateInstance<DBConsumer>();
-        }
-
-        public Helper(string LogsDirectory)
-        {
-            this.Logger = new Logger(LogsDirectory);
         }
 
         public static Helper CreateInstance()

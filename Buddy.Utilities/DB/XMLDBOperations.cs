@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Contracts.Core;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,6 +14,7 @@ namespace Buddy.Utilities.DB
     public class XMLDBOperations
     {
         Helper helper = Helper.CreateInstance();
+        ILogger logger = Logger.GetInstance();
         DataTable dt = new DataTable();
         public void GetXMLData()
         {
@@ -73,15 +75,15 @@ namespace Buddy.Utilities.DB
             watch.Start();
             StringBuilder xmlDox = new StringBuilder("<phones>");
             int total = 500000;
-            helper.Logger.Log("start");
+            logger.Log("start");
             for (int i = 0; i < total; i++)
             {
-                helper.Logger.Log(i.ToString());
+                logger.Log(i.ToString());
                 xmlDox.Append($"<phone BusinessEntityID='2' PhoneNumber='NPX{i}' IsActive='{true}' PhoneNumberTypeID='1' ModifiedDate='{DateTime.Now}'/>");
             }
             xmlDox.Append("</phones>");
             watch.Stop();
-            helper.Logger.Log("xml is ready after " + watch.ElapsedMilliseconds + "ms");
+            logger.Log("xml is ready after " + watch.ElapsedMilliseconds + "ms");
 
             watch = new Stopwatch();
             watch.Start();
@@ -108,7 +110,7 @@ namespace Buddy.Utilities.DB
                 }
             }
             watch.Stop();
-            helper.Logger.Log("xml is processed after " + watch.ElapsedMilliseconds + "ms");
+            logger.Log("xml is processed after " + watch.ElapsedMilliseconds + "ms");
             Console.WriteLine(Rows);
         }
 

@@ -2,7 +2,10 @@
 - INFO: When you start writing code just focus on make the code wrok, but after that its very important to clean your code, always keep in mind that: Clead Code does one thing well :)
 - INFO: Every large function is actually should be a class with small methods
 - INFO: its not prefered that an object change the state of another object like this Class cls = new Class(); cls.Prop = "test"; but its better to handle this state change in the Class it self by public class Class{ public void Class(string prop){ this.Prop = prop} } and path the value while instantiating Class cls = new Class("test");
-
+- Static keyword means that that object can't be copied, just static.
+- INFO: the difference between setting a default value for variable in class body and setting it in ctor is that, if you are sure that this variable will difinetly used then its fine to initailize it in class body otherwise do that in ctor so that it will not take memory space until the class is instantiated. 
+- INFO: If you dont want someone to intantiate the class then make it static or make all its ctors as private
+- INFO: one important benefit of using interface is that you can mock it later for testing.
 - Design Patterns (Gang of Four Authers, 23 patterns): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
     Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
         - Simple Factory: (Encapsulates object creation in one place, always a static method) a class that has one creation method with a large conditional that based on method parameters chooses which product class to instantiate and then return, for example if I have IMessageQueue interface and have 2 or more classes implements it and in the application somewhere i need to instantiate one of them based on some conditions 
@@ -64,7 +67,7 @@
                   }
                 }
             }
-        - Singleton: Ensures that a class can has only one instance (lazy initialization)
+        - Singleton: Ensures that a class can has only one instance (lazy initialization), idealy its used when you need to manage a shared resource like logging, in reality, this pattern is rarly used, ex: logging.
             public class Singleton {
               private static Singleton instance = null;
               private Singleton() { }

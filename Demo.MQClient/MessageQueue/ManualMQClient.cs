@@ -1,4 +1,6 @@
-﻿using RabbitMQ.Client.Events;
+﻿using App.Contracts.Core;
+using Buddy.Utilities;
+using RabbitMQ.Client.Events;
 using RabbitMQClientWinService.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,8 @@ namespace RabbitMQClientWinService.MessageQueue
 {
     public class ManualMQClient : MessageQueueClient
     {
+        readonly Helper helper = Helper.CreateInstance();
+        readonly ILogger logger = Logger.GetInstance();
         private bool continueRun = true;
         public override int MessageCountToFetch
         {
@@ -24,7 +28,7 @@ namespace RabbitMQClientWinService.MessageQueue
 
         public override void StartMessenger()
         {
-            helper.Logger.Log("Publisher started..");
+            logger.Log("Publisher started..");
             try
             {
                 OnMessengerStarted();
@@ -40,7 +44,7 @@ namespace RabbitMQClientWinService.MessageQueue
             }
             catch (Exception ex)
             {
-                helper.Logger.Log($"Exception: {ex.ToString()}");
+                logger.Log($"Exception: {ex.ToString()}");
                 continueRun = false;
             }
         }
@@ -60,11 +64,11 @@ namespace RabbitMQClientWinService.MessageQueue
                 Task.WaitAll(taskList.ToArray());
                 Task.WhenAll(taskList).ContinueWith((res) =>
                 {
-                    helper.Logger.Log($"Done executing message by thread pool...");
+                    logger.Log($"Done executing message by thread pool...");
                 });
             }
             else
-                helper.Logger.Log($"Done executing message by thread pool...");
+                logger.Log($"Done executing message by thread pool...");
 
         }
 
@@ -73,13 +77,13 @@ namespace RabbitMQClientWinService.MessageQueue
             switch (state)
             {
                 case MQMessageState.SuccessfullyProcessed:
-                    helper.Logger.Log("Success remove from queue");
+                    logger.Log("Success remove from queue");
                     break;
                 case MQMessageState.UnsuccessfulProcessing:
-                    helper.Logger.Log("Unsuccessful, requeue and retry");
+                    logger.Log("Unsuccessful, requeue and retry");
                     break;
                 default:
-                    helper.Logger.Log("Bad Message, Reject and Delete");
+                    logger.Log("Bad Message, Reject and Delete");
                     break;
             }
         }

@@ -1,175 +1,444 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-	<xsl:output method="xml" omit-xml-declaration="yes" indent="yes"/>
-	<xsl:template match="*">
-		<ServiceOrderCollection>
-			<ServiceOrderItem>
-				<ProductType>credit</ProductType>
-				<IsSimulation>false</IsSimulation>
-				<RequestXml>
-					<CreditReportItem>
-						<CreditConfigItem>
-							<ProductName>
-								<xsl:value-of select="//ProductName"/>
-							</ProductName>
-							<IsPrecheckRequired>
-								<xsl:choose>
-									<xsl:when test="//IsPrecheckRequired !='''' and //IsPrecheckRequired =''Y''">
-										<xsl:text>true</xsl:text>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:text>false</xsl:text>
-									</xsl:otherwise>
-								</xsl:choose>
-							</IsPrecheckRequired>
-							<IsCreditOrderNextDateResetRequired>
-								<xsl:choose>
-									<xsl:when test="//IsCreditOrderNextDateResetRequired !='''' and //IsCreditOrderNextDateResetRequired =''Y''">
-										<xsl:text>true</xsl:text>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:text>false</xsl:text>
-									</xsl:otherwise>
-								</xsl:choose>
-							</IsCreditOrderNextDateResetRequired>
-						</CreditConfigItem>
-						<ServiceType>credit</ServiceType>
-						<CreditReportType>Merge</CreditReportType>
-						<xsl:choose>
-							<xsl:when test="//ServicerID != 50486 and //ServicerID != 1164413">
-								<IncludePDF>true</IncludePDF>
-							</xsl:when>
-							<xsl:otherwise>
-								<IncludePDF>false</IncludePDF>
-							</xsl:otherwise>
-						</xsl:choose>
-						<xsl:choose>
-							<!--xsl:when test="//ContextIdentifierLoanID != '''' and //ServicerID = 1133792"> <ProductType>Reissue</ProductType> </xsl:when-->
-							<xsl:when test="//ContextIdentifierLoanID != '''' and //ServicerID = 1365456">
-								<ProductType>Reissue</ProductType>
-							</xsl:when>
-							<!--xsl:when test ="//ContextIdentifierLoanID != '''' and //ServicerID = 1060742"> <ProductType>Reissue</ProductType> </xsl:when>-->
-							<xsl:otherwise>
-								<ProductType>Submit</ProductType>
-							</xsl:otherwise>
-						</xsl:choose>
-						<Identifier>
-							<xsl:choose>
-								<xsl:when test="//ContextIdentifierLoanID != '''' and //ServicerID = 1133792">
-									<xsl:value-of select="//ContextIdentifierLoanID"/>
-								</xsl:when>
-								<xsl:when test="//ContextIdentifierLoanID != '''' and //ServicerID = 1365456">
-									<xsl:value-of select="//ContextIdentifierLoanID"/>
-								</xsl:when>
-								<!--xsl:when test ="//ContextIdentifierLoanID != '''' and //ServicerID = 1060742"> <xsl:value-of select ="//ContextIdentifierLoanID"/> </xsl:when>-->
-							</xsl:choose>
-						</Identifier>
-						<BureauIndicator>
-							<TransUnionIndicator>
-								<xsl:value-of select="//EquifaxIndicatorItemItem/TransunionIndicator"/>
-							</TransUnionIndicator>
-							<xsl:if test="//EquifaxIndicatorItemItem/EquifaxIndicator">
-								<EquifaxIndicator>
-									<xsl:value-of select="//EquifaxIndicatorItemItem/EquifaxIndicator"/>
-								</EquifaxIndicator>
-							</xsl:if>
-							<xsl:if test="//EquifaxIndicatorItemItem/ExperianIndicator">
-								<ExperianIndicator>
-									<xsl:value-of select="//EquifaxIndicatorItemItem/ExperianIndicator"/>
-								</ExperianIndicator>
-							</xsl:if>
-							<xsl:if test="//EquifaxIndicatorItemItem/CreditFICO">
-								<CreditFICO>
-									<xsl:value-of select="//EquifaxIndicatorItemItem/CreditFICO"/>
-								</CreditFICO>
-							</xsl:if>
-							<xsl:if test="//EquifaxIndicatorItemItem/EquifaxModel">
-								<EquifaxModel>
-									<xsl:value-of select="//EquifaxIndicatorItemItem/EquifaxModel"/>
-								</EquifaxModel>
-							</xsl:if>
-							<xsl:if test="//EquifaxIndicatorItemItem/ExperianModel">
-								<ExperianModel>
-									<xsl:value-of select="//EquifaxIndicatorItemItem/ExperianModel"/>
-								</ExperianModel>
-							</xsl:if>
-							<xsl:if test="//EquifaxIndicatorItemItem/TransunionModel">
-								<TransunionModel>
-									<xsl:value-of select="//EquifaxIndicatorItemItem/TransunionModel"/>
-								</TransunionModel>
-							</xsl:if>
-						</BureauIndicator>
-						<Object>Loan</Object>
-						<ObjectID>
-							<xsl:value-of select="//ObjectID"/>
-						</ObjectID>
-						<CheckIfExists>True</CheckIfExists>
-						<OrganizationID>
-							<xsl:value-of select="//ServicerID"/>
-						</OrganizationID>
-						<ClientName>
-							<xsl:choose>
-								<xsl:when test="//ClientName">
-									<xsl:value-of select="//ClientName"/>
-								</xsl:when>
-								<xsl:otherwise>Test</xsl:otherwise>
-							</xsl:choose>
-						</ClientName>
-						<Address>
-							<xsl:value-of select="//Address"/>
-						</Address>
-						<City>
-							<xsl:value-of select="//City"/>
-						</City>
-						<State>
-							<xsl:value-of select="//State"/>
-						</State>
-						<PostalCode>
-							<xsl:value-of select="//PostalCode"/>
-						</PostalCode>
-						<BorrowerCollection>
-							<xsl:if test="count(//PrimaryBorrowerUSSSN) > 0">
-								<PrimaryBorrower>
-									<PrimaryBorrowerID>
-										<xsl:value-of select="//PrimaryBorrowerID"/>
-									</PrimaryBorrowerID>
-									<PrimaryBorrowerContactID>
-										<xsl:value-of select="//PrimaryBorrowerContactID"/>
-									</PrimaryBorrowerContactID>
-									<FirstName>
-										<xsl:value-of select="//PrimaryBorrowerFirstName"/>
-									</FirstName>
-									<LastName>
-										<xsl:value-of select="//PrimaryBorrowerLastName"/>
-									</LastName>
-									<USSSN>
-										<xsl:value-of select="//PrimaryBorrowerUSSSN"/>
-									</USSSN>
-								</PrimaryBorrower>
-							</xsl:if>
-							<xsl:if test="count(//SecondaryBorrowerUSSSN) > 0">
-								<SecondaryBorrower>
-									<SecondaryBorrowerID>
-										<xsl:value-of select="//SecondaryBorrowerID"/>
-									</SecondaryBorrowerID>
-									<SecondaryBorrowerContactID>
-										<xsl:value-of select="//SecondaryBorrowerContactID"/>
-									</SecondaryBorrowerContactID>
-									<FirstName>
-										<xsl:value-of select="//SecondaryBorrowerFirstName"/>
-									</FirstName>
-									<LastName>
-										<xsl:value-of select="//SecondaryBorrowerLastName"/>
-									</LastName>
-									<USSSN>
-										<xsl:value-of select="//SecondaryBorrowerUSSSN"/>
-									</USSSN>
-								</SecondaryBorrower>
-							</xsl:if>
-						</BorrowerCollection>
-					</CreditReportItem>
-				</RequestXml>
-			</ServiceOrderItem>
-		</ServiceOrderCollection>
-	</xsl:template>
-</xsl:stylesheet>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<configSections>
+		<sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+		</sectionGroup>
+		<!-- Custom configuration sections used by the QBO framework. -->
+		<sectionGroup name="qbo" type="System.Configuration.ConfigurationSectionGroup, System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+			<section name="CredentialConfig" type="qbo.Data.QboConfigurationSection, qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" overrideModeDefault="Allow" restartOnExternalChanges="true" requirePermission="true" />
+			<section name="EventHandler" type="qbo.Data.QboConfigurationSection, qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="true" />
+			<section name="ObjectFactory" type="qbo.Data.QboConfigurationSection, qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="true" />
+			<section name="DecisionConfig" type="qbo.Data.QboConfigurationSection, qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="true" />
+			<section name="XsltExtensionConfig" type="qbo.Data.QboConfigurationSection, qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="true" />
+			<section name="FileObjectConfig" type="qbo.Data.QboConfigurationSection, qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="true" />
+			<section name="BusinessRuleConfig" type="qbo.Data.QboConfigurationSection, qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="true" />
+			<section name="AttachmentTemplateConfig" type="qbo.Data.QboConfigurationSection, qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="true" />
+		</sectionGroup>
+		<section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,Log4net" />
+		<sectionGroup name="ExternalServices">
+			<section name="Pacer" type="ExternalService.PacerServiceConfiguration, ExternalService" allowLocation="true" allowDefinition="Everywhere" requirePermission="false" />
+			<section name="ValueEdge" type="ADV.Configuration.ValueEdgeServiceConfiguration, ADV.Configuration" allowLocation="true" allowDefinition="Everywhere" />
+			<section name="SourceNet" type="ADV.Configuration.SourceNetServiceConfiguration, ADV.Configuration" allowLocation="true" allowDefinition="Everywhere" />
+			<section name="ExpressLync" type="ADV.Configuration.ExpressLyncServiceConfiguration,ADV.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="false" />
+			<section name="CorelogicPOR" type="ADV.Configuration.CorelogicPORServiceConfiguration, ADV.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062e6b5d5159047" allowLocation="true" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" requirePermission="false" />
+		</sectionGroup>
+	</configSections>
+	<appSettings configSource="Config\AppSettings.config"></appSettings>
+	<connectionStrings configSource="Config\ConnectionStrings.config" />
+	<ExternalServices>
+		<Pacer PacerUrl="https://pacer.login.uscourts.gov/cgi-bin/check-pacer-passwd.pl" PacerLoginID="co3613" PacerPasswd="ADV1234!" CourtID="00IDX" />
+		<ValueEdge AuthUserID="Regions" AuthPassword="V@luAt1on" PostUrl="https://services.appraisals.com/interfaceservices/Service.asmx/Perform?service=FAAS" />
+		<SourceNet AuthUserID="CLBpoService" AuthPassword="abc123" />
+		<CorelogicPOR UserName="Jepperson" Password="JknMSa3q" PostUrl=" https://www.fastlandv.com/lien360.requestxml.cgi" />
+	</ExternalServices>
+	<qbo>
+		<!-- ObjectFactory
+		Used by qbo.Application.ObjectFactory to dynamically create objects.
+		-->
+		<CredentialConfig FileName="C:\inetpub\advisoryhome.com\Config\Credential.config" />
+		<EventHandler FileName="C:\Inetpub\advisoryhome.com\Config\EventHandler.config" />
+		<ObjectFactory FileName="C:\Inetpub\advisoryhome.com\Config\ObjectFactory.config" />
+		<!-- CredentialConfig
+		Used by qbo.Security to store credentials used to access third-party systems.
+		-->
+		<!-- DecisionConfig
+		Used by qbo.Decision to dynamically create IDecisionStep objects.
+		-->
+		<DecisionConfig FileName="C:\Inetpub\advisoryhome.com\Config\Decision.config" />
+		<!-- EventHandler
+		Used by qbo.EventHandler to dynamically create IEventQueue objects.
+		-->
+		<XsltExtensionConfig FileName="C:\Inetpub\advisoryhome.com\Config\XsltExtension.config" />
+		<FileObjectConfig FileName="C:\Inetpub\advisoryhome.com\Config\FileObject.config" />
+		<AttachmentTemplateConfig FileName="C:\Inetpub\advisoryhome.com\Config\AttachmentTemplate.config" />
+		<BusinessRuleConfig FileName="C:\Inetpub\advisoryhome.com\Config\BusinessRule.config" />
+	</qbo>
+	<log4net>
+		<root>
+			<level value="DEBUG" />
+			<appender-ref ref="LogFileAppender" />
+		</root>
+		<appender name="LogFileAppender" type="log4net.Appender.RollingFileAppender">
+			<param name="File" value="\\dev_file_pams.solutions.corelogic.com\filer\ApplicationLog\PWSLogs\AdvisoryLog.txt" />
+			<!-- Change the path if required-->
+			<param name="AppendToFile" value="true" />
+			<rollingStyle value="Size" />
+			<maxSizeRollBackups value="10" />
+			<maximumFileSize value="10MB" />
+			<staticLogFileName value="true" />
+			<layout type="log4net.Layout.PatternLayout">
+				<param name="ConversionPattern" value="%d{ddd dd, HH:mm:ss} [%-5p] %m%n" />
+				<param name="ConversionPattern" value="%date [%thread] %-5level %logger %method - %message%newline" />
+				<param name="ConversionPattern" value="%d{ddd dd, HH:mm:ss} [%-5p] %m (%logger:%L)%n" />
+			</layout>
+		</appender>
+	</log4net>
+	<location path="ExternalServices">
+		<system.web>
+			<authorization>
+				<allow users="*" />
+			</authorization>
+		</system.web>
+	</location>
+
+	<!-- Remove wsdl information for email service to fix varacode issue -->
+	<location path="Message/EmailService.asmx">
+		<system.web>
+			<authorization>
+				<allow users="*" />
+			</authorization>
+			<webServices>
+				<protocols>
+					<remove name="Documentation" />
+				</protocols>
+			</webServices>
+		</system.web>
+	</location>
+
+
+	<system.serviceModel>
+		<services>
+			<service name="ADV.WCFServices.BlueStreakOwnershipReport" behaviorConfiguration="BasicHttpServiceBehaviour">
+				<host>
+					<baseAddresses>
+						<add baseAddress="https://35.238.35.170/ExternalServices/BlueStreakOwnerShipReport.svc" />
+					</baseAddresses>
+				</host>
+				<!--endpoint binding="webHttpBinding" address="" contract="ADV.WCFServices.Contract.IBlueStreakOwnershipReport"  bindingConfiguration="webhttp" behaviorConfiguration="BlueStreakendpointBehaviour">
+     <identity>
+      <dns value="localhost"/>
+     </identity>
+    </endpoint-->
+				<endpoint binding="basicHttpBinding" address="ProcessOrder" contract="ADV.WCFServices.Contract.IBlueStreakOwnershipReport" bindingConfiguration="BasicHttpEndpointBinding">
+					<identity>
+						<dns value="localhost" />
+					</identity>
+				</endpoint>
+			</service>
+			<!-- <service name="ADV.WCFServices.BlueStreakResponse" behaviorConfiguration="BlueStreakServiceBehaviour">
+        <endpoint binding="webHttpBinding" address="" contract="ADV.WCFServices.Contract.IBlueStreakResponse"  bindingConfiguration="webhttp" behaviorConfiguration="BlueStreakendpointBehaviour">
+          <identity>
+            <dns value="localhost"/>
+          </identity>
+        </endpoint>
+      </service> -->
+			<!-- <service name="ADV.WCFServices.PropertyOwnershipReport" behaviorConfiguration="BlueStreakServiceBehaviour">
+        <endpoint binding="webHttpBinding" address="Raw" contract="ADV.WCFServices.Contract.IPropertyOwnershipReport"  bindingConfiguration="webhttp" behaviorConfiguration="BlueStreakendpointBehaviour">
+          <identity>
+            <dns value="localhost"/>
+          </identity>
+        </endpoint>
+		 <endpoint binding="customBinding" 
+             contract="ADV.WCFServices.Contract.IPropertyOwnershipReport"
+             bindingConfiguration="XmlMapper"
+             behaviorConfiguration="BlueStreakendpointBehaviour">
+     </endpoint>
+      </service> -->
+			<service name="ADV.WCFServices.ServiceResponse" behaviorConfiguration="BasicHttpServiceBehaviour">
+				<host>
+					<baseAddresses>
+						<add baseAddress="https://35.238.35.170/ExternalServices/ServiceResponse.svc" />
+					</baseAddresses>
+				</host>
+				<endpoint binding="basicHttpBinding" address="" contract="ADV.WCFServices.Contract.IServiceResponse" bindingConfiguration="BasicHttpEndpointBinding">
+					<identity>
+						<!--<dns value="advisoryhome.com" />-->
+						<dns value="localhost"/>
+					</identity>
+				</endpoint>
+			</service>
+		</services>
+		<client>
+			<endpoint address="https://rct10.msbexpress.net/demo_42/ExpressLync4/SOAP/ValuationService.svc" binding="wsHttpBinding" bindingConfiguration="ValuationServiceEndpoint" contract="MSBValuationService.ValuationService" name="ValuationServiceEndpoint" />
+		</client>
+		<bindings>
+			<wsHttpBinding>
+				<binding name="ValuationServiceEndpoint">
+					<security mode="TransportWithMessageCredential">
+						<message clientCredentialType="UserName" establishSecurityContext="false" />
+					</security>
+				</binding>
+			</wsHttpBinding>
+			<webHttpBinding>
+				<binding name="webhttp" transferMode="StreamedRequest" maxReceivedMessageSize="2147483647">
+					<security mode="None" />
+					<readerQuotas maxDepth="32" maxStringContentLength="2147483647" maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647" />
+				</binding>
+			</webHttpBinding>
+			<customBinding>
+				<binding name="XmlMapper">
+					<webMessageEncoding webContentTypeMapperType="ADV.WCFServices.XmlContentTypeMapper,ADV.WCFServices" />
+					<httpTransport manualAddressing="true" transferMode="Streamed" />
+				</binding>
+			</customBinding>
+			<basicHttpBinding>
+				<binding name="BasicHttpEndpointBinding" transferMode="StreamedRequest" maxReceivedMessageSize="2147483647">
+					<security mode="Transport">
+						<transport clientCredentialType="None" />
+					</security>
+					<readerQuotas maxDepth="32" maxStringContentLength="2147483647" maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647" />
+				</binding>
+				<binding name="BasicHttpEndpointBindingUnsecured" transferMode="StreamedRequest" maxReceivedMessageSize="2147483647">
+					<readerQuotas maxDepth="32" maxStringContentLength="2147483647" maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647" />
+				</binding>
+			</basicHttpBinding>
+			<!--webHttpBinding>
+    <binding name="webhttp" transferMode="StreamedRequest" maxReceivedMessageSize="2147483647">
+     <security mode="TransportCredentialOnly"> 
+	<transport clientCredentialType="None"/> 
+</security>
+    </binding>
+   </webHttpBinding-->
+		</bindings>
+		<behaviors>
+			<serviceBehaviors>
+				<!--behavior name="BlueStreakServiceBehaviour">
+     <serviceMetadata httpGetEnabled="true"/>
+     <serviceDebug includeExceptionDetailInFaults="true"/>
+    </behavior-->
+				<behavior name="BasicHttpServiceBehaviour">
+					<!-- To avoid disclosing metadata information, set the value below to false and remove the metadata endpoint above before deployment -->
+					<serviceMetadata httpsGetEnabled="true" />
+					<!-- To receive exception details in faults for debugging purposes, set the value below to true.  Set to false before deployment to avoid disclosing exception information -->
+					<serviceDebug includeExceptionDetailInFaults="true" />
+					<!--<serviceCredentials>
+                                         <userNameAuthentication userNamePasswordValidationMode="Custom"
+                                                                         customUserNamePasswordValidatorType="ADV.WCFServices.ServiceAuthenticator,ADV.WCFServices"/>
+                                  </serviceCredentials>-->
+					<useRequestHeadersForMetadataAddress>
+						<defaultPorts>
+							<!-- Use your own port numbers -->
+							<add scheme="https" port="443" />
+						</defaultPorts>
+					</useRequestHeadersForMetadataAddress>
+				</behavior>
+				<behavior name="BasicHttpServiceBehaviourUnsecured">
+					<!-- To avoid disclosing metadata information, set the value below to false and remove the metadata endpoint above before deployment -->
+					<serviceMetadata httpGetEnabled="true" />
+					<!-- To receive exception details in faults for debugging purposes, set the value below to true.  Set to false before deployment to avoid disclosing exception information -->
+					<serviceDebug includeExceptionDetailInFaults="true" />
+					<!--<serviceCredentials>
+                                         <userNameAuthentication userNamePasswordValidationMode="Custom"
+                                                                         customUserNamePasswordValidatorType="ADV.WCFServices.ServiceAuthenticator,ADV.WCFServices"/>
+                                  </serviceCredentials>-->
+					<useRequestHeadersForMetadataAddress>
+						<defaultPorts>
+							<!-- Use your own port numbers -->
+							<add scheme="http" port="80" />
+						</defaultPorts>
+					</useRequestHeadersForMetadataAddress>
+				</behavior>
+			</serviceBehaviors>
+			<endpointBehaviors>
+				<behavior name="BlueStreakendpointBehaviour">
+					<webHttp automaticFormatSelectionEnabled="true" helpEnabled="true" defaultOutgoingResponseFormat="Xml" />
+					<!--<ErrorLogging />-->
+				</behavior>
+			</endpointBehaviors>
+		</behaviors>
+		<extensions>
+			<behaviorExtensions>
+				<add name="ErrorLogging" type="ADV.WCFServices.FaultingWebHttpBehaviorElement, ADV.WCFServices" />
+			</behaviorExtensions>
+		</extensions>
+		<serviceHostingEnvironment multipleSiteBindingsEnabled="true" aspNetCompatibilityEnabled="true" />
+	</system.serviceModel>
+	<system.web>
+		<!-- 
+            Set compilation debug="true" to insert debugging 
+            symbols into the compiled page. Because this 
+            affects performance, set this value to true only 
+            during development.
+        -->
+		<compilation debug="false" targetFramework="4.6.2">
+			<assemblies>
+				<add assembly="qbo.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="XInclude, Version=1.0.1426.36008, Culture=neutral, PublicKeyToken=B0A92C4C738FF598" />
+				<add assembly="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+				<add assembly="System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+				<add assembly="System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+				<add assembly="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System.DirectoryServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System.DirectoryServices.Protocols, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System.EnterpriseServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System.ServiceProcess, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+				<add assembly="System.Web.RegularExpressions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+				<add assembly="qbo.Application, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="FreeTextBox, Version=3.1.6.34851, Culture=neutral, PublicKeyToken=5962A4E684A48B87" />
+				<add assembly="qbo.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="qbo.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="qbo.Accounting, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="qbo.EventHandler, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="qbo.Attachment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="qbo.Contact, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="qbo.Report, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+				<add assembly="qbo.Error, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2062E6B5D5159047" />
+			</assemblies>
+			<buildProviders>
+				<add extension=".rdlc" type="Microsoft.Reporting.RdlBuildProvider, Microsoft.ReportViewer.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+			</buildProviders>
+		</compilation>
+		<!--
+            The <authentication> section enables configuration 
+            of the security authentication mode used by 
+            ASP.NET to identify an incoming user. 
+			Valid values are: Windows | Forms | Passport | None
+        -->
+		<authentication mode="Forms">
+			<forms loginUrl="/Security/Login.aspx" name="qbo.Security" requireSSL="true" timeout="60" path="/">
+			</forms>
+		</authentication>
+		<authorization>
+			<deny users="?" />
+			<allow users="*" />
+		</authorization>
+		<!--
+            The <customErrors> section enables configuration 
+            of what to do if/when an unhandled error occurs 
+            during the execution of a request. Specifically, 
+            it enables developers to configure html error pages 
+            to be displayed in place of a error stack trace.
+        -->
+		<customErrors mode="On" defaultRedirect="/Error/GenericError.aspx">
+			<error statusCode="404" redirect="/Error/PageNotFound.aspx" />
+		</customErrors>
+		<!-- pages:
+		validateRequest must be false to enable submission of AJAX control results as XML to the server.
+		-->
+		<pages validateRequest="false" controlRenderingCompatibilityVersion="3.5" enableViewStateMac="true" viewStateEncryptionMode="Always">
+			<controls>
+				<add tagPrefix="qbo" namespace="qbo.Web" assembly="qbo.Web,Version=2.0.0.0,Culture=neutral,publicKeyToken=2062e6b5d5159047" />
+			</controls>
+		</pages>
+		<!-- machineKey: this controls generation of encrypted cookies for authentication.
+		If the site is using multiple application roots, the validation and decription keys must match in all config files used.
+		Otherwise, the cookie set by /Security/Login.aspx will not be readable by application roots other that the one that /Security is in.
+		-->
+
+		<!--<machineKey validationKey="AutoGenerate" decryptionKey="AutoGenerate" validation="SHA1" />-->
+		<!--As we used many instances in GCP , we had to omit auto generated keys-->
+		<machineKey decryption="AES" decryptionKey="7DBB965D1E68C015E7B29DF661B24F7DF5DB19246EF8DC409612C3F9F95B934B" validation="HMACSHA256" validationKey="3DF57470059F374C640D6B14A0E547E472ECF916F7979730241FE9704AE41C0AFA20FDC31B46E72D28C62E5F3611B86833589C6FB3DB99A2F9C005BFD3743C7F" />
+
+
+
+
+		<!-- httpRuntime: 
+		maxRequestLength determines the maximum file upload size.
+		-->
+		<httpRuntime maxRequestLength="2097150" executionTimeout="3600" requestValidationMode="2.0" enableVersionHeader="false" />
+
+
+		<httpHandlers>
+			<add verb="*" path="Uploader.flsh" type="qbo.AttachmentWeb.Uploader, qbo.AttachmentWeb" />
+			<add path="Reserved.ReportViewerWebControl.axd" verb="*" type="Microsoft.Reporting.WebForms.HttpHandler, Microsoft.ReportViewer.WebForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" validate="false" />
+		</httpHandlers>
+		<httpCookies httpOnlyCookies="true" requireSSL="true"  />
+	</system.web>
+	<system.webServer>
+		<validation validateIntegratedModeConfiguration="false" />
+		<modules>
+			<add name="RewriteUrl" type="ADV.WCFServices.RewriteUrl,ADV.WCFServices" />
+			<!-- Adv Request module has been Created to fix veracode fix -->
+			<add name="AdvRequestModule" type="qbo.SecurityWeb.HttpModules.AdvRequestModule" />
+		</modules>
+
+
+		<rewrite>
+			<outboundRules rewriteBeforeCache="true">
+				<rule name="Remove Server header">
+					<match serverVariable="RESPONSE_Server" pattern=".+" />
+					<action type="Rewrite" value="" />
+				</rule>
+			</outboundRules>
+		</rewrite>
+
+		<defaultDocument>
+			<files>
+				<clear />
+				<add value="default.aspx" />
+				<add value="Default.htm" />
+				<add value="Default.asp" />
+				<add value="index.htm" />
+				<add value="index.html" />
+				<add value="iisstart.htm" />
+			</files>
+		</defaultDocument>
+		<!-- <httpErrors errorMode="Custom" existingResponse="Replace">
+        <remove statusCode="403"/>
+        <error statusCode="403" path="/Error/PageNotFound.aspx" responseMode="Redirect"/>
+    </httpErrors> -->
+
+
+		<httpProtocol>
+			<customHeaders>
+
+				<add name="Cache-Control" value="no-cache, no-store" />
+				<add name="X-Frame-Options" value="SAMEORIGIN" />
+				<add name="Strict-Transport-Security" value="max-age=31536000" />
+				<add name="X-Content-Type-Options" value="nosniff" />
+				<add name="Content-Security-Policy" value="frame-src 'self'" />
+				<add name="X-XSS-Protection" value="1; mode=block" />
+				<add name="Referrer-Policy" value="no-referrer" />
+				<remove name="X-Powered-By" />
+				<add name="Server" value=" " />
+			</customHeaders>
+		</httpProtocol>
+		<httpRedirect enabled="false" destination="https://35.238.35.170" />
+	</system.webServer>
+	<location path="SSO">
+		<system.web>
+			<authorization>
+				<allow users="*" />
+			</authorization>
+		</system.web>
+	</location>
+	<system.net>
+		<mailSettings>
+			<smtp from="advisorysupport@corelogic.com">
+				<network host="smtp.corelogic.com" />
+			</smtp>
+		</mailSettings>
+	</system.net>
+
+	<runtime>
+		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+			<dependentAssembly>
+				<assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral"/>
+				<bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0"/>
+			</dependentAssembly>
+		</assemblyBinding>
+	</runtime>
+	<system.webServer>
+		<handlers>
+			<remove name="ExtensionlessUrlHandler-Integrated-4.0"/>
+			<remove name="OPTIONSVerbHandler"/>
+			<remove name="TRACEVerbHandler"/>
+			<add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0"/>
+		</handlers>
+	</system.webServer>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

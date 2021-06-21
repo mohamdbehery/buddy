@@ -1,4 +1,5 @@
-﻿using Buddy.Utilities;
+﻿using App.Contracts.Core;
+using Buddy.Utilities;
 using RabbitMQ.Client;
 using RabbitMQClientWinService.MessageQueue;
 using System;
@@ -18,6 +19,7 @@ namespace RabbitMQClientWinService
     {
         MessageQueueClient mQClient;
         Helper helper = Helper.CreateInstance();
+        readonly ILogger logger = Logger.GetInstance();
         public bool UseThreadPool
         {
             get
@@ -33,7 +35,7 @@ namespace RabbitMQClientWinService
 
         protected override void OnStart(string[] args)
         {
-            helper.Logger.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
+            logger.Log("RabbitMQ Service started, Execution mode: " + (UseThreadPool ? "Thread Pool" : "RabbitMQ"));
             try
             {
                 // the below mQClient is the publisher which has the DelegateEvent implemented
@@ -52,13 +54,13 @@ namespace RabbitMQClientWinService
             }
             catch (Exception ex)
             {
-                helper.Logger.Log($"Rabbit MQ Exception: {ex.ToString()}");
+                logger.Log($"Rabbit MQ Exception: {ex.ToString()}");
             }
         }
 
         protected override void OnStop()
         {
-            helper.Logger.Log("Rabbit MQ Service stopped...");
+            logger.Log("Rabbit MQ Service stopped...");
         }
     }
 }

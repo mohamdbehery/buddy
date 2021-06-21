@@ -13,10 +13,12 @@ namespace Buddy.Utilities
     {
         private readonly FileStream LogFileStream;
         private readonly StreamWriter LogStreamWriter;
+        private static Logger _logger;
         string projectName = Constants.UnknownProjectName;
         string logsDirectory = "";
         int logFileMaxSizeInBytes = Constants.LogFileMaxSizeInBytes;
-        public Logger()
+
+        private Logger()
         {
             LogFileStream = new FileStream(LogFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
             LogStreamWriter = new StreamWriter(LogFileStream, Encoding.UTF8, 4096, true);
@@ -26,9 +28,18 @@ namespace Buddy.Utilities
         /// ex: "C:\Inetpub\BuddyLogger"
         /// </summary>
         /// <param name="logDirectory"></param>
-        public Logger(string logDirectory) : this()
+        //public Logger(string logDirectory) : this()
+        //{
+        //    this.LogsDirectory = logDirectory;
+        //}
+
+        public static ILogger GetInstance()
         {
-            this.LogsDirectory = logDirectory;
+            if (_logger == null)
+            {
+                _logger = new Logger();
+            }
+            return _logger;
         }
 
         public string LogsDirectory

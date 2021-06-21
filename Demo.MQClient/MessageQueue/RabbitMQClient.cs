@@ -1,4 +1,5 @@
-﻿using Buddy.Utilities;
+﻿using App.Contracts.Core;
+using Buddy.Utilities;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -16,6 +17,8 @@ namespace RabbitMQClientWinService.MessageQueue
     public class RabbitMQClient : MessageQueueClient
     {
         Timer serviceTimer = Helper.CreateInstance<Timer>();
+        readonly ILogger logger = Logger.GetInstance();
+        readonly Helper helper = Helper.CreateInstance();
         public RabbitMQClient()
         {
         }
@@ -31,10 +34,10 @@ namespace RabbitMQClientWinService.MessageQueue
         public IModel RabbitMQChannel { get; set; }
         public override void StartMessenger()
         {
-            helper.Logger.Log("Publisher started..");
+            logger.Log("Publisher started..");
             serviceTimer.Elapsed += (sender, e) =>
             {
-                helper.Logger.Log("...^_^...");
+                logger.Log("...^_^...");
                 List<MQMessage> messages = FetchMQMessages();
                 if (messages.Count > 0)
                     PublishNewMessages(messages);
@@ -58,7 +61,7 @@ namespace RabbitMQClientWinService.MessageQueue
             }
             catch (Exception ex)
             {
-                helper.Logger.Log($"Rabbit MQ Exception: {ex.ToString()}");
+                logger.Log($"Rabbit MQ Exception: {ex.ToString()}");
             }
         }
 
@@ -68,18 +71,18 @@ namespace RabbitMQClientWinService.MessageQueue
             {
                 this.EstablishRabbitMQ();
                 RabbitMQChannel.QueueDeclare(DefaultQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
-                helper.Logger.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
+                logger.Log($"/////////////////////// Publishing {messages.Count} messages /////////////////////////////");
                 foreach (MQMessage msg in messages)
                 {
                     PublishMessage(DefaultQueue, msg);
                 }
-                helper.Logger.Log($"Done publishing messages...");
+                logger.Log($"Done publishing messages...");
 
                 ConsumeNewMessages();
             }
             catch (Exception ex)
             {
-                helper.Logger.Log($"Exception: {ex.ToString()}");
+                logger.Log($"Exception: {ex.ToString()}");
             }
         }
 
@@ -104,7 +107,7 @@ namespace RabbitMQClientWinService.MessageQueue
 
         public void ConsumeNewMessages()
         {
-            helper.Logger.Log("Consumer started..");
+            logger.Log("Consumer started..");
             this.EstablishRabbitMQ();
             RabbitMQChannel.QueueDeclare(DefaultQueue, durable: true, exclusive: false, autoDelete: false, arguments: null);
             var consumer = new EventingBasicConsumer(RabbitMQChannel);
@@ -121,17 +124,17 @@ namespace RabbitMQClientWinService.MessageQueue
             {
                 case MQMessageState.SuccessfullyProcessed:
                     // Success remove from queue
-                    helper.Logger.Log("Success remove from queue");
+                    logger.Log("Success remove from queue");
                     RabbitMQChannel.BasicAck(e.DeliveryTag, false);
                     break;
                 case MQMessageState.UnsuccessfulProcessing:
                     // Unsuccessful, requeue and retry
-                    helper.Logger.Log("Unsuccessful, requeue and retry");
+                    logger.Log("Unsuccessful, requeue and retry");
                     RabbitMQChannel.BasicNack(e.DeliveryTag, false, true);
                     break;
                 default:
                     // Bad Message, Reject and Delete
-                    helper.Logger.Log("Bad Message, Reject and Delete");
+                    logger.Log("Bad Message, Reject and Delete");
                     RabbitMQChannel.BasicReject(e.DeliveryTag, false);
                     break;
             }

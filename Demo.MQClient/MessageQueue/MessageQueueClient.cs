@@ -1,4 +1,6 @@
-﻿using Buddy.Utilities;
+﻿using App.Contracts.Core;
+using Buddy.Utilities;
+using Buddy.Utilities.DB;
 using Buddy.Utilities.Enums;
 using Buddy.Utilities.Models;
 using Newtonsoft.Json;
@@ -20,7 +22,10 @@ namespace RabbitMQClientWinService.MessageQueue
     {
         // represents a delegate
         public event EventHandler MessengerStarted;
-        public Helper helper = new Helper();
+        readonly Helper helper = Helper.CreateInstance();
+        readonly ILogger logger = Logger.GetInstance();
+        readonly DBConsumer dbConsumer = DBConsumer.CreateInstance();
+
         private string conStr
         {
             get
@@ -69,7 +74,7 @@ namespace RabbitMQClientWinService.MessageQueue
         public List<MQMessage> FetchMQMessages()
         {
             List<MQMessage> messages = new List<MQMessage>();
-            ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams()
+            ExecResult execResult = dbConsumer.CallSQLDB(new DBExecParams()
             {
                 ConString = conStr,
                 StoredProcedure = "spFetchMessages",
@@ -88,13 +93,13 @@ namespace RabbitMQClientWinService.MessageQueue
                     });
                 }
             }
-            helper.Logger.Log($"{messages.Count} messages fetched...");
+            logger.Log($"{messages.Count} messages fetched...");
             return messages;
         }
         public abstract void PublishNewMessages(List<MQMessage> messages);
         public void ConsumeMessage(BasicDeliverEventArgs e, MQMessage message = null)
         {
-            helper.Logger.Log($"///////////// Message Received /////////////");
+            logger.Log($"///////////// Message Received /////////////");
             if (message == null)
             {
                 var body = e.Body.ToArray();
@@ -128,10 +133,10 @@ namespace RabbitMQClientWinService.MessageQueue
             {
                 {"@MessageID", message.MessageID.ToString()},
             };
-            ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spStartMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+            ExecResult execResult = dbConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spStartMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
             if (execResult.ErrorCode == 0)
             {
-                helper.Logger.Log($"Start executing message: {message.MessageID}");
+                logger.Log($"Start executing message: {message.MessageID}");
                 int timeToSleep = 10000;
                 if (message.MessageData.Split('$').Count() == 2)
                 {
@@ -140,7 +145,7 @@ namespace RabbitMQClientWinService.MessageQueue
                 }
                 Thread.Sleep(timeToSleep);
                 parameters.Add("@MessageData", message.MessageData.ToString());
-                execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spFinishMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+                execResult = dbConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spFinishMessageExecution", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
             }
 
             return execResult;
@@ -149,7 +154,7 @@ namespace RabbitMQClientWinService.MessageQueue
         {
             if (returnedData.ErrorCode == 0)
             {
-                helper.Logger.Log($"Done executing message id ({message.MessageID})");
+                logger.Log($"Done executing message id ({message.MessageID})");
                 MessageAknowledge(MQMessageState.SuccessfullyProcessed, e);
             }
             else
@@ -161,15 +166,15 @@ namespace RabbitMQClientWinService.MessageQueue
         public abstract void MessageAknowledge(MQMessageState state, BasicDeliverEventArgs e = null);
         public void RecordMessageFailure(MQMessage msg, string failureMessage)
         {
-            helper.Logger.Log(failureMessage);
+            logger.Log(failureMessage);
             Dictionary<string, string> parameters = new Dictionary<string, string>()
                 {
                     {"@MessageID", msg.MessageID.ToString()},
                     {"@FailureMessage", failureMessage}
                 };
-            ExecResult execResult = helper.DBConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spUpdateMessageFailure", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
+            ExecResult execResult = dbConsumer.CallSQLDB(new DBExecParams() { ConString = conStr, StoredProcedure = "spUpdateMessageFailure", Parameters = parameters, ExecType = DBExecType.ExecuteNonQuery });
             if (execResult.ErrorCode != HelperEnums.ErrorCode.Zero)
-                helper.Logger.Log("failed to log exception into Database!!");
+                logger.Log("failed to log exception into Database!!");
         }
     }
 }

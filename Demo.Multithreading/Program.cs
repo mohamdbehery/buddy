@@ -1,4 +1,5 @@
-﻿using Buddy.Utilities;
+﻿using App.Contracts.Core;
+using Buddy.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,7 +28,8 @@ namespace Multithreading
 
     public class TaskHandler
     {
-        Helper helper = new Helper(true);
+        Helper helper = Helper.CreateInstance();
+        readonly ILogger logger = Logger.GetInstance();
         public void HandleBigListSequential(List<int> bigList)
         {
             var watch = new Stopwatch();
@@ -64,7 +66,7 @@ namespace Multithreading
             Console.WriteLine($"Hello from thread {Thread.CurrentThread.ManagedThreadId}");
             foreach (int item in dataList)
             {
-                helper.Logger.Log($"Hello from {item}");
+                logger.Log($"Hello from {item}");
             }
         }
 
