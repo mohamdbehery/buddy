@@ -6,6 +6,7 @@
 - INFO: the difference between setting a default value for variable in class body and setting it in ctor is that, if you are sure that this variable will difinetly used then its fine to initailize it in class body otherwise do that in ctor so that it will not take memory space until the class is instantiated. 
 - INFO: If you dont want someone to intantiate the class then make it static or make all its ctors as private
 - INFO: one important benefit of using interface is that you can mock it later for testing.
+
 - Design Patterns (Gang of Four Authers, 23 patterns): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
     Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
         - Simple Factory: (Encapsulates object creation in one place, always a static method) a class that has one creation method with a large conditional that based on method parameters chooses which product class to instantiate and then return, for example if I have IMessageQueue interface and have 2 or more classes implements it and in the application somewhere i need to instantiate one of them based on some conditions 
@@ -79,7 +80,44 @@
               }
             }
 
-        - Builder: 
+        - Builder: (method chain) this pattern is used when we want to create object that have many parts\steps, so in this case you have to path a lot of params in class ctor however maybe some of those params are optional, then this is the ideal situation to use Builder Pattern
+            some developers build a separate class for builder ProductBuilder and also maybe with an interface as well, but its prefered to jkeep it simple as much as you can.
+            static void Main(string[] args)
+            {
+                Product product = new Product("Shampoo");
+                product.setPicture("test").setCount(120).setFactory("Johnson");
+            }
+    
+            public class Product
+            {
+                public string Name { get; set; }
+                public string PicturePath { get; set; }
+                public int Count { get; set; }
+                public string Factory { get; set; }
+
+                public Product(string name)
+                {
+                    this.Name = name;
+                }
+
+                public Product setPicture(string picturePath)
+                {
+                    this.PicturePath = picturePath;
+                    return this;
+                }
+
+                public Product setCount(int count)
+                {
+                    this.Count = count;
+                    return this;
+                }
+                public Product setFactory(string factory)
+                {
+                    this.Factory = factory;
+                    return this;
+                }
+            }
+
         - Prototype: 
 
 

@@ -42,12 +42,17 @@ namespace DesignPatterns
             #endregion
 
             #region Execute Around Method Pattern EAMP
-            EAMP_Resource.Use(
-                (Resource) => {
-                    Resource.Op1();
-                    Resource.Op2();
-                });
-            Console.WriteLine("out of block...");
+            //EAMP_Resource.Use(
+            //    (Resource) => {
+            //        Resource.Op1();
+            //        Resource.Op2();
+            //    });
+            //Console.WriteLine("out of block...");
+            #endregion
+
+            #region Builder Pattern
+            //Product product = new Product("Shampoo");
+            //product.setPicture("test").setCount(120).setFactory("Johnson");
             #endregion
         }
 
@@ -61,7 +66,37 @@ namespace DesignPatterns
             }
             return Instance;
         }
-    }    
+    }  
+    
+    public class Product
+    {
+        public string Name { get; set; }
+        public string PicturePath { get; set; }
+        public int Count { get; set; }
+        public string Factory { get; set; }
+        public Product(string name)
+        {
+            this.Name = name;
+        }
+
+        #region builder methods
+        public Product setPicture(string picturePath)
+        {
+            this.PicturePath = picturePath;
+            return this;
+        }
+        public Product setCount(int count)
+        {
+            this.Count = count;
+            return this;
+        }
+        public Product setFactory(string factory)
+        {
+            this.Factory = factory;
+            return this;
+        }
+        #endregion  
+    }
 
     public class AFP_Book
     {
