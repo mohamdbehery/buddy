@@ -54,6 +54,12 @@ namespace DesignPatterns
             //Product product = new Product("Shampoo");
             //product.setPicture("test").setCount(120).setFactory("Johnson");
             #endregion
+
+            #region Prototype Pattern
+            Product prod = new Product("");
+            prod.PrototypePattern();
+            Console.ReadLine();
+            #endregion
         }
 
         public static object AFP_Create(string ClassName, Dictionary<string, object> values)
@@ -96,6 +102,22 @@ namespace DesignPatterns
             return this;
         }
         #endregion  
+
+        public void PrototypePattern()
+        {
+            Product obj1 = new Product("");
+            Product obj2 = new Product("");
+            obj1.Name = "Old Value";
+            obj2 = obj1; // cloning by ref, any changes will affect original object
+            obj2.Name = "New Value";
+            Console.WriteLine("With prototype " + obj1.Name); // will return "New Value"
+
+            obj1 = new Product("");
+            obj1.Name = "Old Value";
+            obj2 = (Product)this.MemberwiseClone(); // cloning by value, any changes will NOT affect original object
+            obj2.Name = "New Value";
+            Console.WriteLine("With prototype " + obj1.Name); // will return "Old Value"
+        }
     }
 
     public class AFP_Book

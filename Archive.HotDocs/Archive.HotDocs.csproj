@@ -138,6 +138,8 @@
     <None Include="TechArchive\pams-advisory-iws-terraform-master.zip" />
     <None Include="TechArchive\qbo.HeartbeatService.rar" />
     <None Include="TechArchive\SDLC Workflow and Branching Strategy.pdf" />
+    <None Include="TechArchive\Secrets_ADVQN1VPAPEVT20_Token %281%29.csv" />
+    <None Include="TechArchive\Secrets_ADVQN1VPAPEVT20_Token.csv" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Apartamento - San Andres 30\Photos\foto piso 1-07082020-1.JPG" />

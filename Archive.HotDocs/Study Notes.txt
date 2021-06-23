@@ -6,6 +6,7 @@
 - INFO: the difference between setting a default value for variable in class body and setting it in ctor is that, if you are sure that this variable will difinetly used then its fine to initailize it in class body otherwise do that in ctor so that it will not take memory space until the class is instantiated. 
 - INFO: If you dont want someone to intantiate the class then make it static or make all its ctors as private
 - INFO: one important benefit of using interface is that you can mock it later for testing.
+- INFO: this.MemberwiseClone(); create a shallow copy of current object
 
 - Design Patterns (Gang of Four Authers, 23 patterns): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
     Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
@@ -80,8 +81,8 @@
               }
             }
 
-        - Builder: (method chain) this pattern is used when we want to create object that have many parts\steps, so in this case you have to path a lot of params in class ctor however maybe some of those params are optional, then this is the ideal situation to use Builder Pattern
-            some developers build a separate class for builder ProductBuilder and also maybe with an interface as well, but its prefered to jkeep it simple as much as you can.
+        - Builder: (object builder by method chain) this pattern is used when we want to create object that have many parts\steps, so in this case you have to path a lot of params in class ctor however maybe some of those params are optional, then this is the ideal situation to use Builder Pattern
+            some developers build a separate class for builder ProductBuilder and also maybe with an interface as well, but its prefered to keep it simple as much as you can.
             static void Main(string[] args)
             {
                 Product product = new Product("Shampoo");
@@ -118,16 +119,27 @@
                 }
             }
 
-        - Prototype: 
+        - Prototype: creating object by cloning existing object, since if you do some changes in the cloned object it will not affect the original object (value cloning)
+            public void PrototypePattern()
+            {
+                Product obj1 = new Product("");
+                Product obj2 = new Product("");
+                obj1.Name = "Old Value";
+                obj2 = obj1; // cloning by ref, any changes will affect original object
+                obj2.Name = "New Value";
+                Console.WriteLine("With prototype " + obj1.Name); // will return "New Value"
 
+                obj1 = new Product("");
+                obj1.Name = "Old Value";
+                obj2 = (Product)this.MemberwiseClone(); // cloning by value, any changes will NOT affect original object
+                obj2.Name = "New Value";
+                Console.WriteLine("With prototype " + obj1.Name); // will return "Old Value"
+            }
 
     Structural Patterns: identifying a simple way to realize relationships between entities.
         - Addapter: 
         - Bridge:
-        - Composite:
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
-        - Façade:
-        - FlyWeight: minimize resource usage when working with very large numbers of objects.
         - Proxy: can be used when we don’t want to access to the resource or subject directly.
             static class Program {
                 static void Main() {
@@ -154,6 +166,10 @@
                     _realSubject.Operation();
                 }
             }
+        
+        - Composite:
+        - Façade:
+        - FlyWeight: minimize resource usage when working with very large numbers of objects.
     Behavioural Patterns: how objects do interactions between each others.
         - Chain of Responsibility: Passes a request among a list or chain of objects.
         - Command:
