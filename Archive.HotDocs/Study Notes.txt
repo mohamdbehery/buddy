@@ -142,43 +142,45 @@
             the pattern here is to create an Adapter class that implements the intefrace but inside each methd it calls the related methed in a new created class also (Adaptee) that has the new functionality.
             # I dont like this pattern, make the code confusing
 
-        static void Main(string[] args)
-        {
-
-            #region Adapter Pattern
-            Adaptee adaptee = new Adaptee();
-            IAdapPattern adapPattern = new Adapter(adaptee);
-            adapPattern.PrintData();
-            Console.ReadLine();
-            #endregion
-        }
-
-        public interface IAdapPattern
-        {
-            void PrintData();
-        }
-
-        public class Adapter : IAdapPattern
-        {
-            Adaptee _adaptee;
-            public Adapter(Adaptee adaptee)
+            static void Main(string[] args)
             {
-                this._adaptee = adaptee;
-            }
-            public void PrintData()
-            {
-                _adaptee.PrintDifferentData();
-            }
-        }
 
-        public class Adaptee
-        {
-            public void PrintDifferentData()
-            {
-                Console.WriteLine("Differnt Data");
+                #region Adapter Pattern
+                Adaptee adaptee = new Adaptee();
+                IAdapPattern adapPattern = new Adapter(adaptee);
+                adapPattern.PrintData();
+                Console.ReadLine();
+                #endregion
             }
-        }
-        - Bridge: 
+
+            public interface IAdapPattern
+            {
+                void PrintData();
+            }
+
+            public class Adapter : IAdapPattern
+            {
+                Adaptee _adaptee;
+                public Adapter(Adaptee adaptee)
+                {
+                    this._adaptee = adaptee;
+                }
+                public void PrintData()
+                {
+                    _adaptee.PrintDifferentData();
+                }
+            }
+
+            public class Adaptee
+            {
+                public void PrintDifferentData()
+                {
+                    Console.WriteLine("Differnt Data");
+                }
+            }
+        - Bridge: decouple an abstraction from its implementation so that the two can vary independently, imagine that we have a IPaymentGatway interface with some concrete classes and also an IPaymentMethod interface with some concrete classes so the pattern say that instead of referencing a payment method in each payment gateway, you can make a bridge class PaymentBridge to implement the IPaymentGateway interface and also to reference the IPaymentMethod interface, and when consuming a PaymentGateway concrete class you can assin any PaymentMethod concrete, 
+            so in this example the bridge class make both of PaymentGateway and PaymentMethod grow independently.
+
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
         - Proxy: can be used when we don’t want to access to the resource or subject directly.
             static class Program {
