@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patterns\Adapter.cs" />
+    <Compile Include="Patterns\Bridge.cs" />
+    <Compile Include="Patterns\Builder.cs" />
+    <Compile Include="Patterns\Prototype.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

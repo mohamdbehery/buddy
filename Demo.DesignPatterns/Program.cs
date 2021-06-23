@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.Patterns;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,21 +51,11 @@ namespace DesignPatterns
             //Console.WriteLine("out of block...");
             #endregion
 
-            #region Builder Pattern
-            //Product product = new Product("Shampoo");
-            //product.setPicture("test").setCount(120).setFactory("Johnson");
-            #endregion
 
-            #region Prototype Pattern
-            //Product prod = new Product("");
-            //prod.PrototypePattern();
-            //Console.ReadLine();
-            #endregion
 
-            #region Adapter Pattern
-            Adaptee adaptee = new Adaptee();
-            IAdapPattern adapPattern = new Adapter(adaptee);
-            adapPattern.PrintData();
+            #region Bridge Pattern
+            Bridge bridge = new Bridge();
+            bridge.ConsumeThePattern();
             Console.ReadLine();
             #endregion
         }
@@ -78,80 +69,6 @@ namespace DesignPatterns
                 type.GetProperty(entry.Key).SetValue(Instance, entry.Value);
             }
             return Instance;
-        }
-    }
-
-    #region AdapterPattern
-    public interface IAdapPattern
-    {
-        void PrintData();
-    }
-
-    public class Adapter : IAdapPattern
-    {
-        Adaptee _adaptee;
-        public Adapter(Adaptee adaptee)
-        {
-            this._adaptee = adaptee;
-        }
-        public void PrintData()
-        {
-            _adaptee.PrintDifferentData();
-        }
-    }
-
-    public class Adaptee
-    {
-        public void PrintDifferentData()
-        {
-            Console.WriteLine("Differnt Data");
-        }
-    }
-    #endregion
-
-    public class Product
-    {
-        public string Name { get; set; }
-        public string PicturePath { get; set; }
-        public int Count { get; set; }
-        public string Factory { get; set; }
-        public Product(string name)
-        {
-            this.Name = name;
-        }
-
-        #region builder methods
-        public Product setPicture(string picturePath)
-        {
-            this.PicturePath = picturePath;
-            return this;
-        }
-        public Product setCount(int count)
-        {
-            this.Count = count;
-            return this;
-        }
-        public Product setFactory(string factory)
-        {
-            this.Factory = factory;
-            return this;
-        }
-        #endregion  
-
-        public void PrototypePattern()
-        {
-            Product obj1 = new Product("");
-            Product obj2 = new Product("");
-            obj1.Name = "Old Value";
-            obj2 = obj1; // cloning by ref, any changes will affect original object
-            obj2.Name = "New Value";
-            Console.WriteLine("With prototype " + obj1.Name); // will return "New Value"
-
-            obj1 = new Product("");
-            obj1.Name = "Old Value";
-            obj2 = (Product)this.MemberwiseClone(); // cloning by value, any changes will NOT affect original object
-            obj2.Name = "New Value";
-            Console.WriteLine("With prototype " + obj1.Name); // will return "Old Value"
         }
     }
 

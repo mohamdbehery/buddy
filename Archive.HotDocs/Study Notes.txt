@@ -83,58 +83,8 @@
 
         - Builder: (object builder by method chain) this pattern is used when we want to create object that have many parts\steps, so in this case you have to path a lot of params in class ctor however maybe some of those params are optional, then this is the ideal situation to use Builder Pattern
             some developers build a separate class for builder ProductBuilder and also maybe with an interface as well, but its prefered to keep it simple as much as you can.
-            static void Main(string[] args)
-            {
-                Product product = new Product("Shampoo");
-                product.setPicture("test").setCount(120).setFactory("Johnson");
-            }
-    
-            public class Product
-            {
-                public string Name { get; set; }
-                public string PicturePath { get; set; }
-                public int Count { get; set; }
-                public string Factory { get; set; }
-
-                public Product(string name)
-                {
-                    this.Name = name;
-                }
-
-                public Product setPicture(string picturePath)
-                {
-                    this.PicturePath = picturePath;
-                    return this;
-                }
-
-                public Product setCount(int count)
-                {
-                    this.Count = count;
-                    return this;
-                }
-                public Product setFactory(string factory)
-                {
-                    this.Factory = factory;
-                    return this;
-                }
-            }
-
+            
         - Prototype: creating object by cloning existing object, since if you do some changes in the cloned object it will not affect the original object (value cloning)
-            public void PrototypePattern()
-            {
-                Product obj1 = new Product("");
-                Product obj2 = new Product("");
-                obj1.Name = "Old Value";
-                obj2 = obj1; // cloning by ref, any changes will affect original object
-                obj2.Name = "New Value";
-                Console.WriteLine("With prototype " + obj1.Name); // will return "New Value"
-
-                obj1 = new Product("");
-                obj1.Name = "Old Value";
-                obj2 = (Product)this.MemberwiseClone(); // cloning by value, any changes will NOT affect original object
-                obj2.Name = "New Value";
-                Console.WriteLine("With prototype " + obj1.Name); // will return "Old Value"
-            }
 
     Structural Patterns: identifying a simple way to realize relationships between entities.
         - Addapter: is often used to make existing classes work with others without modifying their source code. Adapter patterns use a single class (the adapter class) to join functionalities of independent or incompatible interfaces/classes.
@@ -142,43 +92,7 @@
             the pattern here is to create an Adapter class that implements the intefrace but inside each methd it calls the related methed in a new created class also (Adaptee) that has the new functionality.
             # I dont like this pattern, make the code confusing
 
-            static void Main(string[] args)
-            {
-
-                #region Adapter Pattern
-                Adaptee adaptee = new Adaptee();
-                IAdapPattern adapPattern = new Adapter(adaptee);
-                adapPattern.PrintData();
-                Console.ReadLine();
-                #endregion
-            }
-
-            public interface IAdapPattern
-            {
-                void PrintData();
-            }
-
-            public class Adapter : IAdapPattern
-            {
-                Adaptee _adaptee;
-                public Adapter(Adaptee adaptee)
-                {
-                    this._adaptee = adaptee;
-                }
-                public void PrintData()
-                {
-                    _adaptee.PrintDifferentData();
-                }
-            }
-
-            public class Adaptee
-            {
-                public void PrintDifferentData()
-                {
-                    Console.WriteLine("Differnt Data");
-                }
-            }
-        - Bridge: decouple an abstraction from its implementation so that the two can vary independently, imagine that we have a IPaymentGatway interface with some concrete classes and also an IPaymentMethod interface with some concrete classes so the pattern say that instead of referencing a payment method in each payment gateway, you can make a bridge class PaymentBridge to implement the IPaymentGateway interface and also to reference the IPaymentMethod interface, and when consuming a PaymentGateway concrete class you can assin any PaymentMethod concrete, 
+        - Bridge: (decouple an abstraction from its implementation so that the two can vary independently), imagine that we have a IPaymentGatway interface with some concrete classes and also an IPaymentMethod interface with some concrete classes so the pattern say that instead of referencing a payment method in each payment gateway, you can convert the IPaymentGateway interface to an abstract class and reference the IPaymentMethod interface there, and when consuming a PaymentGateway concrete class you can assign any PaymentMethod concrete to its interface, 
             so in this example the bridge class make both of PaymentGateway and PaymentMethod grow independently.
 
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
