@@ -84,7 +84,9 @@
         - Builder: (object builder by method chain) this pattern is used when we want to create object that have many parts\steps, so in this case you have to path a lot of params in class ctor however maybe some of those params are optional, then this is the ideal situation to use Builder Pattern
             some developers build a separate class for builder ProductBuilder and also maybe with an interface as well, but its prefered to keep it simple as much as you can.
             
-        - Prototype: creating object by cloning existing object, since if you do some changes in the cloned object it will not affect the original object (value cloning)
+        - Prototype: creating object by cloning existing object, since if you do some changes in the cloned object it will not affect the original object (value cloning or deep copy),
+            obj2 = obj1; // cloning by ref (shallow copy), any changes will affect original object
+            # this pattern is rarly used
 
     Structural Patterns: identifying a simple way to realize relationships between entities.
         - Addapter: is often used to make existing classes work with others without modifying their source code. Adapter patterns use a single class (the adapter class) to join functionalities of independent or incompatible interfaces/classes.
