@@ -137,8 +137,48 @@
             }
 
     Structural Patterns: identifying a simple way to realize relationships between entities.
-        - Addapter: 
-        - Bridge:
+        - Addapter: is often used to make existing classes work with others without modifying their source code. Adapter patterns use a single class (the adapter class) to join functionalities of independent or incompatible interfaces/classes.
+            it lets the classes work together that couldnt otherwise because of incompatible interfaces, so imagine that you have an interface that has already a lot of classes implements it and you have a new class that wants to implement it but with a different functionality then 
+            the pattern here is to create an Adapter class that implements the intefrace but inside each methd it calls the related methed in a new created class also (Adaptee) that has the new functionality.
+            # I dont like this pattern, make the code confusing
+
+        static void Main(string[] args)
+        {
+
+            #region Adapter Pattern
+            Adaptee adaptee = new Adaptee();
+            IAdapPattern adapPattern = new Adapter(adaptee);
+            adapPattern.PrintData();
+            Console.ReadLine();
+            #endregion
+        }
+
+        public interface IAdapPattern
+        {
+            void PrintData();
+        }
+
+        public class Adapter : IAdapPattern
+        {
+            Adaptee _adaptee;
+            public Adapter(Adaptee adaptee)
+            {
+                this._adaptee = adaptee;
+            }
+            public void PrintData()
+            {
+                _adaptee.PrintDifferentData();
+            }
+        }
+
+        public class Adaptee
+        {
+            public void PrintDifferentData()
+            {
+                Console.WriteLine("Differnt Data");
+            }
+        }
+        - Bridge: 
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
         - Proxy: can be used when we don’t want to access to the resource or subject directly.
             static class Program {

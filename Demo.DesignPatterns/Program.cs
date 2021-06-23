@@ -56,8 +56,15 @@ namespace DesignPatterns
             #endregion
 
             #region Prototype Pattern
-            Product prod = new Product("");
-            prod.PrototypePattern();
+            //Product prod = new Product("");
+            //prod.PrototypePattern();
+            //Console.ReadLine();
+            #endregion
+
+            #region Adapter Pattern
+            Adaptee adaptee = new Adaptee();
+            IAdapPattern adapPattern = new Adapter(adaptee);
+            adapPattern.PrintData();
             Console.ReadLine();
             #endregion
         }
@@ -72,8 +79,36 @@ namespace DesignPatterns
             }
             return Instance;
         }
-    }  
-    
+    }
+
+    #region AdapterPattern
+    public interface IAdapPattern
+    {
+        void PrintData();
+    }
+
+    public class Adapter : IAdapPattern
+    {
+        Adaptee _adaptee;
+        public Adapter(Adaptee adaptee)
+        {
+            this._adaptee = adaptee;
+        }
+        public void PrintData()
+        {
+            _adaptee.PrintDifferentData();
+        }
+    }
+
+    public class Adaptee
+    {
+        public void PrintDifferentData()
+        {
+            Console.WriteLine("Differnt Data");
+        }
+    }
+    #endregion
+
     public class Product
     {
         public string Name { get; set; }
