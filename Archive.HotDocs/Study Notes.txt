@@ -7,79 +7,21 @@
 - INFO: If you dont want someone to intantiate the class then make it static or make all its ctors as private
 - INFO: one important benefit of using interface is that you can mock it later for testing.
 - INFO: this.MemberwiseClone(); create a shallow copy of current object
+- INFO: to implement an abstract method, you should add override keyword in implementation method signature.
+- INFO: abstract class ctor is better to have (protected) access modifier because it will be called only from the derived classes.
 
 - Design Patterns (Gang of Four Authers, 23 patterns): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
     Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
         - Simple Factory: (Encapsulates object creation in one place, always a static method) a class that has one creation method with a large conditional that based on method parameters chooses which product class to instantiate and then return, for example if I have IMessageQueue interface and have 2 or more classes implements it and in the application somewhere i need to instantiate one of them based on some conditions 
             then its better to create a new static class called MessageQueueFactory that has a method GetInstance() to return a new object of one of a MessageQueue classes based on paramter and the return type will be of type Interface IMessageQueue, so thet the application just passed the type of class and the factory created and return it back to the application in an abstract way,
-            class Program
-            {        
-                static void Main(string[] args)
-                { 
-                    IMessageQueue messageQueue = SimpleFactory.GetInstance("rmq");
-                }
-            }    
-
-            public static class SimpleFactory
-            {
-                public static IMessageQueue GetInstance(string type)
-                {
-                    switch (type)
-                    {
-                        case "rmq": return new RabbitMQ();
-                        case "mmq": return new ManualMQ();
-                        default: return null;
-                    }
-                }
-            }
-
+            
         - Factory Method: same as Simple Factory but for a bunch of products where the products has more than one category (factory of factories), create instances of derived classes, and let the subclass decides which class to instantiate by calling method FactoryMethod() and path the type:
             So you break down the Factory to small categorized factories (Classes) which implement the big factory (ICreator)
-            class ConcreteCreatorA : ICreator
-            {
-                 public override Product FactoryMethod(string type) {
-                    switch (type)  {
-                       case "A": return new ConcreteProductA();
-                       case "B": return new ConcreteProductB();
-                       default: throw new ArgumentException("Invalid type", "type");
-                    }
-                 }
-            }
+            
         - Abstract Factory: create instances of several classes belonging to different families, so Factory Method is a small part of Abstract Factory
-            class HeroFactory : VehicleFactory {
-               public Bike GetBike(string Bike) {
-                 switch (Bike) {
-                   case "Sports":
-                       return new SportsBike();
-                   case "Regular":
-                       return new RegularBike();
-                   default:
-                       throw new ApplicationException(string.Format("Vehicle '{0}' cannot be created", Bike));
-                  }
-               }
-
-               public Scooter GetScooter(string Scooter) {
-                 switch (Scooter) {
-                   case "Sports":
-                     return new Scooty();
-                   case "Regular":
-                     return new RegularScooter();
-                   default:
-                      throw new ApplicationException(string.Format("Vehicle '{0}' cannot be created", Scooter));
-                  }
-                }
-            }
-        - Singleton: Ensures that a class can has only one instance (lazy initialization), idealy its used when you need to manage a shared resource like logging, in reality, this pattern is rarly used, ex: logging.
-            public class Singleton {
-              private static Singleton instance = null;
-              private Singleton() { }
-
-              public static Singleton GetInstance {
-                get  {
-                  return instance == null ? new Singleton() : instance;
-                }
-              }
-            }
+            
+        - Singleton: Ensures that a class can has only one instance (lazy initialization), idealy its used when you need to manage a shared resource like logging, 
+            #In reality, this pattern is rarly used, ex: logging.            
 
         - Builder: (object builder by method chain) this pattern is used when we want to create object that have many parts\steps, so in this case you have to path a lot of params in class ctor however maybe some of those params are optional, then this is the ideal situation to use Builder Pattern
             some developers build a separate class for builder ProductBuilder and also maybe with an interface as well, but its prefered to keep it simple as much as you can.
@@ -96,6 +38,9 @@
 
         - Bridge: (decouple an abstraction from its implementation so that the two can vary independently), imagine that we have a IPaymentGatway interface with some concrete classes and also an IPaymentMethod interface with some concrete classes so the pattern say that instead of referencing a payment method in each payment gateway, you can convert the IPaymentGateway interface to an abstract class and reference the IPaymentMethod interface there, and when consuming a PaymentGateway concrete class you can assign any PaymentMethod concrete to its interface, 
             so in this example the bridge class make both of PaymentGateway and PaymentMethod grow independently, please check the picture in design patterns project.
+
+
+
 
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
         - Proxy: can be used when we don’t want to access to the resource or subject directly.
