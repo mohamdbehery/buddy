@@ -135,12 +135,12 @@
     <None Include="Relocation Docs\Unicaja account bank certificate.pdf" />
     <None Include="Relocation Docs\Work Permit Approval_Mohamed  Behery.pdf" />
     <None Include="TechArchive\pams-advisory-infra-master.zip" />
+    <None Include="TechArchive\pams-advisory-infra.zip" />
     <None Include="TechArchive\pams-advisory-iws-terraform-master.zip" />
     <None Include="TechArchive\qbo.HeartbeatService.rar" />
     <None Include="TechArchive\SDLC Workflow and Branching Strategy.pdf" />
     <None Include="TechArchive\Secrets_ADVQN1VPAPEVT20_Token %281%29.csv" />
     <None Include="TechArchive\Secrets_ADVQN1VPAPEVT20_Token.csv" />
-    <None Include="TechArchive\Service_Config-1.18.zip" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Apartamento - San Andres 30\Photos\foto piso 1-07082020-1.JPG" />
