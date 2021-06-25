@@ -37,57 +37,10 @@ namespace DesignPatterns
             //Console.WriteLine("out of block...");
             #endregion
 
-            AFP_Book aFP_Book = new AFP_Book();
-            aFP_Book.Title = "Old";
-            Console.WriteLine("before :" + aFP_Book.Title);
-            Tsr(aFP_Book);
-            Console.WriteLine("after :" + aFP_Book.Title);
 
-
-
-            #region Bridge Pattern
-            //Bridge bridge = new Bridge();
-            //bridge.ConsumeThePattern();
             Console.ReadLine();
-            #endregion
-        }
-
-        public static void Tsr(AFP_Book aFP_Book)
-        {
-            aFP_Book.Title = "New";
-        }
-
-        public static object AFP_Create(string ClassName, Dictionary<string, object> values)
-        {
-            Type type = Type.GetType(ClassName);
-            object Instance = Activator.CreateInstance(type);
-            foreach (var entry in values)
-            {
-                type.GetProperty(entry.Key).SetValue(Instance, entry.Value);
-            }
-            return Instance;
         }
     }
-
-    public class AFP_Book
-    {
-        public string Title { get; set; }
-        public int Pages { get; set; }
-        public override string ToString()
-        {
-            return string.Format("Book {0}, {1}", Title, Pages);
-        }
-    }
-    public class AFP_CD
-    {
-        public string Title { get; set; }
-        public int Volume { get; set; }
-        public override string ToString()
-        {
-            return string.Format("CD {0}, {1}", Title, Volume);
-        }
-    }
-
     public class PBP
     {
         public int TotalSelectedValues(int[] values, Func<int, bool> selector)

@@ -9,6 +9,7 @@
 - INFO: this.MemberwiseClone(); create a shallow copy of current object
 - INFO: to implement an abstract method, you should add override keyword in implementation method signature.
 - INFO: abstract class ctor is better to have (protected) access modifier because it will be called only from the derived classes.
+- After releasing the sprint, Merge from release branch to master THEN merge from master branch to develop 
 
 - Design Patterns (Gang of Four Authers, 23 patterns): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
     Creational Patterns: create objects in such a way that they can be decoupled from their implementing system.
