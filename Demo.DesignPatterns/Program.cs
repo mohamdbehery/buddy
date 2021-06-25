@@ -11,20 +11,6 @@ namespace DesignPatterns
     {        
         static void Main(string[] args)
         {
-            #region Abstract Factory Pattern AFP
-            // Creates an instances of several families of classes
-            //Console.WriteLine(AFP_Create("DesignPatterns.AFP_Book", new Dictionary<string, object>()
-            //{
-            //    { "Title", "Adventure" },
-            //    { "Pages", 100}
-            //}));
-            //Console.WriteLine(AFP_Create("DesignPatterns.AFP_CD", new Dictionary<string, object>()
-            //{
-            //    { "Title", "Movie" },
-            //    { "Volume", 2}
-            //}));
-            //Console.ReadLine();
-            #endregion
 
             #region Cascade Pattern CP
             // cascading brief code to not use object of class every time i call method inside it.
@@ -51,13 +37,24 @@ namespace DesignPatterns
             //Console.WriteLine("out of block...");
             #endregion
 
+            AFP_Book aFP_Book = new AFP_Book();
+            aFP_Book.Title = "Old";
+            Console.WriteLine("before :" + aFP_Book.Title);
+            Tsr(aFP_Book);
+            Console.WriteLine("after :" + aFP_Book.Title);
+
 
 
             #region Bridge Pattern
-            Bridge bridge = new Bridge();
-            bridge.ConsumeThePattern();
+            //Bridge bridge = new Bridge();
+            //bridge.ConsumeThePattern();
             Console.ReadLine();
             #endregion
+        }
+
+        public static void Tsr(AFP_Book aFP_Book)
+        {
+            aFP_Book.Title = "New";
         }
 
         public static object AFP_Create(string ClassName, Dictionary<string, object> values)
@@ -90,30 +87,7 @@ namespace DesignPatterns
             return string.Format("CD {0}, {1}", Title, Volume);
         }
     }
-    public class CP
-    {
-        public CP to(string toAdd)
-        {
-            return this;
-        }
-        public CP from(string fromAdd)
-        {
-            return this;
-        }
-        public CP subject(string sub)
-        {
-            return this;
-        }
-        public CP message(string mes)
-        {
-            return this;
-        }
-        public void send()
-        {
-            Console.WriteLine("message sent successfuly");
-            Console.ReadLine();
-        }
-    }
+
     public class PBP
     {
         public int TotalSelectedValues(int[] values, Func<int, bool> selector)

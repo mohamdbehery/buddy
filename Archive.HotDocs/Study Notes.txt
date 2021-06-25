@@ -39,10 +39,9 @@
         - Bridge: (decouple an abstraction from its implementation so that the two can vary independently), imagine that we have a IPaymentGatway interface with some concrete classes and also an IPaymentMethod interface with some concrete classes so the pattern say that instead of referencing a payment method in each payment gateway, you can convert the IPaymentGateway interface to an abstract class and reference the IPaymentMethod interface there, and when consuming a PaymentGateway concrete class you can assign any PaymentMethod concrete to its interface, 
             so in this example the bridge class make both of PaymentGateway and PaymentMethod grow independently, please check the picture in design patterns project.
 
-
-
-
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
+
+
         - Proxy: can be used when we don’t want to access to the resource or subject directly.
             static class Program {
                 static void Main() {

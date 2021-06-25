@@ -1,10 +1,10 @@
 
->>>>>>>>>>>>>>>>>
 	- Design Patterns
 	- What is the problem that each design pattern solved?
-	- SQL ## before table name?
 	- Is Factory pattern implements the Dependency Inversion principle?
 	- What is the difference between Factory and Unit of Work patterns?
+	- SQL basics & advanced	
+	- SQL ## before table name?
 	- What is the most proper location for declaring valiables in method?
 	- How is the nested try catch blocks works, which one that will fire, child or parent?
 	- Prototype deep copy pattern to fix the sqlConnection issue with multithreads
@@ -12,20 +12,14 @@
 	- SQL select row_number over partition by?
 	- ADO code
 	- Entity Framework
-	- SQL basics & advanced
-	- Net tutorials
-	- ASP.NET Web Forms,
 	- .Net Core tutorials
 	- Structured Programing (Practice)
 	- Windows services
 	- What is WCF apps used for?
 	- UML (Practice)
-	- DataDD, TDD, and DomainDD
-	- WCF Services tutorials.
-	- Web Services
-	- SSO (Practice)
-	- Microservices (Practice)
 	- Domain Driven Design (Practice)
+	- DataDD, TDD, and DomainDD
+	- Microservices (Practice)
 	- How to calculate the Space Complexity
 	- Reference Type and value type
 	- When exactly we should use struct rather than class
@@ -42,27 +36,22 @@
 	- Functional Programming (Mohamed Hammad)	
 	- Dynamic Programming (Practice)
 	- onshore and offshore teams?
+	- Understand the DWH (Facts & Dimensions)
+	- Understand LogStash, Kibana and ElasticSearch 
 	- DB diagram types?
 	- SQL Execution plan?	
 	- DFS (Practice)
 	- SSRS (Practice)
 	- SSIS (Practice)
 	- MS Unit Test (Practice)
-	- $$ in Review.docx
 	- LinkedIn English assessment
 	- LinkedIn Skills assessments	
-	- Understand the DWH (Facts & Dimensions)
-	- Understand LogStash, Kibana and ElasticSearch 
 	- How to define the ticket complexity
 	- Consume API from SQL Server
-	- What exactly is data warehousing??? Facts & Dimensions
 	- How to do data warehousing with Hadoop
 	- Difference between task schedule and windows service
-	- Configure CI\CD with GitHub and Deploy to a Github pages (Practice)	- 
-	- Meaning of onshore\offshore support
-	- Understand how SSO is working
+	- Configure CI\CD with GitHub and Deploy to a Github pages (Practice)
 	- How the grooming and estimation should be done in Agile scrum
-	- Understand MileStone and Polling Event (Practice)
 	- Code analysis tools
 	- Understand the SSH connectivity (Practice)
 	- Difference between RabbitMQ and HangFire
@@ -73,6 +62,14 @@
 	- GCP Review
 	- Hacker Rank Problem Solving 
 	- Practice on Technical assessments
+	
+	- Understand MileStone and Polling Event (Practice)
+	- $$ in Review.docx
+	- Net tutorials
+	- ASP.NET Web Forms,
+	- WCF Services tutorials.	
+	- Web Services
+	- SSO (Practice)
 
 >>>>>>>>>Refernces to big companies>>>>>>>>
 	1. Data structures
