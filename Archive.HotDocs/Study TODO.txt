@@ -1,6 +1,8 @@
 
 	- Design Patterns
 	- What is the problem that each design pattern solved?
+	- Interface inherit from another interface (Practice)
+	- Abstract class inherit from another abstract class (Practice)
 	- Is Factory pattern implements the Dependency Inversion principle?
 	- What is the difference between Factory and Unit of Work patterns?
 	- SQL basics & advanced	

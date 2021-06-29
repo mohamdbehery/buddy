@@ -9,6 +9,7 @@
 - INFO: this.MemberwiseClone(); create a shallow copy of current object
 - INFO: to implement an abstract method, you should add override keyword in implementation method signature.
 - INFO: abstract class ctor is better to have (protected) access modifier because it will be called only from the derived classes.
+- INFO: abstract class can inherit from another abstract class without implementing its abstract methods.
 - After releasing the sprint, Merge from release branch to master THEN merge from master branch to develop 
 
 - Design Patterns (Gang of Four Authers, 23 patterns): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
@@ -41,6 +42,7 @@
             so in this example the bridge class make both of PaymentGateway and PaymentMethod grow independently, please check the picture in design patterns project.
 
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
+            so if you have an abstract class AbstractA that has  some child classes, and you want to extend some functionality in these child classes without modifying them then you can decorate them by creating another abstract class AbstractDecorator that inherit from the AbstractA and create childs for AbstractDecorator but every decorator child should have a property of the main abstract class, so like that you can injest any of the old concrete class in this property and also add whatever functionality that you want.
 
 
         - Proxy: can be used when we don’t want to access to the resource or subject directly.
