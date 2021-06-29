@@ -44,32 +44,7 @@
         - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
             so if you have an abstract class AbstractA that has  some child classes, and you want to extend some functionality in these child classes without modifying them then you can decorate them by creating another abstract class AbstractDecorator that inherit from the AbstractA and create childs for AbstractDecorator but every decorator child should have a property of the main abstract class, so like that you can injest any of the old concrete class in this property and also add whatever functionality that you want.
 
-        - Proxy: can be used when we don’t want to access to the resource or subject directly.
-            static class Program {
-                static void Main() {
-                    var proxy = new Proxy();
-                    proxy.Operation();
-                }
-            }
-
-            public abstract class SubjectBase {
-                public abstract void Operation();
-            }
-
-            public class RealSubject : SubjectBase {
-                public override void Operation() {
-                    Console.WriteLine("RealSubject.Operation");
-                }
-            }
-
-            public class Proxy : SubjectBase {
-                private RealSubject _realSubject;
-
-                public override void Operation() {
-                    _realSubject = _realSubject == null ? new RealSubject() : realSubject;
-                    _realSubject.Operation();
-                }
-            }
+        - Proxy: kind of filteration layer, can be used when we don’t want to access to the resource or subject directly.            
         
         - Composite:
         - Façade:
