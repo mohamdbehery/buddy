@@ -3,6 +3,7 @@
 	- What is the problem that each design pattern solved?
 	- Interface inherit from another interface (Practice)
 	- Abstract class inherit from another abstract class (Practice)
+	- If you have a class that has a try catch and call another class in another assembly that has try catch, which one will fire in case of exception?
 	- Is Factory pattern implements the Dependency Inversion principle?
 	- What is the difference between Factory and Unit of Work patterns?
 	- SQL basics & advanced	
