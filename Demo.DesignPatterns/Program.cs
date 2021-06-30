@@ -37,6 +37,8 @@ namespace DesignPatterns
             //Console.WriteLine("out of block...");
             #endregion
 
+            Composite composite = new Composite();
+            composite.ConsumeThePattern();
 
             Console.ReadLine();
         }

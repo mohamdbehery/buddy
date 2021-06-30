@@ -43,13 +43,15 @@
         - Bridge: (decouple an abstraction from its implementation so that the two can vary independently), imagine that we have a IPaymentGatway interface with some concrete classes and also an IPaymentMethod interface with some concrete classes so the pattern say that instead of referencing a payment method in each payment gateway, you can convert the IPaymentGateway interface to an abstract class and reference the IPaymentMethod interface there, and when consuming a PaymentGateway concrete class you can assign any PaymentMethod concrete to its interface, 
             so in this example the bridge class make both of PaymentGateway and PaymentMethod grow independently, please check the picture in design patterns project.
 
-        - Decorator: extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
+        - Decorator: (kind of recursive object reference) extends the functionality of individual objects by wrapping them with one or more decorator classes. These decorators can modify existing members and add new methods and properties at run-time. (like using of Data Annotations)
             so if you have an abstract class AbstractA that has  some child classes, and you want to extend some functionality in these child classes without modifying them then you can decorate them by creating another abstract class AbstractDecorator that inherit from the AbstractA and create childs for AbstractDecorator but every decorator child should have a property of the main abstract class, so like that you can injest any of the old concrete class in this property and also add whatever functionality that you want.
 
-        - Proxy: kind of filteration layer, can be used when we don’t want to access to the resource or subject directly, so if you have an interface and some child classes and you dont want clients to directly access these classes then you better to
+        - Proxy: kind of filteration layer which is also increase abstraction, can be used when we don’t want to access to the resource or subject directly, so if you have an interface and some child classes and you dont want clients to directly access these classes then you better to
             create a new class (Proxy) to implement the same interface and to create the instance of the child class.
         
-        - Composite: 
+        - Composite: (very suitable when you work with tree of objects, ex polices of insurance industry) so you may have an interface IProduct that has 2 types of childs, (Product and Service) and the Product has a refrence to IProduct (to assign any IProduct object, ie: Product or Service) so the Product class here is the Composite class that can be a parent and child at the same time.
+            so this class is violating the Liskov principle since the Service class not using all methods of ProductBase class
+
         - Façade: 
         - FlyWeight: minimize resource usage when working with very large numbers of objects.
     Behavioural Patterns: how objects do interactions between each others.
