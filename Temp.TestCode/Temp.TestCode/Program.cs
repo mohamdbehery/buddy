@@ -35,8 +35,22 @@ namespace Temp.TestCode
             //    });
             //    var affectedRowsCount = unitOfWork.Save();
             //}
-            
+            TestTryCatch(int.Parse(Console.ReadLine()));
             Console.ReadLine();
+        }
+
+        public static void TestTryCatch(int x)
+        {
+            try
+            {
+                int z = 2 / x;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Hey Exception");
+            }
+
+            Console.WriteLine("Continue after exception");
         }
 
         private static void writeTest(Phone v)

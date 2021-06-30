@@ -10,6 +10,8 @@
 - INFO: to implement an abstract method, you should add override keyword in implementation method signature.
 - INFO: abstract class ctor is better to have (protected) access modifier because it will be called only from the derived classes.
 - INFO: abstract class can inherit from another abstract class without implementing its abstract methods.
+- INFO: using try catch will let the compiler continue even after exception, since the exception will be handled in the catch block and then continue ahead.
+
 - After releasing the sprint, Merge from release branch to master THEN merge from master branch to develop 
 
 - Design Patterns (Gang of Four Authers, 23 patterns): its Gang of four because it has 4 authers, using OOP to create a reusable designs and enhance the interaction between objects for the purpose of decupling, its categorized to 3 groups:
@@ -47,8 +49,8 @@
         - Proxy: kind of filteration layer, can be used when we don’t want to access to the resource or subject directly, so if you have an interface and some child classes and you dont want clients to directly access these classes then you better to
             create a new class (Proxy) to implement the same interface and to create the instance of the child class.
         
-        - Composite:
-        - Façade:
+        - Composite: 
+        - Façade: 
         - FlyWeight: minimize resource usage when working with very large numbers of objects.
     Behavioural Patterns: how objects do interactions between each others.
         - Chain of Responsibility: Passes a request among a list or chain of objects.
