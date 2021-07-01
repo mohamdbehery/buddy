@@ -52,8 +52,11 @@
         - Composite: (very suitable when you work with tree of objects, ex polices of insurance industry) so you may have an interface IProduct that has 2 types of childs, (Product and Service) and the Product has a refrence to IProduct (to assign any IProduct object, ie: Product or Service) so the Product class here is the Composite class that can be a parent and child at the same time.
             so this class is violating the Liskov principle since the Service class not using all methods of ProductBase class
 
-        - Façade: 
+        - Façade: (Facade in french meaning face) which is creating a simplified interface for a complex sub-systems to perform actions behid the scenes, so for example: if you want to RentAnApartment then you need to SaveSomeMoney, LookForAvailableApartments, TalkToBrooker, MakeAReview, SignTheContract, Relocate then the pattern here is that instead of the client specify all of these subsystems, you better 
+            provide him a simple interface that just have RentAnApartment and thats it.
+
         - FlyWeight: minimize resource usage when working with very large numbers of objects.
+
     Behavioural Patterns: how objects do interactions between each others.
         - Chain of Responsibility: Passes a request among a list or chain of objects.
         - Command:

@@ -50,6 +50,7 @@
     <Compile Include="Patterns\Builder.cs" />
     <Compile Include="Patterns\Composite.cs" />
     <Compile Include="Patterns\Decorator.cs" />
+    <Compile Include="Patterns\Facade.cs" />
     <Compile Include="Patterns\FactoryMethod.cs" />
     <Compile Include="Patterns\Prototype.cs" />
     <Compile Include="Patterns\Proxy.cs" />
