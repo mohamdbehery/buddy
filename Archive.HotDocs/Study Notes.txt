@@ -55,7 +55,7 @@
         - Façade: (Facade in french meaning face) which is creating a simplified interface for a complex sub-systems to perform actions behid the scenes, so for example: if you want to RentAnApartment then you need to SaveSomeMoney, LookForAvailableApartments, TalkToBrooker, MakeAReview, SignTheContract, Relocate then the pattern here is that instead of the client specify all of these subsystems, you better 
             provide him a simple interface that just have RentAnApartment and thats it.
 
-        - FlyWeight: minimize resource usage when working with very large numbers of objects.
+        - FlyWeight: (reduce memory utilizations by objects) minimize resource usage when working with very large numbers of objects.
 
     Behavioural Patterns: how objects do interactions between each others.
         - Chain of Responsibility: Passes a request among a list or chain of objects.
