@@ -37,8 +37,8 @@ namespace DesignPatterns
             //Console.WriteLine("out of block...");
             #endregion
 
-            Facade composite = new Facade();
-            composite.ConsumeThePattern();
+            FlyWeight flyWeight = new FlyWeight();
+            flyWeight.ConsumeThePattern();
 
             Console.ReadLine();
         }

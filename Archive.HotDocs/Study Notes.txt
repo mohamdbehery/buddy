@@ -55,7 +55,13 @@
         - Façade: (Facade in french meaning face) which is creating a simplified interface for a complex sub-systems to perform actions behid the scenes, so for example: if you want to RentAnApartment then you need to SaveSomeMoney, LookForAvailableApartments, TalkToBrooker, MakeAReview, SignTheContract, Relocate then the pattern here is that instead of the client specify all of these subsystems, you better 
             provide him a simple interface that just have RentAnApartment and thats it.
 
-        - FlyWeight: (reduce memory utilizations by objects) minimize resource usage when working with very large numbers of objects.
+        - FlyWeight: (reduce memory utilizations by sharing some common object members between instances insteed of having it all in each instance) minimize resource usage when working with very large numbers of objects,
+            so for example, if you want to create a 5000 of cars and each car has ID (calculated internally), Name and Description (calculated based on ctor) then its better to leave only ID in Car class and move the Name & Description to cache and get it every time you want to create a new car, 
+            so in this example there are 2 types of object state:
+            Intrinsic State (shared): things constant and stored in memory (the Name and Description props)
+            Extrinisc State: things calculated in the fly and not stored in memory (the ID prop).
+
+            # so this pattern is simply put the Intrinsic State in cache to be referenced several times insteed of duplicating (physically taking place in memory) it thousands or millions of times.
 
     Behavioural Patterns: how objects do interactions between each others.
         - Chain of Responsibility: Passes a request among a list or chain of objects.
