@@ -62,6 +62,7 @@
             Extrinisc State: things calculated in the fly and not stored in memory (the ID prop).
 
             # so this pattern is simply put the Intrinsic State in cache to be referenced several times insteed of duplicating (physically taking place in memory) it thousands or millions of times.
+            # this pattern is rarly used
 
     Behavioural Patterns: how objects do interactions between each others.
         - Chain of Responsibility: Passes a request among a list or chain of objects.

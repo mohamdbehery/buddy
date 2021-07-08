@@ -43,10 +43,10 @@ namespace DesignPatterns.Patterns
     public class FWCar
     {
         public string ID { get; set; }
-        public ICarObjects CarPbjects { get; set; }
+        public ICarObjects CarObjects { get; set; }
         public FWCar(string name)
         {
-            this.CarPbjects = CarObjectsFactory.GetCarObjects(name);
+            this.CarObjects = CarObjectsFactory.GetCarObjects(name);
             this.ID = DateTime.Now.GetHashCode().ToString("x"); // Extrinsic not shared
         }
     }
