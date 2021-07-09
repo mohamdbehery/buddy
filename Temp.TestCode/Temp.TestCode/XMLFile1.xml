@@ -1,81 +1,13 @@
-﻿<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="xml" omit-xml-declaration="yes" />
+﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qbo="http://services.quandis.com/" version="1.0"     xmlns:adv="http://advservices.quandis.com/">
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no" />
 	<xsl:template match="*">
-		<ServiceOrderCollection>
-			<ServiceOrderItem>
-				<ProductType>TheATRGroup</ProductType>
-				<IsSimulation>false</IsSimulation>
-				<SaveNativeResponse>true</SaveNativeResponse>
-				<RequestXml>
-					<ServiceOrderCollection>
-						<ServiceOrderItem>
-							<ServiceType>The ATR Group</ServiceType>
-							<ProductType>Property Search</ProductType>
-							<Product>POR</Product>
-							<Object>
-								<xsl:text>Loan</xsl:text>
-							</Object>
-							<ObjectID>
-								<xsl:value-of select="//ObjectID" />
-							</ObjectID>
-							<SourceObject>
-								<xsl:text>Property</xsl:text>
-							</SourceObject>
-							<SourceObjectID>
-								<xsl:value-of select="//PropertyID"/>
-							</SourceObjectID>
-							<RequestXml>
-								<PropertySearch>
-									<Address>
-										<xsl:value-of select="//Address"/>
-									</Address>
-									<City>
-										<xsl:value-of select="//City"/>
-									</City>
-									<State>
-										<xsl:value-of select="//State"/>
-									</State>
-									<PostalCode>
-										<xsl:value-of select="//PostalCode"/>
-									</PostalCode>
-									<BorrowerFirst>
-										<xsl:value-of select="//PrimaryBorrowerFirstName"/>
-									</BorrowerFirst>
-									<BorrowerMiddle>
-										<xsl:value-of select="//PrimaryBorrowerMiddleName"/>
-									</BorrowerMiddle>
-									<BorrowerLast>
-										<xsl:value-of select="//PrimaryBorrowerLastName"/>
-									</BorrowerLast>
-									<BorrowerLastFourSSN>
-										<xsl:value-of select="//PrimaryBorrowerUSSSN"/>
-									</BorrowerLastFourSSN>
-									<CoBorrowerFirst>
-										<xsl:value-of select="//SecondaryBorrowerFirstName"/>
-									</CoBorrowerFirst>
-									<CoBorrowerMiddle>
-										<xsl:value-of select="//SecondaryBorrowerMiddleName"/>
-									</CoBorrowerMiddle>
-									<CoBorrowerLast>
-										<xsl:value-of select="//SecondaryBorrowerLastName"/>
-									</CoBorrowerLast>
-									<CoBorrowerLastFourSSN>
-										<xsl:value-of select="//SecondaryBorrowerUSSSN"/>
-									</CoBorrowerLastFourSSN>
-									<IncludeImages>1</IncludeImages>
-									<!--  <LoanNumber>                      <xsl:value-of select="//Loan"/>                    </LoanNumber> -->
-									<LoanFundingDate>
-										<xsl:value-of select="//LoanFundingDate"/>
-									</LoanFundingDate>
-									<LoanOriginalBalance>
-										<xsl:value-of select="//OriginalBalance"/>
-									</LoanOriginalBalance>
-								</PropertySearch>
-							</RequestXml>
-						</ServiceOrderItem>
-					</ServiceOrderCollection>
-				</RequestXml>
-			</ServiceOrderItem>
-		</ServiceOrderCollection>
+		<Action>
+			<LRRStatus>Queued For LRR</LRRStatus>
+			<OrganizationID>
+				<xsl:value-of select ="//OrganizationID"/>
+			</OrganizationID>
+			<StoredProcedure>pPublicMortgageInsertforSyntheticMtg</StoredProcedure>
+			<ColumnReferred>IsSyntheticMtgCreated</ColumnReferred>
+		</Action>
 	</xsl:template>
 </xsl:stylesheet>

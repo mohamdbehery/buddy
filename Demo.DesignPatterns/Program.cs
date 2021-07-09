@@ -37,7 +37,7 @@ namespace DesignPatterns
             //Console.WriteLine("out of block...");
             #endregion
 
-            FlyWeight flyWeight = new FlyWeight();
+            ChainOfResponsibility flyWeight = new ChainOfResponsibility();
             flyWeight.ConsumeThePattern();
 
             Console.ReadLine();

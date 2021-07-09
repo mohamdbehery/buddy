@@ -65,7 +65,8 @@
             # this pattern is rarly used
 
     Behavioural Patterns: how objects do interactions between each others.
-        - Chain of Responsibility: Passes a request among a list or chain of objects.
+        - Chain of Responsibility: is passing a request between a chain of objects\handlers so for example if you have a Task you can pass this task to all departments one by one until its picked by someone and handled
+            
         - Command:
         - Interpreter: 
         - Iterator: Provides a way to access the elements of a collection object in sequential manner without knowing its underlying structure.

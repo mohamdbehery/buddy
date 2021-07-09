@@ -48,6 +48,7 @@
     <Compile Include="Patterns\Adapter.cs" />
     <Compile Include="Patterns\Bridge.cs" />
     <Compile Include="Patterns\Builder.cs" />
+    <Compile Include="Patterns\ChainOfResponsibility.cs" />
     <Compile Include="Patterns\Composite.cs" />
     <Compile Include="Patterns\Decorator.cs" />
     <Compile Include="Patterns\Facade.cs" />
