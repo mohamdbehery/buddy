@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sections>
+	<Section Title="HR">
+		<Item>
+			<Title>Introduce yourself?</Title>
+			<Data>Name, age, education, job history, current technical stack.</Data>
+		</Item>
+		<Item>
+			<Title>What’s your salary expectations?</Title>
+			<Data>Search about salary ranges in the job country.</Data>
+		</Item>
+	</Section>
+</Sections>
