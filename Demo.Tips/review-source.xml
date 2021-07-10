@@ -9,5 +9,94 @@
 			<Title>What’s your salary expectations?</Title>
 			<Data>Search about salary ranges in the job <b>country</b>.</Data>
 		</Item>
+		<Item>
+			<Title>
+				What do you know about our company?
+			</Title>
+			<Data>				
+				Company’s products and vision) > website.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Please tell us about the situation, when you showed your leadership?
+			</Title>
+			<Data>
+				
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Please tell about the situation, when you had a conflict and how you resolved it? 
+			</Title>
+			<Data>
+				Listen for everyone involved, friendly discussions and motivation.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Why do you want to relocate joining our company?
+			</Title>
+			<Data>
+				Talk about company environment advantages.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What do you know about the country you applied for?  
+			</Title>
+			<Data>
+				Talk about country advantages.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is your preference of technologies (the ideal technology) you want to work with?
+			</Title>
+			<Data>
+				Talk about current and preferred technical stack
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What are your strengths and weaknesses?
+			</Title>
+			<Data>
+				Strength: never stop until I got my task finished.
+				Weakness: sometimes I forget something I should do and I’m working on this issue by using a TODO list and do workouts.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is your technology wish list? 
+			</Title>
+			<Data>
+				Python, Mongo DB, DevOps
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Tell me about any achievement? 
+			</Title>
+			<Data>
+				Talk about NBE with 6 junior developers.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
 	</Section>
 </Sections>
