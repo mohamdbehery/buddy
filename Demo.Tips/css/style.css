@@ -5,8 +5,12 @@
 .item {
     margin-top: 10px;
 }
-.section-title{
-    margin-top:20px;
+.section {
+    margin-bottom: 20px;
+}
+.section-title {
+    margin-top: 20px;
+    font-family: sans-serif;
 }
 .section-title h4{
     border-left: solid 4px #1175cc;
@@ -28,8 +32,9 @@
     padding: 3px 5px;
 }
 
-.btn.item-title{
-    border-radius:initial;
+.btn.item-title {
+    border-radius: initial;
+    font-family: cursive;
 }
 
     .btn.item-title:focus{
@@ -45,4 +50,5 @@
     border-left: 1px solid rgb(232 232 232);
     border-image: initial;
     border-top: none;
+    font-family: emoji;
 }

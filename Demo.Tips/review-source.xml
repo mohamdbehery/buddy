@@ -7,13 +7,15 @@
 		</Item>
 		<Item>
 			<Title>What’s your salary expectations?</Title>
-			<Data>Search about salary ranges in the job <b>country</b>.</Data>
+			<Data>
+				Search about salary ranges in the job <b>country</b>.
+			</Data>
 		</Item>
 		<Item>
 			<Title>
 				What do you know about our company?
 			</Title>
-			<Data>				
+			<Data>
 				Company’s products and vision) > website.
 			</Data>
 		</Item>
@@ -22,12 +24,12 @@
 				Please tell us about the situation, when you showed your leadership?
 			</Title>
 			<Data>
-				
+
 			</Data>
 		</Item>
 		<Item>
 			<Title>
-				Please tell about the situation, when you had a conflict and how you resolved it? 
+				Please tell about the situation, when you had a conflict and how you resolved it?
 			</Title>
 			<Data>
 				Listen for everyone involved, friendly discussions and motivation.
@@ -43,7 +45,7 @@
 		</Item>
 		<Item>
 			<Title>
-				What do you know about the country you applied for?  
+				What do you know about the country you applied for?
 			</Title>
 			<Data>
 				Talk about country advantages.
@@ -68,7 +70,7 @@
 		</Item>
 		<Item>
 			<Title>
-				What is your technology wish list? 
+				What is your technology wish list?
 			</Title>
 			<Data>
 				Python, Mongo DB, DevOps
@@ -76,27 +78,307 @@
 		</Item>
 		<Item>
 			<Title>
-				Tell me about any achievement? 
+				Tell me about any achievement?
 			</Title>
 			<Data>
 				Talk about NBE with 6 junior developers.
 			</Data>
 		</Item>
+	</Section>
+	<Section Title="Ask HR">
 		<Item>
 			<Title>
-
+				Will you provide a Visa sponsorship?
 			</Title>
-			<Data>
-
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				If you are satisfied about this interview, what’s the next step?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				Do you have any comments for me?
+			</Title>
+			<Data></Data>
+		</Item>
+	</Section>
+	<Section Title="Ask Technical">
+		<Item>
+			<Title>
+				Could you please give me an overview about the project?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				Do you have a different technical stack based on projects type?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				What is the software development methodology do you use now?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				What is the source control do you use now?
+			</Title>
+			<Data></Data>
+		</Item>
+	</Section>
+	<Section Title="General">
+		<Item>
+			<Title>
+				Factors to be considered when setting Application Architecture (technologies):
+			</Title>
+			<Data>				
+				- Third parties and integration with external systems <br />
+				- Number of users  <br />
+				- Performance, Security, Client requirements, Server OS and specs <br />
+				- Modularity and Microservices, Handle generic request, Logs, Filters, ORM layer (business layer) <br />
 			</Data>
 		</Item>
 		<Item>
 			<Title>
-
+				Hosts file: 
 			</Title>
 			<Data>
-
+				is a local plain text file that maps servers or hostnames to IP addresses, Its located in C:\Windows\System32\drivers\etc\hosts
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				TLS proxy: 
+			</Title>
+			<Data>
+				a layer between client and server to encrypt the request to secure connections to allow for additional networking services while protecting against denial-of-service attacks.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Denial-of-Service (DoS) attack: 
+			</Title>
+			<Data>
+				is an attack meant to shut down a machine or network, making it inaccessible to its intended users. DoS attacks accomplish this by flooding the target with traffic, or sending it information that triggers a crash.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Metricbeat 
+			</Title>
+			<Data>
+				is a lightweight shipper that you can install on your servers to periodically collect metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
+				<b> And you can visualize these metrics using Kibana.</b>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Heartbeat mechanism: 
+			</Title>
+			<Data>
+				monitors the connection between a manager and an agent and automates the cleanup procedure when the connection is lost. This enables both the manager and the agent to release resources that were allocated for maintaining the connection.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SDLC and Work process:
+			</Title>
+			<Data>
+				Requirement gathering and analysis, Design, Implementation or coding, Testing, Deployment, Maintenance:  <br />
+				- Project preparation discuss resources and the skills needed, apply tranings or self-study if needed, define the sprint period and the story points count, define the branching strategy (pdf)  <br />
+				- Kick-Off meeting (Project overview, technical stack, source control, project management tool, hosting platform, deployment approach, etc…)  <br />
+				- All team members MUST understand the project business. <br />
+				- Code Comments: every class should have a summery about its methods, every method should have a clear description, the class should not have non-related methods <br />
+				- Having a standup everyday for 30 minutes <br />
+				- Having a grooming meeting (to be recorded) between all the project teams including the business team to set priorities of backlog tickes and clarify and estimate tickets, the estimation include the development and testing efforts <br />
+				- One of ticket\task readiness factors is to have a test cases so that the developer can convert it to unit tests, that should be runned every time we do a deployment. <br />
+				- Any Commit should have a clear comment that include the ticket number also. <br />
+				- Integrate Github with Jira to show the created branch, merge or pull request for each ticket <br />
+				- Integrate Jira with WiKI (which contains all project docs and also the grooming recordings) <br />
+				- Retrospective meetings: (every 2 weeeks or in general after every sprint) are a great opportunity for people to come together to talk about what went well, what didn’t go so well, and what will be changed for the next sprint, and agree on some action items (decisions) to solve that https://ideaboardz.com/for/Sprint%2035%20Retro/3906034  <br />
+				<b>Work process: </b> <br />
+				- Create a new Jira Board that define the tickets workflow: TODO > In Progress > Blocked > Code Review > QA > QA Sign Off > UAT > Done <br />
+				- DB objects should be added to source control, by creating a DataBase project in Visual Studio <br />
+				- Release branch should have some constrains so only the release manager person is the only person who can approve the changes <br />
+				- Once you have a ticket, create a feature branch (feature/AS-1234) and start develop <br />
+				- Once you finish > create Pull Request from your feature branch to develop branch <br />
+				- Once merged to develop, the jenkins job for build and deploy will be auto-triggered to deploy to the QA environment <br />
+				- Once we have the QA SignOff, merge between develop and release <br />
+				- Once the merge done, it will trigger the jenkins job responsible to deploy to UAT <br />
+				- Once deployed to UAT, the business team should validate the ticket <br />
+				- Once we have the business team SignOff for all sprint tickets that will be included in the release, we run the jenkins job to deploy to prod from release branch <br />
+				- Once the prod deployment done, the QA should run the regression test <br />
+				- Once we have the prod SignOff, then merge from release to master and develop branches <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				C# memory management: 
+			</Title>
+			<Data>
+				C# employs automatic memory management which implemented by a <b>garbage collector</b>, The garbage collector checks to see if there are any objects in the heap that are no longer being used by the application. If such objects exist, then the memory used by these objects can be reclaimed. (If no more memory is available for the heap, then the new operator throws an OutOfMemoryException). <br />
+				<b>The managed heap:</b> When an application calls the new operator to create an object, there may not be enough address space left in the region to allocate to the object. The heap detects this by adding the size of the new object to NextObjectPinter. If NextObjectPinter is beyond the end of the address space region, then the heap is full and a collection must be performed.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Web Farm: 
+			</Title>
+			<Data>
+				is a group of two or more web servers (or nodes) that host multiple instances of an app. When requests from users arrive to a web farm, a load balancer distributes the requests to the web farm's nodes, so web farm improve Reliability/Availability, Capacity/Performance, Scalability, Maintainability
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				CRM: stands for Customer Relationship Management, 
+			</Title>
+			<Data>
+				a CRM system allows businesses to manage business relationships and the data and information associated with them.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				CLI programming: CLI stands for Command Line Interface, 
+			</Title>
+			<Data>
+				Interpreter or Input which is a command line program that accepts text input to execute operating system functions.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Micro services: 
+			</Title>
+			<Data>
+				is an architectural style that structures an application as a collection of services that are:
+				Highly maintainable and testable, Loosely coupled, Independently deployable, Organized around business capabilities and
+				Owned by a small team.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Modularity: 
+			</Title>
+			<Data>
+				is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between client-side and server-side: 
+			</Title>
+			<Data>
+				the server side scripting involves server for its processing. ... The client-side script executes the code to the client side which is visible to the users while a server-side script is executed in the server end which users cannot see.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Service Account 
+			</Title>
+			<Data>
+				is a user account that is created explicitly to provide a security context for services running on Windows Server operating systems. The security context determines the service's ability to access local and network resources. The Windows operating systems rely on services to run various features.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Visual Studio CI/CD > Continuous Integration and Continuous Delivery: 
+			</Title>
+			<Data>
+				is a continuous delivery tool provided by TFS in visual studio which makes it simple to automate and stay up to date on your DevOps pipeline for ASP.NET and other projects targeting Azure.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Jenkins: 
+			</Title>
+			<Data>
+				is a free and open source automation server. It helps automate the parts of software development related to building, testing, and deploying, facilitating continuous integration and continuous delivery. It is a server-based system that runs in servlet containers such as Apache Tomcat.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Rolling deployment  
+			</Title>
+			<Data>
+				allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources. <br></br>
+				<b>Better to keep the app as stateless for rolling deployment</b>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Blue-green deployment 
+			</Title>
+			<Data>
+				is a technique that reduces downtime and risk by running two identical production environments called Blue and Green. At any time, only one of the environments is live, with the live environment serving all production traffic.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Ansible and Terraform and PowerShell:
+			</Title>
+			<Data>
+				<b>Terraform</b> used to provision and configure infrastructure components, its written with (HCL) HashiCorp Configuration Language <br />
+				<b>Ansible</b> used for deploy, install and manage the your application, its written with (YAML) <br />
+				<b>PowerShell</b> is a Microsoft framework for automating tasks using a command-line shell and an associated scripting language. <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Docker: 
+			</Title>
+			<Data>
+				(developer share a copy of deployment server to tester to avoid issues because environment difference)
+				is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and deploy it as one package.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Kubernates:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				Relational and non-relational databases: 
+			</Title>
+			<Data>
+				A relational database uses SQL (Structured Query Language) which storing data using tables, columns and rows but the non-relational databases (NoSQL) are document-oriented. Instead of using tables, these documents allow us to store unstructured JSON data in a single document.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How does the internet work: 
+			</Title>
+			<Data>
+				The Internet is made up of a massive network of specialized computers called routers. Each router's job is to know how to move packets along from their source to their destination. A packet will have moved through multiple routers during its journey. When a packet moves from one router to the next, it's called a hop.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Task implementation steps:
+			</Title>
+			<Data>
+				- Defining the problem clearly <br />
+				- Breaking the problem down into small, simple parts <br />
+				- Define the solution for each part of the problem <br />
+				- Implementing the solution <br />
+				- Making it efficient (eventually) <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				OLAP (Online Analytical Processing) queries: 
+			</Title>
+			<Data>
+				OLAP is a category of software that allows users to analyze information from multiple database systems at the same time. It is a technology that enables analysts to extract and view business data from different points of view. OLAP stands for Online Analytical Processing.
+				Analysts frequently need to group, aggregate and join data. These operations in relational databases are resource intensive. With OLAP data can be pre-calculated and pre-aggregated, making analysis faster.
+				OLAP databases are divided into one or more cubes. The cubes are designed in such a way that creating and viewing reports become easy.
+			</Data>
+		</Item>
+
 	</Section>
 </Sections>

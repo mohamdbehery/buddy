@@ -14,6 +14,7 @@
                     var section = xml.children[0].getElementsByTagName('Section')[i];
                     var sectionTitle = section.attributes['Title'].value;
                     var tempSectionTemplate = sectionTemplate.split('#SectionTitle#').join(sectionTitle);
+                    tempSectionTemplate = tempSectionTemplate.split('#SectionCode#').join('Section' + i);
                     
                     var filledItems = '';
                     for (let j = 0; j < section.getElementsByTagName('Item').length; j++) {
