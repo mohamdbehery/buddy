@@ -56,6 +56,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Multithreading", "Demo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.MQClient", "Demo.MQClient\Demo.MQClient.csproj", "{C1A06291-C1B2-4D6D-AF83-57FCFCB5777D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Review", "Demo.Review\Demo.Review.csproj", "{EBF3FF59-5A7D-4905-BCAB-40BF851DED0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +190,12 @@ Global
 		{C1A06291-C1B2-4D6D-AF83-57FCFCB5777D}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
 		{C1A06291-C1B2-4D6D-AF83-57FCFCB5777D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1A06291-C1B2-4D6D-AF83-57FCFCB5777D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBF3FF59-5A7D-4905-BCAB-40BF851DED0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF3FF59-5A7D-4905-BCAB-40BF851DED0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBF3FF59-5A7D-4905-BCAB-40BF851DED0B}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF3FF59-5A7D-4905-BCAB-40BF851DED0B}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{EBF3FF59-5A7D-4905-BCAB-40BF851DED0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF3FF59-5A7D-4905-BCAB-40BF851DED0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -211,6 +219,7 @@ Global
 		{63CA93D7-21B4-41A5-9AFD-796A6B3C8185} = {8D074988-C253-4685-98D8-7996403C20F1}
 		{AA9E6623-1E33-4B36-B8B3-604B31FF50E9} = {8D074988-C253-4685-98D8-7996403C20F1}
 		{C1A06291-C1B2-4D6D-AF83-57FCFCB5777D} = {8D074988-C253-4685-98D8-7996403C20F1}
+		{EBF3FF59-5A7D-4905-BCAB-40BF851DED0B} = {8D074988-C253-4685-98D8-7996403C20F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA80C294-1A14-4DD4-9850-3EB435A70912}
