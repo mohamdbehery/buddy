@@ -5,7 +5,13 @@
 .item {
     margin-top: 10px;
 }
-
+.section-title{
+    margin-top:20px;
+}
+.section-title h4{
+    border-left: solid 4px #1175cc;
+    padding-left: 5px;
+}
 .section-data .item-title {
     color: #337ab7;
     background-color: #efefef3d;

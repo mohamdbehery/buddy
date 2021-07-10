@@ -7,7 +7,7 @@
 		</Item>
 		<Item>
 			<Title>What’s your salary expectations?</Title>
-			<Data>Search about salary ranges in the job country.</Data>
+			<Data>Search about salary ranges in the job <b>country</b>.</Data>
 		</Item>
 	</Section>
 </Sections>
