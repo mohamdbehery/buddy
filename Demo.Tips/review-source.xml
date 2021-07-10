@@ -379,6 +379,173 @@
 				OLAP databases are divided into one or more cubes. The cubes are designed in such a way that creating and viewing reports become easy.
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				Basic distributed computing concepts: 
+			</Title>
+			<Data>
+				A distributed system is a system whose components are located on different networked computers, which communicate and coordinate their actions by passing messages to one another
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Web Socket: 
+			</Title>
+			<Data>
+				a protocol enables interaction between a web browser (or other client application) and a web server with lower overhead, exchange messages between client and server
+				in server use TcpListner and in client use WebSocket
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Serverless Computing: 
+			</Title>
+			<Data>
+				is a cloud-computing execution model in which the cloud provider runs the server, and dynamically manages the allocation of machine resources. Pricing is based on the actual amount of resources consumed by an application, rather than on pre-purchased units of capacity.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Scalable systems: 
+			</Title>
+			<Data>
+				is a system that is able to maintain its effectiveness throughout even if there are additions or expansions in aspects such as resources or the number of end users without disrupting its functionality then it can be called a scalable system.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				A/B testing: 
+			</Title>
+			<Data>
+				also known as split testing or bucket testing, is a method of comparing two versions of a webpage or app against each other to determine which one performs better.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Agile environment: 
+			</Title>
+			<Data>
+				a group of software development methodologies based on iterative development, where requirements and solutions evolve through collaboration between self-organizing cross-functional teams and Client/End user.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Agile Scrum: 
+			</Title>
+			<Data>
+				is one of the implementations of agile methodology. In which incremental builds are delivered to the customer in every two to three weeks' time. it has a 3 key roles: Product Owner, Scrum Master, Development Team
+				Sprint > EPIC > User Story > Feature > Task
+				<b>* Every day a scrum meeting (stand-up meeting) for 15 minutes to discuss:</b> What’s done yesterday? What will be done today? What’s your obstacles?
+				<b>Scrum Master</b> is the person who ensures that the team adheres to scrum theory, practices, and rules and protects the team by doing anything possible to help the team perform at the highest level. This may include removing impediments, facilitating meetings, and helping the Product Owner groom the backlog.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Code Quality Factors: 
+			</Title>
+			<Data>
+				Code Reviews, Readability, Maintainability, Code Documentation, Best Practice coding, follow a consistent style, Unit Testing so it should be testable by building a good software structure with less coupling.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Coding Standards: 
+			</Title>
+			<Data>
+				there are some tools like SonarLint and TSLint.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SLA Service Level Agreement:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				Quality Gates: 
+			</Title>
+			<Data>
+				Definitions for A Quality Gate is a special milestone in a software project Quality Gates are located before a phase that is strongly dependent on the outcome of a previous phase They are especially useful between phases.
+				Formal sign-off and acceptance are mandatory at each gate.
+				<b>Putting some measures to be checked after every phase of application. </b>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				CI/CD:
+			</Title>
+			<Data>
+				CI (establish a consistent and automated way to build, package, and test applications, each change in code triggers an automated build-and-test sequence for the given project)
+				CD (Package the build output files to deploy to server)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				CI/CD Pipelines: 
+			</Title>
+			<Data>
+				helps you automate steps in your software delivery process, such as initiating code builds, running automated tests, and deploying to a staging or production environment.
+				Also you can inject another layers inside these steps like a layer for checking coding style
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between bat and powershell scripts: 
+			</Title>
+			<Data>
+				Batch files are generally executed by CMD.exe; PowerShell is executed by PowerShell.exe.
+				PowerShell includes extra features and commands that aren't in cmd.exe
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Regression Test: 
+			</Title>
+			<Data>
+				A test that was written when a bug was fixed. It ensures that this specific bug will not occur again.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Sanity Test: 
+			</Title>
+			<Data>
+				is done to check the new functionality/bugs have been fixed
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Integration Test: 
+			</Title>
+			<Data>
+				Test the correct inter-operation of multiple subsystems. There is whole spectrum there, from testing integration between two classes, to testing integration with the production environment.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Smoke Test: 
+			</Title>
+			<Data>
+				also known as “Build Verification Testing”, is a type of software testing that comprises of a non-exhaustive set of tests that aim at ensuring that the most important functions work. The result of this testing is used to decide if a build is stable enough to proceed with further testing.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Testing Pyramid (higher to lower cost)
+			</Title>
+			<Data>
+				..........UI <br />
+				.....Service(API) <br />
+				.Unit Test (smaller components)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Code Smell
+			</Title>
+			<Data></Data>
+		</Item>
 
 	</Section>
 </Sections>
