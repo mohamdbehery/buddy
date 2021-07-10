@@ -1,3 +1,10 @@
+>>>>> Books:
+	- C# in Depth
+	- Pro. .Net Performance
+	- Pro. .Nt Memory Managment
+	- CLR via c#
+
+
 
 	- Design Patterns
 	- What is the problem that each design pattern solved?
