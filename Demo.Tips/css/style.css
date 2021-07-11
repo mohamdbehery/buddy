@@ -11,6 +11,7 @@
 .section-title {
     margin-top: 20px;
     font-family: sans-serif;
+    width:100%;
 }
 .section-title h4{
     border-left: solid 4px #1175cc;
