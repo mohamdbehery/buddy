@@ -2,7 +2,7 @@
     $('#test').html('Test');
     $.ajax({
         type: "GET",
-        url: "/review-source.xml",
+        url: "/buddy/Demo.Tips/review-source.xml",
         dataType: "xml",
         success: function (xml) {
             debugger;
