@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    $('#test').html('Test');
     $.ajax({
         type: "GET",
         url: "/buddy/Demo.Tips/review-source.xml",
@@ -23,7 +22,8 @@
                         var title = item.getElementsByTagName('Title')[0];
                         var data = item.getElementsByTagName('Data')[0];
                         var tempItemTemplate = itemTemplate.split('#ItemTitle#').join(title.innerHTML);
-                        tempItemTemplate = tempItemTemplate.split('#ItemData#').join(data.innerHTML);
+                        var dataContent = data.innerHTML.split('/images/').join('/buddy/Demo.Tips/images/');
+                        tempItemTemplate = tempItemTemplate.split('#ItemData#').join(dataContent);
                         tempItemTemplate = tempItemTemplate.split('#ItemCode#').join('Item' + i + '_' + j);
                         filledItems += tempItemTemplate;
                     }
