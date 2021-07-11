@@ -853,4 +853,74 @@
 			</Data>
 		</Item>
 	</Section>
+	<Section Title="JavaScript and JQuery">
+		<Item>
+			<Title>
+				Syntax of document ready, what is the different ways?
+			</Title>
+			<Data>
+				<code> $(document).ready(function(){});</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to get\set element text\html: 
+			</Title>
+			<Data>
+				<code> .text() .html()</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Document Ready Event in JS:				
+			</Title>
+			<Data>
+				<code> document.addEventListener("DOMContentLoaded", function () {});</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Array.map() and Array.forEach:				
+			</Title>
+			<Data>
+				<code>arr.forEach((item, index) => {return item++});</code>
+				<code>forEach()</code> changes the original array, whereas <code>map()</code> returns a new array, without mutating the original array.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				Javascript has only one thread but the browser has many
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				you can stop <code>var xx = setInterval(fun(), interval)</code> by <code>clearInterval(xx);</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What’s the different ways to bind event on HTML element:	
+			</Title>
+			<Data>
+				<b>JS:</b> <code>element.addEventListener(event, function, useCapture);</code> <br />
+				<b>JQ:</b> <code>$(element).eventName(function(){});</code> or <code>$(element).on(“eventName”, function(){});</code> so the difference is <code>on()</code> is binding event to element dynamically using below:
+				<code>$(parentElement).on(‘eventName’, ‘dynamicElemnt’, function(){});</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between bind() * live():				
+			</Title>
+			<Data>
+				<code>bind()</code> attachs events to elements that exist or match the selector at the time the call is made. Any elements created afterwards or that match going forward because the class was changed, will not fire the bound event. <br />
+				<code>.live()</code> works for existing and future matching elements.
+			</Data>
+		</Item>
+	</Section>
 </Sections>
