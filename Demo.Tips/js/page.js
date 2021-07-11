@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    $('#test').html('Test');
     $.ajax({
         type: "GET",
         url: "/review-source.xml",
