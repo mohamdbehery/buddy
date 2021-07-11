@@ -754,19 +754,19 @@
 		</Item>
 		<Item>
 			<Title>
-				XHTML: 
+				XHTML:
 			</Title>
 			<Data></Data>
 		</Item>
 		<Item>
 			<Title>
-				XSL: 
+				XSL:
 			</Title>
 			<Data></Data>
 		</Item>
 		<Item>
 			<Title>
-				XSLT:  
+				XSLT:
 			</Title>
 			<Data></Data>
 		</Item>
@@ -778,10 +778,78 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				we can transform (XML and XSL\XSLT) to XHTML in client side using JS or in server side
+			</Data>
+		</Item>
+	</Section>
+	<Section Title="CSS">
+		<Item>
+			<Title>
+				Bootstrap:
+			</Title>
+			<Data>
+				is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation and other interface components.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What’s the difference between display: block, inline and inline-block:
+			</Title>
+			<Data>
+				display: inline-block allows to set a width and height on the element. Also, with display: inline-block , the top and bottom margins/paddings are respected, but with display: inline they are not.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is the different ways to apply CSS on element:
+			</Title>
+			<Data>
+				Inline, Internal (in style tag) or External
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				CSS selectors:
+			</Title>
+			<Data>
+				https://www.w3schools.com/cssref/css_selectors.asp
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How select the last child of an element:
+			</Title>
+			<Data>
+				<code>element > *:last-child {}</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How select nth child of an element: element:
+			</Title>
+			<Data>
+				<code>nth-child(n)</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				CSS Coloring: (color name, HEX color and RGB)
+			</Title>
+			<Data>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is new in CSS3:
+			</Title>
+			<Data>
+				Selectors: can use regular expressions formula (^ starts with, $ ends with, * contains, etc...) <br />
+				Rounded Corners and Border Image: using border-radius and border-image <br />
+				Box Shadow and Text Shadow: using box-shadow and text-shadow <br />
+				RGPA colors with opacity.
 			</Data>
 		</Item>
 	</Section>
