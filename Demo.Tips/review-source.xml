@@ -136,7 +136,7 @@
 			<Title>
 				Factors to be considered when setting Application Architecture (technologies):
 			</Title>
-			<Data>				
+			<Data>
 				- Third parties and integration with external systems <br />
 				- Number of users  <br />
 				- Performance, Security, Client requirements, Server OS and specs <br />
@@ -145,7 +145,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Hosts file: 
+				Hosts file:
 			</Title>
 			<Data>
 				is a local plain text file that maps servers or hostnames to IP addresses, Its located in C:\Windows\System32\drivers\etc\hosts
@@ -153,7 +153,7 @@
 		</Item>
 		<Item>
 			<Title>
-				TLS proxy: 
+				TLS proxy:
 			</Title>
 			<Data>
 				a layer between client and server to encrypt the request to secure connections to allow for additional networking services while protecting against denial-of-service attacks.
@@ -161,7 +161,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Denial-of-Service (DoS) attack: 
+				Denial-of-Service (DoS) attack:
 			</Title>
 			<Data>
 				is an attack meant to shut down a machine or network, making it inaccessible to its intended users. DoS attacks accomplish this by flooding the target with traffic, or sending it information that triggers a crash.
@@ -169,7 +169,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Metricbeat 
+				Metricbeat
 			</Title>
 			<Data>
 				is a lightweight shipper that you can install on your servers to periodically collect metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
@@ -178,7 +178,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Heartbeat mechanism: 
+				Heartbeat mechanism:
 			</Title>
 			<Data>
 				monitors the connection between a manager and an agent and automates the cleanup procedure when the connection is lost. This enables both the manager and the agent to release resources that were allocated for maintaining the connection.
@@ -218,7 +218,7 @@
 		</Item>
 		<Item>
 			<Title>
-				C# memory management: 
+				C# memory management:
 			</Title>
 			<Data>
 				C# employs automatic memory management which implemented by a <b>garbage collector</b>, The garbage collector checks to see if there are any objects in the heap that are no longer being used by the application. If such objects exist, then the memory used by these objects can be reclaimed. (If no more memory is available for the heap, then the new operator throws an OutOfMemoryException). <br />
@@ -227,7 +227,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Web Farm: 
+				Web Farm:
 			</Title>
 			<Data>
 				is a group of two or more web servers (or nodes) that host multiple instances of an app. When requests from users arrive to a web farm, a load balancer distributes the requests to the web farm's nodes, so web farm improve Reliability/Availability, Capacity/Performance, Scalability, Maintainability
@@ -235,7 +235,7 @@
 		</Item>
 		<Item>
 			<Title>
-				CRM: stands for Customer Relationship Management, 
+				CRM: stands for Customer Relationship Management,
 			</Title>
 			<Data>
 				a CRM system allows businesses to manage business relationships and the data and information associated with them.
@@ -243,7 +243,7 @@
 		</Item>
 		<Item>
 			<Title>
-				CLI programming: CLI stands for Command Line Interface, 
+				CLI programming: CLI stands for Command Line Interface,
 			</Title>
 			<Data>
 				Interpreter or Input which is a command line program that accepts text input to execute operating system functions.
@@ -251,7 +251,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Micro services: 
+				Micro services:
 			</Title>
 			<Data>
 				is an architectural style that structures an application as a collection of services that are:
@@ -261,7 +261,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Modularity: 
+				Modularity:
 			</Title>
 			<Data>
 				is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality.
@@ -269,7 +269,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Difference between client-side and server-side: 
+				Difference between client-side and server-side:
 			</Title>
 			<Data>
 				the server side scripting involves server for its processing. ... The client-side script executes the code to the client side which is visible to the users while a server-side script is executed in the server end which users cannot see.
@@ -277,7 +277,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Service Account 
+				Service Account
 			</Title>
 			<Data>
 				is a user account that is created explicitly to provide a security context for services running on Windows Server operating systems. The security context determines the service's ability to access local and network resources. The Windows operating systems rely on services to run various features.
@@ -285,7 +285,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Visual Studio CI/CD > Continuous Integration and Continuous Delivery: 
+				Visual Studio CI/CD > Continuous Integration and Continuous Delivery:
 			</Title>
 			<Data>
 				is a continuous delivery tool provided by TFS in visual studio which makes it simple to automate and stay up to date on your DevOps pipeline for ASP.NET and other projects targeting Azure.
@@ -293,7 +293,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Jenkins: 
+				Jenkins:
 			</Title>
 			<Data>
 				is a free and open source automation server. It helps automate the parts of software development related to building, testing, and deploying, facilitating continuous integration and continuous delivery. It is a server-based system that runs in servlet containers such as Apache Tomcat.
@@ -301,7 +301,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Rolling deployment  
+				Rolling deployment
 			</Title>
 			<Data>
 				allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources. <br></br>
@@ -310,7 +310,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Blue-green deployment 
+				Blue-green deployment
 			</Title>
 			<Data>
 				is a technique that reduces downtime and risk by running two identical production environments called Blue and Green. At any time, only one of the environments is live, with the live environment serving all production traffic.
@@ -328,7 +328,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Docker: 
+				Docker:
 			</Title>
 			<Data>
 				(developer share a copy of deployment server to tester to avoid issues because environment difference)
@@ -343,7 +343,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Relational and non-relational databases: 
+				Relational and non-relational databases:
 			</Title>
 			<Data>
 				A relational database uses SQL (Structured Query Language) which storing data using tables, columns and rows but the non-relational databases (NoSQL) are document-oriented. Instead of using tables, these documents allow us to store unstructured JSON data in a single document.
@@ -351,7 +351,7 @@
 		</Item>
 		<Item>
 			<Title>
-				How does the internet work: 
+				How does the internet work:
 			</Title>
 			<Data>
 				The Internet is made up of a massive network of specialized computers called routers. Each router's job is to know how to move packets along from their source to their destination. A packet will have moved through multiple routers during its journey. When a packet moves from one router to the next, it's called a hop.
@@ -371,7 +371,7 @@
 		</Item>
 		<Item>
 			<Title>
-				OLAP (Online Analytical Processing) queries: 
+				OLAP (Online Analytical Processing) queries:
 			</Title>
 			<Data>
 				OLAP is a category of software that allows users to analyze information from multiple database systems at the same time. It is a technology that enables analysts to extract and view business data from different points of view. OLAP stands for Online Analytical Processing.
@@ -381,7 +381,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Basic distributed computing concepts: 
+				Basic distributed computing concepts:
 			</Title>
 			<Data>
 				A distributed system is a system whose components are located on different networked computers, which communicate and coordinate their actions by passing messages to one another
@@ -389,7 +389,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Web Socket: 
+				Web Socket:
 			</Title>
 			<Data>
 				a protocol enables interaction between a web browser (or other client application) and a web server with lower overhead, exchange messages between client and server
@@ -398,7 +398,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Serverless Computing: 
+				Serverless Computing:
 			</Title>
 			<Data>
 				is a cloud-computing execution model in which the cloud provider runs the server, and dynamically manages the allocation of machine resources. Pricing is based on the actual amount of resources consumed by an application, rather than on pre-purchased units of capacity.
@@ -406,7 +406,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Scalable systems: 
+				Scalable systems:
 			</Title>
 			<Data>
 				is a system that is able to maintain its effectiveness throughout even if there are additions or expansions in aspects such as resources or the number of end users without disrupting its functionality then it can be called a scalable system.
@@ -414,7 +414,7 @@
 		</Item>
 		<Item>
 			<Title>
-				A/B testing: 
+				A/B testing:
 			</Title>
 			<Data>
 				also known as split testing or bucket testing, is a method of comparing two versions of a webpage or app against each other to determine which one performs better.
@@ -422,7 +422,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Agile environment: 
+				Agile environment:
 			</Title>
 			<Data>
 				a group of software development methodologies based on iterative development, where requirements and solutions evolve through collaboration between self-organizing cross-functional teams and Client/End user.
@@ -430,7 +430,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Agile Scrum: 
+				Agile Scrum:
 			</Title>
 			<Data>
 				is one of the implementations of agile methodology. In which incremental builds are delivered to the customer in every two to three weeks' time. it has a 3 key roles: Product Owner, Scrum Master, Development Team
@@ -441,7 +441,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Code Quality Factors: 
+				Code Quality Factors:
 			</Title>
 			<Data>
 				Code Reviews, Readability, Maintainability, Code Documentation, Best Practice coding, follow a consistent style, Unit Testing so it should be testable by building a good software structure with less coupling.
@@ -449,7 +449,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Coding Standards: 
+				Coding Standards:
 			</Title>
 			<Data>
 				there are some tools like SonarLint and TSLint.
@@ -463,7 +463,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Quality Gates: 
+				Quality Gates:
 			</Title>
 			<Data>
 				Definitions for A Quality Gate is a special milestone in a software project Quality Gates are located before a phase that is strongly dependent on the outcome of a previous phase They are especially useful between phases.
@@ -482,7 +482,7 @@
 		</Item>
 		<Item>
 			<Title>
-				CI/CD Pipelines: 
+				CI/CD Pipelines:
 			</Title>
 			<Data>
 				helps you automate steps in your software delivery process, such as initiating code builds, running automated tests, and deploying to a staging or production environment.
@@ -491,7 +491,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Difference between bat and powershell scripts: 
+				Difference between bat and powershell scripts:
 			</Title>
 			<Data>
 				Batch files are generally executed by CMD.exe; PowerShell is executed by PowerShell.exe.
@@ -500,7 +500,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Regression Test: 
+				Regression Test:
 			</Title>
 			<Data>
 				A test that was written when a bug was fixed. It ensures that this specific bug will not occur again.
@@ -508,7 +508,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Sanity Test: 
+				Sanity Test:
 			</Title>
 			<Data>
 				is done to check the new functionality/bugs have been fixed
@@ -516,7 +516,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Integration Test: 
+				Integration Test:
 			</Title>
 			<Data>
 				Test the correct inter-operation of multiple subsystems. There is whole spectrum there, from testing integration between two classes, to testing integration with the production environment.
@@ -524,7 +524,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Smoke Test: 
+				Smoke Test:
 			</Title>
 			<Data>
 				also known as “Build Verification Testing”, is a type of software testing that comprises of a non-exhaustive set of tests that aim at ensuring that the most important functions work. The result of this testing is used to decide if a build is stable enough to proceed with further testing.
@@ -546,6 +546,243 @@
 			</Title>
 			<Data></Data>
 		</Item>
-
+		<Item>
+			<Title>
+				Advantages of ORM:
+			</Title>
+			<Data>
+				reduce query repetition, take the benefit of OOP to build a maintainable code
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				DisAdvantages of ORM:
+			</Title>
+			<Data>
+				performance
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Syntactic Sugar:
+			</Title>
+			<Data>
+				means that the new features of the language are not really new. Instead, they are a nicer syntax for something existing/ You could do exactly the same by writing something different in the old version. ... Anything which is simplified is a syntactic sugar.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Cross-site request forgery (CSRF):
+			</Title>
+			<Data>
+				also known as one-click attack or session riding and abbreviated as CSRF, is a type of malicious exploit of a website where unauthorized commands are transmitted from a user that the web application trusts.
+				There are many ways in which a malicious website can transmit such commands; specially-crafted image tags, hidden forms, and JavaScript XMLHttpRequests, for example, can all work without the user's interaction or even knowledge. Unlike cross-site scripting (XSS), which exploits the trust a user has for a particular site, CSRF exploits the trust that a site has in a user's browser.<br />
+				<b>To prevent CSRF: inject an authentication token in every request to be validated in middleware</b>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Cross-Site Scripting (XSS) Attacks:
+			</Title>
+			<Data>
+				are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Hadoop:
+			</Title>
+			<Data>
+				is a software technology designed for storing and processing large volumes of data distributed across a cluster of commodity servers and commodity storage.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Rabbit MQ and MSMQ:
+			</Title>
+			<Data>
+				<b>Rabbit MQ</b> gave slightly better performance than MSMQ, but both were comprehensively out performed by ZeroMQ. If performance is your main criteria, you should definitely look at ZeroMQ.
+				<b>MSMQ:</b> is a simple store-and-forward queue. It doesn't provide any messaging patterns, such as pub/sub, or routing. For anything beyond simple point-to-point messaging you'd probably want to use a service bus library such as NServiceBus or MassTransit on top of MSMQ.
+				<b>Rabbit MQ</b> is a sophisticated server product that provides complex messaging patterns, topics and routing out-of-the-box. You also get centralized management and DR, something you'd have to implement yourself if you chose MSMQ.
+				<b>Rabbit MQ Workflow:</b><br/>
+				> The producer publishes a message to the exchange. <br/>
+				> The exchange receives the message and is now responsible for the routing of the message. <br/>
+				> Binding must be set up between the queue and the exchange. In this case, we have bindings to two different queues from the exchange. <br/>
+				> The exchange routes the message into the queues. The messages stay in the queue until they are handled by a consumer. <br/>
+				> The consumer handles the message.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Rabbit MQ Cluster:
+			</Title>
+			<Data>
+				is a logical grouping of one or several nodes, each sharing users, virtual hosts, queues, exchanges, bindings, runtime parameters and other distributed state.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Separation of Concern SOC:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				Change-Advisory Board (CAB)
+			</Title>
+			<Data>delivers support to a change-management team by advising on requested changes, assisting in the assessment and prioritization of changes.</Data>
+		</Item>
+		<Item>
+			<Title>
+				Grooming (or refinement)
+			</Title>
+			<Data>
+				is a meeting of the Scrum team in which the product backlog items are discussed and the next sprint planning is prepared.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Data warehouses
+			</Title>
+			<Data>
+				are used for analytical purposes and business reporting. Data warehouses typically store historical data by integrating copies of transaction data from disparate sources<br />
+				<b>Data warehouse</b> is a system that stores data from a company's operational databases as well as external sources. Data warehouse platforms are different from operational databases because they store historical information, making it easier for business leaders to analyze data over a specific period of time.<br />
+				<b>Also to enhance querying performance by reducing the number of records after moving the historical records to the warehousing DB</b>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Mortgage Release
+			</Title>
+			<Data>
+				is where you, the homeowner, voluntarily transfer the ownership of your property to the owner of your mortgage in exchange for a release from your mortgage loan and payments
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Data models
+			</Title>
+			<Data>
+				define how data is connected to each other and how they are processed and stored inside the system.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Requests that responded live are Syncronous requests and the other are Asyncronous requests.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Stateless Application
+			</Title>
+			<Data>
+				is an application program that does not save client data generated in one session for use in the next session with that client. <br />
+				<b>Stateful Application</b> saves data about each client session and uses that data the next time the client makes a request.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SSO
+			</Title>
+			<Data>
+				<img src="/images/sso.png" />
+			</Data>
+		</Item>
+	</Section>
+	<Section Title="HTML">
+		<Item>
+			<Title>
+				DOM: (Document Object Model)
+			</Title>
+			<Data>
+				represents the HTML document that is displayed in that window. The Document object has various properties that refer to other objects which allow access to and modification of document content.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Web storage types (session storage and local storage) > difference:
+			</Title>
+			<Data>
+				<code>window.localStorage</code>: stores data with no expiration date, data stored per origin (a combination of protocol, host name, and port number)<br/>
+				<code>window.sessionStorage</code>: stores data for one session (data is lost when the browser tab is closed) <br/>
+				* <b>so,</b> If you want to store a different data for the same app while open 2 tabs you should use session storage.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between UL and OL:
+			</Title>
+			<Data>
+				UL means "unordered list". OL means "ordered list". UL gets you bullet points. OL gets you numbers
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to group a form elements:
+			</Title>
+			<Data>
+				Field set and Legend
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is input types?
+			</Title>
+			<Data>
+				Button, date, email, file, submit, radio, checkbox, etc…
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				HTML5 tags:
+			</Title>
+			<Data>
+				like article, footer, section, etc
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between .attr() and .prop():
+			</Title>
+			<Data>
+				prop has no value (checked, disabled, etc...)
+				Attributes are physical written in HTML but properties not
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				XHTML: 
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				XSL: 
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				XSLT:  
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				XPath and XQuery:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				we can transform (XML and XSL\XSLT) to XHTML in client side using JS or in server side
+			</Data>
+		</Item>
 	</Section>
 </Sections>

@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="images\sso.png" />
     <Content Include="js\page.js" />
     <Content Include="review-source.xml" />
     <Content Include="review.html" />
