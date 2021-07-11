@@ -4,7 +4,7 @@
 - INFO: its not prefered that an object change the state of another object like this Class cls = new Class(); cls.Prop = "test"; but its better to handle this state change in the Class it self by public class Class{ public void Class(string prop){ this.Prop = prop} } and path the value while instantiating Class cls = new Class("test");
 - Static keyword means that that object can't be copied, just static.
 - INFO: the difference between setting a default value for variable in class body and setting it in ctor is that, if you are sure that this variable will difinetly used then its fine to initailize it in class body otherwise do that in ctor so that it will not take memory space until the class is instantiated. 
-- INFO: If you dont want someone to intantiate the class then make it static or make all its ctors as private
+- INFO: If you dont want someone to instantiate the class then make it static or make all its ctors as private
 - INFO: one important benefit of using interface is that you can mock it later for testing.
 - INFO: this.MemberwiseClone(); create a shallow copy of current object
 - INFO: to implement an abstract method, you should add override keyword in implementation method signature.

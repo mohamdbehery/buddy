@@ -1,9 +1,0 @@
-Hi there,
-If i describe my self breifly, i can say that I am this guy who believe that working smart and hard can acheive mirachles.
-I always care about learning new technologies and quality factors and hate the blind work and blind solutions so i always care about understanding the reason behind a solution or even a decision.
-I always beleive in not talking about myself but let my productivity and work quality talk about me, another thing i always do while working to find a sloution for redundent and traditional tasks, for example: in my previous company there were some traditional parts of daily tasks like manually insert some records to database so I found a solution for this by building a small app with a simple interface to do that in a minute instead of wasting like 40:60 minutes every task to do that, even I shared this tool with my collegues.
-I always care about presenting a good picture about me to my managers not by speaking about myself but by providing a continious productivity and caring about making them notice that my performance curve is always getting up.
-I am very interesting in challenges which makes me feel doing something valued and acheivable, for example: in last company they are choosen me to lead a big project with 6 junior developers without any senior developer and i finished this project successfuly, not just the project but i left a great feedback inside my team since i always care about sharing experience between all of us (me and my team) like ensuring that nobody is blindly work without understand and sharing some techniocal decissions with them and other things.
-My issue is that sometimes I may take a period of time (but not a long time) to adapt with team with the social events and intertainment activities.
-I wish I can leave a good impression about me in EPAM, just like the previous companies.
-Thank you.
