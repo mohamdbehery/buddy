@@ -1,7 +1,11 @@
 ﻿$(document).ready(function () {
+    var url = "/review-source.xml";
+    if (window.location.href.indexOf('github') > 0)
+        url = "/buddy/Demo.Tips/review-source.xml";
+
     $.ajax({
         type: "GET",
-        url: "/buddy/Demo.Tips/review-source.xml",
+        url: url,
         dataType: "xml",
         success: function (xml) {
             debugger;

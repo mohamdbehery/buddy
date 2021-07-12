@@ -864,7 +864,7 @@
 		</Item>
 		<Item>
 			<Title>
-				How to get\set element text\html: 
+				How to get\set element text\html:
 			</Title>
 			<Data>
 				<code> .text() .html()</code>
@@ -872,7 +872,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Document Ready Event in JS:				
+				Document Ready Event in JS:
 			</Title>
 			<Data>
 				<code> document.addEventListener("DOMContentLoaded", function () {});</code>
@@ -880,7 +880,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Difference between Array.map() and Array.forEach:				
+				Difference between Array.map() and Array.forEach:
 			</Title>
 			<Data>
 				<code>arr.forEach((item, index) => {return item++});</code>
@@ -889,7 +889,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				Javascript has only one thread but the browser has many
@@ -897,7 +897,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				you can stop <code>var xx = setInterval(fun(), interval)</code> by <code>clearInterval(xx);</code>
@@ -905,7 +905,7 @@
 		</Item>
 		<Item>
 			<Title>
-				What’s the different ways to bind event on HTML element:	
+				What’s the different ways to bind event on HTML element:
 			</Title>
 			<Data>
 				<b>JS:</b> <code>element.addEventListener(event, function, useCapture);</code> <br />
@@ -915,11 +915,140 @@
 		</Item>
 		<Item>
 			<Title>
-				Difference between bind() * live():				
+				Difference between bind() * live():
 			</Title>
 			<Data>
 				<code>bind()</code> attachs events to elements that exist or match the selector at the time the call is made. Any elements created afterwards or that match going forward because the class was changed, will not fire the bound event. <br />
 				<code>.live()</code> works for existing and future matching elements.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				JQ effects methods:
+			</Title>
+			<Data>
+				<code>animate(), fadein(), fadeout()</code>, etc..
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between parent(), children() and siblings():
+			</Title>
+			<Data>
+				Siblings: are all elements in the same level and same parent
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				DOM Model:
+			</Title>
+			<Data>
+				is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between null and undefined:
+			</Title>
+			<Data>
+				undefined means a variable has been declared but has not yet been assigned a value. On the other hand, null is an assignment value.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Browser Indexed DB:
+			</Title>
+			<Data>
+				is a new HTML5 concept to store the data inside user's browser. indexeddb is more power than local storage and useful for applications that requires to store large amount of the data.
+				> It stores key-pair values > It is not a relational database > IndexedDB API is mostly asynchronous > it is not a structured query language > it has supported to access the data from same domain
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Abort Controller:
+			</Title>
+			<Data>
+				interface represents a controller object that allows you to abort one or more Web requests as and when desired.
+				const abortController = new AbortController();
+				abortController.abort();
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Prototypal Inheritance in JS:
+			</Title>
+			<Data>
+				Each object has a private property which holds a link to another object called its prototype.<br />
+				<code>
+					function Person(first, last, age, eyecolor) { <br />
+					this.firstName = first;<br />
+					this.lastName = last;<br />
+					}<br />
+					Person.prototype.nationality = "English";<br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to remove binding from element:
+			</Title>
+			<Data>
+				<b>JS:</b> element. detachEvent(); <br />
+				<b>JQ:</b> $(element).unbind(“event name”);
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is preventDefault():
+			</Title>
+			<Data>
+				it cancels the event’s default behavior if it is cancelable, meaning that the default action that belongs to the event will not occur.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to remove an element from DOM:
+			</Title>
+			<Data>
+				<code>$(element). remove();</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to add\remove class from element:
+			</Title>
+			<Data>
+				<code>$(element). addClass().removeClass();</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Keyboard events:
+			</Title>
+			<Data>
+				<code>keyup()</code> – Fire when user releases a key on the keyboard.<br />
+				<code>keydown()</code> – Fire when user presses a key on the keyboard.<br />
+				<code>keypress()</code> – Fire when user presses a key on the keyboard.<br />
+				Keypress respects case sensitivity when accessing char ASCII code
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Keyboard events:
+			</Title>
+			<Data>
+				<code>keyup()</code> – Fire when user releases a key on the keyboard.<br />
+				<code>keydown()</code> – Fire when user presses a key on the keyboard.<br />
+				<code>keypress()</code> – Fire when user presses a key on the keyboard.<br />
+				<b>Keypress respects case sensitivity when accessing char ASCII code</b>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				String operations:
+			</Title>
+			<Data>
+				JS:<code> length, indexOf(‘xx’), indexOf(‘xx’, startIndex), lastIndexOf(‘xx’), search(‘xx’)</code>
 			</Data>
 		</Item>
 	</Section>
