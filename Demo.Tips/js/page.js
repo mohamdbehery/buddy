@@ -8,7 +8,6 @@
         url: url,
         dataType: "xml",
         success: function (xml) {
-            debugger;
             if (xml.children[0]) {
                 var sectionTemplate = $('#section-template').html();
                 var itemTemplate = $('#item-template').html();
@@ -34,7 +33,7 @@
                     tempSectionTemplate = tempSectionTemplate.split('#Items#').join(filledItems);
                     filledSections += tempSectionTemplate;
                 }
-                debugger;
+
                 $('#sections').append(filledSections);
             }
         }
