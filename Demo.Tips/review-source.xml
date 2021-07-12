@@ -1391,5 +1391,236 @@
 				</code>
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				Difference between promises.All and promises.Each:
+			</Title>
+			<Data>
+				The <code>Promise.all()</code> method returns a single Promise that fulfills when all of the promises passed as an iterable have been fulfilled or when the iterable contains no promises or when the iterable contains promises that have been fulfilled and non-promises that have been returned. It rejects with the reason of the first promise that rejects, or with the error caught by the first argument if that argument has caught an error inside it using <code>try/catch/throw</code> blocks. <br />
+				<code>
+					const promise1 = Promise.resolve(3); <br />
+					const promise2 = 42; <br />
+					const promise3 = new Promise((resolve, reject) => { <br />
+					setTimeout(resolve, 100, 'foo'); <br />
+					}); <br />
+					Promise.all([promise1, promise2, promise3]).then((values) => { <br />
+					console.log(values); <br />
+					});
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Async and Await :
+			</Title>
+			<Data>
+				async/await simply gives you a synchronous feel to asynchronous code. It's a very elegant form of syntactical sugar, it require a transpiler to be read be browser (babel).<br />
+				<b>await:</b> block code execution until finish it, and it should be used if the next step depends on the previous operation result.<br />
+				<code>
+					while (!value) {<br />
+					const intermediate = await operation1();<br />
+					value = await operation2(intermediate);<br />
+					}
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Marking function as async makes it also return a promise. This is done automatically for you, so you don't need to return a promise explicitly.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				the await keyword is only valid inside async functions
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Array.reduce :
+			</Title>
+			<Data>
+				used to reduce the array to a single value and executes a provided function for each value of the array (from left-to-right) and the return value of the function is stored in an accumulator.<br />
+				<code>array.reduce( function(accumulator, currentValue, currentIndex, arr), initialValue )</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is the output of the below code: How setTimeout function works ?
+			</Title>
+			<Data>
+				<code>
+					for( I = 0; I leth than 5; i++){<br />
+					setTimeout( ()=>{console.log(i)});<br />
+					}
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				use string literal (`) to avoid conflicts of single\double quotes of string and to bind a value of variable inside string
+				<code>
+					var x = 3;<br />
+					var y = `this is x = ${x}’;
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Bugsnag:
+			</Title>
+			<Data>
+				Error Monitoring and Reporting Tool for App Stability
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Sentry:
+			</Title>
+			<Data>
+				Used to capture Javascript errors
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				HotJar:
+			</Title>
+			<Data>
+				Monitor and fix the UX errors of your application.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between event target and currentTarget :
+			</Title>
+			<Data>
+				target is the element that triggered the event (e.g., the user clicked on) currentTarget is the element that the event listener is attached to.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to authenticate API from frontend:
+			</Title>
+			<Data>
+				Using JWT to be sent in every request header, a JWT is a token that is issued by the server. The token has a JSON payload that contains information specific to the user. This token can be used by clients when talking to APIs (by sending it along as an HTTP header) so that the APIs can identify the user represented by the token, and take user specific action.<br />
+				The JWT needs to be stored inside an httpOnly cookie, a special kind of cookie that’s only sent in HTTP requests to the server
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				JWT (JSON Web Token):
+			</Title>
+			<Data>
+				way for securely transmitting information between parties as a base64 encoded JSON object, consist of three parts separated by dots (header.payload.signature) <br />
+				So Header contains the algorithm name and type (JWT)  <br />
+				Payload contains some useful data (user claims) like iss (issuer), exp (expiration time), sub (subject), aud (audience), and others. <br />
+				Signature is used to verify the message wasn't changed along the way, and, in the case of tokens signed with a private key, it can also verify that the sender of the JWT is who it says it is. <br />
+				> A JWT is not encrypted. It is based64 encoded and signed. So anyone can decode the token and use its data.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Selenium Testing:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				What is End To End Testing:
+			</Title>
+			<Data>
+				The entire application is tested for critical functionalities such as communicating with the other systems, interfaces, database, network, and other applications.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Functional Programming:
+			</Title>
+			<Data>
+				define the problem as a small functions that its output depend on the parameters .. <br />
+				it acheives modularity and may be related to Business Rule Engine (BRE) => may be :D
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Reactive Programming (RP):
+			</Title>
+			<Data>
+				(is programming with asynchronous data streams), (It is an Asynchronous Programming concept around data streams.), (is writing code that define how to react to changes) and (is a programming paradigm oriented around data flows and the propagation of change.) <br/>
+				<code>
+					var x = 10; <br/>
+					var y = 20; <br/>
+					let z = x + y; <br/>
+					console.log(z);<br/>
+					x = 100;<br/>
+					y = 200; <br/>
+					console.log(z);
+				</code><br/>
+				So here the variable Z will not be changed and RP is to write code that define how to react to changes by definining data\code as streams:<br />
+				import {Observable} from 'rxjs-es'; Using Observable represented in RXJS and to subscribe to specific variables.<br />
+				> Both promise and observables are built to solve problems around async (to avoid “callback hell”).<br />
+				> An observer is object literal with <code>next()</code>, <code>error()</code> and <code>complete()</code> functions. In the above example, the observer is the object literal we pass into our <code>.subscribe()</code> method.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Callback Hell:
+			</Title>
+			<Data>
+				is having a lot of nested callback functions, Each inner callback is dependent on its parent (code becomes obscure or difficult to follow.)<br />
+				So promises and observable (RXJS) fixed this problem.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				RXJS (Reactive Extensions for JavaScript): 
+			</Title>
+			<Data>
+				is a library for reactive programming using observables that makes it easier to compose asynchronous or callback-based code.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				ErrorFirst Callback: 
+			</Title>
+			<Data>
+				is simply structuring the callback function by writing the first argument\parameter as error object and the subsequent arguments represent associated data.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Hoisting: 
+			</Title>
+			<Data>
+				is moving variables and functions declarations (not initializations) to the top of their scope before code execution, hoisting has order while topping up > variable assignment, function declaration then variable declaration
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between variable hoisting and function hoisting:
+			</Title>
+			<Data>
+				 Unlike variables, a function declaration doesn't just hoist the function's name. It also hoists the actual function definition. <br />
+				 As you can see, the JavaScript interpreter allows you to use the function before the point at which it was declared in the source code.
+			</Data>
+		</Item>
 	</Section>
+<Section Title="Typescript">	
+		<Item>
+			<Title>
+				A clear difference between ECMA Script 5 and 6? 
+			</Title>
+			<Data>
+				 ES6 added some features to ES5 like const, let , etc…
+			</Data>
+		</Item>
+</Section>
 </Sections>
