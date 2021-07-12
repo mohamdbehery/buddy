@@ -1581,7 +1581,7 @@
 		</Item>
 		<Item>
 			<Title>
-				RXJS (Reactive Extensions for JavaScript): 
+				RXJS (Reactive Extensions for JavaScript):
 			</Title>
 			<Data>
 				is a library for reactive programming using observables that makes it easier to compose asynchronous or callback-based code.
@@ -1589,7 +1589,7 @@
 		</Item>
 		<Item>
 			<Title>
-				ErrorFirst Callback: 
+				ErrorFirst Callback:
 			</Title>
 			<Data>
 				is simply structuring the callback function by writing the first argument\parameter as error object and the subsequent arguments represent associated data.
@@ -1597,7 +1597,7 @@
 		</Item>
 		<Item>
 			<Title>
-				What is Hoisting: 
+				What is Hoisting:
 			</Title>
 			<Data>
 				is moving variables and functions declarations (not initializations) to the top of their scope before code execution, hoisting has order while topping up > variable assignment, function declaration then variable declaration
@@ -1608,19 +1608,19 @@
 				Difference between variable hoisting and function hoisting:
 			</Title>
 			<Data>
-				 Unlike variables, a function declaration doesn't just hoist the function's name. It also hoists the actual function definition. <br />
-				 As you can see, the JavaScript interpreter allows you to use the function before the point at which it was declared in the source code.
+				Unlike variables, a function declaration doesn't just hoist the function's name. It also hoists the actual function definition. <br />
+				As you can see, the JavaScript interpreter allows you to use the function before the point at which it was declared in the source code.
 			</Data>
 		</Item>
 	</Section>
-<Section Title="Typescript">	
+	<Section Title="Typescript">
 		<Item>
 			<Title>
-				A clear difference between ECMA Script 5 and 6? 
+				A clear difference between ECMA Script 5 and 6?
 			</Title>
 			<Data>
-				 ES6 added some features to ES5 like const, let , etc…
+				ES6 added some features to ES5 like const, let , etc…
 			</Data>
 		</Item>
-</Section>
+	</Section>
 </Sections>
