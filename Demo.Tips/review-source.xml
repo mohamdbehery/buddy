@@ -1051,5 +1051,345 @@
 				JS:<code> length, indexOf(‘xx’), indexOf(‘xx’, startIndex), lastIndexOf(‘xx’), search(‘xx’)</code>
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				What is array.slice():
+			</Title>
+			<Data>
+				returns the selected elements in an array, as a new array object.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to apply styles on element using JQuery:
+			</Title>
+			<Data>
+				<code>.css()</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Best performance of JS Loops:  a standard for loop with length caching:
+			</Title>
+			<Data>
+				<code>
+					for (var i = 0, len = myArray.length; i less than len; i++) { <br />
+					}
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Comments:
+			</Title>
+			<Data>
+				<code>
+					// /* */
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Inheritance in JS:
+			</Title>
+			<Data>
+				<code>
+					using prototype
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Regular Expressions:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				JavaScript ecosystem:
+			</Title>
+			<Data>
+				is a collection of software packages, libraries, and other resources that facilitate development as they integrate with each other.<br />
+				Those tools are created by different developers and providers <br />
+				– for example, the React library is powered by Facebook, while the Angular framework was created by Google, and Vue.js was designed by an independent developer.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between var, let and const:
+			</Title>
+			<Data>
+				<code>var</code> can be updated and re-declared within its scope; <br />
+				<code>let</code> can be updated but not re-declared; <br />
+				<code>const</code> can neither be updated nor re-declared. <br />
+				They are all hoisted to the top of their scope but while var variables are initialized with undefined, let and const variables are not initialized.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Bind, Call and Apply:
+			</Title>
+			<Data>
+				all of it to invoke a function, use <code>.call()</code> or <code>.apply()</code> when you want to invoke the function immediately, and modify the context. <code>call()/apply()</code> call the function immediately, whereas <code>bind()</code> returns a function that, when later executed, will have the correct context set for calling the original function.<br />
+				<code>
+					var person1 = {name: 'Marvin', age: 42, size: '2xM'}; <br/>
+					var sayHello = function(){<br/>
+					alert('Hello, ' + this.name);<br/>
+					};<br/>
+					sayHello.call(person1);<br/>
+					sayHello.apply(person1);<br/>
+				</code>
+				* the 1st parameter should be the scope object (this)<br/>
+				* What if you need to pass parameters to the function while invoking it you should use <code>.call()</code> but if you have many parameters (arguments) then you should use .apply() because it expects the 2nd parameter as array of arguments.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Implicit and Explicit binding:
+			</Title>
+			<Data>
+				Implicit when this keyword presented inside code but Explicit when this keyword explicitly passed by <code>.call()</code>, <code>.apply()</code> or <code>.bind()</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				This and Context:
+			</Title>
+			<Data>
+				this is just the current context (caller)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Strict mode:
+			</Title>
+			<Data>
+				introduced in ES5, it throws reference error when using variable before declaring it.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Variable scope in JS:
+			</Title>
+			<Data>
+				JavaScript has two scopes – global and local. Any variable declared outside of a function belongs to the global scope, and is therefore accessible from anywhere in your code. Each function has its own scope, and any variable declared within that function is only accessible from that function and any nested functions.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Event delegation in JS:
+			</Title>
+			<Data>
+				is adding event listener to parent element instead of adding to every child and inside this event using <code>event.target</code> you can detect which child who fired the event.<br />
+				And using <code>event.currentTarget</code> to access the parent element
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Event propagation:
+			</Title>
+			<Data>
+				is a mechanism that defines how events propagate or travel through the DOM tree to arrive at its target and what happens to it afterward. <br />
+				* when you have a nested element(s) which assigned the same event (ex, click) so when you click on any one the other events fire so <code> event.stopPropagation()</code> will stop propagating event to other elements.<br />
+				> It has 2 types:<br />
+				<b>Capturing:</b> Spreading event inside. <br/>
+				<b>Bubbling:</b> Spreading event outside.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Event propagation:
+			</Title>
+			<Data>
+				is a mechanism that defines how events propagate or travel through the DOM tree to arrive at its target and what happens to it afterward. <br />
+				* when you have a nested element(s) which assigned the same event (ex, click) so when you click on any one the other events fire so <code> event.stopPropagation()</code> will stop propagating event to other elements.<br />
+				> It has 2 types:<br />
+				<b>Capturing:</b> Spreading event inside. <br/>
+				<b>Bubbling:</b> Spreading event outside.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How many 8-bit in text to be stored in Utf-8?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				When shouldn’t use arrow function:
+			</Title>
+			<Data>when you want to access something from this (caller)</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Reference Error and Undefined:
+			</Title>
+			<Data>in ES6 when using undeclared variable it will throw reference error but in earlier versions of JS will output undefined</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>any undeclared variable (without var keyword) becomes global</Data>
+		</Item>
+		<Item>
+			<Title>
+				JS Versions and difference:
+			</Title>
+			<Data>ES Standard, ES2015, ES6 and ES Next</Data>
+		</Item>
+		<Item>
+			<Title>
+				Let keyword:
+			</Title>
+			<Data>
+				make the variable block scope not function scope, if you defined var inside loop it will be accessible to its function but let wont be. <br />
+				<code>
+					var x = function(){<br/>
+					for(var x = 0; x less than 2; x++){<br />
+					let y = 4;<br />
+					}<br />
+					console.log(y);<br />
+					}
+				</code><br />
+				if you run x() >> output : ReferenceError: y is not defined <br />
+				but if you use var instead of let >> output : 4
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Immutable Variables:
+			</Title>
+			<Data>
+				are variables whose value cannot be modified once assigned (const)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between function declaration and function expression:
+			</Title>
+			<Data>
+				Function declaration like <code>function foo(){ … }</code><br />
+				Function expression like <code>var foo = function(){ … }</code> <br />
+				* Function declaration is hoisted but expression isn’t.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Ternary operator (? and :)
+			</Title>
+			<Data>
+				like this condition <code> ? true : false</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Null Conditional Operator:
+			</Title>
+			<Data>
+				<code>object?.property ?? defaultvalue</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				you can dynamically validate function parameters using arguments keyword
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				DOM reflow:
+			</Title>
+			<Data>
+				a web browser process for re-calculating the positions and geometries of elements in the document, for the purpose of re-rendering part or all of the document.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				let and const are not hoisted because it provide a block scope
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				string can be converted to number by putting + before it: <code>var x = ‘23’;   var y = +x; // 23</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				you can convert number to string by putting ‘’ + befor it: <code>var x = 23;   var y = ‘’ + x; // “23”</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Caching Client Side:
+			</Title>
+			<Data>
+				Caching is used for web performance optimization since the configuration and server connectivity data are usually stored in Cookies but the popular data in web storage (sessionStorage and localStorage) <br />
+				<b>Cookie:</b> (Cookies are data, stored in small text files, on your computer) stores data that has to be sent back to the server with subsequent requests.<br />
+				There are some libraries used in caching: Modenizr and Redis
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				<code>
+					let x = 0, isTrue = false; <br />
+					if(x) isTrue = true;
+				</code> >> still false
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Syntactic Sugar:
+			</Title>
+			<Data>
+				is designed to make things easier to read or to express. It makes the language "sweeter" for human use: things can be expressed more clearly, more concisely, or in an alternative style that some may prefer.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Closure in JS:
+			</Title>
+			<Data>
+				means writing a nested functions in which Inner function can access variables and parameters of an outer function (however, cannot access arguments object of outer function)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				instead of using callback to handle response and error, you can use promises by <code>.then(handleResponseFnc).catch(handleErrorFnc)</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Promises in JS:
+			</Title>
+			<Data>
+				The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value, it has 3 states: <br />
+				Pending: initial state, neither fulfilled nor rejected.<br />
+				Fulfilled: meaning that the operation completed successfully.<br />
+				Rejected: meaning that the operation failed.<br />
+				<code>
+					const myPromise = (new Promise(myExecutorFunc)).then(handleFulfilledA,handleRejectedA)<br />
+					.then(handleFulfilledB,handleRejectedB)<br />
+					.then(handleFulfilledC,handleRejectedC);
+				</code>
+			</Data>
+		</Item>
 	</Section>
 </Sections>
