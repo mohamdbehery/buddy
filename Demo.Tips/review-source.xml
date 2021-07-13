@@ -1622,5 +1622,904 @@
 				ES6 added some features to ES5 like const, let , etc…
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				Compilers\Transpilers to convert ECMA 6 to 5?
+			</Title>
+			<Data>
+				yes
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Type (tsc -w) in terminal to switch on the auto-compile
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Type (tsc --init) to add tsconfig.ts to project and configure (compileOnSave )
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				use enums in static variables grouping
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Use Tuple to create an array with a static different types.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is strict mode:
+			</Title>
+			<Data>
+				a new feature in ECMAScript 5 that allows you to place a program, or a function, in a “strict” operating context. This strict context prevents certain actions from being taken and throws more exceptions.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Why you prefer writing Typescript rather than Javascript?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Always use let (controls the local scope of variable)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Variable local\global scope (When use declaration, it will be local)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Block scope is simply writing a code inside {}
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Variable local\global scope (When use declaration, it will be local)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Block scope is simply writing a code inside {}
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Variable local\global scope (When use declaration, it will be local)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				You can set readonly variable only in initialization or constructor, so the difference between Const and readonly is that you can’t initialize const without setting a value but readonly is applicable and set its value in constructor
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Arrow Function:
+			</Title>
+			<Data>
+				Lambda expression in Typescript: <br /> <code>let Do = function (a, b){ return a*b}    let Do = (a, b) => (a*b)</code> <br />
+				Most important advantage of arrow function doesn’t bind to this
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between == and ===:
+			</Title>
+			<Data>
+				== compare value but === compare both value and type
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Spread and rest operator:
+			</Title>
+			<Data>
+				to spread array items (ex. array spread by ...arr) <br />
+				<code>
+					function showName(firstName, lastName, ...titles) { <br />
+					alert( firstName + ' ' + lastName ); // Julius Caesar <br />
+					alert( titles[0] ); // Consul <br />
+					alert( titles[1] ); // Imperator <br />
+					alert( titles.length ); // 2 <br />
+					} <br />
+					showName("Julius", "Caesar", "Consul", "Imperator");
+				</code> <br />
+				The ...rest parameter (titles) must always be last one.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Immediately invoked function expression (IFIE Module) to define function and call it in same time, <br />
+				also used to control conflicts if some var name duplicated in 2 JS files: ex: <code>(function(){ //do something}());</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				=> is abbreviation for (go through)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Typescript mixed data type:
+			</Title>
+			<Data>
+				<code>(ex. let x: number|string)</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Typescript type alias:
+			</Title>
+			<Data>
+				<code>(ex. type int = number; let y: int)</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Revealing Module Pattern:
+			</Title>
+			<Data>
+				(every JS file is standalone (using export and import))
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Use (System JS):
+			</Title>
+			<Data>
+				as module loader to import a JS file inside HTML file.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				To run a .ts file using node, use command (node filename.ts)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				You can create a Typescript project from Visual Studio (HTML Application with Typescript)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Decorator:
+			</Title>
+			<Data>
+				adding another fields\properties to a class without editing its code or inheritance using <br />
+				<code>thatClass.prototype.newProperty = something</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Loop through array by for (<code>let n in array</code>) to access index OR for (<code>let n of array</code>) to access object itself
+			</Data>
+		</Item>
+	</Section>
+	<Section Title="React.JS">
+		<Item>
+			<Title>
+				Difference between function component and class component:
+			</Title>
+			<Data>
+				Function component preferred to be used when this component has no user interactions
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is React mountNode:
+			</Title>
+			<Data>
+				is a DOM node which you are telling ReactDOM to render the component into.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				React rendering in server side : (so the search engines can fetch and index all application pages)
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				Styled Components:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				JSX:
+			</Title>
+			<Data>
+				(JavaScript Syntax XML) is writing JS code inside HTML.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				You can simulate a response data by using website (https://jsonplaceholder.typicode.com)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				When you pass a props to a component, you should define this props like below: <br />
+				<code>class X extends Component (any, any="")   // at least use any data type</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				you can’t use setState in constructor, just use <code> this.state.x = value;</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Props:
+			</Title>
+			<Data>
+				Props is the shorthand for Properties in React. They are read-only components which must be kept pure i.e. immutable.<br />
+				They are always passed down from the parent to the child components throughout the application. A child component can never send a prop back to the parent component. This help in maintaining the unidirectional data flow and are generally used to render the dynamically generated data.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				To install React Router > npm install --save react-router
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between NPM and NPX:
+			</Title>
+			<Data>
+				NPX makes it easy to install and manage dependencies hosted in npm registry. It simplifies the process and provides a better for executables.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				TS Webpack, Babel and Gulp:
+			</Title>
+			<Data>
+				<b>TS Webpack:</b> is a tool that will bundle your code and optionally all of its dependencies into a single .js file <br />
+				<b>TS Babel:</b> used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments <br />
+				<b>TS Gulp:</b> is a cross-platform, streaming task runner that lets developers automate many development tasks.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Webpack installation:
+			</Title>
+			<Data>
+				- move index.html from build to src <br />
+				- install all required modules?? <br />
+				- use HashRouter <br />
+				- in tsconfig > remove "noEmit" and set "jsx" to "React"
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				componentDidMount will fire after componentWillReceiveProps as well
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				React Virtual DOM:
+			</Title>
+			<Data>
+				In React, for every DOM object, there is a corresponding “virtual DOM object.” A virtual DOM object is a representation of a DOM object (like a lightweight copy) which have also the same properties.
+				So when you update some element in virtual DOM object it totally rerendered so react calculate the difference between the Real DOM and Virtual DOM and update only the changed objects into the Real DOM not all objects.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Jest Unit Testing:
+			</Title>
+			<Data>
+				<b>Jest</b> was created by Facebook and is a testing framework to test JavaScript and React code. <br />
+				<b>Enzyme</b> is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements. Ex expect(element).toBe(value);
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				React Life Cycle Methods:
+			</Title>
+			<Data>
+				Constructor: to set up the initial state and other initial values. <br />
+				Render: the method that actual outputs HTML to the DOM. <br />
+				componentDidMount: method is called after the component is rendered; this is where you run statements that requires that the component is already placed in the DOM. <br />
+				shouldComponentUpdate: method you can return a Boolean value that specifies whether React should continue with the rendering or not. <br />
+				componentDidUpdate: method is called after the component is updated in the DOM. <br />
+				componentWillUnmount: method is called when the component is about to be removed from the DOM.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How React state works?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				What is subscribe?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				When you should unsubscribe?
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				What is the property (key) is used for in React:
+			</Title>
+			<Data>
+				Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside a repeater.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Refs:
+			</Title>
+			<Data>
+				is the short hand for References in React. It is an attribute which helps to store a reference to a particular React element or component, which will be returned by the components render configuration function. <br />
+				It is used to return references to a particular element or component returned by render(). <br />
+				They come in handy when we need DOM measurements or to add methods to the components.<code> start input ref=""{snap =""> this.Snaps.inputUserName = snap} /> </code> <br />
+				there are some instances when using Refs is useful, such as: <br />
+				Managing focus, text selection, or media playback. <br />
+				Triggering imperative animations. <br />
+				Integrating with third-party DOM libraries.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is React Context:
+			</Title>
+			<Data>
+				data is passed top-down (parent to child) via props, Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+				<code>const MyContext = React.createContext();</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between state and props:
+			</Title>
+			<Data>
+				state is mutable but props are immutable,
+				props are variables passed to it by its parent component. State on the other hand is still variables, but directly initialized and managed by the component. The state can be initialized by props.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Why is switch keyword used in React Router v4?
+			</Title>
+			<Data>
+				The <switch></switch> tag when in use matches the typed URL with the defined routes in sequential order. When the first match is found, it renders the specified route. Thereby bypassing the remaining routes.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Is setState() async? Why?
+			</Title>
+			<Data>
+				yes, it uses a callback function to fire after completely update state <code> this.setState({}, () => {});</code> <br />
+				This is because setState alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				React Hooks:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				React HOC:
+			</Title>
+			<Data></Data>
+		</Item>
+	</Section>
+	<Section Title="Redux">
+		<Item>
+			<Title>
+				Redux Definition:
+			</Title>
+			<Data>
+				A centralized data store that all representational screen reads from : <br />
+				1. Component > call an Action <br />
+				2. Action > dispatch action so reducers can update state. <br />
+				3. Reducer > make a new copy of state and return the new state (Immutability). <br />
+				4. Store > after reducer update the state, the Store makes sure that all connected components are aware. <br />
+				5. React-Redux > detect if there is state change and call react again. <br />
+				6. React > if the UI depends on props updated by state, it will update the UI.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Redux is the most common React State Management Library, there is another libraries like Flux.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Babel Transpiler:
+			</Title>
+			<Data>
+				is used to convert from ES6 to ES5.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				WebPack:
+			</Title>
+			<Data>
+				is used to compile\minify JS into browser.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				ESLint:
+			</Title>
+			<Data>
+				is used to make a compile time checks on code to figure out the code mistakes
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Function Components:
+			</Title>
+			<Data>
+				Use Stateless components when you don’t need (State, Refs, Lifecycle Methods and child functions).
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Dispatcher:
+			</Title>
+			<Data>
+				is the method used to dispatch actions and trigger state changes to the store.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Redux has no Dispatcher because it has only one store.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Redux is all about 3 stages (Actions, Reducers and Store).
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Immutability:
+			</Title>
+			<Data>
+				is instead of change object’s data return a new object, and on the other side (Mutable in JS like Objects, Arrays and Functions)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				I can handle Immutability using ES6 by (Object.assign or Spread Operator). <br />
+				<code>var target = Object.assign(target, source);</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				To avoid Mutate state you can enforce Immutability over you project by including (redux-immutable-state-invariant) library to warn you when doing by mistake.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Redux and Flux are React workflow methods
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between mapStateToProps and mapDispatchToProps:
+			</Title>
+			<Data>
+				mapStateToProps: used to connect the store state to component props (subscribe) <br />
+				mapDispatchToProps: used to bind the action to props
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Redux Reducer:
+			</Title>
+			<Data>
+				is a pure sync function that takes the previous state and an action, and returns the next state.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Since you should use a pure functions in Reducers, How to call api call inside it (Async) :
+			</Title>
+			<Data>
+				by using Action creators to make async calls and dispatch actions on completion of api call <code> (using .then(){ dispatch(…)} )</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Redux Observable:
+			</Title>
+			<Data>
+				is an RxJS-based middleware for Redux that allows developers to work with async actions. <br /> It's an alternative to redux-thunk and redux-saga.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to structure store data\schema:
+			</Title>
+			<Data></Data>
+		</Item>
+	</Section>
+	<Section Title="Ajax">
+		<Item>
+			<Title>
+				Ajax:
+			</Title>
+			<Data>
+				Asynchronous JavaScript And XML
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				XHR:
+			</Title>
+			<Data>
+				XML HTTP Request
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				XHR onreadystatechange:
+			</Title>
+			<Data>
+				fires 5 times with different values of readystate as below: <br />
+				0 > Request not initialized  <br />
+				1 > Server connection established <br />
+				2 > Request received <br />
+				3 > Processing request <br />
+				4 > Request finished and response is ready
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Sync and ASync:
+			</Title>
+			<Data>
+				Synchronously, in which the script stops and waits for the server to send back a reply before continuing. Asynchronously, in which the script allows the page to continue to be processed and handles the reply if and when it arrives.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				HTTP Request Headers:
+			</Title>
+			<Data>
+				General: contains data like request url, method, status code, etc… <br />
+				Request Header: data like connection (keep-alive), cookies, host, etc… <br />
+				Response Header: data like Server, Cache-Control, Access-Control-Allow-Origin, etc…
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is $.Ajax params:
+			</Title>
+			<Data>
+				<code>method, url, data, cache(boolean), async(boolean), timeout(millisecond), success(data, status, xhr), error(xhr, status, errorMessage)</code> and <code>complete(xhr, status)</code> which run in both success and error states. <br />
+				dataType: is the data type of response
+				contentType: is the data type of request
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is XHR params:
+			</Title>
+			<Data>
+				<code>
+					var xhttp = new XMLHttpRequest(); <br />
+					xhttp.onreadystatechange = function() { <br />
+					if (this.readyState == 4 and this.status == 200) { <br />
+					console.log(xhttp.responseText); <br />
+					} <br />
+					}; <br />
+					xhttp.open("GET", "filename", true); <br />
+					xhttp.send(); <br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Web API and Web Service (asmx):
+			</Title>
+			<Data>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Ajax Request = HTTP request
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				HTTP call life cycle:
+			</Title>
+			<Data>
+				1. First the browser needs to translate www.google.com to an IP address, it contacts a DNS server to resolve the name. <br />
+				2. Then browser will open a TCP connection to the IP address of www.domain.com and send a HTTP GET request over. <br />
+				3. The server software will get this HTTP request. It will somehow generate a HTTP response and send that back trough the TCP connection. (This is server software dependent). <br />
+				4. When the browser gets the response, it typically renders it on screen. <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				JSON and XML:
+			</Title>
+			<Data>
+				JSON (JavaScript Object Notation) is a lightweight data-interchange format and it completely language independent. ... Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				XML is much more difficult to parse than JSON.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				JSON is parsed into a ready-to-use JavaScript object.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				JSONP:
+			</Title>
+			<Data>
+				is really a simple trick to overcome the XMLHttpRequest same domain policy, by calling url in <script></script><br />
+				tag instead of making a XMLHttpRequest, so if we imagine this<br />
+				<code>
+					script = document.createElement('script');<br />
+					script.type = 'text/javascript';<br />
+					script.src = 'http://www.someWebApiServer.com/some-data';
+				</code><br />
+				will return this<br />
+				<script>
+					<br />
+					{['some string 1', 'some data', 'whatever data']}<br />
+				</script><br />
+				So to be able to handle this response we path a callback parameter so the server will return data as below<br />
+				script.src = 'http://www.someWebApiServer.com/some-data?callback=my_callback';<br />
+				will return<br />
+				<script>
+					<br />
+					my_callback({['some string 1', 'some data', 'whatever data']});<br />
+				</script><br />
+				so this is the JSONP is simply pass a callback parameter when calling api from script tag to overcome domain policy.<br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				JSONP:
+			</Title>
+			<Data>
+				is really a simple trick to overcome the XMLHttpRequest same domain policy, by calling url in <script></script><br />
+				tag instead of making a XMLHttpRequest, so if we imagine this<br />
+				<code>
+					script = document.createElement('script');<br />
+					script.type = 'text/javascript';<br />
+					script.src = 'http://www.someWebApiServer.com/some-data';
+				</code><br />
+				will return this<br />
+				<script>
+					<br />
+					{['some string 1', 'some data', 'whatever data']}<br />
+				</script><br />
+				So to be able to handle this response we path a callback parameter so the server will return data as below<br />
+				script.src = 'http://www.someWebApiServer.com/some-data?callback=my_callback';<br />
+				will return<br />
+				<script>
+					<br />
+					my_callback({['some string 1', 'some data', 'whatever data']});<br />
+				</script><br />
+				so this is the JSONP is simply pass a callback parameter when calling api from script tag to overcome domain policy.<br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Cookies are commonly used to identify the same user across multiple HTTP requests, called sessions. Therefore these cookies are called session cookies.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Proxy:
+			</Title>
+			<Data>
+				Implementing IHTTPHandler.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				HTTP Result Codes:
+			</Title>
+			<Data>
+				1xx: Informational <br />
+				2xx: Success <br />
+				3xx: Redirection <br />
+				4xx: Client Responsible Error (400 Bad Request, 401 Unauthorized, 404 Not Found and 405 Method Not Allowed) <br />
+				5xx: Server Responsible Error (500 Internal Server Error) <br />
+				https://restfulapi.net/http-status-codes/
+			</Data>
+		</Item>
+	</Section>
+	<Section Title="Web Service and Web API">
+		<Item>
+			<Title>
+				Web service:
+			</Title>
+			<Data>
+				typically offers a WSDL from which you can create client stubs automatically.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Web Services:
+			</Title>
+			<Data>
+				are based on the SOAP protocol.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Web API:
+			</Title>
+			<Data>
+				is a newer Microsoft framework which helps you to build REST based interfaces. <br />
+				The response can be either JSON or XML, but there is no way to generate clients automatically because Web API does not offer a service description like the WSDL from Web Services.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				REST APIs:
+			</Title>
+			<Data>
+				uses multiple standards like HTTP, JSON, URL, and XML while.<br />
+				are more convenient with JavaScript and can be implemented easily as well.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Restful (Representational State Transfer) and Soap (Simple Object Access Protocol)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SOAP APIs:
+			</Title>
+			<Data>
+				is largely based on HTTP and XML.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SOAP:
+			</Title>
+			<Data>
+				is based on XML with meta data.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between MVC Controller and Web API Controller:
+			</Title>
+			<Data></Data>
+		</Item>
+	</Section>
+	<Section Title="C#.NET and OOP">
+		<Item>
+			<Title>
+				Concrete class: 
+			</Title>
+			<Data>
+				is a class that has an implementation for all of its methods
+			</Data>
+		</Item>
 	</Section>
 </Sections>
