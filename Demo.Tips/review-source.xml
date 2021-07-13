@@ -2388,33 +2388,6 @@
 		</Item>
 		<Item>
 			<Title>
-				JSONP:
-			</Title>
-			<Data>
-				is really a simple trick to overcome the XMLHttpRequest same domain policy, by calling url in <script></script><br />
-				tag instead of making a XMLHttpRequest, so if we imagine this<br />
-				<code>
-					script = document.createElement('script');<br />
-					script.type = 'text/javascript';<br />
-					script.src = 'http://www.someWebApiServer.com/some-data';
-				</code><br />
-				will return this<br />
-				<script>
-					<br />
-					{['some string 1', 'some data', 'whatever data']}<br />
-				</script><br />
-				So to be able to handle this response we path a callback parameter so the server will return data as below<br />
-				script.src = 'http://www.someWebApiServer.com/some-data?callback=my_callback';<br />
-				will return<br />
-				<script>
-					<br />
-					my_callback({['some string 1', 'some data', 'whatever data']});<br />
-				</script><br />
-				so this is the JSONP is simply pass a callback parameter when calling api from script tag to overcome domain policy.<br />
-			</Data>
-		</Item>
-		<Item>
-			<Title>
 				INFO:
 			</Title>
 			<Data>
