@@ -2367,8 +2367,7 @@
 				JSONP:
 			</Title>
 			<Data>
-				is really a simple trick to overcome the XMLHttpRequest same domain policy, by calling url in <script></script><br />
-				tag instead of making a XMLHttpRequest, so if we imagine this<br />
+				is really a simple trick to overcome the XMLHttpRequest same domain policy, by calling url in script tag instead of making a XMLHttpRequest, so if we imagine this<br />
 				<code>
 					script = document.createElement('script');<br />
 					script.type = 'text/javascript';<br />
