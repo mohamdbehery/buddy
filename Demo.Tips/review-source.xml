@@ -2375,13 +2375,13 @@
 				</code><br />
 				will return this<br />
 				<script>
-					{['some string 1', 'some data', 'whatever data']}
+					{["some string 1", "some data", "whatever data"]}
 				</script><br />
 				So to be able to handle this response we path a callback parameter so the server will return data as below<br />
 				script.src = 'http://www.someWebApiServer.com/some-data?callback=my_callback';<br />
 				will return<br />
 				<script>
-					my_callback({['some string 1', 'some data', 'whatever data']});
+					my_callback({["some string 1", "some data", "whatever data"]});
 				</script><br />
 				so this is the JSONP is simply pass a callback parameter when calling api from script tag to overcome domain policy.<br />
 			</Data>
