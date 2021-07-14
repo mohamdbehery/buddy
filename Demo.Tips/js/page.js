@@ -1,6 +1,6 @@
 ﻿$(document).ready(() => {
     var isPublished = window.location.href.indexOf('github') > 0 ? true : false;
-    var url = isPublished ? "/buddy/Demo.Tips" : "" + "/review-source.xml";
+    var url = (isPublished ? "/buddy/Demo.Tips" : "") + "/review-source.xml";
   
     $.ajax({
         type: "GET",
