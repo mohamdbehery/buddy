@@ -1,5 +1,6 @@
 ﻿$(document).ready(() => {
-    var url = window.location.href.indexOf('github') > 0 ? "/buddy/Demo.Tips" : "" + "/review-source.xml";
+    var isPublished = window.location.href.indexOf('github') > 0 ? true : false;
+    var url = isPublished ? "/buddy/Demo.Tips" : "" + "/review-source.xml";
   
     $.ajax({
         type: "GET",
@@ -34,11 +35,12 @@
                         var itemTitle = item.getElementsByTagName('Title')[0];
                         var itemData = item.getElementsByTagName('Data')[0];
                         if (itemTitle && itemData) {
-                            var dataContent = itemData.innerHTML.split('/images/').join('/buddy/Demo.Tips/images/');
+                            if (isPublished)
+                                itemData.innerHTML = itemData.innerHTML.split('/images/').join('/buddy/Demo.Tips/images/');
 
                             var tempItemTemplate = itemTemplate.split('#ItemCode#').join('Item' + i + '_' + j);
                             tempItemTemplate = tempItemTemplate.split('#ItemTitle#').join(itemTitle.innerHTML);
-                            tempItemTemplate = tempItemTemplate.split('#ItemData#').join(dataContent);
+                            tempItemTemplate = tempItemTemplate.split('#ItemData#').join(itemData.innerHTML);
 
                             filledItems += tempItemTemplate;
                         }
