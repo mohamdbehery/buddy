@@ -145,6 +145,24 @@
 		</Item>
 		<Item>
 			<Title>
+				GIT Steps:
+			</Title>
+			<Data>
+				Stage, Commit, and Push to pull request that you previously created. <br />
+				> Git is a distributed version control system but TFS is a centralized VCS, so in GIT, every one has a local copy of the source code and also support branching. <br />
+				> Git Command (git config) has a 3 levels of configuration: (git config --global) which use the global config file to be applied on all users that use this computer, (git config --system) which use the system config file to be applied on all repositories for current user and (git config --local) use use the repository config file to be applied on a particular repository <br />
+				> Every Git Commit contains a complete snapshot of the respo. <br />
+				> Use command (git status) to show the status of your changes, or (git status -s) for short status <br />
+				> Git > local changes > stagging are (local) the stagging are is called (index) > push to remote server <br />
+				> If you want to review the stagged files before commit, use this command (git diff --staged) <br />
+				> To view history of repo activities, use (git log) <br />
+				> The branch is a new commit that pointing to some particular parent (commit in another branch) <br />
+				> The merge is nothing but a new commit that pointing to 2 parents (2 commits in 2 branches) <br />
+				> (git rebase) is simply making the branch pointing to some particular parent branch(commit) <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
 				Hosts file:
 			</Title>
 			<Data>
@@ -3271,7 +3289,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Difference between .Net and .Net Core: 
+				Difference between .Net and .Net Core:
 			</Title>
 			<Data>
 				The .NET Framework supports Windows and Web applications, .NET Core is the new cross-platform and open-source .NET framework to develop applications for all major operating system including Mac, Linux, and Windows.. and it also provides the middleware layer.<br />
@@ -3288,7 +3306,7 @@
 		</Item>
 		<Item>
 			<Title>
-				String interpolation: 
+				String interpolation:
 			</Title>
 			<Data>
 				$”this is {varName}”
@@ -3307,7 +3325,7 @@
 				Difference between I++ and ++I :
 			</Title>
 			<Data>
-				 ++I will return the new value
+				++I will return the new value
 			</Data>
 		</Item>
 		<Item>
@@ -3315,7 +3333,7 @@
 				padRight and padLeft:
 			</Title>
 			<Data>
-				 are used to add characters to the beginning and end of your text
+				are used to add characters to the beginning and end of your text
 			</Data>
 		</Item>
 		<Item>
@@ -3323,7 +3341,7 @@
 				Difference between break and return:
 			</Title>
 			<Data>
-				 The return instruction is used either to return a function value or to terminate the execution of a function.<br />
+				The return instruction is used either to return a function value or to terminate the execution of a function.<br />
 				The break instruction terminates the execution of the loop.
 			</Data>
 		</Item>
@@ -3341,7 +3359,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Inheritance: 
+				Inheritance:
 			</Title>
 			<Data>
 				Parent = new Child()
@@ -3349,7 +3367,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Difference between extend and implement: 
+				Difference between extend and implement:
 			</Title>
 			<Data>
 				extend is inheritance but implement is implementing an interface
@@ -3368,12 +3386,12 @@
 				Generics:
 			</Title>
 			<Data>
-				 path parameters dynamically instead of using overload?
+				path parameters dynamically instead of using overload?
 			</Data>
 		</Item>
 		<Item>
 			<Title>
-				Difference between Boxing and Unboxing: 
+				Difference between Boxing and Unboxing:
 			</Title>
 			<Data>
 				Boxing is the conversion of the value type to an object type whereas, on other hands, the term Unboxing refers to the conversion of the object type to the value type.
@@ -3384,7 +3402,7 @@
 				Implementing base type of generic type:
 			</Title>
 			<Data>
-				
+
 			</Data>
 		</Item>
 		<Item>
@@ -3392,7 +3410,7 @@
 				Threading:
 			</Title>
 			<Data>
-				 allows concurrent programming of two or more parts of the program for maximizing the utilization of the CPU. Each part of a program is called Thread. So, in other words, threads are lightweight processes within a process.
+				allows concurrent programming of two or more parts of the program for maximizing the utilization of the CPU. Each part of a program is called Thread. So, in other words, threads are lightweight processes within a process.
 			</Data>
 		</Item>
 		<Item>
@@ -3400,12 +3418,12 @@
 				MultiThreading:
 			</Title>
 			<Data>
-				 Multithreading in C# is a process in which multiple threads work simultaneously. It is a process to achieve multitasking. It saves time because multiple tasks are being executed at a time. To create multithreaded application in C#, we need to use System.Threding namespace.
+				Multithreading in C# is a process in which multiple threads work simultaneously. It is a process to achieve multitasking. It saves time because multiple tasks are being executed at a time. To create multithreaded application in C#, we need to use System.Threding namespace.
 			</Data>
 		</Item>
 		<Item>
 			<Title>
-				Deadlock in C#: 
+				Deadlock in C#:
 			</Title>
 			<Data>
 				is a situation where two or more threads are frozen in their execution because they are waiting for each other to finish
@@ -3416,7 +3434,7 @@
 				Difference between Thread and Process and Task:
 			</Title>
 			<Data>
-				 A task can have multiple processes happening at the same time. And the process can have at least one thread. <br />
+				A task can have multiple processes happening at the same time. And the process can have at least one thread. <br />
 				Task is preferred that Thread because when you run code using Task you make the ThreadPool create a new thread whenever a thread is available but when you run code using Thread you immediately create a new thread however may be at this time there no available threads
 			</Data>
 		</Item>
@@ -3425,7 +3443,7 @@
 				How to make a specific task\process excuted on a specific CPU:
 			</Title>
 			<Data>
-				
+
 			</Data>
 		</Item>
 		<Item>
@@ -3441,7 +3459,7 @@
 				ESP Enterprise Service Path:
 			</Title>
 			<Data>
-				
+
 			</Data>
 		</Item>
 		<Item>
@@ -3449,7 +3467,753 @@
 				Difference between Parse and Convert:
 			</Title>
 			<Data>
-				 Convert handle null values
+				Convert handle null values
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How system handle function calls:
+			</Title>
+			<Data>
+				by call stack
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What Aggregate method do:
+			</Title>
+			<Data>
+				is a function and is required to group together the values of the multiple rows as the input and returns the output as single value
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between throw, throw(ex) and throws:
+			</Title>
+			<Data>
+				- throw(ex) will reset your stack trace so error will appear from the line where throw(ex) written while throw does not reset stack trace and you will get information about original exception. <br />
+				- throws used in class declaration
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Enumerators:
+			</Title>
+			<Data>
+				is a value data type in C#. It is mainly used to assign the names or string values to integral constants, that make a program easy to read and maintain.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Bitwise AND (&amp;):
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				$ Bitwise Inclusive OR (|):
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				$ Bitwise Exclusive OR (XOR):
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				String manipulation:
+			</Title>
+			<Data>
+				is the string operations that handle those such things can be Length property, ToCharArray(), ToLower(), ToUpper(), IndexOf(), LastIndexOf(), SubString(), CompareTo(), Trim(), TrimEnd(), TrimStart(), StartsWith(), EndsWith(), Split(), Insert(), Remove(), and Replace().
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Destructor:
+			</Title>
+			<Data>
+				like constructor but method name preceded with (~)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Modulus operator:
+			</Title>
+			<Data>
+				%
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				IDisposable interface:
+			</Title>
+			<Data>
+				is an interface that contains a single method, Dispose(), for releasing unmanaged resources, like files, streams, database connections and so on.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is ViewState in .NET?
+			</Title>
+			<Data>
+				preserve the Value of the Page and Controls between round trips. It is a Page-Level State Management technique. View State is turned on by default and normally serializes the data in every control on the page regardless of whether it is actually used during a post-back.<br />
+				You can enable\disable viewstate on the whole page of a particular element
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				In which event of page cycle is the ViewState available?
+			</Title>
+			<Data>
+				After the Init() and before the Page_Load()
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is the difference between Server.Transfer and Response.Redirect?
+			</Title>
+			<Data>
+				In Server.Transfer page processing transfers from one page to the other page without making a round-trip back to the client's browser. This provides a faster response with a little less overhead on the server. The clients url history list or current url Server does not update in case of Server.Transfer.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				if we have class Base and class Child, when we do <code> Base c = new Child();</code> THEN Base constructor run first then child constructor
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				We have to understand Data Structures well because the data structure object you decide to use will affect your code performance
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				To deside what kind of data structures you should use, you need to consider these factors: size of data, is the data fixed or dynamic, how much frequent operations done (cost of operations),
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Data Structures has 2 types:
+			</Title>
+			<Data>
+				Linear Data Structures like Array, Stack, Queue, Linked List and Hierachical Data Structures like Tree and Graphs.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Recursive Function:
+			</Title>
+			<Data>
+				<b>Keep in mind that,</b> Recursive functions is used in most of Data Structures implementation. <br />
+				<b>Recursive Function:</b> a function that call itself, example: Factorial and Fibunacci numbers implementation <br />
+				<code>
+					public int Factorial(int n){ <br />
+					if (n >= 1) { return n * Factorial(n - 1); } <br />
+					else { return 1; } <br />
+					} <br />
+					public int Fibonacci(int n) <br />
+					{ <br />
+					if (n >= 3) { return Fibonacci(n - 1) + Fibonacci(n + 2); } <br />
+					else { return 1; } <br />
+					} <br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Big O
+			</Title>
+			<Data>
+				Big O is simply used to describe the performance of an algorithm, which describe the Time and Space complexity. <br />
+				Big O: is how much the runtime of this code increases as the size of the input increases <br />
+				- Constant O(1): the time doesnt increase by incresing input size. <br />
+				- Linear O(n): the time consumed increase as much as the input increase. <br />
+				- Quadratic O(n^2):
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Code Time Complexity:
+			</Title>
+			<Data>
+				Big O notation, the time complexity measure unit which describes performance which helps us to decide what resource like Hard Disk, RAM or Processor capacity should be used to run the application.
+				O(1) Constant: static input
+				O(log(n)) Logarithmic: finding element in a sorted array with binary search (Binary search in C# Binary search works on a sorted array. The value is compared with the middle element of the array. If equality is not found, then the half part is eliminated in which the value is not there.)
+				O(n) Linear: finding max element in unsorted array
+				O(n log n) Linearithmic: sorting elements in array with merge sort
+				O(n2) Quadratic: sorting array with bubble sort
+				O(n3) Cubic:
+				O(2n) Exponential: find all subsets
+				O(n!) Factorial:
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Code performance is always to Save Time and Save Space, so you need to decide which factor is more important so if you are developing a mobile app then saving space is much important and so on.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Data Structures:
+			</Title>
+			<Data>
+				<b>Array:</b> list of a specific count of elements with a specific data type,<br />
+				Array is a collection of items that should be with a fixed length, and we can't add more numbers to exceed the length BECAUSE, in memory we book a specific number of bytes to insert array values sequentialy so that we may have other variables book the next slots of memory so we can't insert new values beside the old values in memory, because to insert array values we need a bunch of consective bytes.<br />
+				and what about the List (the dynamic array) its working like everytime you add a new value it defines a new array with the length of old + new values and so on<br />
+				Time needed to access an element in array is O(1) constant time because the array elements are stored in a contigious block of memory<br />
+				<br />
+				<b>List:</b> is a collection of objects with the same data type, it has no good memory utilization since it creates a new memory locations for the whole elements every time you add or remove elements.<br />
+				<b>ArrayList:</b> list of elements with dynamic data type<br />
+				<b>LinkedList:</b> every node has 2 locations in memory, one for the node value and another for a pointer to the next node,<br />
+				to access element in the linked list, it takes O(n),<br />
+				Apart from storing linked list elements into memory, we need also another memory slot to save the address of the first element in the linked list (a pointer to head) which called the identity of the linked list.<br />
+				what is distinguish linked list than array is that if you want to add\remove an element to\from the linked list you will just need to reference the next element address in its value and also set the new element's address as reference in the previous element, but in array you will need to shift the index increase\decrease for all elements after\before the element you want to delete\add.<br />
+				So in general linked list need extra memroy for every element to store a reference to the next element, but array need only one slot of memory for every element.<br />
+				<code>
+					public class LinkedTest>T><br />
+					where T : class{<br />
+					public int ListCount(NodeTest>T>head)<br />
+					{<br />
+					int count = 0;<br />
+					NodeTest>T>	currentNode = head;<br />
+					while (currentNode != null)<br />
+					{<br />
+					currentNode = currentNode.Next;<br />
+					count++;<br />
+					}<br />
+					return count;<br />
+					}<br />
+					}<br />
+					public class NodeTest>T>where T : class<br />
+					{<br />
+					public int Value { get; set; }<br />
+					public NodeTest>T> Next { get; set; }<br />
+					}<br />
+				</code>
+				<b>Doubly Linked List:</b> is a normal linked list but each element has 2 references, one for the next node and another for the previous node.<br />
+				<b>Dictionary:</b> list of key, value pairs for a specific key value data types, it talk O(1) time to find an element<br />
+				<b>Hashtable, HashMap:</b> like Dictionary list of key, value pairs for a dynamic key value types, Hash Table: a collection of key-and-value pairs that are organized based on the hash code of the key, which uses the Hash Function to hash the key<br />
+				a methodology for storing array elements in indexes related to its values (do some equations to calculate the element index from its value)<br />
+				<b>HashSet:</b> list of distinct elements (it ignore duplicates)<br />
+				<b>HashMap data structure:</b> like Dictionary (key and value) but with a dynamic data types<br />
+				<b>Stack:</b> LIFO last in first out<br />
+				<b>Queue:</b> FIFO first in first out<br />
+				<b>Most common examples of using Stack data structure is:</b> Function Calls so the last function enter stack is the first one to finish, Also one more example is the Undo function to reverse changes one by one most recently.<br />
+				- Stack and Queue can be implemented using Array or LinkedList<br />
+				<b>Tree data structure</b> is used to store a hierarchical data, where each node has 1 or more childs<br />
+				<b>Binary Tree:</b> is a normal tree where each node has only 2 childs<br />
+				<b>Binary Search Tree (BST):</b> is a binary tree where for every node, all nodes on its right side has value greated than its value and all nodes to the left has value less than its value,, exactly like the Binary Search in general we should have the array sorted so this is the same we assume the tree as a binary search tree if each node in the left is less than its sibling in the right.<br />
+				so finding an element in a binary search tree is just costing O(log n).<br />
+				so if you want to find the minimum value in a BST, you just go to the left as much as it exists (the last element), and the miximum is the last element in the right.<br />
+				<b>Hight of a node:</b> is the number of edges in the longest path from the node to the leaf node.<br />
+				<b>Graph:</b> is a Tree but with no leaves, where the number of nodes equal the number of edges.<br />
+				<b>Directed Graph:</b> where the edges between nodes are in one direction, but the Undirected Graph, the edges have 2 directions.<br />
+				<b>INFO:</b> social networks are a good example for the UnDirected Graph where each node has 2 directions to each other.<br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Popular algorithms you should know:
+			</Title>
+			<Data>
+				<b>Linear Search:</b> It sequentially checks each element of the list until a match is found or the whole list has been searched, it cost O(n)<br />
+				<br />
+				<b>Binary Search:</b> assuming that the elements are sorted, go to the middle point of array and check if the target is greater than the middle then move to the right and repeat:<br />
+				Binary search looks for a particular item by comparing the middle most item of the collection. If a match occurs, then the index of item is returned. If the middle item is greater than the item, then the item is searched in the sub-array to the left of the middle item<br />
+				<br />
+				<b>DFS Depth First Search:</b> is used to find an element in a graph\tree by visiting all graph nodes and exploring all connected nodes as following, it cost O(n):<br />
+				1. visit any node as a start node, and push to STACK.<br />
+				2. loop through the stack:<br />
+				- for current node, explore one of its connected node and check if its not exist in the stack (not visited) then push to the stack otherwise pop from the stack untill you reach this visited node and check the other connected node for this visited node.<br />
+				- repeat the process until the stack become empty<br />
+				<br />
+				<b>BFS Breadth First Search:</b> is used to find an element in a graph\tree by visiting all graph nodes and exploring all connected nodes as following, it cost O(n):<br />
+				1. visit any node as a start node, and push to QUEUE.<br />
+				2. loop through the queue<br />
+				.... for current node, explore all connected nodes by enqueueing them into queue and delete this node<br />
+				.... repeat untill the queue is empty<br />
+				<br />
+				<b>Quick Sort:</b> its a devide and conquer algorithm where every element find its sorted position that follow the below steps:<br />
+				- partition list into 2 sub-arrays by selecting the pivot element:<br />
+				.... consider pivot as the first element.<br />
+				.... loop through elements if found element less than pivot then swap it, until the left and right pointers replaced<br />
+				.... swap the pivot with the last swaped location location (move pivot to its sorted location).<br />
+				.... return the last swaped location as the new pivot<br />
+				- repeat the quickSort again from left to pivot<br />
+				- repeat the quickSort again from pivot to right<br />
+				<br />
+				<b>Merge Sort:</b> based on the Devide and Conquer approach, we devide the list into sub lists until we have a very small lists (1 element) then merge it up (sorted) one by one until merge it all again but in a sorted order, it cost O(n log n)<br />
+				<br />
+				<b>Bubble Sort:</b> loop twice in list elements, so it cost O(n^2)<br />
+				- loop to compare each element with the next one, if the next one is greater, then swap<br />
+				- execlude the last element from the list because it will be already sorted<br />
+				- repeat first step<br />
+				- exclude the last 2 elements, because it will be sorted<br />
+				- repeat this until either excluding all elements or found an iteration without any replacement<br />
+				<br />
+				<b>Selection Sort:</b> simply is foreach element we select the elment that is less than it and swap them, so it cost O(n^2)<br />
+				<br />
+				<b>Insertion Sort:</b> is simply foreach element we insert it in its sorted position, so it cost O(n^2)<br />
+				<br />
+				<b>Prime number:</b> is the numbers that has zero reminder % in only 1 and itself (accept devide by 1 and itself)<br />
+				<br />
+				<b>Factorial:</b><br />
+				<br />
+				<b>Fibonacci numbers:</b> Is a list of numbers where every number is the sum of the two preceding ones.<br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Float, Double and Decimal:
+			</Title>
+			<Data>
+				main difference is the size of fraction <br />
+				float 7 digits of precision <br />
+				double has about 15 digits of precision <br />
+				decimal has about 28 digits of precision <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Parce and ParceExact:
+			</Title>
+			<Data>
+				both converts string to date but ParseExact enable parsing to a particular format.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Reflection:
+			</Title>
+			<Data>
+				is used to retrieve metadata on types at runtime.<br />
+				In using reflection, you get objects of the type "Type" that can be used to represent assemblies, types, or modules. <br />
+				You can use reflection to create an instance of a type dynamically and even invoke methods of the type.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Disadvantages of reflection:
+			</Title>
+			<Data>
+				Performance
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				C# object indexer:
+			</Title>
+			<Data>
+				An indexer is a special type of property that allows a class or a structure to be accessed like an array for its internal collection. C# allows us to define custom indexers, generic indexers, and also overload indexers, An indexer can be defined the same way as property with this keyword and square brackets []<br />
+				<code>
+					class StringDataStore{ <br />
+					private string[] strArr = new string[10]; // internal data storage<br />
+					<br />
+					public string this[int index]<br />
+					{<br />
+					get => strArr[index];<br />
+					set => strArr[index] = value;<br />
+					}<br />
+					}
+				</code><br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Property and Field:
+			</Title>
+			<Data>
+				Property is a member that provides a flexible mechanism to read, write or compute the data of a private field.<br />
+				Field is the private members of a class that contain values specific to the object<br />
+				<code>
+					// this is a field.  It is private to your class and stores the actual data.<br />
+					private string _myField;<br />
+					// this is a property. When accessed it uses the underlying field,<br />
+					// but only exposes the contract, which will not be affected by the underlying field<br />
+					public string MyProperty<br />
+					{<br />
+					get {<br />
+					return _myField;<br />
+					}<br />
+					set {<br />
+					_myField = value;<br />
+					}<br />
+					}
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SOLID Principles :
+			</Title>
+			<Data>
+				an acronym for: <br />
+
+				<b>S (Single Responsibility Principle):</b> class should have responsibility for just a single piece of that program's functionality, it’s not preferred to handle exception inside business class but do it in an external class Exception Handler so this class will have a single responsibility. <br />
+
+				<b>O (Open Close Principle):</b> states "software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification", it’s not preferred to edit class code but add an extension with the new code. <br />
+				The extension here means to implement an extension method or create a new child class, suppose that you have a class (Shape) that has a (CalcArea) method to calculte shape area, this method has a (if shape is circle then do bla bla bla, else id square then do bla bla) and now you want to add more shape to calculate rectangle are then the principle here is not change that class but idealy to create an abstract class (Shape) that has also an abstract method (CalculteArea) and create a class for eac shape to do special implementation for CalculateArea method <br />
+
+				<b>L (Liskov Substitution Principle):</b> the subtype must be substitutable for its base type, so suppose that you have a Rectangle class which has a SetWidth method, and now you want to implement a Square class then you should NOT inherit from Rectangle class to reuse the SetWidth method but idealy to create a base class for both Shape class, it’s not preferred that the child class can’t use all objects of the parent class so you better create a bridge class: <br />
+				<code>
+					public class Bird{ <br />
+					} <br />
+					public class FlyingBirds : Bird{ <br />
+					public void fly(){} <br />
+					} <br />
+					public class Duck : FlyingBirds{} <br />
+					public class Ostrich : Bird{} <br />
+				</code>
+				so FlyingBirds here is the bridge class <br />
+
+				<b>I (interface-segregation principle):</b> (Keep your interface as small as possible) the child class should not implement not related methods of big interface but idealy you should break down the big interface into a small interfaces based on the business, it’s not preferred to add more methods to interface but create a new one in which you add the new needed methods. <br />
+
+				<b>D (Dependency inversion principle):</b> (Depend upon abstractions\interfaces rather than concrete class). High level modules should not depend on low level modules but both should depend on abstractions and those abstractions should not depend on details. <br />
+				It’s not preferred to do this: <br />
+				<code>
+					class Customer : IDiscount, IDatabase <br />
+					{ <br />
+					private IException obj; <br />
+
+					public virtual void Add(int Exhandle) { <br />
+					try { <br />
+					// Database code goes here <br />
+					} <br />
+					catch (Exception ex) { <br />
+					if (Exhandle == 1) { <br />
+					obj = new MyException(); <br />
+					} <br />
+					else { <br />
+					obj = new EmailException(); <br />
+					} <br />
+					obj.Handle(ex.Message.ToString()); <br />
+					} <br />
+					} <br />
+
+					But instead do this: <br />
+					class Customer : IDiscount, IDatabase <br />
+					{ <br />
+					private Ilogger obj; <br />
+					public Customer(ILogger i) <br />
+					{ <br />
+					obj = i; <br />
+					}<br />
+					}<br />
+					IDatabase i = new Customer(new EmailLogger());<br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is dependency injection:
+			</Title>
+			<Data>
+				is a technique whereby one object (or static method) supplies the dependencies of another object, to prevent the high level modules being depends on the low level modules,<br />
+				So this is a way of applying Dependency Inversion principles of SOLID
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Dependency Inversion and Dependency Injection:
+			</Title>
+			<Data>
+				dependency inversion is the principle but dependency injection is a way of applying this principle.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Pass by value\reference
+			</Title>
+			<Data>
+				<b>Pass by reference:</b> When you pass a reference type variable from one method to another, it doesn't create a new copy; instead, it passes the address of the variable. If we now change the value of the variable in a method, it will also be reflected in the calling method.<br />
+				<b>Pass by value:</b> When you pass a value type variable from one method to another method, the system creates a separate copy of a variable in another method, so that if value got changed in the one method won't affect on the variable in another method.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Caching Server Side:
+			</Title>
+			<Data>
+				Caching is a technique where we can store frequently used data <br />
+				Session\User Caching: data is stored at the user level <code> Session["userName"] = "Omar";</code> <br />
+				Application Caching: data stored over the application level <code>HttpContext.Current.Cache.Insert(args);</code> <br />
+				Memory Caching: used for when you want to implement cache in a single process. When the process dies, the cache dies with it. (namespace > System.Runtime.Caching) <code>var cache = MemoryCache.Default; var item = cache.Get("CacheKey"); </code><br />
+				Disk Caching: usually used for caching files on disk <br />
+				Distrbuted Caching: A distributed cache is a cache shared by multiple app servers, typically maintained as an external service to the app servers that access it. A distributed cache can improve the performance and scalability of an ASP.NET Core app, especially when the app is hosted by a cloud service or a server farm. <br />
+				Redis distributed caching: Redis is an open source in-memory data store, which is often used as a distributed cache. You can use Redis locally (using Docker Desktop app), and you can configure an Azure Redis Cache for an Azure-hosted ASP.NET Core app. <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Unit Testing:
+			</Title>
+			<Data>
+				is to validate that each unit of the software code performs as expected
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Data Driven Development (DDD):
+			</Title>
+			<Data>
+				is something that one can make changes to the logic of the program by editing not the code but the data structure. <br />
+				The application has nothing but rules (Engine) . What makes it useful is the data that will flow through it.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Test Driven Development (TDD):
+			</Title>
+			<Data>
+				relying on a testing framework (MS Test, NUnit or XUnit), and writing unit tests before coding to be automated lated
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Domain Driven Development (TDD):
+			</Title>
+			<Data>
+				Simply, the domain is an area of knowledge, so DDD is the concept that the structure and language of software code should match the business domain.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Length of memory allocated for Int data type?
+			</Title>
+			<Data>
+				4 bytes
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to execute a transaction using ADO.NET and EF:
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				If you have a List>int>, Where should it be stored? and If you have 1 million item in this list where do it stored and are we have a limitations in memory?
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How dictionary data type works? How many operations does .net talks to search for an item inside dictionary? and what is the complexity?
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				If you have a memory leackage in IIS, How would you troubleshoot this problem?
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+	</Section>
+	<Section Title="Entity Framework">
+		<Item>
+			<Title>
+				ORM (Object Relational Mapping):
+			</Title>
+			<Data>
+				is a technique that lets you query and manipulate data from a database using an object-oriented paradigm.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between IEnumerable and IQuerable in EF:
+			</Title>
+			<Data>
+				IEnumerable execute select query on server side, load data in-memory on client side and then filter data while IQueryable execute select query on server side with all filters.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between FirstOrDefault and First in EF:
+			</Title>
+			<Data>
+				First() will throw an exception if there is no result data for the supplied criteria, whereas FirstOrDefault() returns a default value (null) if there is no result data.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between SingleOrDefault and Single in EF:
+			</Title>
+			<Data>
+				SingleOrDefault() returns default value of the data type of a collection if a collection is empty, includes more than one element or finds no element or more than one element for the specified condition.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				When write a LINQ query ended with .ToList() > it will return IEnumerable.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Write a left\right\inner join query with LINQ:
+			</Title>
+			<Data>
+				Add this right after join <code>from z in jointable.DefaultIfEmpty()</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Entity Framework is injection safe since it always generates parameterized SQL commands which help to protect our database against SQL Injection.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				DbSet:
+			</Title>
+			<Data>
+				is a typed entity set which is used to perform create, read, update, and delete operations on a particular entity. DbSet is can only be created from a DbContext instance. DbSet does not support the Entity SQL methods.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to execute plain SQL in EF6?
+			</Title>
+			<Data>
+				<code>
+					DbSet.SqlQuery() <br />
+					DbContext.Database.SqlQuery() <br />
+					DbContext.Database.ExecuteSqlCommand()
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How does EF support Transaction?
+			</Title>
+			<Data>
+				In EF, whenever you execute SaveChanges() to insert, update or delete data into the database, it wraps that operation in a transaction. So, you don’t need to open a transaction scope explicitly.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is the purpose of a DBContext class?
+			</Title>
+			<Data>
+				DbContext as the database connection and a set of tables, and DbSet as a representation of the tables themselves. The DbContext allows you to link your model properties (presumably using the Entity Framework) to your database with a connection string.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				EF uses the Disconnected mode while connecting to DB.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				EF types of loading:
+			</Title>
+			<Data>
+				<b>Lazy Loading:</b> default behavior which retrieves all related entities, it can be disabled by adding the below in the constructor of Entities class <br />
+				<code>this.Configuration.LazyLoadingEnabled = false;</code>
+				<b>Eager Loading:</b> <code>entity.Include(x => x.SubEntity)</code>
+				<b>Explicit Loading:</b> Use the Load() method to load related entities explicitly.
+				<code>Context.Entry(entityObject).Reference(x => x.subEntity).Load();</code>
+			</Data>
+		</Item>
+	</Section>
+	<Section Title="MVC">
+		<Item>
+			<Title>
+				MVC Life Cycle: 
+			</Title>
+			<Data>
+				Request > Controller > Action Excution > Result Excution > View Engine > Result Excution > Response
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				MVC Filters types and order of executing:
+			</Title>
+			<Data>
+				Authorization filters, Action filters, Result filters, Exception filters
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between ViewBag, ViewData and TempData:
+			</Title>
+			<Data>
+				ViewBag and ViewData are used to pass the data from Controller action to View and TempData is used to pass the data from action to another action or one Controller to another Controller.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What exactly the use of ViewModel in MVC: 
+			</Title>
+			<Data>
+				to encapsulate the multiple entities into single entity. It is basically a combination of data models into single object and rendering by the view. Sometimes it is required to show the multiple entities data on view which is coming from different data model classes.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is MVVM:
+			</Title>
+			<Data>
+				  is an architectural pattern that separate the development of the graphical user interface from the development of the business logic or back-end logic so that the view is not dependent on any specific model platform.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				difference between Temp data, View, and View Bag?
+			</Title>
+			<Data>
+				<b>Temp data:</b> It helps to maintain data when you shift from one controller to other controller. <br />
+				<b>View data:</b> It helps to maintain data when you move from controller to view <br />
+				<b>View Bag:</b> It's a dynamic wrapper around view data <br />
+			</Data>
+		</Item>
+	</Section>
+	<Section Title="SQL">
+		<Item>
+			<Title>
+				SSRS, SSIS
+			</Title>
+			<Data>
+				<b>SQL Server Integration Services (SSIS):</b> is a component of the Microsoft SQL Server database software that can be used to perform a broad range of data integration and data transformation tasks.<br />
+				It is basically an ETL (Extract, Transform and Load) tool part of the Microsoft Business Intelligence suit that is mainly used to achieve Data Integration.<br />
+				<b>SQL Server Reporting Services (SSRS):</b> is a solution that customers deploy on their own premises for creating, publishing, and managing reports, then delivering them to the right users in different ways,  whether that’s viewing them in web browser, on their mobile device, or as an email in their in-box.<br />
+				<b>SSRS</b> is a reporting software that allows you to produce formatted reports with tables in the form of data, graph, images, and charts. These reports are hosted on a server that can be executed any time using parameters defined by the users. It is part of Microsoft SQL Server Services suite.<br />
+				You first create the report itself (.rdl) by desiging it and provide the data source (db connection) and the data set (query or stored procedure) and then configure the subscription, all of this after configuring the SSRS reporting server and configuring the mail settings, from the SQL Server you can connect to thr Reporting Server and click server properities to get the URL and paste this URL in VS > project properities > Target ServerURL and then right click on project and choose deploy (dont forget to Run As Admin), to view the report open the Web Portal url in IE with Run As Admin<br />
 			</Data>
 		</Item>
 	</Section>
