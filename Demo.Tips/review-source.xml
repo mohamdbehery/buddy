@@ -2375,13 +2375,13 @@
 				</code><br />
 				will return this<br />
 				script<br />
-					{["some string 1", "some data", "whatever data"]}<br />
+				{["some string 1", "some data", "whatever data"]}<br />
 				script<br />
 				So to be able to handle this response we path a callback parameter so the server will return data as below<br />
 				script.src = 'http://www.someWebApiServer.com/some-data?callback=my_callback';<br />
 				will return<br />
 				script<br />
-					my_callback({["some string 1", "some data", "whatever data"]});<br />
+				my_callback({["some string 1", "some data", "whatever data"]});<br />
 				script<br />
 				so this is the JSONP is simply pass a callback parameter when calling api from script tag to overcome domain policy.<br />
 			</Data>
@@ -2485,7 +2485,7 @@
 	<Section Title="C#.NET and OOP">
 		<Item>
 			<Title>
-				Concrete class: 
+				Concrete class:
 			</Title>
 			<Data>
 				is a class that has an implementation for all of its methods
@@ -2493,7 +2493,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				Assembly > Namespace > Class > Props and Methods
@@ -2501,7 +2501,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Class 
+				Class
 			</Title>
 			<Data>
 				is a blue print that you create objects from, so that you define props in class and assign these props values while instantiating it (creating an object), and also you need to make this assignment in class constructor for the mandatory props so that you will defintly pass it when you create object.
@@ -2509,7 +2509,7 @@
 		</Item>
 		<Item>
 			<Title>
-				AssemblyInfo.cs 
+				AssemblyInfo.cs
 			</Title>
 			<Data>
 				is containing all data related to your assembly like Title, Desc, CopyRight, TradeMark and Version
@@ -2517,7 +2517,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Reserved Bytes for data types: 
+				Reserved Bytes for data types:
 			</Title>
 			<Data>
 				bool: 1, int: 4, string: 4, float: 4, double: 8, decimal: 16
@@ -2525,7 +2525,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				By default the C# compiler treat number as double so to prevent this we can add a suffix (f) to the number like this float number = 12.45f;
@@ -2533,7 +2533,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				If you have to inherit from BaseClass and interface you should put the BaseClass first like this public class ChildClass : BaseClass, IClass (not the oposite)
@@ -2559,7 +2559,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Trusted Connection in Connection String 
+				Trusted Connection in Connection String
 			</Title>
 			<Data>
 				If you specify either Trusted_Connection=True; or Integrated Security=SSPI; or Integrated Security=true; in your connection string THEN you have Windows Authentication happening. Any user id= setting in the connection string will be ignored
@@ -2567,7 +2567,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Why using static keyword: 
+				Why using static keyword:
 			</Title>
 			<Data>
 				means something which cannot be instantiated. You cannot create an object of a static class and cannot access static members using an object
@@ -2575,7 +2575,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Data-Transfer-Object (DTO) 
+				Data-Transfer-Object (DTO)
 			</Title>
 			<Data>
 				is used to exchange data between different parts of an application <br />
@@ -2584,7 +2584,7 @@
 		</Item>
 		<Item>
 			<Title>
-				C# Extension method: 
+				C# Extension method:
 			</Title>
 			<Data>
 				allows you to add new methods in the existing class or in the structure without modifying the source code of the original type <br />
@@ -2593,7 +2593,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Lock keyword: 
+				Lock keyword:
 			</Title>
 			<Data>
 				(used in multithreaded applications to ensure that the current thread executes a block of code to completion without interruption by other threads.)
@@ -2601,7 +2601,7 @@
 		</Item>
 		<Item>
 			<Title>
-				.Net Sitecore: 
+				.Net Sitecore:
 			</Title>
 			<Data>
 				is a leading digital experience software used by organisations globally to create seamless, personalised digital experiences. Sitecore is an integrated platform powered by . net CMS, commerce and digital marketing tools.
@@ -2609,7 +2609,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Mock object: 
+				Mock object:
 			</Title>
 			<Data>
 				(simulate the behavior of a real object)
@@ -2617,7 +2617,7 @@
 		</Item>
 		<Item>
 			<Title>
-				SonarLint: 
+				SonarLint:
 			</Title>
 			<Data>
 				is a code analyzer.
@@ -2625,7 +2625,7 @@
 		</Item>
 		<Item>
 			<Title>
-				HTTP Handlers: 
+				HTTP Handlers:
 			</Title>
 			<Data>
 				When a client makes a request for a resource located on the server in an ASP.NET application, each request is handled by the HTTP Handlers. <br />
@@ -2644,7 +2644,7 @@
 		</Item>
 		<Item>
 			<Title>
-				.Net Core Middleware: 
+				.Net Core Middleware:
 			</Title>
 			<Data>
 				is nothing but a component (class) which is executed on every request in ASP.NET Core application. In the classic ASP.NET, HttpHandlers and HttpModules were part of request pipeline. Middleware is like HttpHandlers and HttpModules where both needs to be configured and executed in each request.
@@ -2654,7 +2654,7 @@
 		</Item>
 		<Item>
 			<Title>
-				What is OOP and 4 concepts:			
+				What is OOP and 4 concepts:
 			</Title>
 			<Data>
 				OOP is a way of writing computer programs using the idea of "objects" to represent data and methods. <br />
@@ -2668,7 +2668,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Interface: 
+				Interface:
 			</Title>
 			<Data>
 				is a collection of abstract methods and doesn’t have constructor
@@ -2676,7 +2676,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Simple definition for Interface: 
+				Simple definition for Interface:
 			</Title>
 			<Data>
 				for example the company needs a Developer with a specific skills Not need (Mohamed) so in any time the company may replace Mohamed with any other Developer that has these skills so the Interface here is the Developer Skills as a Contract.
@@ -2684,7 +2684,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				Interface objects should not have access modifiers in signature, just return type, name and parameters
@@ -2692,7 +2692,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				the class that implement interface should have the implemented methods as public
@@ -2700,7 +2700,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				static class should not have a constructor because it cannot be instantiated.
@@ -2708,7 +2708,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				override keyword is used in either implementing a abstract method in the base class or overriding a method in base class that has virtual in its signature.
@@ -2716,7 +2716,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				No difference between Person person1 = new Person{ Name = ""}; AND Person person1 = new Person(){ Name = ""};
@@ -2724,7 +2724,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Overloading 
+				Overloading
 			</Title>
 			<Data>
 				can be acheived by difference in return type as long as we have a difference in parameters.
@@ -2732,7 +2732,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Early Binding: 
+				Early Binding:
 			</Title>
 			<Data>
 				is the static binding in which recognize and check the methods, or properties during compile time. In this binding, the compiler already knows about what kind of object it is and what are the methods or properties it holds.
@@ -2748,7 +2748,7 @@
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				Function overloading is based on number\types\order of parameters
@@ -2756,7 +2756,7 @@
 		</Item>
 		<Item>
 			<Title>
-				Difference between abstract and interface: 
+				Difference between abstract and interface:
 			</Title>
 			<Data>
 				interface is not a class. <br />
@@ -2767,19 +2767,689 @@
 		</Item>
 		<Item>
 			<Title>
-				Difference between Class and Struct: 
+				Difference between Class and Struct:
 			</Title>
 			<Data>
-				Structs are value types while classes are reference types. <br /> 
+				Structs are value types while classes are reference types. <br />
 				structs can be instantiated without using a new operator. A struct cannot inherit from another struct or class, and it cannot be the base of a class
 			</Data>
 		</Item>
 		<Item>
 			<Title>
-				INFO: 
+				INFO:
 			</Title>
 			<Data>
 				When running code, every function reserve a memory location in the stack so any varaible inside this function should be stored in this memory location, so this is how the function scope variables are no longer available as soon as the compiler finished the function execution and go outside it because at that time it should be deleted from memory.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				The memory of Stack got deallocated as soon as the function ended but in Heap its still as long as the application is running.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				When any application start, the memory manager auto reserve a specific size in Stack for it, but the Heap size can vary during the runtime of the application (Heap is a free pool of memory or dynamic memory), so the Stack memory slots auto-cleared as soon as the function finished calling, but the heap memory cleaning is managed by the garbage collector.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Memory Leak can happen when we inproperly use Heap so there is a lot of unused or unreferenced blocks in the Heap, but for Stack you may have StackOverFlow error
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				You allocate momory in Heap whenever you use (new) keyword.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Memory has different parts: Stack, Heap and Global, Global is used to save the global objects (not function scope)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Any recursive function should have a condition to end the recursion.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				In mathematical expressions, Multiplication\devision has a priority before addition\substraction.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between value type and reference type:
+			</Title>
+			<Data>
+				A Value Type holds the data within its own memory allocation (in stack) and a Reference Type contains a pointer (in stack) to another memory location that holds the real data (in heap).
+				Stack memory is auto deleted as soon as compiler go out of scope of this data, but Heap memory is managed by GC Garbage Collector.<br />
+				Reference Type variables are stored in the heap and its reference pointer stored in the stack while Value Type variables are stored in the stack.
+				<code>
+					User objUser = new User()<br />
+					{<br />
+					UserID = 1,<br />
+					Name = "Jeorge"<br />
+					};<br />
+
+					ChangeName(objUser);<br />
+					Console.WriteLine(objUser.Name);// Jon Doe<br />
+
+					public static void ChangeName(User user)
+					{<br />
+					user.Name = "Jon Doe";<br />
+					}<br />
+
+					But if we changed ChangeName function to<br />
+
+					public static void ChangeName(User user)
+					{<br />
+					user = null;<br />
+					}<br />
+					Console.WriteLine(objUser.Name);// Jeorge<br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Despite the String is a reference type it passed by value, What is the secret?
+			</Title>
+			<Data>
+				Because a copy of its reference that’s passed by value
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Stack and Heap:
+			</Title>
+			<Data>
+				Objects allocated on the stack are available only inside of a stack frame (execution of a method), while objects allocated on the heap can be accessed from anywhere
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Data Structure in C#:
+			</Title>
+			<Data>
+				is a particular way of organizing data in a computer so that it can be used effectively.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Collections?
+			</Title>
+			<Data>
+				are classes that specialized classes for data storage and retrieval. These classes provide support for stacks, queues, lists, and hash tables.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Generics?
+			</Title>
+			<Data>
+				allow you to write a class or method that can work with any data type. <br />
+				<code>
+					static void Swap>T>(ref T lhs, ref T rhs) { <br />
+					T temp; <br />
+					temp = lhs; <br />
+					lhs = rhs; <br />
+					rhs = temp; <br />
+					}<br />
+				</code>
+				reduce code redunduncy and increase performance, instead of using objects that make us do boxing and unboxing, we use generics to pass the type:<br />
+				<code>
+					public calss GenericClass>T> where T : IComparable{ <br />
+					public T Add(T input1, T input2){ <br />
+					} <br />
+					}<br />
+				</code>
+				So, here we have applied generics constraint for T to accept any type that implement IComparable, also we can add more constraints (separated by comma)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Generic Collections?
+			</Title>
+			<Data>
+				A generic collection is strongly typed (you can store one type of objects into it) so that we can eliminate runtime type mismatches, it improves the performance by avoiding boxing and unboxing.<br />
+				<code>
+					class Check>T>
+					{ <br />
+					// Gerefic function to compare all data types <br />
+					public bool Compare(T var1, T var2) <br />
+					{
+					if (var1.Equals(var2)) <br />
+					{
+					return true; <br />
+					} <br />
+					else
+					{ <br />
+					return false; <br />
+					} <br />
+					} <br />
+					} <br />
+					Check>int>	obj1 = new Check>int>(); <br />
+					bool intResult = obj1.Compare(2, 3);
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Event handlers:
+			</Title>
+			<Data>
+				are nothing more than methods that are invoked through delegates
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Delegates:
+			</Title>
+			<Data>
+				Are nothing but a function pointer<br />
+				It's an agreement\contract between publisher and subscriber, so simply if you want to do some generic functionality right after finishing executing some task then implement a Delegate Evenet for example:<br />
+				* so the idea here is that you have the ability to add any other functionality to be executed after finishing video decoder, <br />
+				<code>
+					public class MyApp{ <br />
+					public void MyMethod(){ <br />
+					VideoDecoder decoder = new VideoDecoder(); //publisher <br />
+					Notifier notifier = new Notifier(); //subscriber <br />
+					<br />
+					// let the notifier subscribe to the VideDecoded event <br />
+					decoder.VideoDecoded += notifier.OnVideoDecoded; <br />
+					decoder.Decode(); <br />
+					} <br />
+					<br />
+					public class VideoDecoder{ // publisher <br />
+					public event EventHandler VideoDecoded; <br />
+					<br />
+					public void Decode(){ <br />
+					// decoding... <br />
+					} <br />
+					protected void OnVideoDecoded()
+					{ <br />
+					if (VideoDecoded != null) <br />
+					VideoDecoded(this, EventArgs.Empty); <br />
+					} <br />
+					} <br />
+					<br />
+					public class Notifier{ // subscriber <br />
+					public void OnVideoDecoded()
+					{ <br />
+					SendMail(); <br />
+					} <br />
+					<br />
+					public void SendMail(){ <br />
+					// sending mail... <br />
+					} <br />
+					} <br />
+					} <br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to call several methods in one shot:
+			</Title>
+			<Data>
+				Using Task await (asynchronous threading) Or  using delegate <br />
+				<code>
+					delegate int deleg(int x);<br />
+					deleg delegCall = function1Name;<br />
+					delegCall += function2Name;<br />
+					delegCall(params if there)
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between ref and out keywords:
+			</Title>
+			<Data>
+				ref tells the compiler that the object is initialized before entering the function, while out tells the compiler that the object will be initialized inside the function.<br />
+				* ref is two-ways, out is out-only. <br />
+				* method must set the out variable before returning.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between == and string.Equals:
+			</Title>
+			<Data>
+				string.Equals compares the content itself but == compares the reference address
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between string and stringBuilder:
+			</Title>
+			<Data>
+				string Builder represent a mutable string of characters.<br /> So String objects are immutable but String Builder is the mutable string type. It will not create a new modified instance of the current string object but do the modifications in the existing string object.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between var and dynamic:
+			</Title>
+			<Data>
+				var is a statically typed variable. It results in a strongly typed variable, in other words the data type of these variables are inferred at compile time. ... dynamic are dynamically typed variables. This means, their type is inferred at run-time and not the compile time in contrast to var type.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between &amp; and &amp;&amp;:
+			</Title>
+			<Data>
+				&amp;&amp; evaluates the left side of the operation, if it's true, it continues and evaluates the right side. <br />
+				&amp; is bitwise AND operator comparing bits of each operand.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between sync and async:
+			</Title>
+			<Data>
+				Synchronization means two or more operations happen sequentially. Asynchronous means two or more operations are running in different contexts (thread) so that they can run concurrently and do not block each other.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Why use async await:
+			</Title>
+			<Data>
+				Suppose that you have a method with 3 parts, and the 3rd part need the result of the 1st, also you don't want the 2nd to wait for the 1st:<br />
+				<code>
+					public async Task MyMethodAsync() {<br />
+					Task>int> longRunningTask = LongRunningOperationAsync();<br />
+					// independent work which doesn't need the result of LongRunningOperationAsync can be done here<br />
+
+					//and now we call await on the task<br />
+					int result = await longRunningTask;<br />
+					//use the result Console.WriteLine(result);<br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Refactoring:
+			</Title>
+			<Data>
+				is the process of changing the code structure after we complete the writing of the code to increase readability and easy maintenance of the code. Refactoring is done by changing the internal structure of the code without changing the external behavior of the code block.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				HangFire:
+			</Title>
+			<Data>
+				An easy way to perform background processing in .NET and .NET Core applications.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Abstract class doesn't allow us to instantiate it but inherit.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Abstract class:
+			</Title>
+			<Data>
+				What if you have 2 different class with the same target like SQLDataAccess and OracleDataAccess, then the optimum way to design it like below: <br />
+				like this we have implemented the common methods only one time and give the ability to the child classes to override the methods that they have a difference in implementation. <br />
+				Also, if you want to give the ability (as optional) to the child classes to override the LoadConnectionString method just put (virtual) keywaord in its signature: <br />
+				<code>
+					public abstract class DataAccess{ <br />
+					public void LoadConnectionString(){ <br />
+					.... <br />
+					} <br />
+					public abstract void LoadData(); <br />
+					public abstract void SaveData(); <br />
+					} <br />
+					<br />
+					public class SQLDataAccess: DataAccess{ <br />
+					public override void LoadData(){ <br />
+					} <br />
+					public override void SaveData(){ <br />
+					} <br />
+					} <br />
+
+					public class OracleDataAccess: DataAccess{ <br />
+					public override void LoadData(){ <br />
+					} <br />
+					public override void SaveData(){ <br />
+					} <br />
+					} <br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				If you have more than 1 constructor and you want to call one from another (like that the base constructor will run first): <br />
+				<code>
+					public class Customer{ <br />
+					public int Id; <br />
+					public string Name; <br />
+					public Order _order; <br />
+					<br />
+					public Customer(){ <br />
+					this.Id = 1; <br />
+					} <br />
+					<br />
+					public Customer(string name): this(){ <br />
+					this.Name = name; <br />
+					this._order = new Order{ <br />
+					Id = this.Id, <br />
+					Name = this.Name <br />
+					}; <br />
+					} <br />
+					}
+				</code> <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Authentication Types: Anonymous, Basic, Forms and Windows > difference?
+			</Title>
+			<Data>
+				ASP.NET provides two main ways to secure your web applications. They are - Windows authentication and Forms authentication. Windows authentication uses windows users names and passwords to authenticate them where as Forms authentication typically uses user ids and passwords stored in some database.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Using operator:
+			</Title>
+			<Data>
+				The using statement defines a scope at the end of which an object will be disposed. The using directive creates an alias for a namespace or imports types defined in other namespaces. The using static directive imports the members of a single class.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				When to use Struct:
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				.NET Authentication:
+			</Title>
+			<Data>
+				<code>using Microsoft.Owin.Security.OAuth;</code>
+				In <code>startup.Auth.cs</code>
+				<code>
+					static Startup() { <br />
+					OAuthOptions = new OAuthAuthorizationServerOptions() { <br />
+					AllowInsecureHttp = true, <br />
+					TokenEndpointPath = new PathString("/token"), <br />
+					AccessTokenExpireTimeSpan = TimeSpan.FromDays(360), <br />
+					Provider = new OAuthAppProvider() <br />
+					}; <br />
+					} <br />
+				</code> <br />
+				> By creating a class that inherits from OAuthAuthorizationServerProvider to override 2 methods: <br />
+				ValidateClientAuthentication: <br />
+				GrantResourceOwnerCredentials: in which validate the client credentials (i.e. username and password). If it found the credentials are valid then create ClaimsIdentity object to set some user’s data\claims using ClaimType enums including ClaimType.Role to be used in Authenticate(Role = “”), then only it generates the access token. The client then using this access token can access the authorized resources from the Resource Server. <br />
+				> By calling /token and pass the data {username: ‘’, password: ‘’, grant_type = 'password'} to authenticate user and return his data. <br />
+				https://dotnettutorials.net/lesson/token-based-authentication-web-api/
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				If you want to segregate two interfaces without repeat members you can do this:
+				<code>
+					public interface IProduct{ <br />
+					void A(); <br />
+					void B(); <br />
+					} <br />
+					public interface IClothes{ <br />
+					void C(); <br />
+					} <br />
+					public class Dress: IClothes{ <br />
+					} <br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Complexity analysis:
+			</Title>
+			<Data>
+				is a rough approximation of the number of steps necessary to execute an algorithm.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				ADO.NET:
+			</Title>
+			<Data>
+				is a set of classes (a framework) to interact with data sources such as databases and XML files. It allows us to connect to underlying data or databases. It has classes and methods to retrieve and manipulate data.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is cloud-computing systems:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				(IOC) Inventory of control (.NET Core):
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between .Net and .Net Core: 
+			</Title>
+			<Data>
+				The .NET Framework supports Windows and Web applications, .NET Core is the new cross-platform and open-source .NET framework to develop applications for all major operating system including Mac, Linux, and Windows.. and it also provides the middleware layer.<br />
+				And Web.Config becomes appsettings.json as JSON instead of XML.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				UML: (Unified Modeling Language)
+			</Title>
+			<Data>
+				is a standardized general-purpose modeling language in the field of object-oriented software engineering .It is a visual language for specifying, constructing, and documenting the artifacts of systems.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				String interpolation: 
+			</Title>
+			<Data>
+				$”this is {varName}”
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Constructor shouldn’t have a return type.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between I++ and ++I :
+			</Title>
+			<Data>
+				 ++I will return the new value
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				padRight and padLeft:
+			</Title>
+			<Data>
+				 are used to add characters to the beginning and end of your text
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between break and return:
+			</Title>
+			<Data>
+				 The return instruction is used either to return a function value or to terminate the execution of a function.<br />
+				The break instruction terminates the execution of the loop.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				C# Access Modifiers:
+			</Title>
+			<Data>
+				<b>Public:</b> accessible from everywhere in our project.<br />
+				<b>Private:</b> accessible only inside a class or a structure.<br />
+				<b>Protected:</b> implies that the object is accessible inside the class and in all classes that derive from that class.<br />
+				<b>Internal:</b> keyword specifies that the object is accessible only inside its own assembly<br />
+				<b>Protected internal:</b> we can access the protected internal member only in the same assembly or in a derived class in other assemblies (projects)<br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Inheritance: 
+			</Title>
+			<Data>
+				Parent = new Child()
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between extend and implement: 
+			</Title>
+			<Data>
+				extend is inheritance but implement is implementing an interface
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Yeild return:
+			</Title>
+			<Data>
+				The yield keyword signals to the compiler that the method in which it appears is an iterator block so it will customize iteration through a collection without creating a temporary collection so it should return IEnumerable collection
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Generics:
+			</Title>
+			<Data>
+				 path parameters dynamically instead of using overload?
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Boxing and Unboxing: 
+			</Title>
+			<Data>
+				Boxing is the conversion of the value type to an object type whereas, on other hands, the term Unboxing refers to the conversion of the object type to the value type.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Implementing base type of generic type:
+			</Title>
+			<Data>
+				
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Threading:
+			</Title>
+			<Data>
+				 allows concurrent programming of two or more parts of the program for maximizing the utilization of the CPU. Each part of a program is called Thread. So, in other words, threads are lightweight processes within a process.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				MultiThreading:
+			</Title>
+			<Data>
+				 Multithreading in C# is a process in which multiple threads work simultaneously. It is a process to achieve multitasking. It saves time because multiple tasks are being executed at a time. To create multithreaded application in C#, we need to use System.Threding namespace.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Deadlock in C#: 
+			</Title>
+			<Data>
+				is a situation where two or more threads are frozen in their execution because they are waiting for each other to finish
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Thread and Process and Task:
+			</Title>
+			<Data>
+				 A task can have multiple processes happening at the same time. And the process can have at least one thread. <br />
+				Task is preferred that Thread because when you run code using Task you make the ThreadPool create a new thread whenever a thread is available but when you run code using Thread you immediately create a new thread however may be at this time there no available threads
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to make a specific task\process excuted on a specific CPU:
+			</Title>
+			<Data>
+				
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				interface can’t be implemented by abstract class
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				ESP Enterprise Service Path:
+			</Title>
+			<Data>
+				
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Parse and Convert:
+			</Title>
+			<Data>
+				 Convert handle null values
 			</Data>
 		</Item>
 	</Section>
