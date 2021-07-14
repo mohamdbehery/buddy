@@ -2491,5 +2491,296 @@
 				is a class that has an implementation for all of its methods
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				Assembly > Namespace > Class > Props & Methods
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Class 
+			</Title>
+			<Data>
+				is a blue print that you create objects from, so that you define props in class and assign these props values while instantiating it (creating an object), and also you need to make this assignment in class constructor for the mandatory props so that you will defintly pass it when you create object.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				AssemblyInfo.cs 
+			</Title>
+			<Data>
+				is containing all data related to your assembly like Title, Desc, CopyRight, TradeMark and Version
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Reserved Bytes for data types: 
+			</Title>
+			<Data>
+				bool: 1, int: 4, string: 4, float: 4, double: 8, decimal: 16
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				By default the C# compiler treat number as double so to prevent this we can add a suffix (f) to the number like this float number = 12.45f;
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				If you have to inherit from BaseClass and interface you should put the BaseClass first like this public class ChildClass : BaseClass, IClass (not the oposite)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How compiler deal with C# code?
+			</Title>
+			<Data>
+				The C# compiler compiles the C# source code into the module, which is finally converted into the assembly. The assembly contains the Intermediate Language (IL) code along with the metadata information about the assembly.<br />
+				The common language runtime (CLR) works with the assembly. It loads the assembly and converts it into the native code to execute the assembly.<br />
+				Then this native code is executed by the Operating system and the output will shows according to your requirement.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Keep your code simple, and don't do over-engineering.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Trusted Connection in Connection String 
+			</Title>
+			<Data>
+				If you specify either Trusted_Connection=True; or Integrated Security=SSPI; or Integrated Security=true; in your connection string THEN you have Windows Authentication happening. Any user id= setting in the connection string will be ignored
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Why using static keyword: 
+			</Title>
+			<Data>
+				means something which cannot be instantiated. You cannot create an object of a static class and cannot access static members using an object
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Data-Transfer-Object (DTO) 
+			</Title>
+			<Data>
+				is used to exchange data between different parts of an application <br />
+				Domain objects (DO) can have logic (depending on whether you are using domain-driven design or have anemic data model) and they are usually related to the database structure.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				C# Extension method: 
+			</Title>
+			<Data>
+				allows you to add new methods in the existing class or in the structure without modifying the source code of the original type <br />
+				* should be implemented in a static class and the method should have this as 1st parameter followed by class name and object (binding parameter)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Lock keyword: 
+			</Title>
+			<Data>
+				(used in multithreaded applications to ensure that the current thread executes a block of code to completion without interruption by other threads.)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				.Net Sitecore: 
+			</Title>
+			<Data>
+				is a leading digital experience software used by organisations globally to create seamless, personalised digital experiences. Sitecore is an integrated platform powered by . net CMS, commerce and digital marketing tools.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Mock object: 
+			</Title>
+			<Data>
+				(simulate the behavior of a real object)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SonarLint: 
+			</Title>
+			<Data>
+				is a code analyzer.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				HTTP Handlers: 
+			</Title>
+			<Data>
+				When a client makes a request for a resource located on the server in an ASP.NET application, each request is handled by the HTTP Handlers. <br />
+				It is an extension based processor and responsible for fulfilling requests from a browser depending on file extensions. When HttpHandler receives any request from browser, it checks the extension to see if it can handle that request and performs some predefined steps to respond that request. <br />
+				So your custom HTTPHandler should implement 2 members of IHTTPHandler interface: <br />
+				<b>ProcessRequest:</b>	Used to catch and fulfill your response of Http Requests. <br />
+				<b>IsReusable:</b> To check the reusability of same instance handler with a new request of same type. <br />
+				<code>start add verb="*" path="*.text" type=" ExampleHandler.Handlerclass, ExampleHandler "</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Big Data Types in .Net
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				.Net Core Middleware: 
+			</Title>
+			<Data>
+				is nothing but a component (class) which is executed on every request in ASP.NET Core application. In the classic ASP.NET, HttpHandlers and HttpModules were part of request pipeline. Middleware is like HttpHandlers and HttpModules where both needs to be configured and executed in each request.
+				We can configure middleware in the Configure method of the Startup class using IApplicationBuilder instance.
+				The request pipeline can have multiple middleware components (classes), Each middleware component in the request pipeline is responsible for invoking the next component in the pipeline.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is OOP and 4 concepts:			
+			</Title>
+			<Data>
+				OOP is a way of writing computer programs using the idea of "objects" to represent data and methods. <br />
+				<b>Inheritance:</b> a class can “inherit” the characteristics of another general class. <br />
+				<b>Abstraction:</b> (pure class for deneric purpose) define some common behavior that can be inherited by multiple subclasses, without implementing the entire class. <br />
+				<b>Encapsulation:</b> binds the member function and data member into a single class <br />
+				<b>Polymorphism:</b> This is the ability of an object to perform in a wide variety of ways, it has 2 types: <br />
+				- <b>Dynamic polymorphism</b> (runtime time) > overriding (allows a subclass to override a specific implementation of a method already issued by one of its super-classes) <br />
+				- <b>Static polymorphism</b> (compile time) > overloading (defining several methods at the same time with the same method name but different in number, type or order of parameters)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Interface: 
+			</Title>
+			<Data>
+				is a collection of abstract methods and doesn’t have constructor
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Simple definition for Interface: 
+			</Title>
+			<Data>
+				for example the company needs a Developer with a specific skills Not need (Mohamed) so in any time the company may replace Mohamed with any other Developer that has these skills so the Interface here is the Developer Skills as a Contract.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				Interface objects should not have access modifiers in signature, just return type, name and parameters
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				the class that implement interface should have the implemented methods as public
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				static class should not have a constructor because it cannot be instantiated.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				override keyword is used in either implementing a abstract method in the base class or overriding a method in base class that has virtual in its signature.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				No difference between Person person1 = new Person{ Name = ""}; AND Person person1 = new Person(){ Name = ""};
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Overloading 
+			</Title>
+			<Data>
+				can be acheived by difference in return type as long as we have a difference in parameters.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Early Binding: 
+			</Title>
+			<Data>
+				is the static binding in which recognize and check the methods, or properties during compile time. In this binding, the compiler already knows about what kind of object it is and what are the methods or properties it holds.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Late Binding:
+			</Title>
+			<Data>
+				is the dynamic binding in which the compiler does not know about what kind of object it is and what are the methods or properties it holds, here the objects are dynamic objects. The type of the object is decided on the bases of the data it holds on the right-hand side during run-time.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				Function overloading is based on number\types\order of parameters
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between abstract and interface: 
+			</Title>
+			<Data>
+				interface is not a class. <br />
+				The main difference between them is that a class can implement more than one interface but can only inherit from one abstract class, Since C# doesn't support multiple inheritance, interfaces are used to implement multiple inheritance. <br />
+				Another thing that interface can’t contain any implemented methods but abstract can have implemented methods and not implemented methods (with abstract in signature) so when a class implement an abstract it should override all its abstract methods. <br />
+				Abstract class cannot be instantiated because at least one method has not been implemented.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Class and Struct: 
+			</Title>
+			<Data>
+				Structs are value types while classes are reference types. <br /> 
+				structs can be instantiated without using a new operator. A struct cannot inherit from another struct or class, and it cannot be the base of a class
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO: 
+			</Title>
+			<Data>
+				When running code, every function reserve a memory location in the stack so any varaible inside this function should be stored in this memory location, so this is how the function scope variables are no longer available as soon as the compiler finished the function execution and go outside it because at that time it should be deleted from memory.
+			</Data>
+		</Item>
 	</Section>
 </Sections>
