@@ -4036,6 +4036,82 @@
 
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				OWASP (Open Web Application Security Project).
+			</Title>
+			<Data>
+				Talking about most critical security risks to web applications like (SQL Injection, XSS, CSRF, etc...).
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Data Reconciliation (Verification of Data Migration).
+			</Title>
+			<Data>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				MIGs Payment:
+			</Title>
+			<Data>
+				- Build your own form, <br />
+				- Submit this form to your server with an encrypted data.  <br />
+				- Server decrypt data using his private key from certificate which previously setuped on server then do some operations like logs or whatever (prepayment operations) and get payment configuration data from DB (MIGS submit URL, MIGS return URL, Merchant ID, etc..) and build the MIGS formal form with a specific form id and specific form elements IDs then return back to client with a hashed version of data. - The client just auto-submit it to the MIGS submit URL.  <br />
+				- MIGS perform his operations and return with the status code to the MIGS return URL. (with hashed data), so in page load I hash and compare data and some logs\operations then tell the user about the result.  <br />
+				- Every 24 hours EOD , MIGS drop some files to my server using SFTP, which contains all successful transactions (as a verification)  <br />
+				- I have a Windows service to run periodically to read this files and mark these transactions as verified in DB (Reconciliation). <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Fiddler:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				brute force attack
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				AppPool Start mode:
+			</Title>
+			<Data>OnDemand and AlwaysRunning</Data>
+		</Item>
+		<Item>
+			<Title>
+				AppPool Idle Time-Out:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>AppPool "Service Unavailable" Response Type > HTTP and TCP > TCP is better</Data>
+		</Item>
+		<Item>
+			<Title>
+				IIS MIME Types:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				Site Binding:
+			</Title>
+			<Data>enable ports and (http and https).</Data>
+		</Item>
+		<Item>
+			<Title>
+				Patch file:
+			</Title>
+			<Data></Data>
+		</Item>
 	</Section>
 	<Section Title="Entity Framework">
 		<Item>
@@ -4647,5 +4723,71 @@
 				<b>Two Key "RSA”:</b> a pair of keys is used, one you keep to yourself (private), and one you share with the rest of the world (public),  the public key to encrypt the data, which can only then be decrypted with the private key.<br />
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				Hashing:
+			</Title>
+			<Data>
+				sender and receiver has the same hash key, so sender send the plaintext data plus the hashed version so receiver do hash the plaintext data as well and compare the hashed result with the hashed data received from the sender. Example:MD4 (deprecated) and SHA256.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Encryption salting:
+			</Title>
+			<Data>
+				adding random data to the input of a hash function to guarantee a unique output
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				Hashing: is signature approve.. “SHA”
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Hashing and Encryption:
+			</Title>
+			<Data>
+				is that hashing converts the data to message hash that identify the message so that when the receiver recieves your message he will hash the message and compared the generated hash with the one sent in the message, and it should be the same, so Hashing is one-way, while encryption uses a key to convert the message to transmit into an unrecognizable format, two-way encryption.<br />
+				<b>One of the most practical example for Hashing</b> is when you want to check if some data changed in a big combination of data in database, you can simply prepare a selec qurery for it and hash the result and compare the hash with the last hashed value so if they are not the same then one or more columns\tables data changed.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				HTTPS Certificate:
+			</Title>
+			<Data>
+				setuped on the server which contains some data about the site owner and the public and private keys used for encryption and decryption.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How TLS works and relation to SSL:
+			</Title>
+			<Data>
+			</Data>
+		</Item>
+		<Section Title="Technical Task Acceptance Criteria">
+			<Item>
+				<Title>
+					Technical Task Acceptance Criteria:
+				</Title>
+				<Data>
+					Should apply all required points letterly. <br />
+					Should be well tested. <br />
+					Apply best practice with simplicity. <br />
+					If Typescript then avoid using any as much as possible. <br />
+					Error handling. <br />
+					Apply Unit Testing. <br />
+					Remove any unused code. <br />
+					Should be well structured. <br />
+					Should make sure that it works (Simulate the reviewer position) especially if uploaded on github or gitlab and don’t forget to set installation instruction in readme file. <br />
+				</Data>
+			</Item>
+		</Section>
 	</Section>
 </Sections>
