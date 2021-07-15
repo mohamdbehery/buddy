@@ -4154,7 +4154,7 @@
 	<Section Title="MVC">
 		<Item>
 			<Title>
-				MVC Life Cycle: 
+				MVC Life Cycle:
 			</Title>
 			<Data>
 				Request > Controller > Action Excution > Result Excution > View Engine > Result Excution > Response
@@ -4178,7 +4178,7 @@
 		</Item>
 		<Item>
 			<Title>
-				What exactly the use of ViewModel in MVC: 
+				What exactly the use of ViewModel in MVC:
 			</Title>
 			<Data>
 				to encapsulate the multiple entities into single entity. It is basically a combination of data models into single object and rendering by the view. Sometimes it is required to show the multiple entities data on view which is coming from different data model classes.
@@ -4189,7 +4189,7 @@
 				What is MVVM:
 			</Title>
 			<Data>
-				  is an architectural pattern that separate the development of the graphical user interface from the development of the business logic or back-end logic so that the view is not dependent on any specific model platform.
+				is an architectural pattern that separate the development of the graphical user interface from the development of the business logic or back-end logic so that the view is not dependent on any specific model platform.
 			</Data>
 		</Item>
 		<Item>
@@ -4214,6 +4214,103 @@
 				<b>SQL Server Reporting Services (SSRS):</b> is a solution that customers deploy on their own premises for creating, publishing, and managing reports, then delivering them to the right users in different ways,  whether that’s viewing them in web browser, on their mobile device, or as an email in their in-box.<br />
 				<b>SSRS</b> is a reporting software that allows you to produce formatted reports with tables in the form of data, graph, images, and charts. These reports are hosted on a server that can be executed any time using parameters defined by the users. It is part of Microsoft SQL Server Services suite.<br />
 				You first create the report itself (.rdl) by desiging it and provide the data source (db connection) and the data set (query or stored procedure) and then configure the subscription, all of this after configuring the SSRS reporting server and configuring the mail settings, from the SQL Server you can connect to thr Reporting Server and click server properities to get the URL and paste this URL in VS > project properities > Target ServerURL and then right click on project and choose deploy (dont forget to Run As Admin), to view the report open the Web Portal url in IE with Run As Admin<br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Conceptual and Logical data model:
+			</Title>
+			<Data>
+				A conceptual data model identifies the highest-level relationships between the different entities.<br />
+				A logical data model describes the data in as much detail as possible, without regard to how they will be physical implemented in the database.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Conceptual and Logical data model:
+			</Title>
+			<Data>
+				Computed Column: is writing equation in (Computed column specification) in column properties and its usually a combination of a couble of columns.<br />
+				And if (Persisted) property is set to off then the calculated column will be just a virtual column. No data for this column will be stored on disk and values will be calculated every time when referenced in a script.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				DbUp:
+			</Title>
+			<Data>
+				is a . NET library that helps you to deploy changes to SQL Server databases. It tracks which SQL scripts have been run already, and runs the change scripts that are needed to get your database up to date.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				INFO:
+			</Title>
+			<Data>
+				in CHARINDEX() function the first index in the string is 1 not 0 :D
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Unique key and Primary key:
+			</Title>
+			<Data>
+				Primary Key is not allowing NULL and used to identify a row (record) in a table, whereas Unique-key is to prevent duplicate values in a column
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SQL Table, Column standards:
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Extranet Views:
+			</Title>
+			<Data>
+
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between Procedure and Function:
+			</Title>
+			<Data>
+				The function must return a value but in Stored Procedure it is optional. Even a procedure can return zero or n values. Functions can have only input parameters for it whereas Procedures can have input or output parameters.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Is Indexing affect update, delete queries performance?
+			</Title>
+			<Data>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Creating many indexes will increase or decrease performance?
+			</Title>
+			<Data>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Aside
+			</Title>
+			<Data>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SQL difference between:
+			</Title>
+			<Data>
+				<b>Char:</b> store string in a fixed length (static memory allocation) <br />
+				<b>Varchar:</b> store string in a variable length (dynmic memory allocation) and stores data at 1 byte per character. <br />
+				<b>NChar\NVarchar:</b> N refers to national character so the only difference is that supporting national characters and stores data at 2 bytes per character. <br />
 			</Data>
 		</Item>
 	</Section>
