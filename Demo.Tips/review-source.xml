@@ -4405,5 +4405,36 @@
 				</code>
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				System-Versioned Temporal Table:
+			</Title>
+			<Data>
+				is a type of user table designed to keep a full history of data changes to allow easy point in time analysis. This type of temporal table is referred to as a system-versioned temporal table because the period of validity for each row is managed by the system (i.e. database engine). <br />
+				<code>
+					CREATE TABLE dbo.Employee <br />
+					( <br />
+					[EmployeeID] int NOT NULL PRIMARY KEY CLUSTERED <br />
+					, [Name] nvarchar(100) NOT NULL <br />
+					, [Address] nvarchar(1024) NOT NULL <br />
+					, [AnnualSalary] decimal (10,2) NOT NULL <br />
+					, [ValidFrom] datetime2 GENERATED ALWAYS AS ROW START <br />
+					, [ValidTo] datetime2 GENERATED ALWAYS AS ROW END <br />
+					, PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo) <br />
+					) <br />
+					WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.EmployeeHistory)); <br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SQl Scalar, Tabled, Aggegate functions
+			</Title>
+			<Data>
+				<b>Scalar-valued:</b> return a single value as a return value, not as a result set <br />
+				<b>Table-valued:</b> returns your specified columns for rows in your table meeting your selection criteria. <br />
+				<b>Aggregate functions:</b> returns a calculation across the rows of a table -- for example summing values. <br />
+			</Data>
+		</Item>
 	</Section>
 </Sections>
