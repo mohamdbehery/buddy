@@ -4436,5 +4436,216 @@
 				<b>Aggregate functions:</b> returns a calculation across the rows of a table -- for example summing values. <br />
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				DB Housekeeping tasks:
+			</Title>
+			<Data></Data>
+		</Item>
+		<Item>
+			<Title>
+				SQL User-Defined Data Type:
+			</Title>
+			<Data>
+				When there is a requirement to create a column with a datatype in the database and creating the same data type columns multiple times by multiple people. <br />
+				create > <code>CREATE TYPE TypeName FROM VARCHAR(100)</code> <br />
+				use > <code>DECLARE @Name TypeName</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is Temp Table:
+			</Title>
+			<Data>
+				is a database table that exists temporarily on the database server. A temporary table stores a subset of data from a normal table for a certain period of time. ... Temporary tables are stored inside “tempdb” which is a system database.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is DB normalization:
+			</Title>
+			<Data>
+				is the process of structuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is SQL Indexes:
+			</Title>
+			<Data>
+				Indexes are special lookup tables that the database search engine can use to speed up data retrieval. Simply put, an index is a pointer to data in a table. <br />
+				<b>Clustered Index:</b> the rows are stored physically on the disk in the same order as the index. Therefore, there can be only one clustered index. <br />
+				<code>
+					CREATE CLUSTERED INDEX IX_tblStudent_Gender_Score <br />
+					ON student(gender)
+				</code> <br />
+				Or by creating a clustered index using a composite key <br />
+				<code>
+					CREATE CLUSTERED INDEX IX_tblStudent_Gender_Score <br />
+					ON student(gender ASC, total_score DESC)
+				</code> <br />
+				<br />
+				<b>Non-Clustered Index:</b> there is a second list that has pointers to the physical rows. You can have many non clustered indices, although each new index will increase the time it takes to write new records. <br />
+				<code>
+					create NonClustered index IX_table_name_column_name  <br />
+					on table_name (column_name ASC)
+				</code>-– or more columns <br />
+				<br />
+				It is generally faster to read from a clustered index if you want to get back all the columns. You do not have to go first to the index and then to the table. <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SQL Full text search:
+			</Title>
+			<Data>
+				refers to the functionality in SQL Server that supports full-text queries against character-based data. These types of queries can include words and phrases as well as multiple forms of a word or phrase. <br />
+				To support full-text queries, full-text indexes must be implemented on the columns referenced in the query.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to avoid writing sub queries?
+			</Title>
+			<Data>
+				<code>using Exists(select …)</code> and <code>Not Exists(Select …)</code> and others
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SQL Server Deadlock:
+			</Title>
+			<Data>
+				is a special concurrency problem in which two or more transactions block the progress of each other. The first transaction has a lock on some database object that the other transaction wants to access, and vice versa. (may fire because an indexes on table)<br />
+				It always fire error code: 1205<br />
+				<br />
+				<b>To resolve a deadlock,</b> SQL Server has to rollback the cheapest of the 2 transactions. In the context of SQL Server, the cheapest transaction (the victim) is the transaction that has written the fewer bytes to the transaction log. <br />
+				SQL Server implements the deadlock detection in a background process called the Deadlock Monitor.<br />
+				You can avoid deadlocks by creating indexes on table foreign keys
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				How to enhance SQL query performance?
+			</Title>
+			<Data>
+				1.	Use joins instead of sub-queries.<br />
+				2.	Avoid * in SELECT statement. Give the name of columns which you require.<br />
+				3.	Use EXISTS and NOT EXISTS instead of IN and NOT IN to check existence of data.<br />
+				4.	Use WITH (NOLOCK) while querying the data from any table.<br />
+				5.	Use WHERE expressions to limit the size of result tables that are created with joins.<br />
+				6.	Use SET NOCOUNT ON to prevent sql server from calculating the effected rows.<br />
+				7.	Use UNION ALL in place of UNION if possible.<br />
+				8.	Avoid Cursors since cursor are very slow in performance.<br />
+				9.	Use Schema name before SQL objects name.<br />
+				10.	Choose appropriate Data Type. E.g. To store strings use varchar in place of text data type.<br />
+				11.	Avoid nchar and nvarchar if possible since both the data types takes just double memory as char and varchar.<br />
+				12.	Use Indexes.<br />
+				13.	Most selective columns should be placed leftmost in the key of a non-clustered index.<br />
+				14.	Drop unused Indexes.<br />
+				15.	Better to create indexes on columns that have integer values instead of characters. Integer values use less overhead than character values.<br />
+				16.	 Use Stored Procedure for frequently used data and more complex queries.<br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is SQL Profiler:
+			</Title>
+			<Data>
+				a tool for tracing, recreating, and troubleshooting problems in MS SQL Server
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is the execution plan for sql query?
+			</Title>
+			<Data>
+				is a visual representation of the operations performed by the database engine in order to return the data required by your query. <br />
+				Its used to monitor query execution in purpose of optimization
+				The most important thing to enhance the query is to reduce the Reads and Writes in memory,,, It has 2 types:<br />
+				Estimated Execution Plan <br />
+				Actual Execution Plan.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is SQL Transaction?
+			</Title>
+			<Data>
+				is a sequence of operations performed (using one or more SQL statements) on a database as a single logical unit of work. The effects of all the SQL statements in a transaction can be either all committed (applied to the database) or all rolled back (undone from the database)
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				RTRIM and LTRIM:
+			</Title>
+			<Data>
+				is to remove spaces from left and right
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Table partitioning:
+			</Title>
+			<Data>
+				is a way to divide a large table into smaller, more manageable parts without having to create separate tables for each part. Data in a partitioned table is physically stored in groups of rows called partitions and each partition can be accessed and maintained separately.<br />
+				<b>Partition Column:</b> Data in a partitioned table is partitioned based on a single column, the partition column, often called the partition key. Only one column can be used as the partition column, but it is possible to use a computed column.<br />
+				<b>Partition Function</b> defines how to partition data based on the partition column.<br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Common Table Expression CTE,
+			</Title>
+			<Data>
+				is a temporary named result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement. The CTE can also be used in a View. <br />
+				<code>
+					;with CTE_Name(Col1, Col2) as  <br />
+					(  <br />
+					select database_id Col1, name Col2 <br />
+					from sys.databases  <br />
+					) <br />
+					select * from CTE_Name
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				CTE can be refertenced only once,
+			</Title>
+			<Data>
+				CTE can be refertenced only once, right after defining it, so if you want to use a permenant table consider using temp table or table variable
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between CTE and Temp Table:
+			</Title>
+			<Data>
+				CTE can only be used in the current query scope whereas a temporary table or table variable can exist for the entire duration of the session allowing you to perform many different DML operations against them.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Difference between temp table and table variable:
+			</Title>
+			<Data>
+				Temporary Tables are physically created in the tempdb database. These tables act as the normal table and also can have constraints, index like normal tables. Table Variable acts like a variable and exists for a particular batch of query execution. ... It is created in the memory database but may be pushed out to tempdb.
+			</Data>
+		</Item>
+	</Section>
+	<Section Title="Encryption">
+		<Item>
+			<Title>
+				What is Encryption:
+			</Title>
+			<Data>
+				is to cypher data using a public key and decrypt it using the private key, the private key is usually accessed from the certificate which previously setuped on server. (RSA)<br />
+				To encrypt data you use something called a cipher algorithm.<br />
+				<br />
+				<b>Single Key "AES":</b> one key can be used to encrypt, and then decrypt the message. You need to securely share that key with the system you’re exchanging encrypted data with, otherwise other people can decrypt your data, or pretend to create encrypted data on your behalf.<br />
+				<b>Two Key "RSA”:</b> a pair of keys is used, one you keep to yourself (private), and one you share with the rest of the world (public),  the public key to encrypt the data, which can only then be decrypted with the private key.<br />
+			</Data>
+		</Item>
 	</Section>
 </Sections>
