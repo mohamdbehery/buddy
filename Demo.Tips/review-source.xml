@@ -4313,5 +4313,97 @@
 				<b>NChar\NVarchar:</b> N refers to national character so the only difference is that supporting national characters and stores data at 2 bytes per character. <br />
 			</Data>
 		</Item>
+		<Item>
+			<Title>
+				What is the use of OrderBy, GroupBy:
+			</Title>
+			<Data>
+				ORDER BY is used to sort a result by a list of columns or expressions. <br />
+				GROUP BY is used to create unique combinations of a list of columns that can be used to form summaries.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				What is distinct:
+			</Title>
+			<Data>
+				The SELECT DISTINCT statement is used to return only distinct (different) values. Inside a table, a column often contains many duplicate values; and sometimes you only want to list the different (distinct) values.
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				SQL Cursor to loop on records:
+			</Title>
+			<Data>
+				<code>
+					DECLARE @MyCursor CURSOR; <br />
+					DECLARE @MyField YourFieldDataType; <br />
+					BEGIN <br />
+					SET @MyCursor = CURSOR FOR <br />
+					select top 1000 YourField from dbo.table <br />
+					where StatusID = 7 <br />
+					<br />
+					OPEN @MyCursor <br />
+					FETCH NEXT FROM @MyCursor <br />
+					INTO @MyField <br />
+					<br />
+					WHILE @@FETCH_STATUS = 0 <br />
+					BEGIN<br />
+					/*<br />
+					YOUR ALGORITHM GOES HERE<br />
+					*/<br />
+					FETCH NEXT FROM @MyCursor<br />
+					INTO @MyField<br />
+					END;<br />
+					<br />
+					CLOSE @MyCursor ;<br />
+					DEALLOCATE @MyCursor;<br />
+					END;<br />
+				</code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Explain joins:
+			</Title>
+			<Data>
+				<b>INNER JOIN:</b> Returns records that have matching values in both tables. <br />
+				<b>LEFT (OUTER) JOIN:</b> Returns all records from the left table, and the matched records from the right table <br />
+				<b>RIGHT (OUTER) JOIN:</b> Returns all records from the right table, and the matched records from the left table <br />
+				<b>FULL (OUTER) JOIN:</b> Returns all records when there is a match in either left or right table <br />
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Cross join:
+			</Title>
+			<Data>
+				Is returning both tables: <br />
+				<code>select * from employee cross join department </code> is the same as <code>select * from employee, department </code>
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Union and Union All:
+			</Title>
+			<Data>
+				both used to combines the result set of two or more SELECT statements. <br />
+				Union will return the distinct rows but Union All will return the duplicated ones
+			</Data>
+		</Item>
+		<Item>
+			<Title>
+				Having Clause:
+			</Title>
+			<Data>
+				<code>
+					SELECT COUNT(CustomerID), Country <br />
+					FROM Customers <br />
+					GROUP BY Country <br />
+					HAVING COUNT(CustomerID) > 5 <br />
+					ORDER BY COUNT(CustomerID) DESC; <br />
+				</code>
+			</Data>
+		</Item>
 	</Section>
 </Sections>
