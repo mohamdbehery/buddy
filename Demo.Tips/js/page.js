@@ -39,7 +39,9 @@
                                 itemData.innerHTML = itemData.innerHTML.split('/images/').join('/buddy/Demo.Tips/images/');
 
                             var tempItemTemplate = itemTemplate.split('#ItemCode#').join('Item' + i + '_' + j);
-                            tempItemTemplate = tempItemTemplate.split('#ItemTitle#').join(itemTitle.innerHTML);
+                            if (!itemData.innerHTML.trim())
+                                itemTitle.innerHTML = '<div class="danger">' + itemTitle.innerHTML + '</div>';
+                            tempItemTemplate = tempItemTemplate.split('#ItemTitle#').join(itemTitle.innerHTML);                            
                             tempItemTemplate = tempItemTemplate.split('#ItemData#').join(itemData.innerHTML);
 
                             filledItems += tempItemTemplate;

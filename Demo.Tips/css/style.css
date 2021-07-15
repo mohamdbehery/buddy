@@ -1,7 +1,9 @@
 ﻿body {
     font-size: 16px;
 }
-
+.danger{
+    color:red;
+}
 .item {
     margin-top: 10px;
 }
