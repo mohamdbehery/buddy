@@ -5,6 +5,9 @@
     color: #337ab7;
     background: #edffff;
 }
+#ShowEmptyAll:hover{
+    cursor:pointer;
+}
 .item {
     margin-top: 10px;
 }

@@ -6,10 +6,10 @@
 #toTopBtn {
     position: fixed;
     bottom: 26px;
-    right: 39px;
-    z-index: 98;
-    padding: 21px;
-    background-color: hsla(5, 76%, 62%, .8)
+    right: 30px;
+    z-index: 20;
+    padding: 15px;
+    background-color: hsla(5, 76%, 62%, .8);
 }
 
 .js .cd-top--fade-out {
