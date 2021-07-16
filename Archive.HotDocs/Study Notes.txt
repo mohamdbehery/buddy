@@ -68,7 +68,10 @@
         - Chain of Responsibility: is passing a request between a chain of objects\handlers so for example if you have a Task you can pass this task to all departments one by one until its picked by someone and handled
             # used when the request should be handled using one or more handlers
 
-        - Command:
+        - Command: is simply putting a middle layer between Invoker and Receiver classes, so if you have a Product class that has some functionalities, the client instead of directly invoke this functionalities, he should call the invoker and passing this middle layer (Command class) so in this invoker object we can save all commands\actions invoked, 
+            so the powerful of this pattern is that we can in anytime revert all actions\commands saved in the invoker object.
+            # used when you want to do\undo actions
+
         - Interpreter: 
         - Iterator: Provides a way to access the elements of a collection object in sequential manner without knowing its underlying structure.
         - Mediator: 
@@ -102,7 +105,8 @@
             }
 
     - One of the benefits of UnitOfWork is that you can savechanges of more than one entity at the same time (like a transaction), creating a single database context class shared by all repositories.
-    - Repository Pattern: is a mediate (abstraction) layer between the domain (business) layer and data mapping layer (ORM) so that you hide how the data is eventually stored or retrieved to and from the DB, so the main purpose here is to make your achitecture a loosly decopled of ORM
+    - Repository Pattern: is a mediate (abstraction) layer between the domain (business) layer and data mapping layer (ORM) so that you hide how the data is eventually stored or retrieved to and from the DB, 
+        So the main purpose here is to make your achitecture a loosly decopled of ORM
     - Unit of Work in Repository Pattern: (increase the level of abstraction) is referred to as a single transaction that involves multiple operations of insert/update/delete and so on. Unit of Work is the concept related to the effective implementation of the Repository Pattern.
         For example: Insteed of making every repository create instance of DBContext we can create only one instance for all of these repositories as a one Unit Of Work:
         public class UnitOfWork
