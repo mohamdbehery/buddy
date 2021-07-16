@@ -7,23 +7,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="css/style.css" rel="stylesheet" />
+    <link href="css/scroll-top.css" rel="stylesheet" />
+    <script src="js/scroll-top.js"></script>
     <script src="js/page.js"></script>
     <title></title>
 </head>
 <body>
     <div class="container">
         <div id="test" style="display:none">https://mohamdbehery.github.io/buddy/Demo.Tips/review.html</div>
+        <div class="header">
+            <div id="ShowEmptyAll" class="all">[Show empty]</div>
+        </div>
         <div id="sections"></div>
         <div id="section-template" style="display:none;">
-            <div class="section">
+            <div class="section #SectionStatus#">
                 <button class="btn btn-primary section-title" type="button" data-toggle="collapse" data-target="##SectionCode#" aria-expanded="false" aria-controls="#SectionCode#">#SectionTitle#</button>
-                <div class=" collapse multi-collapse section-data"  id="#SectionCode#">
+                <div class=" collapse multi-collapse section-data" id="#SectionCode#">
                     #Items#
                 </div>
             </div>
         </div>
         <div id="item-template" style="display:none;">
-            <div class="item">
+            <div class="item #ItemStatus#">
                 <button class="btn btn-primary item-title" type="button" data-toggle="collapse" data-target="##ItemCode#" aria-expanded="false" aria-controls="#ItemCode#">#ItemTitle#</button>
                 <div class="collapse multi-collapse item-data" id="#ItemCode#">
                     <div class="card card-body">
@@ -32,6 +37,8 @@
                 </div>
             </div>
         </div>
+
+        <a href="#" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out" data-abc="true"></a>
     </div>
 </body>
 </html>

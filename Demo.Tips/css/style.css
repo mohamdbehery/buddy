@@ -1,8 +1,9 @@
 ﻿body {
     font-size: 16px;
 }
-.danger{
-    color:red;
+#ShowEmptyAll {
+    color: #337ab7;
+    background: #edffff;
 }
 .item {
     margin-top: 10px;
@@ -45,6 +46,9 @@
         background-color:inherit;
     }
 
+.item-empty .item-title {
+    color: red;
+}
 .item-data {
     font-size: 13px;
     padding: 5px;

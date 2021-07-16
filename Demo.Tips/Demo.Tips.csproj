@@ -105,10 +105,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\scroll-top.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="images\sso.png" />
     <Content Include="js\page.js" />
+    <Content Include="js\scroll-top.js" />
     <Content Include="review-source.xml" />
     <Content Include="review.html" />
     <Content Include="Web.config" />

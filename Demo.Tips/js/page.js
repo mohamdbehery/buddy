@@ -1,14 +1,12 @@
 ﻿$(document).ready(() => {
-    var isPublished = window.location.href.indexOf('github') > 0 ? true : false;
-    var url = (isPublished ? "/buddy/Demo.Tips" : "") + "/review-source.xml";
-  
+
     $.ajax({
         type: "GET",
         url: url,
         dataType: "xml",
         success: (xml) => {
             if (xml.children[0]) {
-                BindData(xml.children[0]);
+                BindSections(xml.children[0]);
             }
         },
         error: (data) => {
@@ -16,42 +14,76 @@
         }
     });
 
-    var BindData = (data) => {
-        var sectionTemplate = $('#section-template').html();
-        var itemTemplate = $('#item-template').html();
+    $('#ShowEmptyAll').on('click', () => {
+        if ($('#ShowEmptyAll').hasClass('all')) {
+            $('.all-items-filled').hide();
+            $('.item-filled').hide();
+            $('#ShowEmptyAll').text('[Show All]');
+            $('#ShowEmptyAll').removeClass('all');
+        }
+        else {
+            $('.all-items-filled').show();
+            $('.item-filled').show();
+            $('#ShowEmptyAll').text('[Show Empty]');
+            $('#ShowEmptyAll').addClass('all');
+        }
+    });
+});
 
-        var filledSections = '';
-        for (let i = 0; i < data.getElementsByTagName('Section').length; i++) {
-            var section = data.getElementsByTagName('Section')[i];
-            if (section) {
-                var sectionTitle = section.attributes['Title'].value;
-                var tempSectionTemplate = sectionTemplate.split('#SectionTitle#').join(sectionTitle);
-                tempSectionTemplate = tempSectionTemplate.split('#SectionCode#').join('Section' + i);
+var isPublished = window.location.href.indexOf('github') > 0 ? true : false;
+var url = (isPublished ? "/buddy/Demo.Tips" : "") + "/review-source.xml";
 
-                var filledItems = '';
-                for (let j = 0; j < section.getElementsByTagName('Item').length; j++) {
-                    var item = section.getElementsByTagName('Item')[j];
-                    if (item) {
-                        var itemTitle = item.getElementsByTagName('Title')[0];
-                        var itemData = item.getElementsByTagName('Data')[0];
-                        if (itemTitle && itemData) {
-                            if (isPublished)
-                                itemData.innerHTML = itemData.innerHTML.split('/images/').join('/buddy/Demo.Tips/images/');
+var BindSections = (data) => {
+    var sectionTemplate = $('#section-template').html();
 
-                            var tempItemTemplate = itemTemplate.split('#ItemCode#').join('Item' + i + '_' + j);
-                            if (!itemData.innerHTML.trim())
-                                itemTitle.innerHTML = '<div class="danger">' + itemTitle.innerHTML + '</div>';
-                            tempItemTemplate = tempItemTemplate.split('#ItemTitle#').join(itemTitle.innerHTML);                            
-                            tempItemTemplate = tempItemTemplate.split('#ItemData#').join(itemData.innerHTML);
+    var filledSections = '';
+    for (let i = 0; i < data.getElementsByTagName('Section').length; i++) {
+        var section = data.getElementsByTagName('Section')[i];
+        if (section) {
+            var sectionTitle = section.attributes['Title'].value;
+            var tempSectionTemplate = sectionTemplate.split('#SectionTitle#').join(sectionTitle);
+            tempSectionTemplate = tempSectionTemplate.split('#SectionCode#').join('Section' + i);
+            var sectionData = BindSectionData(section, i);
+            tempSectionTemplate = tempSectionTemplate.split('#Items#').join(sectionData.FilledItems);
+            tempSectionTemplate = tempSectionTemplate.split('#SectionStatus#').join(sectionData.AreAllItemsFilled ? 'all-items-filled' : '');
+            filledSections += tempSectionTemplate;
+        }
+    }
+    $('#sections').append(filledSections);
+};
 
-                            filledItems += tempItemTemplate;
-                        }
-                    }
+var BindSectionData = (section, sectionIndex) => {
+    var sectionData = {
+        FilledItems: '',
+        AreAllItemsFilled: true
+    };
+
+    var itemTemplate = $('#item-template').html();
+    for (let j = 0; j < section.getElementsByTagName('Item').length; j++) {
+        var item = section.getElementsByTagName('Item')[j];
+        if (item) {
+            var itemTitle = item.getElementsByTagName('Title')[0];
+            var itemData = item.getElementsByTagName('Data')[0];
+
+            if (itemTitle && itemData) {
+                var tempItemTemplate = itemTemplate;
+
+                // if itemData has content OR its section is for questions to ask not to answer
+                if (itemData.innerHTML.trim() || section.attributes['Title'].value.includes('Ask')) {
+                    tempItemTemplate = tempItemTemplate.split('#ItemStatus#').join('item-filled');
+                    if (isPublished)
+                        itemData.innerHTML = itemData.innerHTML.split('/images/').join('/buddy/Demo.Tips/images/');
                 }
-                tempSectionTemplate = tempSectionTemplate.split('#Items#').join(filledItems);
-                filledSections += tempSectionTemplate;
+                else {
+                    tempItemTemplate = tempItemTemplate.split('#ItemStatus#').join('item-empty');
+                    sectionData.AreAllItemsFilled = false;
+                }
+                tempItemTemplate = tempItemTemplate.split('#ItemCode#').join('Item' + sectionIndex + '_' + j);
+                tempItemTemplate = tempItemTemplate.split('#ItemTitle#').join(itemTitle.innerHTML);
+                tempItemTemplate = tempItemTemplate.split('#ItemData#').join(itemData.innerHTML);
+                sectionData.FilledItems += tempItemTemplate;
             }
         }
-        $('#sections').append(filledSections);
     }
-});
+    return sectionData;
+};
