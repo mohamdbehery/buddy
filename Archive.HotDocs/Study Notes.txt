@@ -1,5 +1,5 @@
 
-- INFO: When you start writing code just focus on make the code wrok, but after that its very important to clean your code, always keep in mind that: Clead Code does one thing well :)
+- INFO: When you start writing code just focus on making the code wrok, but after that its very important to clean your code, always keep in mind that: Clead Code does one thing well :)
 - INFO: Every large function is actually should be a class with small methods
 - INFO: its not prefered that an object change the state of another object like this Class cls = new Class(); cls.Prop = "test"; but its better to handle this state change in the Class it self by public class Class{ public void Class(string prop){ this.Prop = prop} } and path the value while instantiating Class cls = new Class("test");
 - Static keyword means that that object can't be copied, just static.
